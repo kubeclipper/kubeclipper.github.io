@@ -40,15 +40,15 @@
 
 ">
 <meta property="og:title" content="About Goldydocs" />
-<meta property="og:description" content="A Docsy example site" />
+<meta property="og:description" content="☸️ Manage kubernetes in the most light and convenient way ☸️" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kubeclipper.io/about/" /><meta property="og:image" content="https://kubeclipper.io/about/_print/featured-background.jpeg"/><meta property="og:site_name" content="Kubeclipper" />
 
 <meta itemprop="name" content="About Goldydocs">
-<meta itemprop="description" content="A Docsy example site"><meta name="twitter:card" content="summary_large_image"/>
+<meta itemprop="description" content="☸️ Manage kubernetes in the most light and convenient way ☸️"><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kubeclipper.io/about/_print/featured-background.jpeg"/>
 <meta name="twitter:title" content="About Goldydocs"/>
-<meta name="twitter:description" content="A Docsy example site"/>
+<meta name="twitter:description" content="☸️ Manage kubernetes in the most light and convenient way ☸️"/>
 
 
 
@@ -59,6 +59,10 @@
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+<script
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
   crossorigin="anonymous"></script>
 
 <script type="application/javascript">
@@ -142,14 +146,24 @@ if (!doNotTrack) {
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/no/">Norsk</a>
+	<a class="dropdown-item" href="/zh/about/">简体中文</a>
 	
 </div>
 			</li>
 			
 		</ul>
 	</div>
-	<div class="navbar-nav d-none d-lg-block"><input type="search" class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete="off">
+	<div class="navbar-nav d-none d-lg-block"><input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.9d54d980fd72e9840f0689f17986b4de.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="25"
+>
 </div>
 </nav>
 
@@ -340,7 +354,7 @@ if (!doNotTrack) {
         
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2022 Kubeclipper All Rights Reserved</small>
+        <small class="text-white">&copy; 2022 KubeClipper All Rights Reserved</small>
         <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></small>
 	
 		<p class="mt-2"><a href="/about/">About Goldydocs</a></p>
@@ -382,7 +396,9 @@ if (!doNotTrack) {
 
 
 
-<script src="/js/main.min.5dde0d93da95878f1fc7c34998c90239a17cdefc668941c55c99ced76ad1c023.js" integrity="sha256-Xd4Nk9qVh48fx8NJmMkCOaF83vxmiUHFXJnO12rRwCM=" crossorigin="anonymous"></script>
+
+
+<script src="/js/main.min.91798a335c881f1b6b805085ba4aa22d1dbd2b0b18d105d05189fa104ddae350.js" integrity="sha256-kXmKM1yIHxtrgFCFukqiLR29KwsY0QXQUYn6EE3a41A=" crossorigin="anonymous"></script>
 
 
 
