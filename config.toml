@@ -68,26 +68,18 @@ id = "UA-00000000-0"
 [languages]
 [languages.en]
 title = "Kubeclipper"
-description = "A Docsy example site"
+description = "☸️ Manage kubernetes in the most light and convenient way ☸️"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
 
-[languages.no]
-title = "Goldydocs"
-description = "Docsy er operativsystem for skyen"
-languageName ="Norsk"
-contentDir = "content/no"
-time_format_default = "02.01.2006"
-time_format_blog = "02.01.2006"
-
-#[languages.fa]
-#title = "اسناد گلدی"
-#description = "یک نمونه برای پوسته داکسی"
-#languageName ="فارسی"
-#contentDir = "content/fa"
-#time_format_default = "2006.01.02"
-#time_format_blog = "2006.01.02"
+[languages.zh]
+title = "KubeClipper"
+description = "☸️ Manage kubernetes in the most light and convenient way ☸️"
+languageName = "简体中文"
+contentDir = "content/zh"
+time_format_default = "2006.01.02"
+time_format_blog = "2006.01.02"
 
 [markup]
   [markup.goldmark]
@@ -106,7 +98,7 @@ time_format_blog = "02.01.2006"
 section = ["HTML", "print", "RSS"]
 
 [params]
-copyright = "Kubeclipper"
+copyright = "KubeClipper"
 privacy_policy = "https://policies.google.com/privacy"
 
 # First one is picked as the Twitter card image if not set on page.
@@ -128,7 +120,7 @@ version = "0.0"
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
-url_latest_version = "https://example.com"
+url_latest_version = "https://kubeclipper.io"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 github_repo = "https://github.com/kubeclipper-labs/kubeclipper-labs.github.io"
@@ -143,13 +135,15 @@ github_project_repo = "https://github.com/kubeclipper-labs/kubeclipper"
 github_branch= "master"
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
-gcs_engine_id = "d72aa9b2712488cc3"
+#gcs_engine_id = "d72aa9b2712488cc3"
 
 # Enable Algolia DocSearch
 algolia_docsearch = false
 
 # Enable Lunr.js offline search
-offlineSearch = false
+offlineSearch = true
+offlineSearchSummaryLength = 200
+offlineSearchMaxResults = 25
 
 # Enable syntax highlighting and copy buttons on code blocks with Prism
 prism_syntax_highlighting = false
@@ -219,6 +213,11 @@ enable = false
   icon = "fa fa-envelope"
   desc = "Discuss development issues around the project"
 
+
+# Add your release versions here
+# [[params.versions]]
+#   version = "master"
+#   url = "https://kubeclipper.io"
 # hugo module configuration
 
 [module]
