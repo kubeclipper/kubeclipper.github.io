@@ -34,7 +34,9 @@ jobs:
           npm install -D postcss
 
       - name: Build
-        run: make public
+        run: |
+          make public
+          cp CNAME public/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
