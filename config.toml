@@ -2,8 +2,8 @@ baseURL = "/"
 title = "Kubeclipper"
 
 # Language settings
-contentDir = "content/en"
-defaultContentLanguage = "en"
+contentDir = "content/zh-cn"
+defaultContentLanguage = "zh-cn"
 defaultContentLanguageInSubdir = false
 # Useful when translating.
 enableMissingTranslationPlaceholders = true
@@ -70,14 +70,16 @@ id = "UA-00000000-0"
 title = "Kubeclipper"
 description = "☸️ Manage kubernetes in the most light and convenient way ☸️"
 languageName ="English"
-# Weight used for sorting.
-weight = 1
+contentDir = "content/en"
+time_format_default = "2006.01.02"
+time_format_blog = "2006.01.02"
 
-[languages.zh]
+[languages.zh-cn]
 title = "KubeClipper"
 description = "☸️ Manage kubernetes in the most light and convenient way ☸️"
 languageName = "简体中文"
-contentDir = "content/zh"
+# Weight used for sorting.
+weight = 1
 time_format_default = "2006.01.02"
 time_format_blog = "2006.01.02"
 
