@@ -158,6 +158,19 @@
                 href="https://kubeclipper.io/docs/tasks/"
                 />
   </url><url>
+    <loc>https://kubeclipper.io/docs/tutorials/carete-k8s-cluster-offline/</loc>
+    <lastmod>2022-08-15T11:52:23+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://kubeclipper.io/zh/docs/tutorials/carete-k8s-cluster-offline/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kubeclipper.io/docs/tutorials/carete-k8s-cluster-offline/"
+                />
+  </url><url>
     <loc>https://kubeclipper.io/docs/tutorials/</loc>
     <lastmod>2022-07-08T22:41:38+08:00</lastmod>
     <xhtml:link

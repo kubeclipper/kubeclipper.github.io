@@ -640,5 +640,45 @@ bar := &amp;#34;foo&amp;#34;;
       </description>
     </item>
     
+    <item>
+      <title>Docs: Create k8s clusters offline using the kubeclipper platform</title>
+      <link>https://kubeclipper.io/docs/tutorials/carete-k8s-cluster-offline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubeclipper.io/docs/tutorials/carete-k8s-cluster-offline/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;1-go-to-the-creation-screen&#34;&gt;1. Go to the creation screen&lt;/h2&gt;
+&lt;p&gt;Log in to the &lt;code&gt;Kubeclipper&lt;/code&gt; platform and click the button as shown in the figure to enter the cluster creation interface&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-begin.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-configure-cluster-nodes&#34;&gt;2. Configure cluster nodes&lt;/h2&gt;
+&lt;p&gt;Follow the text prompts to complete the steps of entering the cluster name and selecting nodes&lt;/p&gt;
+&lt;p&gt;Note: The number of master nodes cannot be an even number.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-node-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-configure-cluster&#34;&gt;3. Configure cluster&lt;/h2&gt;
+&lt;p&gt;This step is used to configure the cluster network and components such as the database and container runtime&lt;/p&gt;
+&lt;p&gt;Select offline installation and fill in the address of the image repository you have built first&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-configure-cluster-storage&#34;&gt;4. Configure cluster storage&lt;/h2&gt;
+&lt;p&gt;Select nfs storage and follow the text prompts to fill in the appropriate fields&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-storage-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-configure-cluster-plugins&#34;&gt;5. Configure cluster plugins&lt;/h2&gt;
+&lt;p&gt;This step is used to install Kubesphere&lt;/p&gt;
+&lt;p&gt;Enter any string as a jwt key&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-plugin-config-jwt.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;You can change the default memory parameters to avoid installation failure when the runtime environment has insufficient memory&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-plugin-config-memory.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Choose to install the plug-in according to your needs&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-plugin-install.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;6-installation-completed&#34;&gt;6. Installation completed&lt;/h2&gt;
+&lt;p&gt;Complete all configurations to confirm installation&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-finish.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Installation is successful and the cluster is up and running&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-success.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>

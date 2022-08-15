@@ -146,7 +146,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ba2795044a1205933bbe130a89c553de.json"
+  data-offline-search-index-json-src="/offline-search-index.6ce5a6617ab1d57dd836e69b1f30f350.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -201,6 +201,14 @@ This is the multi-page printable view of this section.
     
 	
 <li>2: <a href="#pg-c86b0cbc9ee1f95a6facb6bff0282978">Another Tutorial</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-c2ae1d96f8801e0e95716bdcb945d3a3">使用 Kubeclipper 离线创建 k8s 集群</a></li>
 
 
     
@@ -859,6 +867,50 @@ bar := &#34;foo&#34;;
 <p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
 <pre tabindex="0"><code>This is the final element on the page and there should be no margin below this.
 </code></pre>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-c2ae1d96f8801e0e95716bdcb945d3a3">3 - 使用 Kubeclipper 离线创建 k8s 集群</h1>
+    <div class="lead">如何使用 KC 平台离线创建 k8s 集群</div>
+	<h2 id="1-进入创建界面">1. 进入创建界面</h2>
+<p>登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面</p>
+<p><img src="/images/docs/cluster-begin.png" alt=""></p>
+<h2 id="2-配置集群节点">2. 配置集群节点</h2>
+<p>按照文字提示完成输入集群名称、选择节点等步骤</p>
+<p>注意: master 节点数量不能为偶数</p>
+<p><img src="/images/docs/cluster-node-config.png" alt=""></p>
+<h2 id="3-配置集群">3. 配置集群</h2>
+<p>此步骤用于配置集群网络以及数据库、容器运行时等组件</p>
+<p>选择离线安装并填写首先搭建好的镜像仓库地址</p>
+<p><img src="/images/docs/cluster-config.png" alt=""></p>
+<h2 id="4-配置存储">4. 配置存储</h2>
+<p>选择 nfs 存储，按照文字提示填写相应内容</p>
+<p><img src="/images/docs/cluster-storage-config.png" alt=""></p>
+<h2 id="5-配置插件">5. 配置插件</h2>
+<p>此步骤用于安装 Kubesphere</p>
+<p>输入任意字符串作为 jwt 密钥</p>
+<p><img src="/images/docs/cluster-plugin-config-jwt.png" alt=""></p>
+<p>当运行环境内存不足时可修改默认内存参数，以免安装失败</p>
+<p><img src="/images/docs/cluster-plugin-config-memory.png" alt=""></p>
+<p>根据自己需求选择安装插件</p>
+<p><img src="/images/docs/cluster-plugin-install.png" alt=""></p>
+<h2 id="6-安装完成">6. 安装完成</h2>
+<p>完成所有配置确认安装</p>
+<p><img src="/images/docs/cluster-finish.png" alt=""></p>
+<p>安装成功，集群正常运行</p>
+<p><img src="/images/docs/cluster-success.png" alt=""></p>
+
 </div>
 
 

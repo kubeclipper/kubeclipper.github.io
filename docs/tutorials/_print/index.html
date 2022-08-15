@@ -146,7 +146,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ba2795044a1205933bbe130a89c553de.json"
+  data-offline-search-index-json-src="/offline-search-index.6ce5a6617ab1d57dd836e69b1f30f350.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -201,6 +201,14 @@ This is the multi-page printable view of this section.
     
 	
 <li>2: <a href="#pg-c86b0cbc9ee1f95a6facb6bff0282978">Another Tutorial</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-c2ae1d96f8801e0e95716bdcb945d3a3">Create k8s clusters offline using the kubeclipper platform</a></li>
 
 
     
@@ -859,6 +867,50 @@ bar := &#34;foo&#34;;
 <p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
 <pre tabindex="0"><code>This is the final element on the page and there should be no margin below this.
 </code></pre>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-c2ae1d96f8801e0e95716bdcb945d3a3">3 - Create k8s clusters offline using the kubeclipper platform</h1>
+    <div class="lead">How to create a k8s cluster offline using the KC platform</div>
+	<h2 id="1-go-to-the-creation-screen">1. Go to the creation screen</h2>
+<p>Log in to the <code>Kubeclipper</code> platform and click the button as shown in the figure to enter the cluster creation interface</p>
+<p><img src="/images/docs/cluster-begin.png" alt=""></p>
+<h2 id="2-configure-cluster-nodes">2. Configure cluster nodes</h2>
+<p>Follow the text prompts to complete the steps of entering the cluster name and selecting nodes</p>
+<p>Note: The number of master nodes cannot be an even number.</p>
+<p><img src="/images/docs/cluster-node-config.png" alt=""></p>
+<h2 id="3-configure-cluster">3. Configure cluster</h2>
+<p>This step is used to configure the cluster network and components such as the database and container runtime</p>
+<p>Select offline installation and fill in the address of the image repository you have built first</p>
+<p><img src="/images/docs/cluster-config.png" alt=""></p>
+<h2 id="4-configure-cluster-storage">4. Configure cluster storage</h2>
+<p>Select nfs storage and follow the text prompts to fill in the appropriate fields</p>
+<p><img src="/images/docs/cluster-storage-config.png" alt=""></p>
+<h2 id="5-configure-cluster-plugins">5. Configure cluster plugins</h2>
+<p>This step is used to install Kubesphere</p>
+<p>Enter any string as a jwt key</p>
+<p><img src="/images/docs/cluster-plugin-config-jwt.png" alt=""></p>
+<p>You can change the default memory parameters to avoid installation failure when the runtime environment has insufficient memory</p>
+<p><img src="/images/docs/cluster-plugin-config-memory.png" alt=""></p>
+<p>Choose to install the plug-in according to your needs</p>
+<p><img src="/images/docs/cluster-plugin-install.png" alt=""></p>
+<h2 id="6-installation-completed">6. Installation completed</h2>
+<p>Complete all configurations to confirm installation</p>
+<p><img src="/images/docs/cluster-finish.png" alt=""></p>
+<p>Installation is successful and the cluster is up and running</p>
+<p><img src="/images/docs/cluster-success.png" alt=""></p>
+
 </div>
 
 
