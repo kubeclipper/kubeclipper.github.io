@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kubeclipper – Reference</title>
+    <title>KubeClipper – Reference</title>
     <link>https://kubeclipper.io/docs/reference/</link>
-    <description>Recent content in Reference on Kubeclipper</description>
+    <description>Recent content in Reference on KubeClipper</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="https://kubeclipper.io/docs/reference/index.xml" rel="self" type="application/rss+xml" />

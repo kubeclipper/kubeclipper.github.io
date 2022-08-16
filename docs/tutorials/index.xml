@@ -1,10 +1,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kubeclipper – Tutorials</title>
+    <title>KubeClipper – 使用手册</title>
     <link>https://kubeclipper.io/docs/tutorials/</link>
-    <description>Recent content in Tutorials on Kubeclipper</description>
+    <description>Recent content in 使用手册 on KubeClipper</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 04 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate>
     
 	  <atom:link href="https://kubeclipper.io/docs/tutorials/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,667 +15,517 @@
     
     
     <item>
-      <title>Docs: Multi-Bear Domicile Setup</title>
-      <link>https://kubeclipper.io/docs/tutorials/multi-bear/</link>
-      <pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate>
+      <title>Docs: 集群管理</title>
+      <link>https://kubeclipper.io/docs/tutorials/cluster-manage/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kubeclipper.io/docs/tutorials/multi-bear/</guid>
+      <guid>https://kubeclipper.io/docs/tutorials/cluster-manage/</guid>
       <description>
         
         
-        
-
-&lt;div class=&#34;pageinfo pageinfo-primary&#34;&gt;
-&lt;p&gt;This is a placeholder page. Replace it with your own content.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Text can be &lt;strong&gt;bold&lt;/strong&gt;, &lt;em&gt;italic&lt;/em&gt;, or &lt;del&gt;strikethrough&lt;/del&gt;. &lt;a href=&#34;https://gohugo.io&#34;&gt;Links&lt;/a&gt; should be blue with no underlines (unless hovered over).&lt;/p&gt;
-&lt;p&gt;There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.&lt;/p&gt;
-&lt;p&gt;90&amp;rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps &lt;strong&gt;kale chips&lt;/strong&gt;.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;There should be no margin above this first sentence.&lt;/p&gt;
-&lt;p&gt;Blockquotes should be a lighter gray with a border along the left side in the secondary color.&lt;/p&gt;
-&lt;p&gt;There should be no margin below this final sentence.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;first-header-2&#34;&gt;First Header 2&lt;/h2&gt;
-&lt;p&gt;This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier &lt;strong&gt;craft beer&lt;/strong&gt;. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&amp;rsquo;t heard of them copper mug, crucifix green juice vape &lt;em&gt;single-origin coffee&lt;/em&gt; brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!&lt;/p&gt;
-&lt;p&gt;Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.&lt;/p&gt;
-&lt;p&gt;On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.&lt;/p&gt;
-&lt;p&gt;Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;amp;B. &lt;strong&gt;I love this life we live in&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;second-header-2&#34;&gt;Second Header 2&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;header-3&#34;&gt;Header 3&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;This is a code block following a header.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Next level leggings before they sold out, PBR&amp;amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.&lt;/p&gt;
-&lt;h4 id=&#34;header-4&#34;&gt;Header 4&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;This is an unordered list following a header.&lt;/li&gt;
-&lt;li&gt;This is an unordered list following a header.&lt;/li&gt;
-&lt;li&gt;This is an unordered list following a header.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&#34;header-5&#34;&gt;Header 5&lt;/h5&gt;
+        &lt;h2 id=&#34;创建集群&#34;&gt;创建集群&lt;/h2&gt;
+&lt;p&gt;您可以通过向导式的页面创建 K8S 集群，并安装CNI、CSI等所需插件。也可以提前保存好集群模版，选择模版后快速创建集群。&lt;/p&gt;
+&lt;h3 id=&#34;创建集群准备工作&#34;&gt;创建集群准备工作&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;This is an ordered list following a header.&lt;/li&gt;
-&lt;li&gt;This is an ordered list following a header.&lt;/li&gt;
-&lt;li&gt;This is an ordered list following a header.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h6 id=&#34;header-6&#34;&gt;Header 6&lt;/h6&gt;
+&lt;li&gt;
+&lt;p&gt;您需要准备充足的可用节点，如需添加节点，参见“添加节点”教程。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;准备好需要部署的 K8S、CRI、calico、CSI 和其他插件的镜像或二进制文件，kubeclipper 提供了推荐的版本，您可以根据平台所处网络环境，选择在线 / 离线后，直接在页面上选取使用。您也可以将部署所需的镜像上传至自己的镜像仓库，并在部署时指定。更多安装配置，参考以下表格：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;What&lt;/th&gt;
-&lt;th&gt;Follows&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;A table&lt;/td&gt;
-&lt;td&gt;A header&lt;/td&gt;
+&lt;td&gt;页面配置&lt;/td&gt;
+&lt;td&gt;配置包/镜像来源&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;A table&lt;/td&gt;
-&lt;td&gt;A header&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;在线&lt;/strong&gt;（公网环境）&lt;br&gt;&lt;br&gt;&lt;strong&gt;镜像仓库&lt;/strong&gt;为空&lt;/td&gt;
+&lt;td&gt;1. 配置包来源：从 kubeclipper.io 下载。&lt;br&gt;  &lt;br&gt;&lt;br&gt;2. 镜像拉取方式：镜像默认从官方镜像仓库拉取，如k8s镜像从 k8s.gcr.io 拉取、calico 从 docker.io 拉取。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;A table&lt;/td&gt;
-&lt;td&gt;A header&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;在线&lt;/strong&gt;（公网环境）&lt;br&gt;&lt;br&gt;&lt;strong&gt;镜像仓库&lt;/strong&gt;指定&lt;/td&gt;
+&lt;td&gt;1. 配置包来源：从 kubeclipper.io 下载。&lt;br&gt;  &lt;br&gt;&lt;br&gt;2. 镜像拉取方式：从填写的镜像仓库拉取，组件将默认继承该仓库地址，请确保该仓库存在相关组件镜像；组件也会提供独立的镜像仓库参数，设置后组件镜像从该地址拉取。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;离线&lt;/strong&gt;（内网环境）&lt;br&gt;&lt;br&gt;&lt;strong&gt;镜像仓库&lt;/strong&gt;为空&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/td&gt;
+&lt;td&gt;1. 配置包来源：从本地 kubeclipper 集群server节点下载，您可以使用 kcctl resource list 命令查看本地可用配置包，或使用 kcctl resource push 命令上传所需配置包。&lt;br&gt;  &lt;br&gt;&lt;br&gt;2. 镜像拉取方式：从本地 kubeclipper 集群server节点下载，下载后由CRI进行镜像导入。您可以使用 kcctl resource list 命令查看本地可用镜像包，或使用 kcctl resource push 命令上传所需镜像包。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;离线&lt;/strong&gt;（内网环境）&lt;br&gt;&lt;br&gt;&lt;strong&gt;镜像仓库&lt;/strong&gt;指定&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/td&gt;
+&lt;td&gt;1. 配置包来源：从本地下载，您可以使用 kcctl resource list 命令查看本地可用配置包，或使用 kcctl resource push 命令上传所需配置包。&lt;br&gt;  &lt;br&gt;&lt;br&gt;2. 镜像拉取方式：从填写的镜像仓库拉取，组件将默认继承该仓库地址，请确保该仓库存在相关组件镜像；组件也会提供独立的镜像仓库参数，设置后组件镜像从该地址拉取。kubeclipper 提供 Docker Registry 方案，并使用 kcctl registry 命令行进行管理，您也可以使用其他自有镜像仓库。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;hr&gt;
-&lt;p&gt;There&amp;rsquo;s a horizontal rule above and below this.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Here is an unordered list:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Liverpool F.C.&lt;/li&gt;
-&lt;li&gt;Chelsea F.C.&lt;/li&gt;
-&lt;li&gt;Manchester United F.C.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And an ordered list:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Michael Brecker&lt;/li&gt;
-&lt;li&gt;Seamus Blake&lt;/li&gt;
-&lt;li&gt;Branford Marsalis&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;And an unordered task list:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Create a Hugo theme&lt;/li&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Add task lists to it&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Take a vacation&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And a &amp;ldquo;mixed&amp;rdquo; task list:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pack bags&lt;/li&gt;
-&lt;li&gt;?&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Travel!&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And a nested list:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Jackson 5
-&lt;ul&gt;
-&lt;li&gt;Michael&lt;/li&gt;
-&lt;li&gt;Tito&lt;/li&gt;
-&lt;li&gt;Jackie&lt;/li&gt;
-&lt;li&gt;Marlon&lt;/li&gt;
-&lt;li&gt;Jermaine&lt;/li&gt;
-&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;TMNT
+&lt;/ol&gt;
+&lt;h3 id=&#34;创建单节点实验集群&#34;&gt;创建单节点实验集群&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;点击“集群管理”&amp;gt;“集群”，进入集群列表页面，点击左上角“创建集群”按钮。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入创建集群向导页面的“节点配置”页面。填写“集群名称”，如“test”，不需选择“集群模版”。选择一个可用节点，添加为控制节点，并在污点管理列表中，将 master 节点的污点移除。点击“下一步”按钮。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/select-node.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;进入创建集群向导页面的“集群配置”页面。选择“离线安装”，“镜像仓库”不需填写，其他配置都可使用默认配置，点击“快速创建”按钮，跳转配置确认页面，点击“确认”按钮。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;单节点的实验集群创建完成，您可以在集群详情页查看集群详情，也可以点击“查看日志”按钮，查看集群创建过程中的实时日志。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;使用镜像仓库创建集群&#34;&gt;使用镜像仓库创建集群&lt;/h3&gt;
+&lt;p&gt;如果创建的集群中包含较大的镜像，推荐您将所有镜像上传到特定的镜像仓库，创建集群会更快速更顺畅。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;添加镜像仓库。点击“集群管理”&amp;gt;“镜像仓库”，进入镜像仓库列表页面，点击左上角“添加”按钮。在添加镜像仓库的弹窗中输入存放有镜像的仓库 IP 地址，点击“确定”按钮。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建集群。点击“集群管理”&amp;gt;“集群”，进入集群列表页面，点击左上角“创建集群”按钮。按需配置集群节点，在“集群配置”页面的“镜像仓库”中，选择第一步添加的镜像仓库，根据需要完成集群其他配置后创建集群。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;使用集群模版创建集群&#34;&gt;使用集群模版创建集群&lt;/h3&gt;
+&lt;p&gt;您可以使用集群模版，简化集群创建流程。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;添加模版。保存模版有两种方式，您可以在“集群管理”&amp;gt;“模版管理”页面，添加集群模版，以备创建集群时使用。也可以点击集群操作中的“更多”&amp;gt;“保存为模版”，将已存在的集群配置保存为模版，以便创建出和该集群同等配置的 K8S 集群。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建集群。点击“集群管理”&amp;gt;“集群”，进入集群列表页面，点击左上角“创建集群”按钮，进入创建集群页面，填写“集群名称”，如“demo”，选择第一步中保存的集群模版，添加所需节点，点击右下角“快速创建”按钮，跳转至“配置确认”页面，核对模版信息无误后，点击“确认”按钮，创建集群。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;集群配置指南&#34;&gt;集群配置指南&lt;/h3&gt;
+&lt;h4 id=&#34;节点配置步骤&#34;&gt;节点配置步骤&lt;/h4&gt;
+&lt;p&gt;在节点配置页面，您可以对节点进行以下配置：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Leonardo&lt;/li&gt;
-&lt;li&gt;Michelangelo&lt;/li&gt;
-&lt;li&gt;Donatello&lt;/li&gt;
-&lt;li&gt;Raphael&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;
+&lt;p&gt;区域：集群所属区域，添加节点时可为节点指定物理的或逻辑的区域，使用该区域下节点创建的 K8S 集群也属于该区域，不支持使用跨区域的多个节点创建集群。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;控制节点：为集群指定奇数个的控制节点，生产环境一般使用3个控制节点以实现高可用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;工作节点：根据业务规模，为新集群添加工作节点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;污点管理：您可以为已添加的节点配置污点，kubeclipper 会自动为控制节点添加不允许调度（noschedule）的污点，您也可以根据需要进行更改。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;节点标签：您可以根据需要为已添加的集群节点配置标签。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Definition lists can be used with Markdown syntax. Definition headers are bold.&lt;/p&gt;
-&lt;dl&gt;
-&lt;dt&gt;Name&lt;/dt&gt;
-&lt;dd&gt;Godzilla&lt;/dd&gt;
-&lt;dt&gt;Born&lt;/dt&gt;
-&lt;dd&gt;1952&lt;/dd&gt;
-&lt;dt&gt;Birthplace&lt;/dt&gt;
-&lt;dd&gt;Japan&lt;/dd&gt;
-&lt;dt&gt;Color&lt;/dt&gt;
-&lt;dd&gt;Green&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;hr&gt;
-&lt;p&gt;Tables should have bold headings and alternating shaded rows.&lt;/p&gt;
+&lt;p&gt;您可以按业务需要配置所需节点。如果需要创建非高可用的实验集群，也可以仅添加一个控制节点，并将控制节点自动添加的污点移除，详细操作参见“创建单节点实验集群”。&lt;/p&gt;
+&lt;h4 id=&#34;集群配置步骤&#34;&gt;集群配置步骤&lt;/h4&gt;
+&lt;p&gt;在集群配置页面，您可以对集群进行以下配置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;安装方式和镜像仓库：&lt;/li&gt;
+&lt;/ul&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;Artist&lt;/th&gt;
-&lt;th&gt;Album&lt;/th&gt;
-&lt;th&gt;Year&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;Michael Jackson&lt;/td&gt;
-&lt;td&gt;Thriller&lt;/td&gt;
-&lt;td&gt;1982&lt;/td&gt;
+&lt;td&gt;页面配置&lt;/td&gt;
+&lt;td&gt;配置包/镜像来源&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Prince&lt;/td&gt;
-&lt;td&gt;Purple Rain&lt;/td&gt;
-&lt;td&gt;1984&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;在线&lt;/strong&gt;（公网环境）&lt;br&gt;&lt;br&gt;&lt;strong&gt;镜像仓库&lt;/strong&gt;为空&lt;/td&gt;
+&lt;td&gt;1. 配置包来源：从 kubeclipper.io 下载。&lt;br&gt;  &lt;br&gt;&lt;br&gt;2. 镜像拉取方式：镜像默认从官方镜像仓库拉取，如k8s镜像从 k8s.gcr.io 拉取、calico 从 docker.io 拉取。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Beastie Boys&lt;/td&gt;
-&lt;td&gt;License to Ill&lt;/td&gt;
-&lt;td&gt;1986&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;在线&lt;/strong&gt;（公网环境）&lt;br&gt;&lt;br&gt;&lt;strong&gt;镜像仓库&lt;/strong&gt;指定&lt;/td&gt;
+&lt;td&gt;1. 配置包来源：从 kubeclipper.io 下载。&lt;br&gt;  &lt;br&gt;&lt;br&gt;2. 镜像拉取方式：从填写的镜像仓库拉取，组件将默认继承该仓库地址，请确保该仓库存在相关组件镜像；组件也会提供独立的镜像仓库参数，设置后组件镜像从该地址拉取。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;离线&lt;/strong&gt;（内网环境）&lt;br&gt;&lt;br&gt;&lt;strong&gt;镜像仓库&lt;/strong&gt;为空&lt;/td&gt;
+&lt;td&gt;1. 配置包来源：从本地 kubeclipper 集群server节点下载，您可以使用 kcctl resource list 命令查看本地可用配置包，或使用 kcctl resource push 命令上传所需配置包。&lt;br&gt;  &lt;br&gt;&lt;br&gt;2. 镜像拉取方式：从本地 kubeclipper 集群server节点下载，下载后由CRI进行镜像导入。您可以使用 kcctl resource list 命令查看本地可用镜像包，或使用 kcctl resource push 命令上传所需镜像包。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;离线&lt;/strong&gt;（内网环境）&lt;br&gt;&lt;br&gt;&lt;strong&gt;镜像仓库&lt;/strong&gt;指定&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/td&gt;
+&lt;td&gt;1. 配置包来源：从本地下载，您可以使用 kcctl resource list 命令查看本地可用配置包，或使用 kcctl resource push 命令上传所需配置包。&lt;br&gt;  &lt;br&gt;&lt;br&gt;2. 镜像拉取方式：从填写的镜像仓库拉取，组件将默认继承该仓库地址，请确保该仓库存在相关组件镜像；组件也会提供独立的镜像仓库参数，设置后组件镜像从该地址拉取。kubeclipper 提供 Docker Registry 方案，并使用 kcctl registry 命令行进行管理，您也可以使用其他自有镜像仓库。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;If a table is too wide, it should scroll horizontally.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;K8S版本：指定集群K8S版本。当您选择离线安装的时候，可以从当前环境中配置包的K8S版本中选择；当您选择在线安装的时候，可以从 kubeclipper 官方推荐的版本中选择。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ETCD数据目录：可指定ETCD 数据目录，默认为/var/lib/etcd。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CertSANs：k8s 集群 ca 证书签名的 ip 或者域名，可填写多个。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;容器运行时：根据指定 K8S 版本，K8S 版本在 v1.20.0 之前，容器运行时默认 docker，之后默认 containerd；v1.24.0 之后不支持 docker。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;容器运行时版本：指定containerd / docker版本。与 K8S 相同，当您选择离线安装的时候，可以从当前环境中配置包的版本中选择；当您选择在线安装的时候，可以从 kubeclipper 官方推荐的版本中选择。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Containerd 数据目录：可填写config.toml 配置中的 root dir，默认为/var/lib/containerd。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Docker数据目录：可填写daemon.json 配置中的 root dir，默认为/var/lib/docker。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Containerd 镜像仓库：存放containerd镜像的仓库地址，config.toml 配置中的 registry.mirrors，可填写多个。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Docker镜像仓库：存放docker镜像的仓库地址，daemon.json 配置中的 insecure registry,可填写多个。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DNS 域名：k8s 集群的域名，默认为cluster.local。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Worker 负载 IP：用于 worker 节点到多master的负载均衡，单一master不需要设置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;外部访问IP：可以填写一个浮动 IP 给用户访问，可为空。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;cni配置&#34;&gt;CNI配置&lt;/h4&gt;
+&lt;p&gt;当前版本仅支持Calico作为集群CNI。&lt;/p&gt;
+&lt;p&gt;Calico将用户设置的pod cidr分为若干个block(网段)，根据业务需求动态的分配给需要的节点，并在节点中通过 bgp peer维护集群节点的路由表。&lt;/p&gt;
+&lt;p&gt;例如：容器的地址池：172.25.0.0/16，动态分配的网段池: 172.25.0.0 - 172.25.255.192 (172.25.0.0/26 即 10 个比特位)，动态分配的网段数: 1023，每个网段的pod数量为: 61 (193-254)，总pod数量为1023 * 61 = 62403，相对最大节点数(按照200业务pod为基准值)：312。&lt;/p&gt;
+&lt;p&gt;目前不建议大于50个节点的集群，大于50个节点的集群建议手动配置route reflection，用来优化集群中的节点的路由表维护的稳定性。&lt;/p&gt;
+&lt;p&gt;使用Calico作为集群CNI，您需要进行以下配置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Calico 模式：支持5种网络模式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Overlay-IPIP-All: 使用 IP-in-IP 技术打通不同节点的 pod 的网络,通常这样的方式使用在底层平台是 iaas 的环境之中,当然如果你底层网路环境直接是物理设备的也完全可以使用只不过效率和灵活度都会大打折扣,需要注意的是你需要确认底层网络环境(underlay)是支持 IPIP 协议的.(使用overlay的网络方式对网络性能造成一定的影响)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Overlay-Vxlan-All: 使用 IP-in-IP 技术打通不同节点的 pod 的网络,通常这样的方式使用在底层平台是 iaas 的环境之中,当然如果你底层网路环境直接是物理设备的也完全可以使用只不过效率和灵活度都会大打折扣,他理论上可以在任何的网络环境上运行,通常在底层环境不支持 IPIP 协议的时候我们会使用他.(使用overlay的网络方式对网络性能造成一定的影响)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BGP: 使用 IP-in-IP 技术打通不同节点的 pod 的网络,通常这样的方式使用在裸机的环境上,当然底 Iaas 平台支持 BGP 的话也是可以使用的,这种模式下 pod 的 ip 通信是通过 集群中的各个节点中互相交换路由表来完成 pod 之间的通信的,如果你需要手动打通多个集群之间的 pod 网络需要注意你分配的地址断不应该有冲突。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Overaly-IPIP-Cross-Subnet: 使用 IP-in-IP 技术打通不同节点的 pod 的网络,通常这样的方式使用在底层平台是 iaas 的环境之中,需要注意的是你需要确认底层网络环境(underlay)是支持 IPIP 协议的.和 Overlay-IPIP-All 的不同之处在于,如果 2 个不同节点但在同一个网段中的上 pod 互相通信时是通过路由表,这样可以提高在不同节点但在同一个网段中的上 pod 互相通信时的效率。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Overaly-Vxlan-Cross-Subnet: 和 Overaly-IPIP-Cross-Subnet 逻辑相似不再做重复的解释。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IP版本：可指定IP版本为IPV4或IPV4 IPV6双栈。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;服务子网：填写service子网CIDR，v4默认为：10.96.0.0/16，v6默认为fd03::/112，注意Service网络不得与任何主机网络重叠。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pod CIDR：填写pod子网CIDR，v4默认：172.25.0.0/24，v6默认为fd05::/120，注意Pod 网络不得与任何主机网络重叠。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pod网路的底层：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;first-found（默认）：程序会根据ipfamily(v4或v6)遍历所有的有效的ip地址(local,loop back，docker bridge等会被自动排除)通常如果是多网卡时会排除默认网关以外的网卡的ip作为节点之间的路由地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;can-reach：通过检查域名或者ip的可达性来设置节点之间的路由地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;interface：根据正则表达式获取所有满足的网卡设备名称并返回第一个满足表达式网卡的地址作为节点之间的路由地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MTU：为Calico环境配置最大传输单元(MTU)，建议不大于1440，默认为1440，详情见 &lt;a href=&#34;https://docs.projectcalico.org/networking/mtu&#34;&gt;Configure MTU to maximize network performance&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;存储配置&#34;&gt;存储配置&lt;/h4&gt;
+&lt;p&gt;Kubeclipper当前版本内置了 NFS、Ceph 两种外接存储类型。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;对接NFS存储&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对接NFS类型的外接存储，您需要设置以下内容：&lt;/p&gt;
+&lt;style&gt; td {white-space:pre-wrap;border:1px solid #dee0e3;}&lt;/style&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;Artist&lt;/th&gt;
-&lt;th&gt;Album&lt;/th&gt;
-&lt;th&gt;Year&lt;/th&gt;
-&lt;th&gt;Label&lt;/th&gt;
-&lt;th&gt;Awards&lt;/th&gt;
-&lt;th&gt;Songs&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;Michael Jackson&lt;/td&gt;
-&lt;td&gt;Thriller&lt;/td&gt;
-&lt;td&gt;1982&lt;/td&gt;
-&lt;td&gt;Epic Records&lt;/td&gt;
-&lt;td&gt;Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical&lt;/td&gt;
-&lt;td&gt;Wanna Be Startin&amp;rsquo; Somethin&amp;rsquo;, Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life&lt;/td&gt;
+&lt;td&gt;字段&lt;/td&gt;
+&lt;td&gt;作用说明&lt;/td&gt;
+&lt;td&gt;填写说明/可选项&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Prince&lt;/td&gt;
-&lt;td&gt;Purple Rain&lt;/td&gt;
-&lt;td&gt;1984&lt;/td&gt;
-&lt;td&gt;Warner Brothers Records&lt;/td&gt;
-&lt;td&gt;Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal&lt;/td&gt;
-&lt;td&gt;Let&amp;rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&amp;rsquo;m a Star, Purple Rain&lt;/td&gt;
+&lt;td&gt;服务地址&lt;/td&gt;
+&lt;td&gt;ServerAddr，NFS的服务地址&lt;/td&gt;
+&lt;td&gt;必填&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Beastie Boys&lt;/td&gt;
-&lt;td&gt;License to Ill&lt;/td&gt;
-&lt;td&gt;1986&lt;/td&gt;
-&lt;td&gt;Mercury Records&lt;/td&gt;
-&lt;td&gt;noawardsbutthistablecelliswide&lt;/td&gt;
-&lt;td&gt;Rhymin &amp;amp; Stealin, The New Style, She&amp;rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill&lt;/td&gt;
+&lt;td&gt;共享路径&lt;/td&gt;
+&lt;td&gt;SharedPath，NFS的服务挂载路径&lt;/td&gt;
+&lt;td&gt;必填&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;存储类&lt;/td&gt;
+&lt;td&gt;StorageClassName，存储类的名称&lt;/td&gt;
+&lt;td&gt;默认为 nfs-sc，可自定义名称，不可与集群其他存储类重复&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;回收策略&lt;/td&gt;
+&lt;td&gt;ReclaimPolicy，VPC回收策略&lt;/td&gt;
+&lt;td&gt;删除 Delete / 保留 Retain&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;删除后归档&lt;/td&gt;
+&lt;td&gt;ArchiveOnDelete，是否在删除后归档PVC&lt;/td&gt;
+&lt;td&gt;是 / 否&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;挂载选项&lt;/td&gt;
+&lt;td&gt;MountOptions，NFS 的 options 参数，如nfsvers=4.1&lt;/td&gt;
+&lt;td&gt;选填，可填写多个&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;副本数&lt;/td&gt;
+&lt;td&gt;Replicas，NFS provisioner副本数&lt;/td&gt;
+&lt;td&gt;默认为1&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;hr&gt;
-&lt;p&gt;Code snippets like &lt;code&gt;var foo = &amp;quot;bar&amp;quot;;&lt;/code&gt; can be shown inline.&lt;/p&gt;
-&lt;p&gt;Also, &lt;code&gt;this should vertically align&lt;/code&gt; &lt;del&gt;&lt;code&gt;with this&lt;/code&gt;&lt;/del&gt; &lt;del&gt;and this&lt;/del&gt;.&lt;/p&gt;
-&lt;p&gt;Code can also be shown in a block element.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;foo := &amp;#34;bar&amp;#34;;
-bar := &amp;#34;foo&amp;#34;;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Code can also use syntax highlighting.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;`var foo = &amp;#34;bar&amp;#34;;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;lexer&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;lexers&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Get&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;javascript&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;iterator&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;_&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;lexer&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Tokenise&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;nil&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;input&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;style&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;styles&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Get&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;github&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;formatter&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;New&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;WithLineNumbers&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;())&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;buff&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;bytes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Buffer&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;formatter&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Format&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;buff&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;iterator&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;fmt&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Println&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;buff&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;())&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Inline code inside table cells should still be distinguishable.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Language&lt;/th&gt;
-&lt;th&gt;Code&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Javascript&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;var foo = &amp;quot;bar&amp;quot;;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Ruby&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;foo = &amp;quot;bar&amp;quot;{&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;p&gt;Small images should be shown at their actual size.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Large images should always scale down and fit in the content container.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;components&#34;&gt;Components&lt;/h2&gt;
-&lt;h3 id=&#34;alerts&#34;&gt;Alerts&lt;/h3&gt;
-&lt;p&gt;
+&lt;p&gt;NFS类型的存储默认可对接多个，点击下方“继续添加”按钮，可以添加多个NFS存储，注意存储类名称不可重复。&lt;/p&gt;
+&lt;p&gt;设置完外接存储后，下方卡片会显示您已经开启的存储，您可以选择一个存储类作为默认存储，对于未指定特定StorageClass 的 PVC ，会直接使用默认的存储类。&lt;/p&gt;
+&lt;h2 id=&#34;集群操作日志查看&#34;&gt;集群操作日志查看&lt;/h2&gt;
+&lt;p&gt;在集群详情页面，点击“操作日志”标签页，可以查看集群操作日志列表。点击操作日志右侧“查看日志”按钮，可以在弹窗中查看全部步骤和节点的详细日志。点击左侧步骤名称，可查看执行步骤详细的日志输出。&lt;/p&gt;
+&lt;p&gt;在集群操作执行过程中，点击查看日志，您可以实时查看到日志更新来跟踪操作执行情况。对于执行失败的任务，您也可以通过查看日志，找到红色圆点标注的执行步骤和节点，快速定位错误，排查操作失败原因。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zhc3o5gmf9.feishu.cn/space/api/box/stream/download/asynccode/?code=YmM4ZjUzODc3MThmZWIxNTVmODUzZmI1YzMzNzAxYTVfOVJ3QURVS2RnOWJrRTJiRHBPOWpDZEdpMWJZRU4yWm5fVG9rZW46Ym94Y25Xc3VmcE52dE1LNGJRRlRvTk9GTEtnXzE2NjA2MzQzNzE6MTY2MDYzNzk3MV9WNA&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;访问集群-kubectl&#34;&gt;访问集群 kubectl&lt;/h2&gt;
+&lt;p&gt;您可以访问运行中集群的 kubectl，点击集群操作中的“更多”&amp;gt;“连接终端”，就可以在集群 kuebectl 弹窗中执行 kubectl 命令行操作。&lt;/p&gt;
+&lt;h2 id=&#34;集群插件管理&#34;&gt;集群插件管理&lt;/h2&gt;
+&lt;p&gt;除了在创建集群时安装插件，您也可以为运行中的集群安装存储和其他自定义插件。以安装存储插件为例，点击集群操作中的“更多”&amp;gt;“添加存储项”按钮，进入添加存储项页面，可以为集群安装 NFS 或Ceph 类型的存储插件，安装配置与创建集群中的配置相同。&lt;/p&gt;
+&lt;p&gt;对于已安装的插件，您可以在集群详情页查看插件信息。可以点击插件卡片右上角的“保存为模版”按钮，将插件信息保存为模版，以便为其他集群使用。也可以点击插件卡片右上角的“移除”按钮，卸载集群插件。&lt;/p&gt;
+&lt;h2 id=&#34;集群节点管理&#34;&gt;集群节点管理&lt;/h2&gt;
+&lt;p&gt;在集群详情页的“节点”列表页面，您可以查看当前集群中的节点列表，节点的规格、状态和角色信息。&lt;/p&gt;
+&lt;h3 id=&#34;添加集群节点&#34;&gt;添加集群节点&lt;/h3&gt;
+&lt;p&gt;当集群负载较高时，您可以通过为集群添加节点来达到主动扩容的目的，添加新的“节点”不会影响现有的业务的运行。&lt;/p&gt;
+&lt;p&gt;在集群详情页的节点列表标签页下，点击左侧的“添加节点”按钮，在弹窗中选择可用节点，设置节点标签，点击“确认”按钮。当前版本仅支持添加工作节点。&lt;/p&gt;
+&lt;h3 id=&#34;移除集群节点&#34;&gt;移除集群节点&lt;/h3&gt;
+&lt;p&gt;在集群详情页的节点列表标签页下，您可以点击节点右侧的 “移除”按钮移除节点。当前版本仅支持移除工作节点。&lt;/p&gt;
+&lt;p&gt;注意：移除集群节点，您需要注意生产中的安全问题，避免应用发生中断。&lt;/p&gt;
+&lt;h2 id=&#34;集群版本升级&#34;&gt;集群版本升级&lt;/h2&gt;
+&lt;p&gt;当集群版本不满足需要，您可以为集群升级 K8S 版本。与创建集群一样，您需要准备好集群版本所需配置包和目标版本的 K8S 镜像并上传至指定位置，详情参见“创建集群准备工作”。&lt;/p&gt;
+&lt;p&gt;点击集群操作的“更多”&amp;gt;“集群升级”按钮，在集群升级弹窗中选择安装方式和镜像仓库，选择升级的目标版本，升级的安装方式和 K8S 版本的配置与创建集群相同，详情参见“集群配置指南”。&lt;/p&gt;
+&lt;p&gt;集群升级可以跨小版本，但不支持略过次版本的升级，如您可以从v1.20.2升级到v1.20.13，或由v1.20.x升级到v1.21.x，但不支持从v1.20.x升级到v1.22.x。对于1.23.x版本，暂不支持升级到1.24.x版本。&lt;/p&gt;
+&lt;p&gt;升级集群操作可能需要较长时间，您可以在集群详情页面查看操作日志，跟踪集群升级状态。&lt;/p&gt;
+&lt;h2 id=&#34;集群备份与恢复&#34;&gt;集群备份与恢复&lt;/h2&gt;
+&lt;p&gt;KubeClipper 对 k8s 集群的备份主要为备份 ETCD 数据库数据，以及 k8s 的资源对象备份，如 namespace，deployment、configMap。对资源自身产生的文件和数据不做备份，例如对集群中运行的 mysql pod，该 mysql pod 产生的数据和文件，不会为之备份，同理，文件类的 pv 对象下的文件，也不做备份，仅仅备份 pv 这个对象。KubeClipper 提供的备份功能是热备份，备份期间不影响集群的使用。KubeClipper 虽然不反对在集群 &amp;ldquo;繁忙期&amp;rdquo; 备份，但也强烈不赞成在集群 &amp;ldquo;繁忙期&amp;rdquo; 备份。&lt;/p&gt;
+&lt;h3 id=&#34;创建备份点&#34;&gt;创建备份点&lt;/h3&gt;
+&lt;p&gt;执行备份之前，您需要先为集群设置备份点，即设置备份文件的存储位置。备份点的存储类型可以是FS 存储或 S3 存储，下面以节点本地存储、NFS 存储和 MINIO 存储为例：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;节点本地存储&lt;/strong&gt;**（仅适用单节点实验集群）：**&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建存储目录。连接集群 master 节点终端（可参见连接节点终端），使用 mkdir 命令，在 master 节点中创建“/root/backup”目录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建备份点。点击“集群管理”&amp;gt;“备份点”，进入备份点列表页，点击右上角“创建”按钮，在创建备份点弹窗中，输入“备份点名称”，如“local”，选择“存储类型”为“FS”，填写“备份路径”，如“/root/backup”。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置集群备份点。创建集群时，在“集群配置”页面选择“备份点”为“local”，或者编辑已有集群，在编辑集群弹窗中的“备份点”中选择“local”。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注意：使用本地节点存储备份文件，不需要引入外部存储，缺点是如果本地节点遭到破坏，备份文件也会丢失，所以强烈不赞成在生产环境中使用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NFS：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;准备 NFS 存储。准备一台 NFS 服务，并在 NFS 服务器上创建一个用于存放备份文件的目录，如 “/data/kubeclipper/cluster-backups”。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;挂载存储目录。连接集群 master 节点终端（可参见连接节点终端），使用 mkdir 命令，在每个 master 节点中创建“/data/kubeclipper/cluster-backups”目录，并 mount 到 NFS 服务器的 /data/kubeclipper/cluster-backups 目录即可，命令示例：mount -t nfs { NFS_IP }:/data/kubeclipper/cluster-backups /opt/kubeclipper/cluster-backups -o proto=tcp -o nolock。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建备份点。点击“集群管理”&amp;gt;“备份点”，进入备份点列表页，点击右上角“创建”按钮，在创建备份点弹窗中，输入“备份点名称”，如“nfs”，选择“存储类型”为“FS”，填写“备份路径”为“/opt/kubeclipper/cluster-backups”。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置集群备份点。创建集群时，在“集群配置”页面选择“备份点”为“nfs”，或者编辑已有集群，在编辑集群弹窗中的“备份点”中选择“nfs”。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;MINIO：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;准备 MINIO 存储。搭建 MINIO 服务，部署过程参考官网 &lt;a href=&#34;https://docs.min.io/docs/minio-quickstart-guide.html&#34;&gt;https://docs.min.io/docs/minio-quickstart-guide.html&lt;/a&gt;，也可以使用已有 MINIO 服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建备份点。点击“集群管理”&amp;gt;“备份点”，进入备份点列表页，点击右上角“创建”按钮，在创建备份点弹窗中，输入“备份点名称”，如“minio”，选择“存储类型”为“S3”，填写“bucket 名称”，如 “kubeclipper-backups”，该 bucket 将由 kubeclipper 自动创建，“Endpoint”中填写第一步 MINIO 存储服务的 ip 和端口号，填写服务用户名和密码，点击“确定”按钮。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置集群备份点。创建集群时，在“集群配置”页面选择“备份点”为“minio”，或者编辑已有集群，在编辑集群弹窗中的“备份点”中选择“minio”。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;您可以在“集群管理”的“备份点”页面查看所有备份点列表和详细信息，并执行以下操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;编辑：编辑备份点描述，和 S3 类型备份点的用户名/密码。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除：删除备份点，备份点下存在备份文件的，不允许删除。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;集群备份&#34;&gt;集群备份&lt;/h3&gt;
+&lt;p&gt;您可以点击集群操作中的“更多”&amp;gt;“集群备份”按钮，备份集群 ETCD 数据。&lt;/p&gt;
+&lt;p&gt;您可以在集群详情页面的备份标签页下，查看当前集群的所有备份文件，还可以对备份执行以下操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;编辑：编辑备份描述。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;恢复：执行集群恢复操作，将集群恢复至指定备份状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除：删除指定备份文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;定时备份&#34;&gt;定时备份&lt;/h3&gt;
+&lt;p&gt;您也可以为集群创建定时备份，点击集群操作中的“更多”&amp;gt;“定时备份”按钮，在定时备份弹窗中，输入定时备份名称、执行类型（重复执行/仅执行一次）和执行时间，并为重复执行的定时备份设置有效备份个数，点击“确认”按钮。&lt;/p&gt;
+&lt;p&gt;kubeClipper 会在您设置的执行时间为集群执行备份任务，备份文件会自动命名为“集群名称-定时备份名称-随机码”，对于重复执行的定时备份，kubeClipper 会在该定时任务下的备份文件超过有效备份个数时，自动删除超出个数的较晚的备份文件。&lt;/p&gt;
+&lt;p&gt;定时备份添加完成后，可以在集群详情页的“定时备份”标签页查看定时备份信息，也可以在“备份”标签页查看定时备份产生的备份文件。&lt;/p&gt;
+&lt;p&gt;对于定时备份任务，您还可以执行以下操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;编辑：编辑定时备份任务执行时间，和重复执行的定时备份的有效备份个数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启用/禁用：禁用的定时备份任务将暂时停止执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除：删除定时备份任务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;集群备份恢复&#34;&gt;集群备份恢复&lt;/h3&gt;
+&lt;p&gt;如果您在集群正常运行期间执行恢复操作，则 KubeClipper 将对该集群进行覆盖式恢复，就是备份文件里面的 etcd 数据，覆盖现有的数据。&lt;/p&gt;
+&lt;p&gt;您可以在集群详情页的备份标签页下，点击备份右侧的 “恢复”按钮；或点击集群操作中的“更多”&amp;gt;“恢复集群”按钮，在恢复集群弹窗中选择需要恢复的备份，可以将当前集群恢复至指定备份状态。&lt;/p&gt;
+&lt;p&gt;注意：集群升级后，将无法再恢复到升级前版本的备份。&lt;/p&gt;
 
-&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
-
-
-    This is an alert.
-
-&lt;/div&gt;
-
-
-
-&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
-&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
-
-    This is an alert with a title.
-
-&lt;/div&gt;
-
-
-
-&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
-&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
-
-    This is an alert with a title and &lt;strong&gt;Markdown&lt;/strong&gt;.
-
-&lt;/div&gt;
-
-
-
-&lt;div class=&#34;alert alert-success&#34; role=&#34;alert&#34;&gt;
-
-
-    This is a successful alert.
-
-&lt;/div&gt;
-
-
-
-&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
-
-
-    This is a warning.
-
-&lt;/div&gt;
-
-
-
-&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
-&lt;h4 class=&#34;alert-heading&#34;&gt;Warning&lt;/h4&gt;
-
-    This is a warning with a title.
-
-&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2 id=&#34;another-heading&#34;&gt;Another Heading&lt;/h2&gt;
-&lt;p&gt;Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.&lt;/p&gt;
-&lt;h3 id=&#34;this-document&#34;&gt;This Document&lt;/h3&gt;
-&lt;p&gt;Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam &lt;em&gt;eripitur&lt;/em&gt;? Sitim noceat signa &lt;em&gt;probat quidem&lt;/em&gt;. Sua longis &lt;em&gt;fugatis&lt;/em&gt; quidem genae.&lt;/p&gt;
-&lt;h3 id=&#34;pixel-count&#34;&gt;Pixel Count&lt;/h3&gt;
-&lt;p&gt;Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.&lt;/p&gt;
-&lt;h3 id=&#34;contact-info&#34;&gt;Contact Info&lt;/h3&gt;
-&lt;p&gt;Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.&lt;/p&gt;
-&lt;h3 id=&#34;external-links&#34;&gt;External Links&lt;/h3&gt;
-&lt;p&gt;Stumptown PBR&amp;amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;This is the final element on the page and there should be no margin below this.
-&lt;/code&gt;&lt;/pre&gt;
       </description>
     </item>
     
     <item>
-      <title>Docs: Another Tutorial</title>
-      <link>https://kubeclipper.io/docs/tutorials/tutorial2/</link>
-      <pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate>
+      <title>Docs: 节点管理</title>
+      <link>https://kubeclipper.io/docs/tutorials/node-manage/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kubeclipper.io/docs/tutorials/tutorial2/</guid>
+      <guid>https://kubeclipper.io/docs/tutorials/node-manage/</guid>
       <description>
         
         
-        
+        &lt;p&gt;在“节点信息”页面，您可以查看平台中管理的全部节点列表，节点规格、状态等信息。点击节点名称进入节点详情页面，您可以查看详细的节点基本信息和系统信息。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/node-info.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;KubeClipper 中的节点状态表示 kc-gent 对节点的管理状态。正常情况下，节点状态显示为“就绪”，当节点失联4分钟（误差时间10s内）后，状态会更新为“未知”，未知状态的节点无法进行任何操作，也无法创建集群或为集群添加/移除节点。&lt;/p&gt;
+&lt;h2 id=&#34;添加节点&#34;&gt;添加节点&lt;/h2&gt;
+&lt;p&gt;在部署 KubeClipper 时，您就可以添加初始的 server 节点和 agent 节点，其中，server节点用于部署 KubeClipper 自身服务，agent 节点可用于部署 K8S 集群。在用于实验或开发的 KubeClipper 环境，您可以将 server 节点同时添加为 agent 节点。但如果用于生产环境，建议不要将 server 节点复用为 agent 节点。&lt;/p&gt;
+&lt;p&gt;您也可以使用 kcctl join 命令为 KubeClipper 添加 agent 节点。同时，您可以为每个 agent 节点标记一个区域，区域可以是物理的或逻辑的位置，您可以使用同一区域的节点创建 K8S 集群，但不可以使用跨区域的节点创建集群。未标记区域的节点默认属于 default 区域。详情参见“Kcctl 操作指南“。&lt;/p&gt;
+&lt;p&gt;命令行示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-Plaintext&#34; data-lang=&#34;Plaintext&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kcctl join --agent beijing:1.2.3.4 --agent shanghai:2.3.4.5
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;移除节点&#34;&gt;移除节点&lt;/h2&gt;
+&lt;p&gt;当您不再需要某些节点，可以使用 kcctl drain 命令将节点从平台中移除。详情参见“Kcctl 操作指南“。&lt;/p&gt;
+&lt;p&gt;命令行示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-Plaintext&#34; data-lang=&#34;Plaintext&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kcctl drain --agent 192.168.10.19
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;连接终端&#34;&gt;连接终端&lt;/h2&gt;
+&lt;p&gt;在节点列表页面，您可以点击目标节点右侧的“连接终端”按钮，在连接终端的弹窗中输入节点端口和用户名密码信息后，访问节点SSH控制台并执行命令。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/node-terminal.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 
-&lt;div class=&#34;pageinfo pageinfo-primary&#34;&gt;
-&lt;p&gt;This is a placeholder page. Replace it with your own content.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Text can be &lt;strong&gt;bold&lt;/strong&gt;, &lt;em&gt;italic&lt;/em&gt;, or &lt;del&gt;strikethrough&lt;/del&gt;. &lt;a href=&#34;https://gohugo.io&#34;&gt;Links&lt;/a&gt; should be blue with no underlines (unless hovered over).&lt;/p&gt;
-&lt;p&gt;There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.&lt;/p&gt;
-&lt;p&gt;90&amp;rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps &lt;strong&gt;kale chips&lt;/strong&gt;.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;There should be no margin above this first sentence.&lt;/p&gt;
-&lt;p&gt;Blockquotes should be a lighter gray with a border along the left side in the secondary color.&lt;/p&gt;
-&lt;p&gt;There should be no margin below this final sentence.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;first-header-2&#34;&gt;First Header 2&lt;/h2&gt;
-&lt;p&gt;This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier &lt;strong&gt;craft beer&lt;/strong&gt;. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&amp;rsquo;t heard of them copper mug, crucifix green juice vape &lt;em&gt;single-origin coffee&lt;/em&gt; brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!&lt;/p&gt;
-&lt;p&gt;Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.&lt;/p&gt;
-&lt;p&gt;On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.&lt;/p&gt;
-&lt;p&gt;Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;amp;B. &lt;strong&gt;I love this life we live in&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;second-header-2&#34;&gt;Second Header 2&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;header-3&#34;&gt;Header 3&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;This is a code block following a header.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Next level leggings before they sold out, PBR&amp;amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.&lt;/p&gt;
-&lt;h4 id=&#34;header-4&#34;&gt;Header 4&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;This is an unordered list following a header.&lt;/li&gt;
-&lt;li&gt;This is an unordered list following a header.&lt;/li&gt;
-&lt;li&gt;This is an unordered list following a header.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&#34;header-5&#34;&gt;Header 5&lt;/h5&gt;
-&lt;ol&gt;
-&lt;li&gt;This is an ordered list following a header.&lt;/li&gt;
-&lt;li&gt;This is an ordered list following a header.&lt;/li&gt;
-&lt;li&gt;This is an ordered list following a header.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h6 id=&#34;header-6&#34;&gt;Header 6&lt;/h6&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;What&lt;/th&gt;
-&lt;th&gt;Follows&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;A table&lt;/td&gt;
-&lt;td&gt;A header&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;A table&lt;/td&gt;
-&lt;td&gt;A header&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;A table&lt;/td&gt;
-&lt;td&gt;A header&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;p&gt;There&amp;rsquo;s a horizontal rule above and below this.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Here is an unordered list:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Liverpool F.C.&lt;/li&gt;
-&lt;li&gt;Chelsea F.C.&lt;/li&gt;
-&lt;li&gt;Manchester United F.C.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And an ordered list:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Michael Brecker&lt;/li&gt;
-&lt;li&gt;Seamus Blake&lt;/li&gt;
-&lt;li&gt;Branford Marsalis&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;And an unordered task list:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Create a Hugo theme&lt;/li&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Add task lists to it&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Take a vacation&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And a &amp;ldquo;mixed&amp;rdquo; task list:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pack bags&lt;/li&gt;
-&lt;li&gt;?&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Travel!&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And a nested list:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Jackson 5
-&lt;ul&gt;
-&lt;li&gt;Michael&lt;/li&gt;
-&lt;li&gt;Tito&lt;/li&gt;
-&lt;li&gt;Jackie&lt;/li&gt;
-&lt;li&gt;Marlon&lt;/li&gt;
-&lt;li&gt;Jermaine&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;TMNT
-&lt;ul&gt;
-&lt;li&gt;Leonardo&lt;/li&gt;
-&lt;li&gt;Michelangelo&lt;/li&gt;
-&lt;li&gt;Donatello&lt;/li&gt;
-&lt;li&gt;Raphael&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Definition lists can be used with Markdown syntax. Definition headers are bold.&lt;/p&gt;
-&lt;dl&gt;
-&lt;dt&gt;Name&lt;/dt&gt;
-&lt;dd&gt;Godzilla&lt;/dd&gt;
-&lt;dt&gt;Born&lt;/dt&gt;
-&lt;dd&gt;1952&lt;/dd&gt;
-&lt;dt&gt;Birthplace&lt;/dt&gt;
-&lt;dd&gt;Japan&lt;/dd&gt;
-&lt;dt&gt;Color&lt;/dt&gt;
-&lt;dd&gt;Green&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;hr&gt;
-&lt;p&gt;Tables should have bold headings and alternating shaded rows.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Artist&lt;/th&gt;
-&lt;th&gt;Album&lt;/th&gt;
-&lt;th&gt;Year&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Michael Jackson&lt;/td&gt;
-&lt;td&gt;Thriller&lt;/td&gt;
-&lt;td&gt;1982&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Prince&lt;/td&gt;
-&lt;td&gt;Purple Rain&lt;/td&gt;
-&lt;td&gt;1984&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Beastie Boys&lt;/td&gt;
-&lt;td&gt;License to Ill&lt;/td&gt;
-&lt;td&gt;1986&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;If a table is too wide, it should scroll horizontally.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Artist&lt;/th&gt;
-&lt;th&gt;Album&lt;/th&gt;
-&lt;th&gt;Year&lt;/th&gt;
-&lt;th&gt;Label&lt;/th&gt;
-&lt;th&gt;Awards&lt;/th&gt;
-&lt;th&gt;Songs&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Michael Jackson&lt;/td&gt;
-&lt;td&gt;Thriller&lt;/td&gt;
-&lt;td&gt;1982&lt;/td&gt;
-&lt;td&gt;Epic Records&lt;/td&gt;
-&lt;td&gt;Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical&lt;/td&gt;
-&lt;td&gt;Wanna Be Startin&amp;rsquo; Somethin&amp;rsquo;, Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Prince&lt;/td&gt;
-&lt;td&gt;Purple Rain&lt;/td&gt;
-&lt;td&gt;1984&lt;/td&gt;
-&lt;td&gt;Warner Brothers Records&lt;/td&gt;
-&lt;td&gt;Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal&lt;/td&gt;
-&lt;td&gt;Let&amp;rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&amp;rsquo;m a Star, Purple Rain&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Beastie Boys&lt;/td&gt;
-&lt;td&gt;License to Ill&lt;/td&gt;
-&lt;td&gt;1986&lt;/td&gt;
-&lt;td&gt;Mercury Records&lt;/td&gt;
-&lt;td&gt;noawardsbutthistablecelliswide&lt;/td&gt;
-&lt;td&gt;Rhymin &amp;amp; Stealin, The New Style, She&amp;rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;p&gt;Code snippets like &lt;code&gt;var foo = &amp;quot;bar&amp;quot;;&lt;/code&gt; can be shown inline.&lt;/p&gt;
-&lt;p&gt;Also, &lt;code&gt;this should vertically align&lt;/code&gt; &lt;del&gt;&lt;code&gt;with this&lt;/code&gt;&lt;/del&gt; &lt;del&gt;and this&lt;/del&gt;.&lt;/p&gt;
-&lt;p&gt;Code can also be shown in a block element.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;foo := &amp;#34;bar&amp;#34;;
-bar := &amp;#34;foo&amp;#34;;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Code can also use syntax highlighting.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;`var foo = &amp;#34;bar&amp;#34;;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;lexer&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;lexers&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Get&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;javascript&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;iterator&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;_&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;lexer&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Tokenise&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;nil&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;input&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;style&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;styles&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Get&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;github&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;formatter&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;New&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;WithLineNumbers&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;())&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;buff&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;bytes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Buffer&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;formatter&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Format&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;buff&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;iterator&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;fmt&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Println&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;buff&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;())&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Inline code inside table cells should still be distinguishable.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Language&lt;/th&gt;
-&lt;th&gt;Code&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Javascript&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;var foo = &amp;quot;bar&amp;quot;;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Ruby&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;foo = &amp;quot;bar&amp;quot;{&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;p&gt;Small images should be shown at their actual size.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Large images should always scale down and fit in the content container.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;components&#34;&gt;Components&lt;/h2&gt;
-&lt;h3 id=&#34;alerts&#34;&gt;Alerts&lt;/h3&gt;
-&lt;p&gt;
-
-&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
-
-
-    This is an alert.
-
-&lt;/div&gt;
-
-
-
-&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
-&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
-
-    This is an alert with a title.
-
-&lt;/div&gt;
-
-
-
-&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
-&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
-
-    This is an alert with a title and &lt;strong&gt;Markdown&lt;/strong&gt;.
-
-&lt;/div&gt;
-
-
-
-&lt;div class=&#34;alert alert-success&#34; role=&#34;alert&#34;&gt;
-
-
-    This is a successful alert.
-
-&lt;/div&gt;
-
-
-
-&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
-
-
-    This is a warning.
-
-&lt;/div&gt;
-
-
-
-&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
-&lt;h4 class=&#34;alert-heading&#34;&gt;Warning&lt;/h4&gt;
-
-    This is a warning with a title.
-
-&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2 id=&#34;another-heading&#34;&gt;Another Heading&lt;/h2&gt;
-&lt;p&gt;Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.&lt;/p&gt;
-&lt;h3 id=&#34;this-document&#34;&gt;This Document&lt;/h3&gt;
-&lt;p&gt;Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam &lt;em&gt;eripitur&lt;/em&gt;? Sitim noceat signa &lt;em&gt;probat quidem&lt;/em&gt;. Sua longis &lt;em&gt;fugatis&lt;/em&gt; quidem genae.&lt;/p&gt;
-&lt;h3 id=&#34;pixel-count&#34;&gt;Pixel Count&lt;/h3&gt;
-&lt;p&gt;Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.&lt;/p&gt;
-&lt;h3 id=&#34;contact-info&#34;&gt;Contact Info&lt;/h3&gt;
-&lt;p&gt;Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.&lt;/p&gt;
-&lt;h3 id=&#34;external-links&#34;&gt;External Links&lt;/h3&gt;
-&lt;p&gt;Stumptown PBR&amp;amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;This is the final element on the page and there should be no margin below this.
-&lt;/code&gt;&lt;/pre&gt;
       </description>
     </item>
     
     <item>
-      <title>Docs: Create k8s clusters offline using the kubeclipper platform</title>
-      <link>https://kubeclipper.io/docs/tutorials/carete-k8s-cluster-offline/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Docs: 访问控制</title>
+      <link>https://kubeclipper.io/docs/tutorials/access-control/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kubeclipper.io/docs/tutorials/carete-k8s-cluster-offline/</guid>
+      <guid>https://kubeclipper.io/docs/tutorials/access-control/</guid>
       <description>
         
         
-        &lt;h2 id=&#34;1-go-to-the-creation-screen&#34;&gt;1. Go to the creation screen&lt;/h2&gt;
-&lt;p&gt;Log in to the &lt;code&gt;Kubeclipper&lt;/code&gt; platform and click the button as shown in the figure to enter the cluster creation interface&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-begin.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;2-configure-cluster-nodes&#34;&gt;2. Configure cluster nodes&lt;/h2&gt;
-&lt;p&gt;Follow the text prompts to complete the steps of entering the cluster name and selecting nodes&lt;/p&gt;
-&lt;p&gt;Note: The number of master nodes cannot be an even number.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-node-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;3-configure-cluster&#34;&gt;3. Configure cluster&lt;/h2&gt;
-&lt;p&gt;This step is used to configure the cluster network and components such as the database and container runtime&lt;/p&gt;
-&lt;p&gt;Select offline installation and fill in the address of the image repository you have built first&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;4-configure-cluster-storage&#34;&gt;4. Configure cluster storage&lt;/h2&gt;
-&lt;p&gt;Select nfs storage and follow the text prompts to fill in the appropriate fields&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-storage-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;5-configure-cluster-plugins&#34;&gt;5. Configure cluster plugins&lt;/h2&gt;
-&lt;p&gt;This step is used to install Kubesphere&lt;/p&gt;
-&lt;p&gt;Enter any string as a jwt key&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-plugin-config-jwt.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;You can change the default memory parameters to avoid installation failure when the runtime environment has insufficient memory&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-plugin-config-memory.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Choose to install the plug-in according to your needs&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-plugin-install.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;6-installation-completed&#34;&gt;6. Installation completed&lt;/h2&gt;
-&lt;p&gt;Complete all configurations to confirm installation&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-finish.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Installation is successful and the cluster is up and running&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs/cluster-success.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+        &lt;h2 id=&#34;创建用户&#34;&gt;创建用户&lt;/h2&gt;
+&lt;p&gt;安装 KubeClipper 之后，您需要创建所需角色的用户。一开始，系统默认只有一个用户 admin，具有平台管理员角色。&lt;/p&gt;
+&lt;p&gt;点击“访问控制”&amp;gt;“用户”，进入用户管理页面，点击左上角“创建用户”按钮，在弹窗中填写用户名、密码、手机号码、邮箱等信息，并指定用户角色，点击“确认”按钮。系统内置四个角色如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;平台管理员：拥有平台配置、集群管理、用户管理、DNS解析、审计等全部平台查看和操作权限。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;集群管理员：拥有所有集群管理权限。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用户管理员：拥有所有用户管理权限。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;平台只读用户：拥有全部平台查看权限。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;用户创建完成后，您可以在用户详情页面查看用户详情信息和登录日志，并执行以下操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;编辑：编辑用户别名、角色、手机号、邮箱信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编辑密码：编辑用户登录密码。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除：删除用户。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;创建自定义角色&#34;&gt;创建自定义角色&lt;/h2&gt;
+&lt;p&gt;除了系统内置角色，您也可以创建自定义角色，已满足业务需要。&lt;/p&gt;
+&lt;p&gt;点击“访问控制”&amp;gt;“角色”，进入角色管理页面，您可以点击左上角“创建角色”按钮，创建自定义角色。&lt;/p&gt;
+&lt;p&gt;在创建角色页面，您需要填写角色名称和描述，并勾选自定义角色所需权限，一些权限依赖于其他权限，在选择这些权限时，将自动选中依赖的权限。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/role-policy.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;创建自定义角色完成后，您可以在角色详情页面查看角色基本信息、角色权限列表、授权用户列表，并对自定义角色执行以下操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;编辑：编辑自定义角色别名。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编辑权限：编辑自定义角色下的权限。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除：删除自定义角色，需确保没有用户使用待删除角色。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;接入外部用户&#34;&gt;接入外部用户&lt;/h2&gt;
+&lt;p&gt;KubeClipper 可以通过 OIDC 协议使用外部用户登录。&lt;/p&gt;
+&lt;p&gt;首先，平台管理员需要登录平台 server 节点，在 kubeclipepr-server.yaml 文件中的 authentication 下插入以下信息：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-undefined&#34; data-lang=&#34;undefined&#34;&gt;oauthOptions:    identityProviders:    - name: keycloak      type: OIDC      mappingMethod: auto      provider:        clientID: kc        clientSecret: EErn729BB1bKawdRtnZgrqj9Bx0]mzUs        issuer: http://172.20.163.233:7777/auth/realms/kubeclipper        scopes:        - openid        - email        redirectURL: http://{kc-console-address}/oatuh2/redirect/{IDP-Name}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中，“provider”下需要您填写自己的 OAuth2 服务的&lt;code&gt;clientID&lt;/code&gt;、&lt;code&gt;clientSecret&lt;/code&gt;、&lt;code&gt;issuer&lt;/code&gt;信息，以 keycloack 为例，如下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;redirectURL&lt;/code&gt;示例：http://172.0.0.90/oauth2/redirect/keycloack&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/keycloak-client.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/keycloak-client2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;OAuth2 用户可以通过以下步骤访问和使用 KubeClipper 平台：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;点击登录页的“OAuth2 登录”按钮，进入 OAuth2 登录页面，输入用户名密码登录，进入 KubeClipper 平台，首次登录，您会因未被授予权限而无法访问平台。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;平台管理员或其他拥有用户管理权限的用户登录 KubeClipper，在用户管理页面，找到目标 OAuth2 用户，通过编辑用户指定用户角色。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OAuth2 用户重复第一步，登录 KubeClipper，就可以正常访问平台并执行角色权限内操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 
       </description>
     </item>

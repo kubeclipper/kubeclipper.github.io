@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kubeclipper – Community</title>
+    <title>KubeClipper – Community</title>
     <link>https://kubeclipper.io/community/</link>
-    <description>Recent content in Community on Kubeclipper</description>
+    <description>Recent content in Community on KubeClipper</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="https://kubeclipper.io/community/index.xml" rel="self" type="application/rss+xml" />
