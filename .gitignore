@@ -4,3 +4,4 @@ package-lock.json
 .hugo_build.lock
 .idea
 /public
+.DS_Store
