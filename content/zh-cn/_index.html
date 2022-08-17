@@ -25,17 +25,17 @@ KubeClipper 是一个轻量级、易用的图形界面 Kubernetes 集群生命�
 {{% /blocks/lead %}}
 
 {{< blocks/section color="dark" >}}
-{{% blocks/feature icon="fa-lightbulb" title="易使用" %}}
+{{% blocks/feature icon="fa-solid fa-image" title="易使用" %}}
 友好的向导式图形化界面，初学者也可以快速部署一个生产级集群并安装所需插件。
 {{% /blocks/feature %}}
 
 
-{{% blocks/feature icon="fab fa-github" title="极轻量" %}}
+{{% blocks/feature icon="fa-solid fa-paper-plane" title="极轻量" %}}
 架构简单，少依赖，平台部署仅需两个命令行。
 {{% /blocks/feature %}}
 
 
-{{% blocks/feature icon="fab fa-twitter" title="生产级" %}}
+{{% blocks/feature icon="fa-solid fa-star" title="生产级" %}}
 易用性和专业性兼顾，支持丰富的集群参数配置和插件管理，满足生产级集群部署需求。
 {{% /blocks/feature %}}
 
@@ -44,29 +44,28 @@ KubeClipper 是一个轻量级、易用的图形界面 Kubernetes 集群生命�
 
 
 {{< blocks/section >}}
-<div class="col">
-<h1 class="text-center">欢迎加入我们！ </h1>
-</div>
+	<div class="get-start">
+		<div class="white">
+			<h2 class="text-center mb-4">立即体验</h2>
+			<h5 class="text">
+				1. 下载 kcctl <br>
+				2. 部署 KubeClipper
+			</h5>
+<pre>
+<code>
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -
 
+# In China, you can add cn env, we use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -
+
+kcctl deploy  [--user root] (--passwd SSH_PASSWD | --pk-file SSH_PRIVATE_KEY)
+</code>
+</pre>
+		</div>
+	</div>
 {{< /blocks/section >}}
 
 
-{{< blocks/section >}}
-<!-- {{% blocks/feature icon="fab fa-app-store-ios" title="Download **from AppStore**" %}}
-Get the Goldydocs app!
-{{% /blocks/feature %}} -->
 
-
-{{% blocks/feature icon="fab fa-github" title="Contributions welcome!" url="https://github.com/kubeclipper-labs" %}}
-We do a [Pull Request](https://github.com/kubeclipper-labs) contributions workflow on **GitHub**. New users are always welcome!
-{{% /blocks/feature %}}
-
-
-<!-- {{% blocks/feature icon="fab fa-twitter" title="Follow us on Twitter!" url="https://twitter.com/GoHugoIO" %}}
-For announcement of latest features etc.
-{{% /blocks/feature %}} -->
-
-
-{{< /blocks/section >}}
 
 

@@ -1,0 +1,36 @@
+// start experience section
+.get-start {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 0;
+  position: relative;
+  width: 100%;
+
+  .white {
+    background: #fff;
+    grid-row: 2 / span 4;
+    grid-column: 2 / span 4;
+    z-index: 2;
+    box-shadow: rgba(51, 49, 59, 50%) 0 0 20px;
+    padding: 50px 30px;
+
+    .text {
+      line-height: 1.5;
+    }
+  }
+}
+
+pre {
+  background: #000;
+  color: #c97300;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
+  border-radius: 3px;
+  white-space: pre-wrap;
+}
