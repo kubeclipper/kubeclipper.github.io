@@ -51,8 +51,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.cd6c2bbb05cdf98237b53882fed8c7a8b3fd7a7f7963d7cb305dd0d984782137.css" as="style">
-<link href="/scss/main.min.cd6c2bbb05cdf98237b53882fed8c7a8b3fd7a7f7963d7cb305dd0d984782137.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.31728d5700d96546dfa83eef49fac5944319dc352d972ef30df436d74c5787e8.css" as="style">
+<link href="/scss/main.min.31728d5700d96546dfa83eef49fac5944319dc352d972ef30df436d74c5787e8.css" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -146,7 +146,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.71f85b18720f532cbf08775d5fb7c9ce.json"
+  data-offline-search-index-json-src="/offline-search-index.49024e27c400c104b7272bf684051225.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -251,7 +251,7 @@ if (!doNotTrack) {
 				
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
 <div class="mb-4 h1">
-  <i class="fas fa-lightbulb"></i>
+  <i class="fas fa-solid fa-image"></i>
 </div>
 <h4 class="h3">易使用</h4>
 <div class="mb-0">
@@ -265,7 +265,7 @@ if (!doNotTrack) {
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
 <div class="mb-4 h1">
-  <i class="fab fa-github"></i>
+  <i class="fas fa-solid fa-paper-plane"></i>
 </div>
 <h4 class="h3">极轻量</h4>
 <div class="mb-0">
@@ -279,7 +279,7 @@ if (!doNotTrack) {
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
 <div class="mb-4 h1">
-  <i class="fab fa-twitter"></i>
+  <i class="fas fa-solid fa-star"></i>
 </div>
 <h4 class="h3">生产级</h4>
 <div class="mb-0">
@@ -309,10 +309,25 @@ if (!doNotTrack) {
 		<div class="row ">
 			
 				
-<div class="col">
-<h1 class="text-center">欢迎加入我们！ </h1>
-</div>
+	<div class="get-start">
+		<div class="white">
+			<h2 class="text-center mb-4">立即体验</h2>
+			<h5 class="text">
+				1. 下载 kcctl <br>
+				2. 部署 KubeClipper
+			</h5>
+<pre>
+<code>
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -
 
+# In China, you can add cn env, we use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -
+
+kcctl deploy  [--user root] (--passwd SSH_PASSWD | --pk-file SSH_PRIVATE_KEY)
+</code>
+</pre>
+		</div>
+	</div>
 
 			
 		</div>
@@ -321,63 +336,6 @@ if (!doNotTrack) {
 
 
 
-
-
-
- 
-<a id="td-block-4" class="td-offset-anchor"></a>
-<section class="row td-box td-box--4 td-box--gradient td-box--height-auto">
-	<div class="col">
-		<div class="row ">
-			
-				
-<!-- <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-<div class="mb-4 h1">
-  <i class="fab fa-app-store-ios"></i>
-</div>
-<h4 class="h3">Download <strong>from AppStore</strong></h4>
-<div class="mb-0">
-<p>Get the Goldydocs app!</p>
-
-</div>
-
-</div>
- -->
-
-
-<div class="col-lg-4 mb-5 mb-lg-0 text-center">
-<div class="mb-4 h1">
-  <i class="fab fa-github"></i>
-</div>
-<h4 class="h3">Contributions welcome!</h4>
-<div class="mb-0">
-<p>We do a <a href="https://github.com/kubeclipper-labs">Pull Request</a> contributions workflow on <strong>GitHub</strong>. New users are always welcome!</p>
-
-</div>
-<p><a href="https://github.com/kubeclipper-labs">更多 …</a></p>
-</div>
-
-
-
-<!-- <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-<div class="mb-4 h1">
-  <i class="fab fa-twitter"></i>
-</div>
-<h4 class="h3">Follow us on Twitter!</h4>
-<div class="mb-0">
-<p>For announcement of latest features etc.</p>
-
-</div>
-<p><a href="https://twitter.com/GoHugoIO">更多 …</a></p>
-</div>
- -->
-
-
-
-			
-		</div>
-	</div>
-</section>
 
 
 
