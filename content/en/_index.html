@@ -44,31 +44,24 @@ Simple and professional, it supports rich cluster parameter configuration and pl
 {{< /blocks/section >}}
 
 
-{{< blocks/section >}}
-<div class="col">
-<h1 class="text-center">Welcome to join us !</h1>
+{{< blocks/section>}}
+	<div class="get-start">
+		<div class="white">
+			<h2 class="text-center mb-4">Quick Start</h2>
+			<h5 class="text">
+				1. Download kcctl <br>
+				2. Deploy KubeClipper
+			</h5>
+<pre>
+<code>
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -
 
-</div>
+# In China, you can add cn env, we use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -
 
+kcctl deploy  [--user root] (--passwd SSH_PASSWD | --pk-file SSH_PRIVATE_KEY)
+</code>
+</pre>
+		</div>
+	</div>
 {{< /blocks/section >}}
-
-
-
-{{< blocks/section >}}
-{{% blocks/feature icon="fab fa-app-store-ios" title="Download **from AppStore**" %}}
-Get the Goldydocs app!
-{{% /blocks/feature %}}
-
-
-{{% blocks/feature icon="fab fa-github" title="Contributions welcome!" url="https://github.com/kubeclipper-labs" %}}
-We do a [Pull Request](https://github.com/kubeclipper-labs) contributions workflow on **GitHub**. New users are always welcome!
-{{% /blocks/feature %}}
-
-
-{{% blocks/feature icon="fab fa-twitter" title="Follow us on Twitter!" url="https://twitter.com/GoHugoIO" %}}
-For announcement of latest features etc.
-{{% /blocks/feature %}}
-
-
-{{< /blocks/section >}}
-
