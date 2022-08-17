@@ -34,6 +34,9 @@
                 href="https://kubeclipper.io/docs/getting-started/"
                 />
   </url><url>
+    <loc>https://kubeclipper.io/docs/tutorials/access-control/</loc>
+    <lastmod>2022-08-16T16:08:52+08:00</lastmod>
+  </url><url>
     <loc>https://kubeclipper.io/docs/tutorials/</loc>
     <lastmod>2022-08-16T16:08:52+08:00</lastmod>
     <xhtml:link
@@ -46,9 +49,6 @@
                 hreflang="zh-cn"
                 href="https://kubeclipper.io/docs/tutorials/"
                 />
-  </url><url>
-    <loc>https://kubeclipper.io/docs/tutorials/access-control/</loc>
-    <lastmod>2022-08-16T16:08:52+08:00</lastmod>
   </url><url>
     <loc>https://kubeclipper.io/docs/reference/</loc>
     <lastmod>2022-08-16T16:08:52+08:00</lastmod>
@@ -163,19 +163,6 @@
                 href="https://kubeclipper.io/docs/reference/parameter-reference/"
                 />
   </url><url>
-    <loc>https://kubeclipper.io/community/</loc>
-    <lastmod>2022-08-15T15:16:38+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://kubeclipper.io/en/community/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://kubeclipper.io/community/"
-                />
-  </url><url>
     <loc>https://kubeclipper.io/</loc>
     <lastmod>2022-08-17T14:39:46+08:00</lastmod>
     <xhtml:link
@@ -213,6 +200,19 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://kubeclipper.io/blog/"
+                />
+  </url><url>
+    <loc>https://kubeclipper.io/community/</loc>
+    <lastmod>2022-08-17T17:59:25+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kubeclipper.io/en/community/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kubeclipper.io/community/"
                 />
   </url>
 </urlset>
