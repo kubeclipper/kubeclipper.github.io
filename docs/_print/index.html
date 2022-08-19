@@ -137,7 +137,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9a00f8e39b9f0b1ab4ea9edd72c325da.json"
+  data-offline-search-index-json-src="/offline-search-index.ae3212c294a9a7bdfefdaca555fead00.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -261,6 +261,14 @@ if (!doNotTrack) {
     
 	
 <li>3.3: <a href="#pg-9db4787abe05db7c233072bf3fa9f94e">访问控制</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3.4: <a href="#pg-c2ae1d96f8801e0e95716bdcb945d3a3">使用 Kubeclipper 离线创建 k8s 集群</a></li>
 
 
     
@@ -1096,6 +1104,42 @@ if (!doNotTrack) {
 <p>OAuth2 用户重复第一步，登录 KubeClipper，就可以正常访问平台并执行角色权限内操作。</p>
 </li>
 </ol>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-c2ae1d96f8801e0e95716bdcb945d3a3">3.4 - 使用 Kubeclipper 离线创建 k8s 集群</h1>
+    <div class="lead">如何使用 KC 平台离线创建 k8s 集群</div>
+	<h2 id="1-进入创建界面">1. 进入创建界面</h2>
+<p>登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面</p>
+<p><img src="/images/docs-tutorials/cluster-begin.png" alt=""></p>
+<h2 id="2-配置集群节点">2. 配置集群节点</h2>
+<p>按照文字提示完成输入集群名称、选择节点等步骤</p>
+<p>注意: master 节点数量不能为偶数</p>
+<p><img src="/images/docs-tutorials/cluster-node-config.png" alt=""></p>
+<h2 id="3-配置集群">3. 配置集群</h2>
+<p>此步骤用于配置集群网络以及数据库、容器运行时等组件</p>
+<p>选择离线安装并填写首先搭建好的镜像仓库地址</p>
+<p><img src="/images/docs-tutorials/cluster-config.png" alt=""></p>
+<h2 id="4-配置存储">4. 配置存储</h2>
+<p>选择 nfs 存储，按照文字提示填写相应内容</p>
+<p><img src="/images/docs-tutorials/cluster-storage-config.png" alt=""></p>
+<h2 id="5-安装完成">5. 安装完成</h2>
+<p>完成所有配置确认安装</p>
+<p><img src="/images/docs-tutorials/cluster-finish.png" alt=""></p>
+<p>安装成功，集群正常运行</p>
+<p><img src="/images/docs-tutorials/cluster-success.png" alt=""></p>
 
 </div>
 

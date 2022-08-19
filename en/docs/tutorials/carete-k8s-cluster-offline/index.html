@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubeclipper.io/en/docs/tutorials/carete-k8s-cluster-offline/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2022-08-15T11:52:23+08:00" /><meta property="og:site_name" content="Kubeclipper" />
+<meta property="article:modified_time" content="2022-08-19T16:25:51+08:00" /><meta property="og:site_name" content="Kubeclipper" />
 
 <meta itemprop="name" content="Create k8s clusters offline using the kubeclipper platform">
 <meta itemprop="description" content="How to create a k8s cluster offline using the KC platform
 ">
-<meta itemprop="dateModified" content="2022-08-15T11:52:23+08:00" />
-<meta itemprop="wordCount" content="177">
+<meta itemprop="dateModified" content="2022-08-19T16:25:51+08:00" />
+<meta itemprop="wordCount" content="132">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Create k8s clusters offline using the kubeclipper platform"/>
 <meta name="twitter:description" content="How to create a k8s cluster offline using the KC platform
@@ -123,7 +123,7 @@ if (!doNotTrack) {
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">简体中文</a>
+	<a class="dropdown-item" href="/docs/tutorials/carete-k8s-cluster-offline/">简体中文</a>
 	
 </div>
 			</li>
@@ -137,7 +137,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9a00f8e39b9f0b1ab4ea9edd72c325da.json"
+  data-offline-search-index-json-src="/offline-search-index.ae3212c294a9a7bdfefdaca555fead00.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -159,7 +159,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9a00f8e39b9f0b1ab4ea9edd72c325da.json"
+  data-offline-search-index-json-src="/offline-search-index.ae3212c294a9a7bdfefdaca555fead00.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -176,7 +176,7 @@ if (!doNotTrack) {
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">简体中文</a>
+	<a class="dropdown-item" href="/docs/tutorials/carete-k8s-cluster-offline/">简体中文</a>
 	
 </div>
     </div>
@@ -242,8 +242,7 @@ if (!doNotTrack) {
     <li><a href="#2-configure-cluster-nodes">2. Configure cluster nodes</a></li>
     <li><a href="#3-configure-cluster">3. Configure cluster</a></li>
     <li><a href="#4-configure-cluster-storage">4. Configure cluster storage</a></li>
-    <li><a href="#5-configure-cluster-plugins">5. Configure cluster plugins</a></li>
-    <li><a href="#6-installation-completed">6. Installation completed</a></li>
+    <li><a href="#5-installation-completed">5. Installation completed</a></li>
   </ul>
 </nav></div>
 
@@ -346,31 +345,23 @@ if (!doNotTrack) {
 	</header>    
 	<h2 id="1-go-to-the-creation-screen">1. Go to the creation screen</h2>
 <p>Log in to the <code>Kubeclipper</code> platform and click the button as shown in the figure to enter the cluster creation interface</p>
-<p><img src="/images/docs/cluster-begin.png" alt=""></p>
+<p><img src="/images/docs-tutorials/cluster-begin.png" alt=""></p>
 <h2 id="2-configure-cluster-nodes">2. Configure cluster nodes</h2>
 <p>Follow the text prompts to complete the steps of entering the cluster name and selecting nodes</p>
 <p>Note: The number of master nodes cannot be an even number.</p>
-<p><img src="/images/docs/cluster-node-config.png" alt=""></p>
+<p><img src="/images/docs-tutorials/cluster-node-config.png" alt=""></p>
 <h2 id="3-configure-cluster">3. Configure cluster</h2>
 <p>This step is used to configure the cluster network and components such as the database and container runtime</p>
 <p>Select offline installation and fill in the address of the image repository you have built first</p>
-<p><img src="/images/docs/cluster-config.png" alt=""></p>
+<p><img src="/images/docs-tutorials/cluster-config.png" alt=""></p>
 <h2 id="4-configure-cluster-storage">4. Configure cluster storage</h2>
 <p>Select nfs storage and follow the text prompts to fill in the appropriate fields</p>
-<p><img src="/images/docs/cluster-storage-config.png" alt=""></p>
-<h2 id="5-configure-cluster-plugins">5. Configure cluster plugins</h2>
-<p>This step is used to install Kubesphere</p>
-<p>Enter any string as a jwt key</p>
-<p><img src="/images/docs/cluster-plugin-config-jwt.png" alt=""></p>
-<p>You can change the default memory parameters to avoid installation failure when the runtime environment has insufficient memory</p>
-<p><img src="/images/docs/cluster-plugin-config-memory.png" alt=""></p>
-<p>Choose to install the plug-in according to your needs</p>
-<p><img src="/images/docs/cluster-plugin-install.png" alt=""></p>
-<h2 id="6-installation-completed">6. Installation completed</h2>
+<p><img src="/images/docs-tutorials/cluster-storage-config.png" alt=""></p>
+<h2 id="5-installation-completed">5. Installation completed</h2>
 <p>Complete all configurations to confirm installation</p>
-<p><img src="/images/docs/cluster-finish.png" alt=""></p>
+<p><img src="/images/docs-tutorials/cluster-finish.png" alt=""></p>
 <p>Installation is successful and the cluster is up and running</p>
-<p><img src="/images/docs/cluster-success.png" alt=""></p>
+<p><img src="/images/docs-tutorials/cluster-success.png" alt=""></p>
 
 	
 		<style>
@@ -437,7 +428,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 2022.08.15: <a href="https://github.com/kubeclipper-labs/kubeclipper-labs.github.io/commit/915aa1eb2fe05fe01b8d4741b522322ce6a65b69">create cluster offline docs (915aa1e)</a>
+  Last modified 2022.08.19: <a href="https://github.com/kubeclipper-labs/kubeclipper-labs.github.io/commit/1483febf58a4df7c010f8389c22f0d6348bf0647">change docs picture (1483feb)</a>
 </div>
 
 </div>
