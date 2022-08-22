@@ -3,7 +3,7 @@ title: "集群管理"
 date: 2022-08-16
 weight: 1
 description: >
-  A short lead description about this content page. It can be **bold** or _italic_ and can be split over multiple paragraphs.
+  KubeClipper 集群管理功能使用指南
 ---
 
 ## 创建集群

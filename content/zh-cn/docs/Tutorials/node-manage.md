@@ -3,7 +3,7 @@ title: "节点管理"
 date: 2022-08-16
 weight: 2
 description: >
-  A short lead description about this content page. It can be **bold** or _italic_ and can be split over multiple paragraphs.
+  KubeClipper 节点管理功能使用指南
 ---
 
 在“节点信息”页面，您可以查看平台中管理的全部节点列表，节点规格、状态等信息。点击节点名称进入节点详情页面，您可以查看详细的节点基本信息和系统信息。
