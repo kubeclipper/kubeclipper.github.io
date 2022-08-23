@@ -30,7 +30,7 @@ KubeClipper provides command line tools 🔧 kcctl to simplify operation and mai
 ```bash
 curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -
 
-# 如果你在中国， 你可以在安装时使用 cn  环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io
+# In China, you can add cn env, we use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
 # curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -
 ```
 
