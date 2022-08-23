@@ -3,7 +3,7 @@ title: "访问控制"
 date: 2022-08-16
 weight: 3
 description: >
-  A short lead description about this content page. It can be **bold** or _italic_ and can be split over multiple paragraphs.
+  KubeClipper 访问控制功能使用指南
 ---
 
 ## 创建用户
