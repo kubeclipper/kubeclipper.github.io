@@ -137,7 +137,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ae3212c294a9a7bdfefdaca555fead00.json"
+  data-offline-search-index-json-src="/offline-search-index.a39e0da5bbf004d91f8d79d0607d1229.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -252,7 +252,7 @@ if (!doNotTrack) {
     
     
 	
-<li>3.2: <a href="#pg-f8b869abb7ea8ad8dbef714007033263">节点管理</a></li>
+<li>3.2: <a href="#pg-fddaec26910ae7c1f9244de6c77eee8b">部署 HA</a></li>
 
 
     
@@ -260,7 +260,7 @@ if (!doNotTrack) {
     
     
 	
-<li>3.3: <a href="#pg-9db4787abe05db7c233072bf3fa9f94e">访问控制</a></li>
+<li>3.3: <a href="#pg-f8b869abb7ea8ad8dbef714007033263">节点管理</a></li>
 
 
     
@@ -268,7 +268,15 @@ if (!doNotTrack) {
     
     
 	
-<li>3.4: <a href="#pg-c2ae1d96f8801e0e95716bdcb945d3a3">使用 Kubeclipper 离线创建 k8s 集群</a></li>
+<li>3.4: <a href="#pg-9db4787abe05db7c233072bf3fa9f94e">访问控制</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3.5: <a href="#pg-c2ae1d96f8801e0e95716bdcb945d3a3">使用 Kubeclipper 离线创建 k8s 集群</a></li>
 
 
     
@@ -592,7 +600,7 @@ if (!doNotTrack) {
 <div class="td-content" style="">
     
 	<h1 id="pg-502f2b1bbafe2aca0d506e0d2b495a3d">3.1 - 集群管理</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
+    <div class="lead">KubeClipper 集群管理功能使用指南</div>
 	<h2 id="创建集群">创建集群</h2>
 <p>您可以通过向导式的页面创建 K8S 集群，并安装CNI、CSI等所需插件。也可以提前保存好集群模版，选择模版后快速创建集群。</p>
 <h3 id="创建集群准备工作">创建集群准备工作</h3>
@@ -1004,8 +1012,82 @@ if (!doNotTrack) {
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f8b869abb7ea8ad8dbef714007033263">3.2 - 节点管理</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
+	<h1 id="pg-fddaec26910ae7c1f9244de6c77eee8b">3.2 - 部署 HA</h1>
+    <div class="lead">通过简单的操作部署一个高可用的 kubeclipper</div>
+	<p>本文档旨在通过简单的操作部署一个 HA 版本的 kubeclipper。</p>
+<blockquote>
+<p>如果只是想简单体验一下，请参考 <a href="https://github.com/kubeclipper-labs/kubeclipper/blob/master/README_zh.md#quick-start">QuickStart</a> 部署 AIO 环境。</p>
+</blockquote>
+<h2 id="准备工作">准备工作</h2>
+<p>HA 部署注意事项：</p>
+<ul>
+<li>kubeclipper 使用 etcd 作为后端存储，为了保证高可用，建议使用 3 节点及以上来部署。</li>
+<li>生产环境建议 server 节点和 agent 节点分离，避免某一主机同时作为 server 节点和 agent 节点。</li>
+</ul>
+<p>主机要求：您仅需参考  <a href="https://github.com/kubeclipper-labs/kubeclipper/blob/master/README_zh.md#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a> 中对机器硬件和操作系统的要求准备多台主机。</p>
+<h2 id="部署-kubeclipper">部署 KubeClipper</h2>
+<h3 id="下载-kcctl">下载 kcctl</h3>
+<p>KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># 如果你在中国， 你可以在安装时使用 cn  环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io</span>
+</span></span><span style="display:flex;"><span>curl -sfL https://oss.kubeclipper.io/kcctl.sh <span style="color:#000;font-weight:bold">|</span> <span style="color:#000">KC_REGION</span><span style="color:#ce5c00;font-weight:bold">=</span>cn sh -
+</span></span></code></pre></div><blockquote>
+<p>您也可以在 <a href="https://github.com/kubeclipper-labs/kubeclipper/releases">GitHub Release Page</a> 下载指定版本。</p>
+</blockquote>
+<p>通过以下命令检测是否安装成功:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl version
+</span></span></code></pre></div><h3 id="开始安装">开始安装</h3>
+<p>您只需执行一个命令即可安装 KubeClipper，其模板如下所示：</p>
+<pre tabindex="0"><code>kcctl deploy  [--user root] (--passwd SSH_PASSWD | --pk-file SSH_PRIVATE_KEY) (--server SERVER_NODES) (--agent AGENT_NODES)
+</code></pre><p>若使用 ssh passwd 方式则命令如下所示:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy --user root --passwd <span style="color:#000">$SSH_PASSWD</span> --server SERVER_NODES --agent AGENT_NODES
+</span></span></code></pre></div><p>私钥方式如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy --user root --pk-file <span style="color:#000">$SSH_PRIVATE_KEY</span> --server SERVER_NODES --agent AGENT_NODES
+</span></span></code></pre></div><blockquote>
+<p>您只需要提供 ssh user 以及 ssh passwd 或者 ssh 私钥即可在对应节点部署 KubeClipper。</p>
+</blockquote>
+<p>本教程使用 私钥 方式进行部署，具体命令如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy --server 192.168.10.110,192.168.10.111,192.168.10.112 --agent 192.168.10.113,192.168.10.114,192.168.10.115 --pk-file ~/.ssh/id_rsa --pkg https://oss.kubeclipper.io/release/v1.1.0/kc-amd64.tar.gz
+</span></span></code></pre></div><blockquote>
+<p>该命令指定 kubeclipper 包含 3 server 节点，3 agent 节点。</p>
+</blockquote>
+<p>您可以访问  <a href="https://github.com/kubeclipper-labs/kubeclipper/releases">GitHub Release Page</a>  查看当前 KubeClipper 的 Release 版本，来修改 pkg 参数中的版本号。</p>
+<blockquote>
+<p>比如在 v1.2.0 版本 release 之后您可以指定 &ndash;pkg 为 <code>https://oss.kubeclipper.io/release/v1.2.0/kc-amd64.tar.gz</code> 来安装 v1.2.0 版本。</p>
+</blockquote>
+<p>执行该命令后，Kcctl 将检查您的安装环境，若满足条件将会进入安装流程。在打印出如下的 KubeClipper banner 后即表示安装完成。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span> _   __      _          _____ _ _
+</span></span><span style="display:flex;"><span>| | / /     | |        /  __ \ (_)
+</span></span><span style="display:flex;"><span>| |/ / _   _| |__   ___| /  \/ |_ _ __  _ __   ___ _ __
+</span></span><span style="display:flex;"><span>|    \| | | | &#39;_ \ / _ \ |   | | | &#39;_ \| &#39;_ \ / _ \ &#39;__|
+</span></span><span style="display:flex;"><span>| |\  \ |_| | |_) |  __/ \__/\ | | |_) | |_) |  __/ |
+</span></span><span style="display:flex;"><span>\_| \_/\__,_|_.__/ \___|\____/_|_| .__/| .__/ \___|_|
+</span></span><span style="display:flex;"><span>                                 | |   | |
+</span></span><span style="display:flex;"><span>                                 |_|   |_|
+</span></span></code></pre></div><h3 id="登录控制台">登录控制台</h3>
+<p>安装完成后，打开浏览器，访问 <code>http://$IP</code> 即可进入 KubeClipper 控制台。
+<img src="/images/docs-quickstart/console-login.png" alt="console"></p>
+<p>您可以使用默认帐号密码 <code>admin / Thinkbig1</code> 进行登录。</p>
+<blockquote>
+<p>您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。</p>
+</blockquote>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f8b869abb7ea8ad8dbef714007033263">3.3 - 节点管理</h1>
+    <div class="lead">KubeClipper 节点管理功能使用指南</div>
 	<p>在“节点信息”页面，您可以查看平台中管理的全部节点列表，节点规格、状态等信息。点击节点名称进入节点详情页面，您可以查看详细的节点基本信息和系统信息。</p>
 <p><img src="/images/docs-tutorials/node-info.png" alt=""></p>
 <p>KubeClipper 中的节点状态表示 kc-gent 对节点的管理状态。正常情况下，节点状态显示为“就绪”，当节点失联4分钟（误差时间10s内）后，状态会更新为“未知”，未知状态的节点无法进行任何操作，也无法创建集群或为集群添加/移除节点。</p>
@@ -1036,8 +1118,8 @@ if (!doNotTrack) {
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-9db4787abe05db7c233072bf3fa9f94e">3.3 - 访问控制</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
+	<h1 id="pg-9db4787abe05db7c233072bf3fa9f94e">3.4 - 访问控制</h1>
+    <div class="lead">KubeClipper 访问控制功能使用指南</div>
 	<h2 id="创建用户">创建用户</h2>
 <p>安装 KubeClipper 之后，您需要创建所需角色的用户。一开始，系统默认只有一个用户 admin，具有平台管理员角色。</p>
 <p>点击“访问控制”&gt;“用户”，进入用户管理页面，点击左上角“创建用户”按钮，在弹窗中填写用户名、密码、手机号码、邮箱等信息，并指定用户角色，点击“确认”按钮。系统内置四个角色如下：</p>
@@ -1119,7 +1201,7 @@ if (!doNotTrack) {
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-c2ae1d96f8801e0e95716bdcb945d3a3">3.4 - 使用 Kubeclipper 离线创建 k8s 集群</h1>
+	<h1 id="pg-c2ae1d96f8801e0e95716bdcb945d3a3">3.5 - 使用 Kubeclipper 离线创建 k8s 集群</h1>
     <div class="lead">如何使用 KC 平台离线创建 k8s 集群</div>
 	<h2 id="1-进入创建界面">1. 进入创建界面</h2>
 <p>登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面</p>

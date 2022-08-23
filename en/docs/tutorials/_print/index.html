@@ -134,7 +134,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ae3212c294a9a7bdfefdaca555fead00.json"
+  data-offline-search-index-json-src="/offline-search-index.a39e0da5bbf004d91f8d79d0607d1229.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -180,7 +180,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>1: <a href="#pg-06285b237e6e217b13f8d9c941a9de18">Multi-Bear Domicile Setup</a></li>
+<li>1: <a href="#pg-fddaec26910ae7c1f9244de6c77eee8b">Deploy HA</a></li>
 
 
     
@@ -188,7 +188,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>2: <a href="#pg-c86b0cbc9ee1f95a6facb6bff0282978">Another Tutorial</a></li>
+<li>2: <a href="#pg-06285b237e6e217b13f8d9c941a9de18">Multi-Bear Domicile Setup</a></li>
 
 
     
@@ -196,7 +196,15 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3: <a href="#pg-c2ae1d96f8801e0e95716bdcb945d3a3">Create k8s clusters offline using the kubeclipper platform</a></li>
+<li>3: <a href="#pg-c86b0cbc9ee1f95a6facb6bff0282978">Another Tutorial</a></li>
+
+
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-c2ae1d96f8801e0e95716bdcb945d3a3">Create k8s clusters offline using the kubeclipper platform</a></li>
 
 
     
@@ -235,7 +243,83 @@ This is the multi-page printable view of this section.
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-06285b237e6e217b13f8d9c941a9de18">1 - Multi-Bear Domicile Setup</h1>
+	<h1 id="pg-fddaec26910ae7c1f9244de6c77eee8b">1 - Deploy HA</h1>
+    <div class="lead">deploy a high available kubeclipper by some simple cmd.</div>
+	<p>The purpose of this document is to deploy an HA  KubeClipper with a simple operation.</p>
+<blockquote>
+<p>If you just want a simple experience, please refer to <a href="https://github.com/kubeclipper-labs/kubeclipper#quick-start">QuickStart</a> to deploy AIO environment.</p>
+</blockquote>
+<h2 id="preparations">Preparations</h2>
+<p>You only need to prepare a host with reference to the following requirements for machine hardware and operating system: Preparations</p>
+<p>HA Deploy Recommend:</p>
+<ul>
+<li>Kubeclipper uses etcd as backend storage. In order to ensure high availability, it is recommended to use 3 nodes and above for deployment.</li>
+<li>At the same time, the production environment recommends that the server node and the agent node be separated to avoid acting as both the server node and the agent node at the same time.
+Node planning:</li>
+</ul>
+<h2 id="deploying-kubeclipper">Deploying KubeClipper</h2>
+<h3 id="download-kcctl">Download kcctl</h3>
+<p>KubeClipper provides command line tools 🔧 kcctl to simplify operation and maintenance work. You can directly download the latest version of kcctl with the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sfL https://oss.kubeclipper.io/kcctl.sh <span style="color:#000;font-weight:bold">|</span> sh -
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># In China, you can add cn env, we use registry.aliyuncs.com/google_containers instead of k8s.gcr.io</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -</span>
+</span></span></code></pre></div><blockquote>
+<p>You can also download the specified version on the <a href="https://github.com/kubeclipper-labs/kubeclipper/releases">GitHub Release Page</a>.</p>
+</blockquote>
+<p>Check if the installation is successful with the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl version
+</span></span></code></pre></div><h3 id="get-started-with-installation">Get Started with Installation</h3>
+<p>All you need to do is execute a command to install KubeClipper, whose template looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy  <span style="color:#ce5c00;font-weight:bold">[</span>--user root<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">(</span>--passwd SSH_PASSWD <span style="color:#000;font-weight:bold">|</span> --pk-file SSH_PRIVATE_KEY<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>--server SERVER_NODES<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>--agent AGENT_NODES<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span></code></pre></div><p>If you use the ssh passwd method, the command is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy --user root --passwd <span style="color:#000">$SSH_PASSWD</span> --server SERVER_NODES --agent AGENT_NODES
+</span></span></code></pre></div><p>The private key method is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy --user root --pk-file <span style="color:#000">$SSH_PRIVATE_KEY</span> --server SERVER_NODES --agent AGENT_NODES
+</span></span></code></pre></div><blockquote>
+<p>You only need to provide ssh user and ssh passwd or ssh private key to deploy KubeClipper on the corresponding node.</p>
+</blockquote>
+<p>This tutorial uses the private key to deploy, the specific commands are as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy --server 192.168.10.110,192.168.10.111,192.168.10.112 --agent 192.168.10.113,192.168.10.114,192.168.10.115 --pk-file ~/.ssh/id_rsa --pkg https://oss.kubeclipper.io/release/v1.1.0/kc-amd64.tar.gz
+</span></span></code></pre></div><blockquote>
+<p>This  command shows kubeclipper platform will has 3 server node and 3 agent node.</p>
+</blockquote>
+<blockquote>
+<p>You can visit the <a href="https://github.com/kubeclipper-labs/kubeclipper/releases">GitHub Release Page</a> to view the current KubeClipper release version and modify the version number in the pkg parameter.</p>
+<p>For example, after the v1.2.0 release you can specify &ndash;pkg as the <a href="https://oss.kubeclipper.io/release/v1.2.0/kc-amd64.tar.gz">https://oss.kubeclipper.io/release/v1.2.0/kc-amd64.tar.gz</a> to install the v1.2.0 version.</p>
+</blockquote>
+<p>After you runn this command, kcctl will check your installation environment and enter the installation process, if the conditions are met.
+After printing the KubeClipper banner, the installation is complete.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span> / /     <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>        /  __ <span style="color:#4e9a06">\ </span><span style="color:#ce5c00;font-weight:bold">(</span>_<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>/ / _   _<span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>__   ___<span style="color:#000;font-weight:bold">|</span> /  <span style="color:#4e9a06">\/</span> <span style="color:#000;font-weight:bold">|</span>_ _ __  _ __   ___ _ __
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span>    <span style="color:#4e9a06">\|</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#4e9a06">&#39;_ \ / _ \ |   | | | &#39;</span>_ <span style="color:#4e9a06">\|</span> <span style="color:#4e9a06">&#39;_ \ / _ \ &#39;</span>__<span style="color:#000;font-weight:bold">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span><span style="color:#4e9a06">\ </span> <span style="color:#4e9a06">\ </span><span style="color:#000;font-weight:bold">|</span>_<span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>_<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">|</span>  __/ <span style="color:#4e9a06">\_</span>_/<span style="color:#4e9a06">\ </span><span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>_<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>_<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">|</span>  __/ <span style="color:#000;font-weight:bold">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#4e9a06">\_</span><span style="color:#000;font-weight:bold">|</span> <span style="color:#4e9a06">\_</span>/<span style="color:#4e9a06">\_</span>_,_<span style="color:#000;font-weight:bold">|</span>_.__/ <span style="color:#4e9a06">\_</span>__<span style="color:#000;font-weight:bold">|</span><span style="color:#4e9a06">\_</span>___/_<span style="color:#000;font-weight:bold">|</span>_<span style="color:#000;font-weight:bold">|</span> .__/<span style="color:#000;font-weight:bold">|</span> .__/ <span style="color:#4e9a06">\_</span>__<span style="color:#000;font-weight:bold">|</span>_<span style="color:#000;font-weight:bold">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>   <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span>_<span style="color:#000;font-weight:bold">|</span>   <span style="color:#000;font-weight:bold">|</span>_<span style="color:#000;font-weight:bold">|</span>
+</span></span></code></pre></div><h3 id="login-console">Login console</h3>
+<p>When deployed successfully, you can open a browser and visit http://$IP to enter the KubeClipper console.</p>
+<p><img src="/images/docs-quickstart/console-login.png" alt="console"></p>
+<p>You can log in with the default account password <code>admin/Thinkbig1</code>.</p>
+<blockquote>
+<p>You may need to configure port forwarding rules and open ports in security groups for external users to access the console.</p>
+</blockquote>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-06285b237e6e217b13f8d9c941a9de18">2 - Multi-Bear Domicile Setup</h1>
     <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
 	
 
@@ -552,7 +636,7 @@ bar := &#34;foo&#34;;
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-c86b0cbc9ee1f95a6facb6bff0282978">2 - Another Tutorial</h1>
+	<h1 id="pg-c86b0cbc9ee1f95a6facb6bff0282978">3 - Another Tutorial</h1>
     <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
 	
 
@@ -869,7 +953,7 @@ bar := &#34;foo&#34;;
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-c2ae1d96f8801e0e95716bdcb945d3a3">3 - Create k8s clusters offline using the kubeclipper platform</h1>
+	<h1 id="pg-c2ae1d96f8801e0e95716bdcb945d3a3">4 - Create k8s clusters offline using the kubeclipper platform</h1>
     <div class="lead">How to create a k8s cluster offline using the KC platform</div>
 	<h2 id="1-go-to-the-creation-screen">1. Go to the creation screen</h2>
 <p>Log in to the <code>Kubeclipper</code> platform and click the button as shown in the figure to enter the cluster creation interface</p>

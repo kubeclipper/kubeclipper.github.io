@@ -15,6 +15,19 @@
                 href="https://kubeclipper.io/en/docs/overview/"
                 />
   </url><url>
+    <loc>https://kubeclipper.io/en/docs/tutorials/ha-env/</loc>
+    <lastmod>2022-08-23T09:42:42+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kubeclipper.io/docs/tutorials/ha-env/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kubeclipper.io/en/docs/tutorials/ha-env/"
+                />
+  </url><url>
     <loc>https://kubeclipper.io/en/docs/getting-started/</loc>
     <lastmod>2022-07-08T22:41:38+08:00</lastmod>
     <xhtml:link
