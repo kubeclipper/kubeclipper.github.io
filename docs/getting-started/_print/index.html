@@ -39,8 +39,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.31728d5700d96546dfa83eef49fac5944319dc352d972ef30df436d74c5787e8.css" as="style">
-<link href="/scss/main.min.31728d5700d96546dfa83eef49fac5944319dc352d972ef30df436d74c5787e8.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.bffd66d5733bcd276a58d7c041115b4bd38ffc802af66dc8cbf4d62268e20d7a.css" as="style">
+<link href="/scss/main.min.bffd66d5733bcd276a58d7c041115b4bd38ffc802af66dc8cbf4d62268e20d7a.css" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -134,7 +134,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a39e0da5bbf004d91f8d79d0607d1229.json"
+  data-offline-search-index-json-src="/offline-search-index.b33b437fd4f5daf5c9ea96f240effd99.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -181,6 +181,14 @@ if (!doNotTrack) {
     
 	
 <li>1: <a href="#pg-51e07dd308860dc8b1808e7299ac75d8">部署AIO</a></li>
+
+
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-45c14578741098628f1d483b1891e15d">使用 Kubeclipper 离线创建 k8s 集群</a></li>
 
 
     
@@ -340,6 +348,42 @@ if (!doNotTrack) {
 <p>您也可以进入控制台查看实时日志。</p>
 </blockquote>
 <p>进入 Running 状态即表示集群安装完成,您可以使用 <code>kubectl get cs</code> 命令来查看集群健康状况。</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-45c14578741098628f1d483b1891e15d">2 - 使用 Kubeclipper 离线创建 k8s 集群</h1>
+    <div class="lead">如何使用 KC 平台离线创建 k8s 集群</div>
+	<h2 id="1-进入创建界面">1. 进入创建界面</h2>
+<p>登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面</p>
+<p><img src="/images/docs-quickstart/cluster-begin.png" alt=""></p>
+<h2 id="2-配置集群节点">2. 配置集群节点</h2>
+<p>按照文字提示完成输入集群名称、选择节点等步骤</p>
+<p>注意: master 节点数量不能为偶数</p>
+<p><img src="/images/docs-quickstart/cluster-node-config.png" alt=""></p>
+<h2 id="3-配置集群">3. 配置集群</h2>
+<p>此步骤用于配置集群网络以及数据库、容器运行时等组件</p>
+<p>选择离线安装并填写首先搭建好的镜像仓库地址</p>
+<p><img src="/images/docs-quickstart/cluster-config.png" alt=""></p>
+<h2 id="4-配置存储">4. 配置存储</h2>
+<p>选择 nfs 存储，按照文字提示填写相应内容</p>
+<p><img src="/images/docs-quickstart/cluster-storage-config.png" alt=""></p>
+<h2 id="5-安装完成">5. 安装完成</h2>
+<p>完成所有配置确认安装</p>
+<p><img src="/images/docs-quickstart/cluster-finish.png" alt=""></p>
+<p>安装成功，集群正常运行</p>
+<p><img src="/images/docs-quickstart/cluster-successful.png" alt=""></p>
 
 </div>
 

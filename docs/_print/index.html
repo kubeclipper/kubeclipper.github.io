@@ -42,8 +42,8 @@ This section is where the user documentation for your project lives - …">
 
 
 
-<link rel="preload" href="/scss/main.min.31728d5700d96546dfa83eef49fac5944319dc352d972ef30df436d74c5787e8.css" as="style">
-<link href="/scss/main.min.31728d5700d96546dfa83eef49fac5944319dc352d972ef30df436d74c5787e8.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.bffd66d5733bcd276a58d7c041115b4bd38ffc802af66dc8cbf4d62268e20d7a.css" as="style">
+<link href="/scss/main.min.bffd66d5733bcd276a58d7c041115b4bd38ffc802af66dc8cbf4d62268e20d7a.css" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -137,7 +137,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a39e0da5bbf004d91f8d79d0607d1229.json"
+  data-offline-search-index-json-src="/offline-search-index.b33b437fd4f5daf5c9ea96f240effd99.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -222,6 +222,14 @@ if (!doNotTrack) {
 
     
   
+    
+    
+	
+<li>2.2: <a href="#pg-45c14578741098628f1d483b1891e15d">使用 Kubeclipper 离线创建 k8s 集群</a></li>
+
+
+    
+  
 
     </ul>
     
@@ -229,7 +237,26 @@ if (!doNotTrack) {
     
     
 	
-<li>3: <a href="#pg-8dbd4e302cd86a4d0f71f71ce3b300de">使用手册</a></li>
+<li>3: <a href="#pg-a07813ac798dd2637717ce2e67c448bd">部署文档</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-8dbd4e302cd86a4d0f71f71ce3b300de">使用手册</a></li>
 
 
     
@@ -244,7 +271,7 @@ if (!doNotTrack) {
     
     
 	
-<li>3.1: <a href="#pg-502f2b1bbafe2aca0d506e0d2b495a3d">集群管理</a></li>
+<li>4.1: <a href="#pg-502f2b1bbafe2aca0d506e0d2b495a3d">集群管理</a></li>
 
 
     
@@ -252,7 +279,7 @@ if (!doNotTrack) {
     
     
 	
-<li>3.2: <a href="#pg-fddaec26910ae7c1f9244de6c77eee8b">部署 HA</a></li>
+<li>4.2: <a href="#pg-fddaec26910ae7c1f9244de6c77eee8b">部署 HA</a></li>
 
 
     
@@ -260,7 +287,7 @@ if (!doNotTrack) {
     
     
 	
-<li>3.3: <a href="#pg-f8b869abb7ea8ad8dbef714007033263">节点管理</a></li>
+<li>4.3: <a href="#pg-f8b869abb7ea8ad8dbef714007033263">节点管理</a></li>
 
 
     
@@ -268,15 +295,7 @@ if (!doNotTrack) {
     
     
 	
-<li>3.4: <a href="#pg-9db4787abe05db7c233072bf3fa9f94e">访问控制</a></li>
-
-
-    
-  
-    
-    
-	
-<li>3.5: <a href="#pg-c2ae1d96f8801e0e95716bdcb945d3a3">使用 Kubeclipper 离线创建 k8s 集群</a></li>
+<li>4.4: <a href="#pg-9db4787abe05db7c233072bf3fa9f94e">访问控制</a></li>
 
 
     
@@ -288,7 +307,7 @@ if (!doNotTrack) {
     
     
 	
-<li>4: <a href="#pg-8df6ea6904416b571ff9bc73afb50933">Reference</a></li>
+<li>5: <a href="#pg-8df6ea6904416b571ff9bc73afb50933">Reference</a></li>
 
 
     
@@ -303,7 +322,7 @@ if (!doNotTrack) {
     
     
 	
-<li>4.1: <a href="#pg-fae1ff8e3c30cfdbe85045f64e0a7b36">Parameter Reference</a></li>
+<li>5.1: <a href="#pg-fae1ff8e3c30cfdbe85045f64e0a7b36">Parameter Reference</a></li>
 
 
     
@@ -315,7 +334,7 @@ if (!doNotTrack) {
     
     
 	
-<li>5: <a href="#pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">贡献指南</a></li>
+<li>6: <a href="#pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">贡献指南</a></li>
 
 
     
@@ -563,6 +582,42 @@ if (!doNotTrack) {
     
 	
   
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-45c14578741098628f1d483b1891e15d">2.2 - 使用 Kubeclipper 离线创建 k8s 集群</h1>
+    <div class="lead">如何使用 KC 平台离线创建 k8s 集群</div>
+	<h2 id="1-进入创建界面">1. 进入创建界面</h2>
+<p>登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面</p>
+<p><img src="/images/docs-quickstart/cluster-begin.png" alt=""></p>
+<h2 id="2-配置集群节点">2. 配置集群节点</h2>
+<p>按照文字提示完成输入集群名称、选择节点等步骤</p>
+<p>注意: master 节点数量不能为偶数</p>
+<p><img src="/images/docs-quickstart/cluster-node-config.png" alt=""></p>
+<h2 id="3-配置集群">3. 配置集群</h2>
+<p>此步骤用于配置集群网络以及数据库、容器运行时等组件</p>
+<p>选择离线安装并填写首先搭建好的镜像仓库地址</p>
+<p><img src="/images/docs-quickstart/cluster-config.png" alt=""></p>
+<h2 id="4-配置存储">4. 配置存储</h2>
+<p>选择 nfs 存储，按照文字提示填写相应内容</p>
+<p><img src="/images/docs-quickstart/cluster-storage-config.png" alt=""></p>
+<h2 id="5-安装完成">5. 安装完成</h2>
+<p>完成所有配置确认安装</p>
+<p><img src="/images/docs-quickstart/cluster-finish.png" alt=""></p>
+<p>安装成功，集群正常运行</p>
+<p><img src="/images/docs-quickstart/cluster-successful.png" alt=""></p>
+
+</div>
+
+
+
+    
+	
+  
 
     
 	
@@ -574,7 +629,45 @@ if (!doNotTrack) {
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-8dbd4e302cd86a4d0f71f71ce3b300de">3 - 使用手册</h1>
+	<h1 id="pg-a07813ac798dd2637717ce2e67c448bd">3 - 部署文档</h1>
+    <div class="lead">Low level reference docs for your project.</div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>This is a placeholder page that shows you how to use this template site.</p>
+
+</div>
+
+<p>If your project has an API, configuration, or other reference - anything that users need to look up that’s at an even lower level than a single task - put (or link to it) here. You can serve and link to generated reference docs created using Doxygen,
+Javadoc, or other doc generation tools by putting them in your <code>static/</code> directory. Find out more in <a href="https://docsy.dev/docs/adding-content/content/#adding-static-content">Adding static content</a>. For OpenAPI reference, Docsy also provides a <a href="https://www.docsy.dev/docs/adding-content/shortcodes/#swaggerui">Swagger UI layout and shortcode</a> that renders <a href="https://swagger.io/tools/swagger-ui/">Swagger UI</a> using any OpenAPI YAML or JSON file as source.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-8dbd4e302cd86a4d0f71f71ce3b300de">4 - 使用手册</h1>
     <div class="lead">用户使用手册</div>
 	
 </div>
@@ -599,7 +692,7 @@ if (!doNotTrack) {
 
 <div class="td-content" style="">
     
-	<h1 id="pg-502f2b1bbafe2aca0d506e0d2b495a3d">3.1 - 集群管理</h1>
+	<h1 id="pg-502f2b1bbafe2aca0d506e0d2b495a3d">4.1 - 集群管理</h1>
     <div class="lead">KubeClipper 集群管理功能使用指南</div>
 	<h2 id="创建集群">创建集群</h2>
 <p>您可以通过向导式的页面创建 K8S 集群，并安装CNI、CSI等所需插件。也可以提前保存好集群模版，选择模版后快速创建集群。</p>
@@ -1012,7 +1105,7 @@ if (!doNotTrack) {
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-fddaec26910ae7c1f9244de6c77eee8b">3.2 - 部署 HA</h1>
+	<h1 id="pg-fddaec26910ae7c1f9244de6c77eee8b">4.2 - 部署 HA</h1>
     <div class="lead">通过简单的操作部署一个高可用的 kubeclipper</div>
 	<p>本文档旨在通过简单的操作部署一个 HA 版本的 kubeclipper。</p>
 <blockquote>
@@ -1086,7 +1179,7 @@ if (!doNotTrack) {
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f8b869abb7ea8ad8dbef714007033263">3.3 - 节点管理</h1>
+	<h1 id="pg-f8b869abb7ea8ad8dbef714007033263">4.3 - 节点管理</h1>
     <div class="lead">KubeClipper 节点管理功能使用指南</div>
 	<p>在“节点信息”页面，您可以查看平台中管理的全部节点列表，节点规格、状态等信息。点击节点名称进入节点详情页面，您可以查看详细的节点基本信息和系统信息。</p>
 <p><img src="/images/docs-tutorials/node-info.png" alt=""></p>
@@ -1118,7 +1211,7 @@ if (!doNotTrack) {
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-9db4787abe05db7c233072bf3fa9f94e">3.4 - 访问控制</h1>
+	<h1 id="pg-9db4787abe05db7c233072bf3fa9f94e">4.4 - 访问控制</h1>
     <div class="lead">KubeClipper 访问控制功能使用指南</div>
 	<h2 id="创建用户">创建用户</h2>
 <p>安装 KubeClipper 之后，您需要创建所需角色的用户。一开始，系统默认只有一个用户 admin，具有平台管理员角色。</p>
@@ -1194,42 +1287,6 @@ if (!doNotTrack) {
     
 	
   
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-c2ae1d96f8801e0e95716bdcb945d3a3">3.5 - 使用 Kubeclipper 离线创建 k8s 集群</h1>
-    <div class="lead">如何使用 KC 平台离线创建 k8s 集群</div>
-	<h2 id="1-进入创建界面">1. 进入创建界面</h2>
-<p>登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面</p>
-<p><img src="/images/docs-tutorials/cluster-begin.png" alt=""></p>
-<h2 id="2-配置集群节点">2. 配置集群节点</h2>
-<p>按照文字提示完成输入集群名称、选择节点等步骤</p>
-<p>注意: master 节点数量不能为偶数</p>
-<p><img src="/images/docs-tutorials/cluster-node-config.png" alt=""></p>
-<h2 id="3-配置集群">3. 配置集群</h2>
-<p>此步骤用于配置集群网络以及数据库、容器运行时等组件</p>
-<p>选择离线安装并填写首先搭建好的镜像仓库地址</p>
-<p><img src="/images/docs-tutorials/cluster-config.png" alt=""></p>
-<h2 id="4-配置存储">4. 配置存储</h2>
-<p>选择 nfs 存储，按照文字提示填写相应内容</p>
-<p><img src="/images/docs-tutorials/cluster-storage-config.png" alt=""></p>
-<h2 id="5-安装完成">5. 安装完成</h2>
-<p>完成所有配置确认安装</p>
-<p><img src="/images/docs-tutorials/cluster-finish.png" alt=""></p>
-<p>安装成功，集群正常运行</p>
-<p><img src="/images/docs-tutorials/cluster-success.png" alt=""></p>
-
-</div>
-
-
-
-    
-	
-  
 
     
 	
@@ -1241,7 +1298,7 @@ if (!doNotTrack) {
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-8df6ea6904416b571ff9bc73afb50933">4 - Reference</h1>
+	<h1 id="pg-8df6ea6904416b571ff9bc73afb50933">5 - Reference</h1>
     <div class="lead">Low level reference docs for your project.</div>
 	
 
@@ -1275,7 +1332,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-fae1ff8e3c30cfdbe85045f64e0a7b36">4.1 - Parameter Reference</h1>
+	<h1 id="pg-fae1ff8e3c30cfdbe85045f64e0a7b36">5.1 - Parameter Reference</h1>
     <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
 	
 
@@ -1586,7 +1643,7 @@ bar := &#34;foo&#34;;
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">5 - 贡献指南</h1>
+	<h1 id="pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">6 - 贡献指南</h1>
     <div class="lead">How to contribute to the kubeclipper</div>
 	
 </div>

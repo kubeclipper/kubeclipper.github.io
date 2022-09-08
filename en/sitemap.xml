@@ -2,6 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kubeclipper.io/en/docs/tutorials/access-control/</loc>
+    <lastmod>2022-09-08T10:32:12+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kubeclipper.io/docs/tutorials/access-control/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kubeclipper.io/en/docs/tutorials/access-control/"
+                />
+  </url><url>
+    <loc>https://kubeclipper.io/en/docs/tutorials/cluster-manage/</loc>
+    <lastmod>2022-09-08T10:32:12+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kubeclipper.io/docs/tutorials/cluster-manage/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kubeclipper.io/en/docs/tutorials/cluster-manage/"
+                />
+  </url><url>
+    <loc>https://kubeclipper.io/en/docs/tutorials/node-manage/</loc>
+    <lastmod>2022-09-08T10:32:12+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kubeclipper.io/docs/tutorials/node-manage/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kubeclipper.io/en/docs/tutorials/node-manage/"
+                />
+  </url><url>
     <loc>https://kubeclipper.io/en/docs/overview/</loc>
     <lastmod>2022-07-08T22:41:38+08:00</lastmod>
     <xhtml:link
@@ -41,27 +80,24 @@
                 href="https://kubeclipper.io/en/docs/getting-started/"
                 />
   </url><url>
-    <loc>https://kubeclipper.io/en/docs/tutorials/multi-bear/</loc>
-    <lastmod>2022-07-08T22:41:38+08:00</lastmod>
-  </url><url>
-    <loc>https://kubeclipper.io/en/docs/tutorials/tutorial2/</loc>
-    <lastmod>2022-07-08T22:41:38+08:00</lastmod>
-  </url><url>
-    <loc>https://kubeclipper.io/en/docs/tutorials/carete-k8s-cluster-offline/</loc>
-    <lastmod>2022-08-19T16:25:51+08:00</lastmod>
+    <loc>https://kubeclipper.io/en/docs/deployment-docs/</loc>
+    <lastmod>2022-09-08T10:32:12+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://kubeclipper.io/docs/tutorials/carete-k8s-cluster-offline/"
+                href="https://kubeclipper.io/docs/deployment-docs/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://kubeclipper.io/en/docs/tutorials/carete-k8s-cluster-offline/"
+                href="https://kubeclipper.io/en/docs/deployment-docs/"
                 />
   </url><url>
-    <loc>https://kubeclipper.io/en/docs/tutorials/</loc>
+    <loc>https://kubeclipper.io/en/docs/tutorials/multi-bear/</loc>
     <lastmod>2022-07-08T22:41:38+08:00</lastmod>
+  </url><url>
+    <loc>https://kubeclipper.io/en/docs/tutorials/</loc>
+    <lastmod>2022-09-08T10:32:12+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -73,8 +109,11 @@
                 href="https://kubeclipper.io/en/docs/tutorials/"
                 />
   </url><url>
-    <loc>https://kubeclipper.io/en/docs/reference/</loc>
+    <loc>https://kubeclipper.io/en/docs/tutorials/tutorial2/</loc>
     <lastmod>2022-07-08T22:41:38+08:00</lastmod>
+  </url><url>
+    <loc>https://kubeclipper.io/en/docs/reference/</loc>
+    <lastmod>2022-09-08T10:32:12+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -87,7 +126,7 @@
                 />
   </url><url>
     <loc>https://kubeclipper.io/en/docs/contribution-guidelines/</loc>
-    <lastmod>2022-07-08T22:41:38+08:00</lastmod>
+    <lastmod>2022-09-08T10:32:12+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -97,6 +136,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://kubeclipper.io/en/docs/contribution-guidelines/"
+                />
+  </url><url>
+    <loc>https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</loc>
+    <lastmod>2022-09-08T10:32:12+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kubeclipper.io/docs/getting-started/carete-k8s-cluster-offline/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/"
                 />
   </url><url>
     <loc>https://kubeclipper.io/en/docs/</loc>

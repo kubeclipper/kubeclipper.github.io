@@ -600,37 +600,5 @@
       </description>
     </item>
     
-    <item>
-      <title>Docs: 使用 Kubeclipper 离线创建 k8s 集群</title>
-      <link>https://kubeclipper.io/docs/tutorials/carete-k8s-cluster-offline/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubeclipper.io/docs/tutorials/carete-k8s-cluster-offline/</guid>
-      <description>
-        
-        
-        &lt;h2 id=&#34;1-进入创建界面&#34;&gt;1. 进入创建界面&lt;/h2&gt;
-&lt;p&gt;登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/cluster-begin.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;2-配置集群节点&#34;&gt;2. 配置集群节点&lt;/h2&gt;
-&lt;p&gt;按照文字提示完成输入集群名称、选择节点等步骤&lt;/p&gt;
-&lt;p&gt;注意: master 节点数量不能为偶数&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/cluster-node-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;3-配置集群&#34;&gt;3. 配置集群&lt;/h2&gt;
-&lt;p&gt;此步骤用于配置集群网络以及数据库、容器运行时等组件&lt;/p&gt;
-&lt;p&gt;选择离线安装并填写首先搭建好的镜像仓库地址&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/cluster-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;4-配置存储&#34;&gt;4. 配置存储&lt;/h2&gt;
-&lt;p&gt;选择 nfs 存储，按照文字提示填写相应内容&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/cluster-storage-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;5-安装完成&#34;&gt;5. 安装完成&lt;/h2&gt;
-&lt;p&gt;完成所有配置确认安装&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/cluster-finish.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;安装成功，集群正常运行&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-tutorials/cluster-success.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-
-      </description>
-    </item>
-    
   </channel>
 </rss>

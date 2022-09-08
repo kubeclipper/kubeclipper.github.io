@@ -14,6 +14,38 @@
     
     
     <item>
+      <title>Docs: Create k8s clusters offline using the kubeclipper platform</title>
+      <link>https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;1-go-to-the-creation-screen&#34;&gt;1. Go to the creation screen&lt;/h2&gt;
+&lt;p&gt;Log in to the &lt;code&gt;Kubeclipper&lt;/code&gt; platform and click the button as shown in the figure to enter the cluster creation interface&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-quickstart/cluster-begin.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-configure-cluster-nodes&#34;&gt;2. Configure cluster nodes&lt;/h2&gt;
+&lt;p&gt;Follow the text prompts to complete the steps of entering the cluster name and selecting nodes&lt;/p&gt;
+&lt;p&gt;Note: The number of master nodes cannot be an even number.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-quickstart/cluster-node-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-configure-cluster&#34;&gt;3. Configure cluster&lt;/h2&gt;
+&lt;p&gt;This step is used to configure the cluster network and components such as the database and container runtime&lt;/p&gt;
+&lt;p&gt;Select offline installation and fill in the address of the image repository you have built first&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-quickstart/cluster-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-configure-cluster-storage&#34;&gt;4. Configure cluster storage&lt;/h2&gt;
+&lt;p&gt;Select nfs storage and follow the text prompts to fill in the appropriate fields&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-quickstart/cluster-storage-config.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-installation-completed&#34;&gt;5. Installation completed&lt;/h2&gt;
+&lt;p&gt;Complete all configurations to confirm installation&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-quickstart/cluster-finish.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Installation is successful and the cluster is up and running&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-quickstart/cluster-successful.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Example Page</title>
       <link>https://kubeclipper.io/en/docs/getting-started/example-page/</link>
       <pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate>
