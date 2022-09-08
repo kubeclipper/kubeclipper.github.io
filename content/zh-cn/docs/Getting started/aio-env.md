@@ -3,6 +3,7 @@ categories: ["QuickStart"]
 tags: ["aio", "sample", "docs"]
 title: "部署AIO"
 linkTitle: "部署AIO"
+weight: 2
 date: 2022-08-16
 description: >
   部署AIO环境

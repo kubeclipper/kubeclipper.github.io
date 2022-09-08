@@ -1,7 +1,7 @@
 ---
-title: "Reference"
-linkTitle: "Reference"
-weight: 5
+title: "Deployment docs"
+linkTitle: "Deployment docs"
+weight: 3
 description: >
   Low level reference docs for your project.
 ---
