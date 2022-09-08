@@ -3,7 +3,7 @@ categories: ["QuickStart"]
 tags: ["docs"] 
 title: "快速开始"
 linkTitle: "快速开始"
-weight: 2
+weight: 1
 description: >
   快速搭建平台使用功能
 ---

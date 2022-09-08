@@ -1,7 +1,7 @@
 ---
-title: "Reference"
-linkTitle: "Reference"
-weight: 5
+title: "部署文档"
+linkTitle: "部署文档"
+weight: 2
 description: >
   Low level reference docs for your project.
 ---

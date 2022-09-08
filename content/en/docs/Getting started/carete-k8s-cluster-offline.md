@@ -10,7 +10,7 @@ description: >
 
 Log in to the `Kubeclipper` platform and click the button as shown in the figure to enter the cluster creation interface
 
-![](/images/docs-tutorials/cluster-begin.png)
+![](/images/docs-quickstart/cluster-begin.png)
 
 ## 2. Configure cluster nodes
 
@@ -18,7 +18,7 @@ Follow the text prompts to complete the steps of entering the cluster name and s
 
 Note: The number of master nodes cannot be an even number.
 
-![](/images/docs-tutorials/cluster-node-config.png)
+![](/images/docs-quickstart/cluster-node-config.png)
 
 ## 3. Configure cluster
 
@@ -26,21 +26,21 @@ This step is used to configure the cluster network and components such as the da
 
 Select offline installation and fill in the address of the image repository you have built first
 
-![](/images/docs-tutorials/cluster-config.png)
+![](/images/docs-quickstart/cluster-config.png)
 
 ## 4. Configure cluster storage
 
 Select nfs storage and follow the text prompts to fill in the appropriate fields
 
-![](/images/docs-tutorials/cluster-storage-config.png)
+![](/images/docs-quickstart/cluster-storage-config.png)
 
 ## 5. Installation completed
 
 Complete all configurations to confirm installation
 
-![](/images/docs-tutorials/cluster-finish.png)
+![](/images/docs-quickstart/cluster-finish.png)
 
 Installation is successful and the cluster is up and running
 
-![](/images/docs-tutorials/cluster-success.png)
+![](/images/docs-quickstart/cluster-successful.png)
 
