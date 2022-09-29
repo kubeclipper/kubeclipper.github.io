@@ -41,7 +41,7 @@ KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以
 curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -
 ```
 
-> 您也可以在 [GitHub Release Page](https://github.com/kubeclipper-labs/kubeclipper/releases) 下载指定版本。
+> 您也可以在 [GitHub Release Page](https://github.com/kubeclipper/kubeclipper/releases) 下载指定版本。
 
 通过以下命令检测是否安装成功:
 
