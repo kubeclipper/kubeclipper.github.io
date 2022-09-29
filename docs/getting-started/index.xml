@@ -22,14 +22,7 @@
       <description>
         
         
-        
-
-&lt;div class=&#34;pageinfo pageinfo-primary&#34;&gt;
-&lt;p&gt;This is a placeholder page. Replace it with your own content.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;对于初次接触 KubeClipper 并想快速上手的用户，建议使用 All-in-One 安装模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p&gt;
+        &lt;p&gt;对于初次接触 KubeClipper 并想快速上手的用户，建议使用 All-in-One 安装模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p&gt;
 &lt;h2 id=&#34;部署-kubeclipper&#34;&gt;部署 KubeClipper&lt;/h2&gt;
 &lt;h3 id=&#34;下载-kcctl&#34;&gt;下载 kcctl&lt;/h3&gt;
 &lt;p&gt;KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：&lt;/p&gt;

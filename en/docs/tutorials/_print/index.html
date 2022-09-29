@@ -134,7 +134,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b33b437fd4f5daf5c9ea96f240effd99.json"
+  data-offline-search-index-json-src="/offline-search-index.d67edfd9bce965a39601e72ddc48bd01.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="25"
 >
@@ -180,7 +180,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>1: <a href="#pg-9db4787abe05db7c233072bf3fa9f94e">Access control</a></li>
+<li>1: <a href="#pg-502f2b1bbafe2aca0d506e0d2b495a3d">Cluster management</a></li>
 
 
     
@@ -188,7 +188,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>2: <a href="#pg-502f2b1bbafe2aca0d506e0d2b495a3d">Cluster management</a></li>
+<li>2: <a href="#pg-f8b869abb7ea8ad8dbef714007033263">Node &amp; Zone Management</a></li>
 
 
     
@@ -196,31 +196,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3: <a href="#pg-f8b869abb7ea8ad8dbef714007033263">Node &amp; Zone Management</a></li>
-
-
-    
-  
-    
-    
-	
-<li>4: <a href="#pg-fddaec26910ae7c1f9244de6c77eee8b">Deploy HA</a></li>
-
-
-    
-  
-    
-    
-	
-<li>5: <a href="#pg-06285b237e6e217b13f8d9c941a9de18">Multi-Bear Domicile Setup</a></li>
-
-
-    
-  
-    
-    
-	
-<li>6: <a href="#pg-c86b0cbc9ee1f95a6facb6bff0282978">Another Tutorial</a></li>
+<li>3: <a href="#pg-9db4787abe05db7c233072bf3fa9f94e">Access control</a></li>
 
 
     
@@ -259,101 +235,7 @@ This is the multi-page printable view of this section.
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-9db4787abe05db7c233072bf3fa9f94e">1 - Access control</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
-	<h2 id="create-user"><strong>Create user</strong></h2>
-<p>After installing KubeClipper, you need to create a user for the desired role. Initially, the system has only one user, admin, by default, with the platform administrator role.</p>
-<p>Click &quot;Access Control&quot; &gt; &quot;Users&quot; to enter the user management page, click the &quot;Create User&quot; button in the upper left corner, fill in the user name, password, mobile phone number, email and other information in the pop-up window, specify the user role, and click the &quot;OK&quot; button. The four built-in roles in the system are as follows:</p>
-<ul>
-<li>
-<p>Platform administrator: have platform configuration, cluster management, user management and other platform viewing and operation rights.</p>
-</li>
-<li>
-<p>Cluster Administrator: Have all cluster management rights.</p>
-</li>
-<li>
-<p>User Administrator: Have all user management rights.</p>
-</li>
-<li>
-<p>Platform read-only users: have platform viewing rights.</p>
-</li>
-</ul>
-<p>After the user is created, you can view the user details and login logs on the user details page and do the following:</p>
-<ul>
-<li>
-<p>Edit: Edit user alias, role, mobile phone number, email information.</p>
-</li>
-<li>
-<p>Edit Password: Edit the user login password.</p>
-</li>
-<li>
-<p>Delete: Delete the user.</p>
-</li>
-</ul>
-<h2 id="create-a-custom-role"><strong>Create a custom role</strong></h2>
-<p>In addition to system built-in roles, you can also create custom roles to meet business needs.</p>
-<p>Click &quot;Access Control&quot; &gt; &quot;Roles&quot; to enter the role management page. You can click the &quot;Create Role&quot; button in the upper left corner to create a custom role.</p>
-<p>On the Create Role page, you need to fill in the role name and description, and check the permissions required to customize the role. Some permissions depend on other permissions. When these permissions are selected, the dependent permissions will be automatically selected.</p>
-<p>After creating a custom role, you can view the basic role information, role permission list, authorized user list on the role details page, and perform the following operations for the custom role:</p>
-<ul>
-<li>
-<p>Edit: Edit the custom role alias.</p>
-</li>
-<li>
-<p>Edit permissions: Edit permissions under the custom role.</p>
-</li>
-<li>
-<p>Delete: To delete a custom role, make sure that no user is using the role to be deleted.</p>
-</li>
-</ul>
-<h2 id="access-to-external-users"><strong>Access to external users</strong></h2>
-<p>KubeClipper can log in using external users via the OIDC protocol .</p>
-<p>First, the platform administrator needs to log in to the platform server node and insert the following information under authentication in the kubeclipepr-server.yaml file:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Plain" data-lang="Plain"><span style="display:flex;"><span>oauthOptions:
-</span></span><span style="display:flex;"><span>    identityProviders:
-</span></span><span style="display:flex;"><span>    - name: keycloak
-</span></span><span style="display:flex;"><span>      type: OIDC
-</span></span><span style="display:flex;"><span>      mappingMethod: auto
-</span></span><span style="display:flex;"><span>      provider:
-</span></span><span style="display:flex;"><span>        clientID: kc
-</span></span><span style="display:flex;"><span>        clientSecret: EErn729BB1bKawdRtnZgrqj9Bx0]mzUs
-</span></span><span style="display:flex;"><span>        issuer: http://172.20.163.233:7777/auth/realms/kubeclipper
-</span></span><span style="display:flex;"><span>        scopes:
-</span></span><span style="display:flex;"><span>        - openid
-</span></span><span style="display:flex;"><span>        - email
-</span></span><span style="display:flex;"><span>        redirectURL: http://{kc-console-address}/oatuh2/redirect/{IDP-Name}
-</span></span></code></pre></div><p>Under &quot;provider&quot;, you need to fill in the clientID , clientSecret , and issuer information of your OAuth2 service, taking keycloack as an example, as shown in the figure below.</p>
-<p>RedirectURL example: http://172.0.0.90/oauth2/redirect/keycloack</p>
-<p><img src="/images/docs-tutorials/keycloak-client.png" alt=""></p>
-<p><img src="/images/docs-tutorials/keycloak-client2.png" alt=""></p>
-<p>OAuth2 users can access and use the KubeClipper platform by following these steps:</p>
-<ol>
-<li>
-<p>Click the &quot;OAuth2 Login&quot; button on the login page, enter the OAuth2 login page, enter the username and password to log in, enter the KubeClipper platform. When logging in for the first time, you will not be able to access the platform because you have not been granted any permission.</p>
-</li>
-<li>
-<p>The platform administrator or other user with user management rights log in to KubeClipper, find the target OAuth2 user on the user management page, and set the user role by editing the user information.</p>
-</li>
-<li>
-<p>The OAuth2 user repeats the first step, logs in to KubeClipper, and can access the platform normally and perform operations within the role permissions.</p>
-</li>
-</ol>
-
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-502f2b1bbafe2aca0d506e0d2b495a3d">2 - Cluster management</h1>
+	<h1 id="pg-502f2b1bbafe2aca0d506e0d2b495a3d">1 - Cluster management</h1>
     <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
 	<h2 id="create-a-kubernetes-cluster"><strong>Create a kubernetes cluster</strong></h2>
 <p>You can create a kubernetes cluster through the wizard-style page, and install the required plugins such as CNI and CSI. You can also save the cluster template in advance, and create a cluster quickly after selecting the template.</p>
@@ -716,7 +598,7 @@ This is the multi-page printable view of this section.
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f8b869abb7ea8ad8dbef714007033263">3 - Node &amp; Zone Management</h1>
+	<h1 id="pg-f8b869abb7ea8ad8dbef714007033263">2 - Node &amp; Zone Management</h1>
     <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
 	<p>On the &quot;Node Information&quot; page, you can view the list of all nodes managed in the platform, node specifications, status and other information. Click the node name to enter the node details page, you can view detailed node basic information and system information.</p>
 <p><img src="/images/docs-tutorials/node-info.png" alt=""></p>
@@ -748,702 +630,86 @@ This is the multi-page printable view of this section.
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-fddaec26910ae7c1f9244de6c77eee8b">4 - Deploy HA</h1>
-    <div class="lead">deploy a high available kubeclipper by some simple cmd.</div>
-	<p>The purpose of this document is to deploy an HA  KubeClipper with a simple operation.</p>
-<blockquote>
-<p>If you just want a simple experience, please refer to <a href="https://github.com/kubeclipper/kubeclipper#quick-start">QuickStart</a> to deploy AIO environment.</p>
-</blockquote>
-<h2 id="preparations">Preparations</h2>
-<p>You only need to prepare a host with reference to the following requirements for machine hardware and operating system: Preparations</p>
-<p>HA Deploy Recommend:</p>
-<ul>
-<li>Kubeclipper uses etcd as backend storage. In order to ensure high availability, it is recommended to use 3 nodes and above for deployment.</li>
-<li>At the same time, the production environment recommends that the server node and the agent node be separated to avoid acting as both the server node and the agent node at the same time.
-Node planning:</li>
-</ul>
-<h2 id="deploying-kubeclipper">Deploying KubeClipper</h2>
-<h3 id="download-kcctl">Download kcctl</h3>
-<p>KubeClipper provides command line tools 🔧 kcctl to simplify operation and maintenance work. You can directly download the latest version of kcctl with the following command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sfL https://oss.kubeclipper.io/kcctl.sh <span style="color:#000;font-weight:bold">|</span> sh -
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># In China, you can add cn env, we use registry.aliyuncs.com/google_containers instead of k8s.gcr.io</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -</span>
-</span></span></code></pre></div><blockquote>
-<p>You can also download the specified version on the <a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page</a>.</p>
-</blockquote>
-<p>Check if the installation is successful with the following command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl version
-</span></span></code></pre></div><h3 id="get-started-with-installation">Get Started with Installation</h3>
-<p>All you need to do is execute a command to install KubeClipper, whose template looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy  <span style="color:#ce5c00;font-weight:bold">[</span>--user root<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">(</span>--passwd SSH_PASSWD <span style="color:#000;font-weight:bold">|</span> --pk-file SSH_PRIVATE_KEY<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>--server SERVER_NODES<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>--agent AGENT_NODES<span style="color:#ce5c00;font-weight:bold">)</span>
-</span></span></code></pre></div><p>If you use the ssh passwd method, the command is as follows:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy --user root --passwd <span style="color:#000">$SSH_PASSWD</span> --server SERVER_NODES --agent AGENT_NODES
-</span></span></code></pre></div><p>The private key method is as follows:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy --user root --pk-file <span style="color:#000">$SSH_PRIVATE_KEY</span> --server SERVER_NODES --agent AGENT_NODES
-</span></span></code></pre></div><blockquote>
-<p>You only need to provide ssh user and ssh passwd or ssh private key to deploy KubeClipper on the corresponding node.</p>
-</blockquote>
-<p>This tutorial uses the private key to deploy, the specific commands are as follows:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl deploy --server 192.168.10.110,192.168.10.111,192.168.10.112 --agent 192.168.10.113,192.168.10.114,192.168.10.115 --pk-file ~/.ssh/id_rsa --pkg https://oss.kubeclipper.io/release/v1.1.0/kc-amd64.tar.gz
-</span></span></code></pre></div><blockquote>
-<p>This  command shows kubeclipper platform will has 3 server node and 3 agent node.</p>
-</blockquote>
-<blockquote>
-<p>You can visit the <a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page</a> to view the current KubeClipper release version and modify the version number in the pkg parameter.</p>
-<p>For example, after the v1.2.0 release you can specify &ndash;pkg as the <a href="https://oss.kubeclipper.io/release/v1.2.0/kc-amd64.tar.gz">https://oss.kubeclipper.io/release/v1.2.0/kc-amd64.tar.gz</a> to install the v1.2.0 version.</p>
-</blockquote>
-<p>After you runn this command, kcctl will check your installation environment and enter the installation process, if the conditions are met.
-After printing the KubeClipper banner, the installation is complete.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span> / /     <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>        /  __ <span style="color:#4e9a06">\ </span><span style="color:#ce5c00;font-weight:bold">(</span>_<span style="color:#ce5c00;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>/ / _   _<span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>__   ___<span style="color:#000;font-weight:bold">|</span> /  <span style="color:#4e9a06">\/</span> <span style="color:#000;font-weight:bold">|</span>_ _ __  _ __   ___ _ __
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span>    <span style="color:#4e9a06">\|</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#4e9a06">&#39;_ \ / _ \ |   | | | &#39;</span>_ <span style="color:#4e9a06">\|</span> <span style="color:#4e9a06">&#39;_ \ / _ \ &#39;</span>__<span style="color:#000;font-weight:bold">|</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span><span style="color:#4e9a06">\ </span> <span style="color:#4e9a06">\ </span><span style="color:#000;font-weight:bold">|</span>_<span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>_<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">|</span>  __/ <span style="color:#4e9a06">\_</span>_/<span style="color:#4e9a06">\ </span><span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>_<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>_<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">|</span>  __/ <span style="color:#000;font-weight:bold">|</span>
-</span></span><span style="display:flex;"><span><span style="color:#4e9a06">\_</span><span style="color:#000;font-weight:bold">|</span> <span style="color:#4e9a06">\_</span>/<span style="color:#4e9a06">\_</span>_,_<span style="color:#000;font-weight:bold">|</span>_.__/ <span style="color:#4e9a06">\_</span>__<span style="color:#000;font-weight:bold">|</span><span style="color:#4e9a06">\_</span>___/_<span style="color:#000;font-weight:bold">|</span>_<span style="color:#000;font-weight:bold">|</span> .__/<span style="color:#000;font-weight:bold">|</span> .__/ <span style="color:#4e9a06">\_</span>__<span style="color:#000;font-weight:bold">|</span>_<span style="color:#000;font-weight:bold">|</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>   <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">|</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">|</span>_<span style="color:#000;font-weight:bold">|</span>   <span style="color:#000;font-weight:bold">|</span>_<span style="color:#000;font-weight:bold">|</span>
-</span></span></code></pre></div><h3 id="login-console">Login console</h3>
-<p>When deployed successfully, you can open a browser and visit http://$IP to enter the KubeClipper console.</p>
-<p><img src="/images/docs-quickstart/console-login.png" alt="console"></p>
-<p>You can log in with the default account password <code>admin/Thinkbig1</code>.</p>
-<blockquote>
-<p>You may need to configure port forwarding rules and open ports in security groups for external users to access the console.</p>
-</blockquote>
-
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-06285b237e6e217b13f8d9c941a9de18">5 - Multi-Bear Domicile Setup</h1>
+	<h1 id="pg-9db4787abe05db7c233072bf3fa9f94e">3 - Access control</h1>
     <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
-</div>
-
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://gohugo.io">Links</a> should be blue with no underlines (unless hovered over).</p>
-<p>There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.</p>
-<p>90&rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps <strong>kale chips</strong>.</p>
-<blockquote>
-<p>There should be no margin above this first sentence.</p>
-<p>Blockquotes should be a lighter gray with a border along the left side in the secondary color.</p>
-<p>There should be no margin below this final sentence.</p>
-</blockquote>
-<h2 id="first-header-2">First Header 2</h2>
-<p>This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier <strong>craft beer</strong>. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&rsquo;t heard of them copper mug, crucifix green juice vape <em>single-origin coffee</em> brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!</p>
-<p>Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.</p>
-<p>On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.</p>
-<p>Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;B. <strong>I love this life we live in</strong>.</p>
-<h2 id="second-header-2">Second Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-</blockquote>
-<h3 id="header-3">Header 3</h3>
-<pre tabindex="0"><code>This is a code block following a header.
-</code></pre><p>Next level leggings before they sold out, PBR&amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.</p>
-<h4 id="header-4">Header 4</h4>
+	<h2 id="create-user"><strong>Create user</strong></h2>
+<p>After installing KubeClipper, you need to create a user for the desired role. Initially, the system has only one user, admin, by default, with the platform administrator role.</p>
+<p>Click &quot;Access Control&quot; &gt; &quot;Users&quot; to enter the user management page, click the &quot;Create User&quot; button in the upper left corner, fill in the user name, password, mobile phone number, email and other information in the pop-up window, specify the user role, and click the &quot;OK&quot; button. The four built-in roles in the system are as follows:</p>
 <ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-</ul>
-<h5 id="header-5">Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6">Header 6</h6>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Follows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>There&rsquo;s a horizontal rule above and below this.</p>
-<hr>
-<p>Here is an unordered list:</p>
-<ul>
-<li>Liverpool F.C.</li>
-<li>Chelsea F.C.</li>
-<li>Manchester United F.C.</li>
-</ul>
-<p>And an ordered list:</p>
-<ol>
-<li>Michael Brecker</li>
-<li>Seamus Blake</li>
-<li>Branford Marsalis</li>
-</ol>
-<p>And an unordered task list:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> Create a Hugo theme</li>
-<li><input checked="" disabled="" type="checkbox"> Add task lists to it</li>
-<li><input disabled="" type="checkbox"> Take a vacation</li>
-</ul>
-<p>And a &ldquo;mixed&rdquo; task list:</p>
-<ul>
-<li><input disabled="" type="checkbox"> Pack bags</li>
-<li>?</li>
-<li><input disabled="" type="checkbox"> Travel!</li>
-</ul>
-<p>And a nested list:</p>
-<ul>
-<li>Jackson 5
-<ul>
-<li>Michael</li>
-<li>Tito</li>
-<li>Jackie</li>
-<li>Marlon</li>
-<li>Jermaine</li>
-</ul>
+<li>
+<p>Platform administrator: have platform configuration, cluster management, user management and other platform viewing and operation rights.</p>
 </li>
-<li>TMNT
-<ul>
-<li>Leonardo</li>
-<li>Michelangelo</li>
-<li>Donatello</li>
-<li>Raphael</li>
-</ul>
+<li>
+<p>Cluster Administrator: Have all cluster management rights.</p>
+</li>
+<li>
+<p>User Administrator: Have all user management rights.</p>
+</li>
+<li>
+<p>Platform read-only users: have platform viewing rights.</p>
 </li>
 </ul>
-<p>Definition lists can be used with Markdown syntax. Definition headers are bold.</p>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-<hr>
-<p>Tables should have bold headings and alternating shaded rows.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-</tr>
-</tbody>
-</table>
-<p>If a table is too wide, it should scroll horizontally.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-<th>Label</th>
-<th>Awards</th>
-<th>Songs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-<td>Epic Records</td>
-<td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-<td>Wanna Be Startin&rsquo; Somethin&rsquo;, Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-<td>Warner Brothers Records</td>
-<td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-<td>Let&rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&rsquo;m a Star, Purple Rain</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-<td>Mercury Records</td>
-<td>noawardsbutthistablecelliswide</td>
-<td>Rhymin &amp; Stealin, The New Style, She&rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Code snippets like <code>var foo = &quot;bar&quot;;</code> can be shown inline.</p>
-<p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-<p>Code can also be shown in a block element.</p>
-<pre tabindex="0"><code>foo := &#34;bar&#34;;
-bar := &#34;foo&#34;;
-</code></pre><p>Code can also use syntax highlighting.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000">main</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#4e9a06">`var foo = &#34;bar&#34;;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">lexer</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;javascript&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">_</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Tokenise</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">style</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">styles</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;github&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">formatter</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">New</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">WithLineNumbers</span><span style="color:#000;font-weight:bold">())</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">buff</span> <span style="color:#000">bytes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Buffer</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">formatter</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">style</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">fmt</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">())</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><pre tabindex="0"><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><p>Inline code inside table cells should still be distinguishable.</p>
-<table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Javascript</td>
-<td><code>var foo = &quot;bar&quot;;</code></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><code>foo = &quot;bar&quot;{</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Small images should be shown at their actual size.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p>Large images should always scale down and fit in the content container.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p><em>The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.</em></p>
-<h2 id="components">Components</h2>
-<h3 id="alerts">Alerts</h3>
-<p>
-
-<div class="alert alert-primary" role="alert">
-
-
-    This is an alert.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title and <strong>Markdown</strong>.
-
-</div>
-
-
-
-<div class="alert alert-success" role="alert">
-
-
-    This is a successful alert.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-
-
-    This is a warning.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    This is a warning with a title.
-
-</div>
-</p>
-<h2 id="another-heading">Another Heading</h2>
-<p>Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-<h3 id="this-document">This Document</h3>
-<p>Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam <em>eripitur</em>? Sitim noceat signa <em>probat quidem</em>. Sua longis <em>fugatis</em> quidem genae.</p>
-<h3 id="pixel-count">Pixel Count</h3>
-<p>Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.</p>
-<h3 id="contact-info">Contact Info</h3>
-<p>Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.</p>
-<h3 id="external-links">External Links</h3>
-<p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
-<pre tabindex="0"><code>This is the final element on the page and there should be no margin below this.
-</code></pre>
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-c86b0cbc9ee1f95a6facb6bff0282978">6 - Another Tutorial</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
-</div>
-
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://gohugo.io">Links</a> should be blue with no underlines (unless hovered over).</p>
-<p>There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.</p>
-<p>90&rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps <strong>kale chips</strong>.</p>
-<blockquote>
-<p>There should be no margin above this first sentence.</p>
-<p>Blockquotes should be a lighter gray with a border along the left side in the secondary color.</p>
-<p>There should be no margin below this final sentence.</p>
-</blockquote>
-<h2 id="first-header-2">First Header 2</h2>
-<p>This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier <strong>craft beer</strong>. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&rsquo;t heard of them copper mug, crucifix green juice vape <em>single-origin coffee</em> brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!</p>
-<p>Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.</p>
-<p>On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.</p>
-<p>Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;B. <strong>I love this life we live in</strong>.</p>
-<h2 id="second-header-2">Second Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-</blockquote>
-<h3 id="header-3">Header 3</h3>
-<pre tabindex="0"><code>This is a code block following a header.
-</code></pre><p>Next level leggings before they sold out, PBR&amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.</p>
-<h4 id="header-4">Header 4</h4>
+<p>After the user is created, you can view the user details and login logs on the user details page and do the following:</p>
 <ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-</ul>
-<h5 id="header-5">Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6">Header 6</h6>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Follows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>There&rsquo;s a horizontal rule above and below this.</p>
-<hr>
-<p>Here is an unordered list:</p>
-<ul>
-<li>Liverpool F.C.</li>
-<li>Chelsea F.C.</li>
-<li>Manchester United F.C.</li>
-</ul>
-<p>And an ordered list:</p>
-<ol>
-<li>Michael Brecker</li>
-<li>Seamus Blake</li>
-<li>Branford Marsalis</li>
-</ol>
-<p>And an unordered task list:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> Create a Hugo theme</li>
-<li><input checked="" disabled="" type="checkbox"> Add task lists to it</li>
-<li><input disabled="" type="checkbox"> Take a vacation</li>
-</ul>
-<p>And a &ldquo;mixed&rdquo; task list:</p>
-<ul>
-<li><input disabled="" type="checkbox"> Pack bags</li>
-<li>?</li>
-<li><input disabled="" type="checkbox"> Travel!</li>
-</ul>
-<p>And a nested list:</p>
-<ul>
-<li>Jackson 5
-<ul>
-<li>Michael</li>
-<li>Tito</li>
-<li>Jackie</li>
-<li>Marlon</li>
-<li>Jermaine</li>
-</ul>
+<li>
+<p>Edit: Edit user alias, role, mobile phone number, email information.</p>
 </li>
-<li>TMNT
-<ul>
-<li>Leonardo</li>
-<li>Michelangelo</li>
-<li>Donatello</li>
-<li>Raphael</li>
-</ul>
+<li>
+<p>Edit Password: Edit the user login password.</p>
+</li>
+<li>
+<p>Delete: Delete the user.</p>
 </li>
 </ul>
-<p>Definition lists can be used with Markdown syntax. Definition headers are bold.</p>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-<hr>
-<p>Tables should have bold headings and alternating shaded rows.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-</tr>
-</tbody>
-</table>
-<p>If a table is too wide, it should scroll horizontally.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-<th>Label</th>
-<th>Awards</th>
-<th>Songs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-<td>Epic Records</td>
-<td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-<td>Wanna Be Startin&rsquo; Somethin&rsquo;, Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-<td>Warner Brothers Records</td>
-<td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-<td>Let&rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&rsquo;m a Star, Purple Rain</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-<td>Mercury Records</td>
-<td>noawardsbutthistablecelliswide</td>
-<td>Rhymin &amp; Stealin, The New Style, She&rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Code snippets like <code>var foo = &quot;bar&quot;;</code> can be shown inline.</p>
-<p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-<p>Code can also be shown in a block element.</p>
-<pre tabindex="0"><code>foo := &#34;bar&#34;;
-bar := &#34;foo&#34;;
-</code></pre><p>Code can also use syntax highlighting.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000">main</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#4e9a06">`var foo = &#34;bar&#34;;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">lexer</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;javascript&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">_</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Tokenise</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">style</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">styles</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;github&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">formatter</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">New</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">WithLineNumbers</span><span style="color:#000;font-weight:bold">())</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">buff</span> <span style="color:#000">bytes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Buffer</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">formatter</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">style</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">fmt</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">())</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><pre tabindex="0"><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><p>Inline code inside table cells should still be distinguishable.</p>
-<table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Javascript</td>
-<td><code>var foo = &quot;bar&quot;;</code></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><code>foo = &quot;bar&quot;{</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Small images should be shown at their actual size.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p>Large images should always scale down and fit in the content container.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p><em>The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.</em></p>
-<h2 id="components">Components</h2>
-<h3 id="alerts">Alerts</h3>
-<p>
+<h2 id="create-a-custom-role"><strong>Create a custom role</strong></h2>
+<p>In addition to system built-in roles, you can also create custom roles to meet business needs.</p>
+<p>Click &quot;Access Control&quot; &gt; &quot;Roles&quot; to enter the role management page. You can click the &quot;Create Role&quot; button in the upper left corner to create a custom role.</p>
+<p>On the Create Role page, you need to fill in the role name and description, and check the permissions required to customize the role. Some permissions depend on other permissions. When these permissions are selected, the dependent permissions will be automatically selected.</p>
+<p>After creating a custom role, you can view the basic role information, role permission list, authorized user list on the role details page, and perform the following operations for the custom role:</p>
+<ul>
+<li>
+<p>Edit: Edit the custom role alias.</p>
+</li>
+<li>
+<p>Edit permissions: Edit permissions under the custom role.</p>
+</li>
+<li>
+<p>Delete: To delete a custom role, make sure that no user is using the role to be deleted.</p>
+</li>
+</ul>
+<h2 id="access-to-external-users"><strong>Access to external users</strong></h2>
+<p>KubeClipper can log in using external users via the OIDC protocol .</p>
+<p>First, the platform administrator needs to log in to the platform server node and insert the following information under authentication in the kubeclipepr-server.yaml file:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Plain" data-lang="Plain"><span style="display:flex;"><span>oauthOptions:
+</span></span><span style="display:flex;"><span>    identityProviders:
+</span></span><span style="display:flex;"><span>    - name: keycloak
+</span></span><span style="display:flex;"><span>      type: OIDC
+</span></span><span style="display:flex;"><span>      mappingMethod: auto
+</span></span><span style="display:flex;"><span>      provider:
+</span></span><span style="display:flex;"><span>        clientID: kc
+</span></span><span style="display:flex;"><span>        clientSecret: EErn729BB1bKawdRtnZgrqj9Bx0]mzUs
+</span></span><span style="display:flex;"><span>        issuer: http://172.20.163.233:7777/auth/realms/kubeclipper
+</span></span><span style="display:flex;"><span>        scopes:
+</span></span><span style="display:flex;"><span>        - openid
+</span></span><span style="display:flex;"><span>        - email
+</span></span><span style="display:flex;"><span>        redirectURL: http://{kc-console-address}/oatuh2/redirect/{IDP-Name}
+</span></span></code></pre></div><p>Under &quot;provider&quot;, you need to fill in the clientID , clientSecret , and issuer information of your OAuth2 service, taking keycloack as an example, as shown in the figure below.</p>
+<p>RedirectURL example: http://172.0.0.90/oauth2/redirect/keycloack</p>
+<p><img src="/images/docs-tutorials/keycloak-client.png" alt=""></p>
+<p><img src="/images/docs-tutorials/keycloak-client2.png" alt=""></p>
+<p>OAuth2 users can access and use the KubeClipper platform by following these steps:</p>
+<ol>
+<li>
+<p>Click the &quot;OAuth2 Login&quot; button on the login page, enter the OAuth2 login page, enter the username and password to log in, enter the KubeClipper platform. When logging in for the first time, you will not be able to access the platform because you have not been granted any permission.</p>
+</li>
+<li>
+<p>The platform administrator or other user with user management rights log in to KubeClipper, find the target OAuth2 user on the user management page, and set the user role by editing the user information.</p>
+</li>
+<li>
+<p>The OAuth2 user repeats the first step, logs in to KubeClipper, and can access the platform normally and perform operations within the role permissions.</p>
+</li>
+</ol>
 
-<div class="alert alert-primary" role="alert">
-
-
-    This is an alert.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title and <strong>Markdown</strong>.
-
-</div>
-
-
-
-<div class="alert alert-success" role="alert">
-
-
-    This is a successful alert.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-
-
-    This is a warning.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    This is a warning with a title.
-
-</div>
-</p>
-<h2 id="another-heading">Another Heading</h2>
-<p>Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-<h3 id="this-document">This Document</h3>
-<p>Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam <em>eripitur</em>? Sitim noceat signa <em>probat quidem</em>. Sua longis <em>fugatis</em> quidem genae.</p>
-<h3 id="pixel-count">Pixel Count</h3>
-<p>Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.</p>
-<h3 id="contact-info">Contact Info</h3>
-<p>Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.</p>
-<h3 id="external-links">External Links</h3>
-<p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
-<pre tabindex="0"><code>This is the final element on the page and there should be no margin below this.
-</code></pre>
 </div>
 
 

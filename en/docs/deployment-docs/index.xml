@@ -13,5 +13,77 @@
       
     
     
+    <item>
+      <title>Docs: Deploy HA</title>
+      <link>https://kubeclipper.io/en/docs/deployment-docs/ha-env/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubeclipper.io/en/docs/deployment-docs/ha-env/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The purpose of this document is to deploy an HA  KubeClipper with a simple operation.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you just want a simple experience, please refer to &lt;a href=&#34;https://github.com/kubeclipper/kubeclipper#quick-start&#34;&gt;QuickStart&lt;/a&gt; to deploy AIO environment.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;preparations&#34;&gt;Preparations&lt;/h2&gt;
+&lt;p&gt;You only need to prepare a host with reference to the following requirements for machine hardware and operating system: Preparations&lt;/p&gt;
+&lt;p&gt;HA Deploy Recommend:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Kubeclipper uses etcd as backend storage. In order to ensure high availability, it is recommended to use 3 nodes and above for deployment.&lt;/li&gt;
+&lt;li&gt;At the same time, the production environment recommends that the server node and the agent node be separated to avoid acting as both the server node and the agent node at the same time.
+Node planning:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;deploying-kubeclipper&#34;&gt;Deploying KubeClipper&lt;/h2&gt;
+&lt;h3 id=&#34;download-kcctl&#34;&gt;Download kcctl&lt;/h3&gt;
+&lt;p&gt;KubeClipper provides command line tools 🔧 kcctl to simplify operation and maintenance work. You can directly download the latest version of kcctl with the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; sh -
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# In China, you can add cn env, we use registry.aliyuncs.com/google_containers instead of k8s.gcr.io&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;You can also download the specified version on the &lt;a href=&#34;https://github.com/kubeclipper/kubeclipper/releases&#34;&gt;GitHub Release Page&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Check if the installation is successful with the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kcctl version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;get-started-with-installation&#34;&gt;Get Started with Installation&lt;/h3&gt;
+&lt;p&gt;All you need to do is execute a command to install KubeClipper, whose template looks like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kcctl deploy  &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;--user root&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;--passwd SSH_PASSWD &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; --pk-file SSH_PRIVATE_KEY&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;--server SERVER_NODES&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;--agent AGENT_NODES&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you use the ssh passwd method, the command is as follows:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kcctl deploy --user root --passwd &lt;span style=&#34;color:#000&#34;&gt;$SSH_PASSWD&lt;/span&gt; --server SERVER_NODES --agent AGENT_NODES
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The private key method is as follows:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kcctl deploy --user root --pk-file &lt;span style=&#34;color:#000&#34;&gt;$SSH_PRIVATE_KEY&lt;/span&gt; --server SERVER_NODES --agent AGENT_NODES
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;You only need to provide ssh user and ssh passwd or ssh private key to deploy KubeClipper on the corresponding node.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This tutorial uses the private key to deploy, the specific commands are as follows:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kcctl deploy --server 192.168.10.110,192.168.10.111,192.168.10.112 --agent 192.168.10.113,192.168.10.114,192.168.10.115 --pk-file ~/.ssh/id_rsa --pkg https://oss.kubeclipper.io/release/v1.1.0/kc-amd64.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;This  command shows kubeclipper platform will has 3 server node and 3 agent node.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can visit the &lt;a href=&#34;https://github.com/kubeclipper/kubeclipper/releases&#34;&gt;GitHub Release Page&lt;/a&gt; to view the current KubeClipper release version and modify the version number in the pkg parameter.&lt;/p&gt;
+&lt;p&gt;For example, after the v1.2.0 release you can specify &amp;ndash;pkg as the &lt;a href=&#34;https://oss.kubeclipper.io/release/v1.2.0/kc-amd64.tar.gz&#34;&gt;https://oss.kubeclipper.io/release/v1.2.0/kc-amd64.tar.gz&lt;/a&gt; to install the v1.2.0 version.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After you runn this command, kcctl will check your installation environment and enter the installation process, if the conditions are met.
+After printing the KubeClipper banner, the installation is complete.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; / /     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;        /  __ &lt;span style=&#34;color:#4e9a06&#34;&gt;\ &lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;_&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;/ / _   _&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;__   ___&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; /  &lt;span style=&#34;color:#4e9a06&#34;&gt;\/&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;_ _ __  _ __   ___ _ __
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;    &lt;span style=&#34;color:#4e9a06&#34;&gt;\|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;_ \ / _ \ |   | | | &amp;#39;&lt;/span&gt;_ &lt;span style=&#34;color:#4e9a06&#34;&gt;\|&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;_ \ / _ \ &amp;#39;&lt;/span&gt;__&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;\ &lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\ &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;_&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;_&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;  __/ &lt;span style=&#34;color:#4e9a06&#34;&gt;\_&lt;/span&gt;_/&lt;span style=&#34;color:#4e9a06&#34;&gt;\ &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;_&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;_&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;  __/ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;\_&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\_&lt;/span&gt;/&lt;span style=&#34;color:#4e9a06&#34;&gt;\_&lt;/span&gt;_,_&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;_.__/ &lt;span style=&#34;color:#4e9a06&#34;&gt;\_&lt;/span&gt;__&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;\_&lt;/span&gt;___/_&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;_&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; .__/&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; .__/ &lt;span style=&#34;color:#4e9a06&#34;&gt;\_&lt;/span&gt;__&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;_&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;_&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;_&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;login-console&#34;&gt;Login console&lt;/h3&gt;
+&lt;p&gt;When deployed successfully, you can open a browser and visit http://$IP to enter the KubeClipper console.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubeclipper.io/images/docs-quickstart/console-login.png&#34; alt=&#34;console&#34;&gt;&lt;/p&gt;
+&lt;p&gt;You can log in with the default account password &lt;code&gt;admin/Thinkbig1&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You may need to configure port forwarding rules and open ports in security groups for external users to access the console.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>
