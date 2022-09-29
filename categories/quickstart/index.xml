@@ -47,7 +47,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 如果你在中国， 你可以在安装时使用 cn  环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;KC_REGION&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cn sh -
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;您也可以在 &lt;a href=&#34;https://github.com/kubeclipper-labs/kubeclipper/releases&#34;&gt;GitHub Release Page&lt;/a&gt; 下载指定版本。&lt;/p&gt;
+&lt;p&gt;您也可以在 &lt;a href=&#34;https://github.com/kubeclipper/kubeclipper/releases&#34;&gt;GitHub Release Page&lt;/a&gt; 下载指定版本。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;通过以下命令检测是否安装成功:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kcctl version
@@ -119,7 +119,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 如果你在中国， 你可以在安装时使用 cn  环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;KC_REGION&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cn sh -
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;您也可以在 &lt;a href=&#34;https://github.com/kubeclipper-labs/kubeclipper/releases&#34;&gt;GitHub Release Page&lt;/a&gt; 下载指定版本。&lt;/p&gt;
+&lt;p&gt;您也可以在 &lt;a href=&#34;https://github.com/kubeclipper/kubeclipper/releases&#34;&gt;GitHub Release Page&lt;/a&gt; 下载指定版本。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;通过以下命令检测是否安装成功:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kcctl version

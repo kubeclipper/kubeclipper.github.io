@@ -42,8 +42,8 @@ This section is where the user documentation for your project lives - …">
 
 
 
-<link rel="preload" href="/scss/main.min.bffd66d5733bcd276a58d7c041115b4bd38ffc802af66dc8cbf4d62268e20d7a.css" as="style">
-<link href="/scss/main.min.bffd66d5733bcd276a58d7c041115b4bd38ffc802af66dc8cbf4d62268e20d7a.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.79560d8c5f5f4c12ca1cc4d6fea43895f0dc369082da96e638722582bca402a8.css" as="style">
+<link href="/scss/main.min.79560d8c5f5f4c12ca1cc4d6fea43895f0dc369082da96e638722582bca402a8.css" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -446,7 +446,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># 如果你在中国， 你可以在安装时使用 cn  环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io</span>
 </span></span><span style="display:flex;"><span>curl -sfL https://oss.kubeclipper.io/kcctl.sh <span style="color:#000;font-weight:bold">|</span> <span style="color:#000">KC_REGION</span><span style="color:#ce5c00;font-weight:bold">=</span>cn sh -
 </span></span></code></pre></div><blockquote>
-<p>您也可以在 <a href="https://github.com/kubeclipper-labs/kubeclipper/releases">GitHub Release Page</a> 下载指定版本。</p>
+<p>您也可以在 <a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page</a> 下载指定版本。</p>
 </blockquote>
 <p>通过以下命令检测是否安装成功:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl version
@@ -530,7 +530,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># 如果你在中国， 你可以在安装时使用 cn  环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io</span>
 </span></span><span style="display:flex;"><span>curl -sfL https://oss.kubeclipper.io/kcctl.sh <span style="color:#000;font-weight:bold">|</span> <span style="color:#000">KC_REGION</span><span style="color:#ce5c00;font-weight:bold">=</span>cn sh -
 </span></span></code></pre></div><blockquote>
-<p>您也可以在 <a href="https://github.com/kubeclipper-labs/kubeclipper/releases">GitHub Release Page</a> 下载指定版本。</p>
+<p>您也可以在 <a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page</a> 下载指定版本。</p>
 </blockquote>
 <p>通过以下命令检测是否安装成功:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl version
@@ -1109,7 +1109,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
     <div class="lead">通过简单的操作部署一个高可用的 kubeclipper</div>
 	<p>本文档旨在通过简单的操作部署一个 HA 版本的 kubeclipper。</p>
 <blockquote>
-<p>如果只是想简单体验一下，请参考 <a href="https://github.com/kubeclipper-labs/kubeclipper/blob/master/README_zh.md#quick-start">QuickStart</a> 部署 AIO 环境。</p>
+<p>如果只是想简单体验一下，请参考 <a href="https://github.com/kubeclipper/kubeclipper/blob/master/README_zh.md#quick-start">QuickStart</a> 部署 AIO 环境。</p>
 </blockquote>
 <h2 id="准备工作">准备工作</h2>
 <p>HA 部署注意事项：</p>
@@ -1117,7 +1117,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <li>kubeclipper 使用 etcd 作为后端存储，为了保证高可用，建议使用 3 节点及以上来部署。</li>
 <li>生产环境建议 server 节点和 agent 节点分离，避免某一主机同时作为 server 节点和 agent 节点。</li>
 </ul>
-<p>主机要求：您仅需参考  <a href="https://github.com/kubeclipper-labs/kubeclipper/blob/master/README_zh.md#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a> 中对机器硬件和操作系统的要求准备多台主机。</p>
+<p>主机要求：您仅需参考  <a href="https://github.com/kubeclipper/kubeclipper/blob/master/README_zh.md#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a> 中对机器硬件和操作系统的要求准备多台主机。</p>
 <h2 id="部署-kubeclipper">部署 KubeClipper</h2>
 <h3 id="下载-kcctl">下载 kcctl</h3>
 <p>KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：</p>
@@ -1125,7 +1125,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># 如果你在中国， 你可以在安装时使用 cn  环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io</span>
 </span></span><span style="display:flex;"><span>curl -sfL https://oss.kubeclipper.io/kcctl.sh <span style="color:#000;font-weight:bold">|</span> <span style="color:#000">KC_REGION</span><span style="color:#ce5c00;font-weight:bold">=</span>cn sh -
 </span></span></code></pre></div><blockquote>
-<p>您也可以在 <a href="https://github.com/kubeclipper-labs/kubeclipper/releases">GitHub Release Page</a> 下载指定版本。</p>
+<p>您也可以在 <a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page</a> 下载指定版本。</p>
 </blockquote>
 <p>通过以下命令检测是否安装成功:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcctl version
@@ -1144,7 +1144,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </span></span></code></pre></div><blockquote>
 <p>该命令指定 kubeclipper 包含 3 server 节点，3 agent 节点。</p>
 </blockquote>
-<p>您可以访问  <a href="https://github.com/kubeclipper-labs/kubeclipper/releases">GitHub Release Page</a>  查看当前 KubeClipper 的 Release 版本，来修改 pkg 参数中的版本号。</p>
+<p>您可以访问  <a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page</a>  查看当前 KubeClipper 的 Release 版本，来修改 pkg 参数中的版本号。</p>
 <blockquote>
 <p>比如在 v1.2.0 版本 release 之后您可以指定 &ndash;pkg 为 <code>https://oss.kubeclipper.io/release/v1.2.0/kc-amd64.tar.gz</code> 来安装 v1.2.0 版本。</p>
 </blockquote>
@@ -1687,7 +1687,7 @@ bar := &#34;foo&#34;;
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
-    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubeclipper-labs/kubeclipper" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/kubeclipper/kubeclipper" aria-label="GitHub">
       <i class="fab fa-github"></i>
     </a>
   </li>
