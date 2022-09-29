@@ -6,6 +6,8 @@ description: >
   How to contribute to the kubeclipper
 ---
 
+请查看 [KubeClipper Community](https://github.com/kubeclipper/community)
+
 
 
 
