@@ -1,7 +1,7 @@
 ---
 title: "Create k8s clusters offline using the kubeclipper platform"
 linkTitle: "create k8s cluster offline"
-weight: 6
+weight: 2
 description: >
   How to create a k8s cluster offline using the KC platform
 ---
