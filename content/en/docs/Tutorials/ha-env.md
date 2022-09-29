@@ -7,7 +7,7 @@ description: >
 ---
 
 The purpose of this document is to deploy an HA  KubeClipper with a simple operation.
-> If you just want a simple experience, please refer to [QuickStart](https://github.com/kubeclipper-labs/kubeclipper#quick-start) to deploy AIO environment.
+> If you just want a simple experience, please refer to [QuickStart](https://github.com/kubeclipper/kubeclipper#quick-start) to deploy AIO environment.
 
 
 
@@ -34,7 +34,7 @@ curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -
 # curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -
 ```
 
-> You can also download the specified version on the [GitHub Release Page](https://github.com/kubeclipper-labs/kubeclipper/releases).
+> You can also download the specified version on the [GitHub Release Page](https://github.com/kubeclipper/kubeclipper/releases).
 
 Check if the installation is successful with the following command:
 
@@ -74,7 +74,7 @@ kcctl deploy --server 192.168.10.110,192.168.10.111,192.168.10.112 --agent 192.1
 
 > This  command shows kubeclipper platform will has 3 server node and 3 agent node.
 
-> You can visit the [GitHub Release Page](https://github.com/kubeclipper-labs/kubeclipper/releases) to view the current KubeClipper release version and modify the version number in the pkg parameter.
+> You can visit the [GitHub Release Page](https://github.com/kubeclipper/kubeclipper/releases) to view the current KubeClipper release version and modify the version number in the pkg parameter.
 >
 > For example, after the v1.2.0 release you can specify --pkg as the https://oss.kubeclipper.io/release/v1.2.0/kc-amd64.tar.gz to install the v1.2.0 version.
 

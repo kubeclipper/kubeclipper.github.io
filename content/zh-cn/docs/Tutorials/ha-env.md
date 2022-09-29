@@ -8,7 +8,7 @@ description: >
 
 
 本文档旨在通过简单的操作部署一个 HA 版本的 kubeclipper。
-> 如果只是想简单体验一下，请参考 [QuickStart](https://github.com/kubeclipper-labs/kubeclipper/blob/master/README_zh.md#quick-start) 部署 AIO 环境。
+> 如果只是想简单体验一下，请参考 [QuickStart](https://github.com/kubeclipper/kubeclipper/blob/master/README_zh.md#quick-start) 部署 AIO 环境。
 
 ## 准备工作
 
@@ -17,7 +17,7 @@ HA 部署注意事项：
 - kubeclipper 使用 etcd 作为后端存储，为了保证高可用，建议使用 3 节点及以上来部署。
 - 生产环境建议 server 节点和 agent 节点分离，避免某一主机同时作为 server 节点和 agent 节点。
 
-主机要求：您仅需参考  [准备工作](https://github.com/kubeclipper-labs/kubeclipper/blob/master/README_zh.md#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C) 中对机器硬件和操作系统的要求准备多台主机。
+主机要求：您仅需参考  [准备工作](https://github.com/kubeclipper/kubeclipper/blob/master/README_zh.md#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C) 中对机器硬件和操作系统的要求准备多台主机。
 
 
 ## 部署 KubeClipper
@@ -32,7 +32,7 @@ KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以
 curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -
 ```
 
-> 您也可以在 [GitHub Release Page](https://github.com/kubeclipper-labs/kubeclipper/releases) 下载指定版本。
+> 您也可以在 [GitHub Release Page](https://github.com/kubeclipper/kubeclipper/releases) 下载指定版本。
 
 通过以下命令检测是否安装成功:
 
@@ -74,7 +74,7 @@ kcctl deploy --server 192.168.10.110,192.168.10.111,192.168.10.112 --agent 192.1
 
 > 该命令指定 kubeclipper 包含 3 server 节点，3 agent 节点。
 
-您可以访问  [GitHub Release Page](https://github.com/kubeclipper-labs/kubeclipper/releases)  查看当前 KubeClipper 的 Release 版本，来修改 pkg 参数中的版本号。
+您可以访问  [GitHub Release Page](https://github.com/kubeclipper/kubeclipper/releases)  查看当前 KubeClipper 的 Release 版本，来修改 pkg 参数中的版本号。
 
 > 比如在 v1.2.0 版本 release 之后您可以指定 --pkg 为 `https://oss.kubeclipper.io/release/v1.2.0/kc-amd64.tar.gz` 来安装 v1.2.0 版本。
 
