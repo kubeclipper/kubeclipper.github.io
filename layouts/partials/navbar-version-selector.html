@@ -1,0 +1,26 @@
+<!--
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	{{ .Site.Params.version_menu }}
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	{{ range .Site.Params.versions }}
+	<a class="dropdown-item" href="{{ .url }}">{{ .version }}</a>
+	{{ end }}
+</div>
+-->
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <!-- {{ .Site.Params.version_menu }} -->
+    {{ getenv "CURRENT_VERSION" }}
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    {{ $VersionString := getenv "VERSIONS" }}
+    {{ $Versions := split $VersionString "," }}
+    {{ range $i, $version := $Versions }}
+        {{ if eq $i 0 }}
+            <a class="dropdown-item" href="/">{{ $version }} (latest)</a>
+        {{ else }}
+            <a class="dropdown-item" href="/{{ $version }}">{{ $version }}</a>
+        {{ end }}
+    {{ end }}
+</div>
