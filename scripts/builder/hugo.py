@@ -70,8 +70,8 @@ class Hugo(object):
         config_content = '''contentDir = "%s"\n''' % (self._content_dir)
         config_content += '''
 [languages]
-[languages.zh]
-contentDir = "%s"\n''' % (os.path.join(self._content_dir, 'zh'))
+[languages.zh-cn]
+contentDir = "%s"\n''' % (os.path.join(self._content_dir, 'zh-cn'))
         
         config_content += '''\n
 [languages.en]

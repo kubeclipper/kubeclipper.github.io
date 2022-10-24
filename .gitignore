@@ -6,3 +6,7 @@ package-lock.json
 /public
 .DS_Store
 _output
+
+# python
+*.pyc
+__pycache__

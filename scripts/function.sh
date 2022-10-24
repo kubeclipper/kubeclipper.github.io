@@ -16,7 +16,7 @@ generate_config() {
     cat "$origin_config" > "$temp_config"
 
     if [ -n "$CONTENT_DIR" ]; then
-        $sedi "s|contentDir = \"content/zh\"|contentDir= \"$CONTENT_DIR/zh\"|g" "$temp_config"
+        $sedi "s|contentDir = \"content/zh-cn\"|contentDir= \"$CONTENT_DIR/zh-cn\"|g" "$temp_config"
         $sedi "s|contentDir = \"content/en\"|contentDir= \"$CONTENT_DIR/en\"|g" "$temp_config"
     fi
 
