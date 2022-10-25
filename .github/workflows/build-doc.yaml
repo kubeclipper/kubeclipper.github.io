@@ -49,6 +49,7 @@ jobs:
       - name: Build public site
         run: |
           ./scripts/build.py --host=https://www.kubeclipper.io --edition=ce --multi-versions --no-out-fetch
+          cp CNAME ./public
           ls -alh ./public
 
       - name: Publish site
@@ -59,5 +60,5 @@ jobs:
           publish_dir: ./public
           external_repository: kubeclipper/kubeclipper.github.io
           allow_empty_commit: true
-          cname: www.cloudpods.org
+          cname: www.kubeclipper.io
           publish_branch: master
