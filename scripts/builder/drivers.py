@@ -87,13 +87,13 @@ class BaseDriver(object):
         local_cmd = 'git rev-parse @'
         upstream_out = run_process(upstream_cmd)
         local_out = run_process(local_cmd)
-#         if upstream_out != local_out:
-#             run_process('git merge -q upstream/%s' % branch)
+        if upstream_out != local_out:
+            run_process('git merge -q upstream/%s' % branch)
 
     def check_and_update(self, version):
-#         branch = 'master'
-#         if version != 'master':
-#             branch = 'release/%s' % version
+        branch = 'master'
+        if version != 'master':
+            branch = 'release/%s' % version
         self.update_branch(version)
 
     def multi_versions_build(self, content_dir, args):
