@@ -94,7 +94,7 @@ class BaseDriver(object):
         branch = 'master'
         if version != 'master':
             branch = 'release/%s' % version
-        self.update_branch(version)
+        self.update_branch(branch)
 
     def multi_versions_build(self, content_dir, args):
         versions = VERSION_ARRAY
