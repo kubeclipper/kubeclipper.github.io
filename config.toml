@@ -109,6 +109,7 @@ privacy_policy = "https://policies.google.com/privacy"
 # Menu title if your navbar has a versions selector to access old versions of your site.
 # This menu appears only if you have at least one [params.versions] set.
 version_menu = "Releases"
+multi_versions = true
 
 # Flag used in the "version-banner" partial to decide whether to display a
 # banner on every page indicating that this is an archived version of the docs.
@@ -234,3 +235,16 @@ enable = false
   [[module.imports]]
     path = "github.com/google/docsy/dependencies"
     disable = false
+
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+
+  [security.funcs]
+    getenv = ['^HUGO_', 'CURRENT_VERSION', 'CONTENT_DIR', 'VERSIONS']
+
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['.*']

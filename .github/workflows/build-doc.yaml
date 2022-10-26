@@ -1,44 +1,58 @@
-name: Build docs
+name: Release github pages
 
 on:
   push:
     branches:
-      - master
+      - master  # Set a branch to deploy
+      # - release/*  # Set a branch to deploy
+      # - master  # Set a branch to deploy
 
 jobs:
-  deploy:
-    runs-on: ubuntu-20.04
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+  build:
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
-          submodules: true
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+          submodules: recursive  # Fetch the Docsy theme
+          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.101.0'
+          hugo-version: '0.83.1'
           extended: true
 
-      - name: Install dependencies
-        run: |
-          npm install -D autoprefixer
-          npm install -D postcss-cli
-          npm install -D postcss
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-      - name: Build
-        run: |
-          make public
-          cp CNAME public/
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-      - name: Deploy
+      - run: npm install
+
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.7'
+
+      - name: Install python requirements
+        run: |
+          pip3 install pyyaml
+
+      - name: Build public site
+        run: |
+          ./scripts/build.py --host=https://www.kubeclipper.io --edition=ce --multi-versions --no-out-fetch
+          cp CNAME ./public
+          ls -alh ./public
+
+      - name: Publish site
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/master' }}
         with:
