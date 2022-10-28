@@ -1,17 +1,1 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Kubeclipper – Contribution Guidelines</title>
-    <link>https://kubeclipper.io/en/docs/contribution-guidelines/</link>
-    <description>Recent content in Contribution Guidelines on Kubeclipper</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	  <atom:link href="https://kubeclipper.io/en/docs/contribution-guidelines/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-      
-        
-      
-    
-    
-  </channel>
-</rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Contribution Guidelines</title><link>https://www.kubeclipper.io/en/docs/contribution-guidelines/</link><description>Recent content in Contribution Guidelines on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.kubeclipper.io/en/docs/contribution-guidelines/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
