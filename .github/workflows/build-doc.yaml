@@ -3,7 +3,7 @@ name: Release github pages
 on:
   push:
     branches:
-      - master  # Set a branch to deploy
+      - release/1.2  # Set a branch to deploy
       # - release/*  # Set a branch to deploy
       # - master  # Set a branch to deploy
 
