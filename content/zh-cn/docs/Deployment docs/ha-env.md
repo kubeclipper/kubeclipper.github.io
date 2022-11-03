@@ -27,9 +27,10 @@ HA 部署注意事项：
 KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：
 
 ```bash
-# curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -
+# 默认安装最新发行版
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | bash -
 # 如果你在中国， 你可以在安装时使用 cn  环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn sh -
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn bash -
 ```
 
 > 您也可以在 [GitHub Release Page](https://github.com/kubeclipper/kubeclipper/releases) 下载指定版本。
