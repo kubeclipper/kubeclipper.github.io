@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 文档</title><link>https://www.kubeclipper.io/docs/</link><description>Recent content in 文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 集群管理</title><link>https://www.kubeclipper.io/docs/tutorials/cluster-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/tutorials/cluster-manage/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 文档</title><link>https://www.kubeclipper.io/docs/</link><description>Recent content in 文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Thu, 03 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 集群管理</title><link>https://www.kubeclipper.io/docs/tutorials/cluster-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/tutorials/cluster-manage/</guid><description>
 &lt;h2 id="创建集群">创建集群&lt;/h2>
 &lt;p>您可以通过向导式的页面创建 K8S 集群，并安装CNI、CSI等所需插件。也可以提前保存好集群模版，选择模版后快速创建集群。&lt;/p>
 &lt;h3 id="创建集群准备工作">创建集群准备工作&lt;/h3>
@@ -409,9 +409,10 @@
 &lt;h2 id="部署-kubeclipper">部署 KubeClipper&lt;/h2>
 &lt;h3 id="下载-kcctl">下载 kcctl&lt;/h3>
 &lt;p>KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 默认安装最新发行版&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果你在中国， 你可以在安装时使用 cn 环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn sh -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>您也可以在 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 下载指定版本。&lt;/p>
 &lt;/blockquote>
@@ -456,9 +457,12 @@
 &lt;h2 id="部署-kubeclipper">部署 KubeClipper&lt;/h2>
 &lt;h3 id="下载-kcctl">下载 kcctl&lt;/h3>
 &lt;p>KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 默认安装最新的发行版&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装指定版本&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.2.1 bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果你在中国， 你可以在安装时使用 cn 环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn sh -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>您也可以在 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 下载指定版本。&lt;/p>
 &lt;/blockquote>
@@ -466,7 +470,7 @@
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="开始安装">开始安装&lt;/h3>
 &lt;p>在本快速入门教程中，您只需执行一个命令即可安装 KubeClipper，其模板如下所示：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--user root&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>--passwd SSH_PASSWD &lt;span style="color:#000;font-weight:bold">|&lt;/span> --pk-file SSH_PRIVATE_KEY&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>若使用 ssh passwd 方式则命令如下所示:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --passwd &lt;span style="color:#000">$SSH_PASSWD&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>私钥方式如下：&lt;/p>
@@ -603,4 +607,53 @@
 &lt;p>完成所有配置确认安装&lt;/p>
 &lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
 &lt;p>安装成功，集群正常运行&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item></channel></rss>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item><item><title>Docs: 通过kcctl命令创建集群错误</title><link>https://www.kubeclipper.io/docs/faq/kcctl-create-cluster-error/</link><pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/faq/kcctl-create-cluster-error/</guid><description>
+&lt;h2 id="问题复现">问题复现&lt;/h2>
+&lt;p>安装 v1.2.1 版本的 kcctl&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.2.1 bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过 kcctl deploy 命令部署 KubeClipper 集群&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装 AIO 环境&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过 kcctl create cluster 命令创建 k8s 集群&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 需要先登录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl login --host http://127.0.0.1 --username admin --password Thinkbig1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 创建集群&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl create cluster --name &lt;span style="color:#204a87">test&lt;/span> --master 192.168.10.98 --untaint-master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>登录 KubeClipper 管理界面，查看创建集群操作日志，日志显示在安装 cni 过程中发现下载 calico v3.21.2 404 无法找到&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-faq/create-cluster-error.png" alt="">&lt;/p>
+&lt;h2 id="问题修复-pr">问题修复 PR&lt;/h2>
+&lt;p>提交已经合并到了master，PR：https://github.com/kubeclipper/kubeclipper/commit/7e6eb0ed199ff1cb00fde0c2624c62cdc5ca0b9c&lt;/p>
+&lt;p>但 v1.2.1 已经发布了，按照发版规范无法在该版本打补丁，需要等到后续 v1.2.2 发布解决，因此我们提供一种临时方案来解决这个问题。&lt;/p>
+&lt;h2 id="解决方法">解决方法&lt;/h2>
+&lt;p>制作离线资源包
+下载 calico v3.21.2 的安装包，打包为指定格式的离线资源包&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 创建资源目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -pv calico/v3.21.2/amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 下载 v3.21.2 版本的 calico&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget -P calico/v3.21.2/amd64 https://oss.kubeclipper.io/packages/calico/v3.21.2/amd64/images.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget -P calico/v3.21.2/amd64 https://oss.kubeclipper.io/packages/calico/v3.21.2/amd64/manifest.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 压缩文件为指定命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -zcvf calico-v3.21.2-amd64.tar.gz calico
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>推送离线资源包&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource push --pkg calico-v3.21.2-amd64.tar.gz --type cni
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 验证&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource list&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep v3.21.2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>如果在执行 &lt;code>kcctl resource push&lt;/code> 报了如下错误：
+&lt;img src="https://www.kubeclipper.io/images/docs-faq/need-login.png" alt="">
+解决方法如下：&lt;/p>
+&lt;ol>
+&lt;li>编辑 /root/.kc/deploy-config.yaml 文件。&lt;/li>
+&lt;li>找到 ssh 配置项，添加 pkFile 字段配置，值为当前服务器的 ssh 公钥文件的绝对路径。&lt;br>
+&lt;img src="https://www.kubeclipper.io/images/docs-faq/add-key.png" alt="">&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;p>通过命令行安装 k8s 集群，在 KubeClipper 管理后台查看操作日志&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create cluster --name &lt;span style="color:#204a87">test&lt;/span> --master 192.168.10.98 --untaint-master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看 k8s 集群 pods 运行状态&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kubectl get pods -A
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

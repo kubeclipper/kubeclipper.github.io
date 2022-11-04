@@ -3,9 +3,12 @@
 &lt;h2 id="deploy-kubeclipper">Deploy KubeClipper&lt;/h2>
 &lt;h3 id="download-kcctl">Download kcctl&lt;/h3>
 &lt;p>KubeClipper provides a command line tool 🔧 kcctl to simplify operation and maintenance. You can download the latest version of kcctl directly with the following command:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># The latest distribution is installed by default&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Install the specified version&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.2.1 bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#If you are in China, you can use cn environment variables during installation, in this case we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> en sh -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>You can also download the specified version from the [GitHub Release Page] ( &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">https://github.com/kubeclipper/kubeclipper/releases&lt;/a> ) .&lt;/p>
 &lt;/blockquote>
@@ -50,25 +53,4 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>You can also go to the console to view the real-time log.&lt;/p>
 &lt;/blockquote>
-&lt;p>Entering the Running state means that the cluster installation is complete, you can use the kubectl get cs command to view the cluster health.&lt;/p></description></item><item><title>Docs: Getting Started</title><link>https://www.kubeclipper.io/en/docs/getting-started/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/getting-started/</guid><description>
-&lt;div class="pageinfo pageinfo-primary">
-&lt;p>This is a placeholder page that shows you how to use this template site.&lt;/p>
-&lt;/div>
-&lt;p>Information in this section helps your user try your project themselves.&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>What do your users need to do to start using your project? This could include downloading/installation instructions, including any prerequisites or system requirements.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Introductory “Hello World” example, if appropriate. More complex tutorials should live in the Tutorials section.&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>Consider using the headings below for your getting started page. You can delete any that are not applicable to your project.&lt;/p>
-&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
-&lt;p>Are there any system requirements for using your project? What languages are supported (if any)? Do users need to already have any software or tools installed?&lt;/p>
-&lt;h2 id="installation">Installation&lt;/h2>
-&lt;p>Where can your user find your project code? How can they install it (binaries, installable package, build from source)? Are there multiple options/versions they can install and how should they choose the right one for them?&lt;/p>
-&lt;h2 id="setup">Setup&lt;/h2>
-&lt;p>Is there any initial setup users need to do after installation to try your project?&lt;/p>
-&lt;h2 id="try-it-out">Try it out!&lt;/h2>
-&lt;p>Can your users test their installation, for example by running a command or deploying a Hello World example?&lt;/p></description></item></channel></rss>
+&lt;p>Entering the Running state means that the cluster installation is complete, you can use the kubectl get cs command to view the cluster health.&lt;/p></description></item><item><title>Docs: Getting Started</title><link>https://www.kubeclipper.io/en/docs/getting-started/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/getting-started/</guid><description/></item></channel></rss>

@@ -1,0 +1,50 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – create</title><link>https://www.kubeclipper.io/tags/create/</link><description>Recent content in create on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Thu, 03 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/tags/create/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 通过kcctl命令创建集群错误</title><link>https://www.kubeclipper.io/docs/faq/kcctl-create-cluster-error/</link><pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/faq/kcctl-create-cluster-error/</guid><description>
+&lt;h2 id="问题复现">问题复现&lt;/h2>
+&lt;p>安装 v1.2.1 版本的 kcctl&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.2.1 bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过 kcctl deploy 命令部署 KubeClipper 集群&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装 AIO 环境&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过 kcctl create cluster 命令创建 k8s 集群&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 需要先登录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl login --host http://127.0.0.1 --username admin --password Thinkbig1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 创建集群&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl create cluster --name &lt;span style="color:#204a87">test&lt;/span> --master 192.168.10.98 --untaint-master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>登录 KubeClipper 管理界面，查看创建集群操作日志，日志显示在安装 cni 过程中发现下载 calico v3.21.2 404 无法找到&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-faq/create-cluster-error.png" alt="">&lt;/p>
+&lt;h2 id="问题修复-pr">问题修复 PR&lt;/h2>
+&lt;p>提交已经合并到了master，PR：https://github.com/kubeclipper/kubeclipper/commit/7e6eb0ed199ff1cb00fde0c2624c62cdc5ca0b9c&lt;/p>
+&lt;p>但 v1.2.1 已经发布了，按照发版规范无法在该版本打补丁，需要等到后续 v1.2.2 发布解决，因此我们提供一种临时方案来解决这个问题。&lt;/p>
+&lt;h2 id="解决方法">解决方法&lt;/h2>
+&lt;p>制作离线资源包
+下载 calico v3.21.2 的安装包，打包为指定格式的离线资源包&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 创建资源目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -pv calico/v3.21.2/amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 下载 v3.21.2 版本的 calico&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget -P calico/v3.21.2/amd64 https://oss.kubeclipper.io/packages/calico/v3.21.2/amd64/images.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget -P calico/v3.21.2/amd64 https://oss.kubeclipper.io/packages/calico/v3.21.2/amd64/manifest.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 压缩文件为指定命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -zcvf calico-v3.21.2-amd64.tar.gz calico
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>推送离线资源包&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource push --pkg calico-v3.21.2-amd64.tar.gz --type cni
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 验证&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource list&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep v3.21.2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>如果在执行 &lt;code>kcctl resource push&lt;/code> 报了如下错误：
+&lt;img src="https://www.kubeclipper.io/images/docs-faq/need-login.png" alt="">
+解决方法如下：&lt;/p>
+&lt;ol>
+&lt;li>编辑 /root/.kc/deploy-config.yaml 文件。&lt;/li>
+&lt;li>找到 ssh 配置项，添加 pkFile 字段配置，值为当前服务器的 ssh 公钥文件的绝对路径。&lt;br>
+&lt;img src="https://www.kubeclipper.io/images/docs-faq/add-key.png" alt="">&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;p>通过命令行安装 k8s 集群，在 KubeClipper 管理后台查看操作日志&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create cluster --name &lt;span style="color:#204a87">test&lt;/span> --master 192.168.10.98 --untaint-master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看 k8s 集群 pods 运行状态&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kubectl get pods -A
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
