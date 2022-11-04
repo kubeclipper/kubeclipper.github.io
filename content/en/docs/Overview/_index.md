@@ -3,35 +3,20 @@ title: "Overview"
 linkTitle: "Overview"
 weight: 1
 description: >
-  Here's where your user finds out if your project is for them.
+  Manage kubernetes in the most light and convenient way ☸️
 ---
 
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
+## What is KubeClipper?
 
+KubeClipper aims to provide easy-to-use, easy-to-operate, lightweight, product-grade kubernetes multi-cluster full lifecycle management service, freeing operation and maintenance engineers from complicated configuration and obscure command lines to achieve one-stop management of multi-K8 s clusters across regions and infrastructure.
 
-The Overview is where your users find out about your project. Depending on the size of your docset, you can have a separate overview page (like this one) or put your overview contents in the Documentation landing page (like in the Docsy User Guide). 
+## Why do I want KubeClipper?
 
-Try answering these questions for your user in this page:
+In the cloud-native era, Kubernetes has undoubtedly become the de facto standard for container orchestration. Although there are many tools to assist in the installation and management of K8S clusters, it is still very complicated to build and operate a production-level K8S cluster. In the process of a large number of services and practices, 99cloud has precipitated an extremely lightweight and easy-to-use graphical interface Kubernetes multi-cluster management tool - KubeClipper.
 
-## What is it?
+Under the premise of being fully compatible with native Kubernetes, KubeClipper is repackaged based on the kubeadm tool widely used by the community, providing rapid deployment of K8S clusters and continuous full life cycle management (installation, uninstallation, upgrade, scaling) in the enterprise's own infrastructure. It supports multiple deployment methods such as online, proxy, and offline, and also provides rich and scalable management services for CRI, CNI, CSI, and various CRD components.
 
-Introduce your project, including what it does or lets you do, why you would use it, and its primary goal (and how it achieves it). This should be similar to your README description, though you can go into a little more detail here if you want.
-
-## Why do I want it?
-
-Help your user know if your project will help them. Useful information can include: 
-
-* **What is it good for?**: What types of problems does your project solve? What are the benefits of using it?
-
-* **What is it not good for?**: For example, point out situations that might intuitively seem suited for your project, but aren't for some reason. Also mention known limitations, scaling issues, or anything else that might let your users know if the project is not for them.
-
-* **What is it *not yet* good for?**: Highlight any useful features that are coming soon.
-
-## Where should I go next?
-
-Give your users next steps from the Overview. For example:
+Compared with the existing K8S lifecycle management tools such as Sealos, KubeKey, Kubeasz, KubeOperator, and K0S, KubeClipper is more open and native, lightweight, convenient, stable and easy to use.
 
 * [Getting Started](/docs/getting-started/): Get started with $project
 * [Examples](/docs/examples/): Check out some example code!
