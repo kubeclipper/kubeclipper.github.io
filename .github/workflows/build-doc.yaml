@@ -3,7 +3,7 @@ name: Release github pages
 on:
   push:
     branches:
-      - master  # Set a branch to deploy
+      - release/1.2  # Set a branch to deploy
       # - release/*  # Set a branch to deploy
       # - master  # Set a branch to deploy
 
@@ -54,7 +54,6 @@ jobs:
 
       - name: Publish site
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           publish_dir: ./public
