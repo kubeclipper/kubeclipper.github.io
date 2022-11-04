@@ -3,8 +3,8 @@ name: Release github pages
 on:
   push:
     branches:
-      - release/1.2  # Set a branch to deploy
-      # - release/*  # Set a branch to deploy
+      - master  # Set a branch to deploy
+      - release/1.2 # Set a branch to deploy
       # - master  # Set a branch to deploy
 
 jobs:
@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          ref: master
           submodules: recursive  # Fetch the Docsy theme
           fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
 
