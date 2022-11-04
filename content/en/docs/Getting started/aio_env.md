@@ -19,9 +19,12 @@ For users who are new to KubeClipper and want to get started quickly, it is reco
 KubeClipper provides a command line tool 🔧 kcctl to simplify operation and maintenance. You can download the latest version of kcctl directly with the following command:
 
 ```Bash
-#curl -sfL https://oss.kubeclipper.io/kcctl.sh | sh -
+# The latest distribution is installed by default
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | bash -
+# Install the specified version
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=v1.2.1 bash -
 #If you are in China, you can use cn environment variables during installation, in this case we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
-Curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION = en sh -
+Curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn bash -
 ```
 
 > You can also download the specified version from the [GitHub Release Page] ( https://github.com/kubeclipper/kubeclipper/releases ) .
