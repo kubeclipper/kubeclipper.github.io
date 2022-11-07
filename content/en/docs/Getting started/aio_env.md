@@ -70,6 +70,26 @@ After executing this command, Kcctl will check your installation environment, an
 | _ | | _ |
 ```
 
+> You can also deploy the master version of KubeClipper to experience the latest features
+>
+> 1. Install kcctl
+>
+> ```bash
+> curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=master bash -
+> ```
+>
+> 2. Set environment variables on the installation server
+>
+> ```bash
+> export KC_VERSION=master
+> ```
+>
+> 3. Deploy KubeClipper AIO environment
+>
+> ```bash
+> kcctl deploy
+> ```
+
 ### Login to console
 
 After the installation is complete, open a browser and visit  http://$IP  to enter the KubeClipper console.
