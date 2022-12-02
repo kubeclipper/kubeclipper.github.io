@@ -1,9 +1,9 @@
 ---
-title: "使用 Kubeclipper 离线创建 k8s 集群"
+title: "使用 Kubeclipper 离线创建 kubernetes 集群"
 linkTitle: "离线创建集群"
 weight: 3
 description: >
-  如何使用 KC 平台离线创建 k8s 集群
+  如何使用 KC 平台离线创建 kubernetes 集群
 ---
 
 ## 1. 进入创建界面
