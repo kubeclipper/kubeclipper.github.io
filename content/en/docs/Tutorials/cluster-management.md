@@ -74,7 +74,7 @@ Before performing a backup operation, you need to set a backup space for the clu
 
 - #### **Node local storage (only for AIO experimental clusters):**
 
-1. Create a storage directory. Connect to the cluster master node terminal ( refer to [Connect Nodes Terminal](/en/docs/tutorials/node-management-en/#connect-terminal) ) and use the mkdir command to create the \"/root/backup\" directory in the master node.
+1. Create a storage directory. Connect to the cluster master node terminal ( refer to [Connect Nodes Terminal](/en/docs/tutorials/node-management/#connect-terminal) ) and use the mkdir command to create the \"/root/backup\" directory in the master node.
 
 2. Create a backup space. Click \"Cluster Management\" \> \"backup space\" to enter the backup space list page, click the \"Create\" button in the upper left corner, in the Create pop-up window, enter \"Backup Space Name\", such as \"local\", select \"StorageType\" as \"FS\", fill in \"backupRootDir\" as \"/root/backup\".
 
@@ -87,9 +87,9 @@ Note: Using a local node to store backup files does not require the introduction
 
 1. Prepare NFS storage. Prepare an NFS service and create a directory on the NFS server to store backup files, such as \"/data/kubeclipper/cluster-backups\".
 
-2. Mount the storage directory. Connect the cluster master node terminal ( refer to [Connect node Terminal](/en/docs/tutorials/node-management-en/#connect-terminal) ), use the mkdir command to create the \"/data/kubeclipper/cluster-backups\" directory in each master node, and mount it to the /data/kubeclipper/cluster-backups directory of the NFS server. 
+2. Mount the storage directory. Connect the cluster master node terminal ( refer to [Connect node Terminal](/en/docs/tutorials/node-management/#connect-terminal) ), use the mkdir command to create the \"/data/kubeclipper/cluster-backups\" directory in each master node, and mount it to the /data/kubeclipper/cluster-backups directory of the NFS server.
 
-   Command example: 
+   Command example:
 
    ```bash
    mount -t nfs {NFS\_IP}:/data/kubeclipper/cluster-backups /opt/kubeclipper/cluster-backups -o proto = tcp -o nolock
@@ -158,9 +158,9 @@ Note: After the K8S version of the cluster is upgraded, it will no longer be pos
 
 ### **Cluster version upgrade**
 
-If the cluster version does not meet the requirements, you can upgrade the K8S version of the cluster. Similar to creating a cluster, you need to prepare the configuration package required and the K8S image of the target version, upload them to the specified location. For details, refer to [Prepare to Create a Cluster](/en/docs/tutorials/create-clusters-en/#prepare-to-create-a-cluster).
+If the cluster version does not meet the requirements, you can upgrade the K8S version of the cluster. Similar to creating a cluster, you need to prepare the configuration package required and the K8S image of the target version, upload them to the specified location. For details, refer to [Prepare to Create a Cluster](/en/docs/tutorials/create-clusters/#prepare-to-create-a-cluster).
 
-Click the \"More\" \> "Cluster status" > \"Cluster Upgrade\" button of the cluster operation. In the cluster upgrade pop-up window, select the installation method and registry, and select the target upgrade version. The installation method and the configuration of the K8S version are the same as those of creating a cluster. For details, please refer to [Cluster Configuration Guide](/en/docs/tutorials/create-clusters-en/#cluster-configuration).
+Click the \"More\" \> "Cluster status" > \"Cluster Upgrade\" button of the cluster operation. In the cluster upgrade pop-up window, select the installation method and registry, and select the target upgrade version. The installation method and the configuration of the K8S version are the same as those of creating a cluster. For details, please refer to [Cluster Configuration Guide](/en/docs/tutorials/create-clusters/#cluster-configuration).
 
 Cluster upgrades can be performed across minor versions, but upgrades skipped over later versions are not supported. For example, you can upgrade from v1.20.2 to v1.20.13, or from v1.20.x to v1.21.x, but not from v1.20.x to v1.22.x. For version 1.23.x, upgrading to version 1.24.x is not currently supported.
 
@@ -183,7 +183,7 @@ In addition to installing plugins when creating a cluster, you can also install 
 For installed plugins, you can view the plugin information on the cluster detail page, and perform the following operations:
 
 - Save as Template: Save the plugin information as a template for use by other clusters
-- Remove plug-in: Uninstalls the cluster plug-in. 
+- Remove plug-in: Uninstalls the cluster plug-in.
 
 ## Cluster certificate management
 

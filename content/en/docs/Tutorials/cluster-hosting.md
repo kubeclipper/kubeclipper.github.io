@@ -31,7 +31,7 @@ Click the "OK" button to import the cluster and node into the platform. Click th
 
 You can choose "Cluster Management" > "Cluster" to go to the cluster list page and view the list of all clusters, including hosted clusters and local clusters. The following table lists the operations supported by different clusters:
 
-Note that "docker.io" will be used as image resource by default when you install external storage and other plug-ins for host clusters. If you are in an offline environment, you need to fill in the address of the accessible private registry during plug-in installation. The private registry must be added to the CRI registry of the cluster. For details, refer to [CRI Registry](/en/docs/tutorials/cluster-management-en/#cri-registry).
+Note that "docker.io" will be used as image resource by default when you install external storage and other plug-ins for host clusters. If you are in an offline environment, you need to fill in the address of the accessible private registry during plug-in installation. The private registry must be added to the CRI registry of the cluster. For details, refer to [CRI Registry](/en/docs/tutorials/cluster-management/#cri-registry).
 
 | Function                    | Clusters created by Kubeclipper | Hosted kubeadm cluster |
 | --------------------------- | ------------------------------- | ---------------------- |
