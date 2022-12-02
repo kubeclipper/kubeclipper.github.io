@@ -1,9 +1,9 @@
 ---
 categories: ["QuickStart"]
-tags: ["docs"] 
+tags: ["docs"]
 title: "快速开始"
 linkTitle: "快速开始"
-weight: 1
+weight: 2
 description: >
   快速搭建体验平台功能
 ---

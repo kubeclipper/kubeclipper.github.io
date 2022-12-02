@@ -8,7 +8,7 @@ description: >
 
 ### **Prepare to create a cluster**
 
-1. You need to have enough available nodes. To add nodes, refer to \"[Add Nodes](/en/docs/tutorials/node-management-en/#add-node)\".
+1. You need to have enough available nodes. To add nodes, refer to \"[Add Nodes](/en/docs/tutorials/node-management/#add-node)\".
 
 2. Prepare the image or binary files of K8S, CRI, calico, CSI and other plug-ins that need to be installed. You can choose online/offline according to the network environment of the platform, and choose the recommended K8S version on page. You can also upload the image required for deployment to your own image repository in advance, and specify the image repository during deployment. For more installation configuration, refer to \"[Cluster Configuration Guide](#cluster-configuration)\".
 
