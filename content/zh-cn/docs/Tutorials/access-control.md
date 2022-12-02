@@ -70,7 +70,7 @@ oauthOptions:
         redirectURL: http://{kc-console-address}/oatuh2/redirect/{IDP-Name}
 ```
 
-其中，“provider”下需要您填写自己的 OAuth2 服务的`clientID`、`clientSecret`、`issuer`信息，以 keycloack 为例，如下图所示。
+其中，“provider” 下需要您填写自己的 OAuth2 服务的`clientID`、`clientSecret`、`issuer`信息，以 keycloack 为例，如下图所示。
 
 ![](/images/docs-tutorials/keycloak-clients.png)
 
@@ -80,6 +80,6 @@ oauthOptions:
 
 OAuth2 用户可以通过以下步骤访问和使用 KubeClipper 平台：
 
-1. 点击登录页的“OAuth2 登录”按钮，进入 OAuth2 登录页面，输入用户名密码登录，进入 KubeClipper 平台，首次登录，您会因未被授予权限而无法访问平台。
+1. 点击登录页的 “OAuth2 登录”按钮，进入 OAuth2 登录页面，输入用户名密码登录，进入 KubeClipper 平台，首次登录，您会因未被授予权限而无法访问平台。
 2. 平台管理员或其他拥有用户管理权限的用户登录 KubeClipper，在用户管理页面，找到目标 OAuth2 用户，通过编辑用户指定用户角色。
 3. OAuth2 用户重复第一步，登录 KubeClipper，就可以正常访问平台并执行角色权限内操作。

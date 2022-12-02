@@ -1,12 +1,12 @@
 ---
 categories: ["FAQ"]
 tags: ["kcctl", "create", "cluster"]
-title: "通过kcctl命令创建集群错误"
-linkTitle: "通过kcctl命令创建集群错误"
+title: "通过 kcctl 命令创建集群错误"
+linkTitle: "通过 kcctl 命令创建集群错误"
 weight: 4
 date: 2022-11-03
 description: >
-  在 v1.2.1 版本（包括v1.2.1）之前，使用 `kcctl create cluster` 命令创建集群功能，会发生创建失败错误，以下提供一种临时的解决方法。
+  在 v1.2.1 版本（包括 v1.2.1）之前，使用 `kcctl create cluster` 命令创建集群功能，会发生创建失败错误，以下提供一种临时的解决方法。
   在 v1.2.1 版本之后，我们修复了该问题。
 ---
 
@@ -25,7 +25,7 @@ curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=v1.2.1 bash -
 kcctl deploy
 ```
 
-通过 kcctl create cluster 命令创建 k8s 集群
+通过 kcctl create cluster 命令创建 kubernetes 集群
 
 ```bash
 # 需要先登录
@@ -40,7 +40,7 @@ kcctl create cluster --name test --master 192.168.10.98 --untaint-master
 
 ## 问题修复 PR
 
-提交已经合并到了master，PR：https://github.com/kubeclipper/kubeclipper/commit/7e6eb0ed199ff1cb00fde0c2624c62cdc5ca0b9c 
+提交已经合并到了 master，PR：https://github.com/kubeclipper/kubeclipper/commit/7e6eb0ed199ff1cb00fde0c2624c62cdc5ca0b9c 
 
 但 v1.2.1 已经发布了，按照发版规范无法在该版本打补丁，需要等到后续 v1.2.2 发布解决，因此我们提供一种临时方案来解决这个问题。
 
@@ -78,13 +78,13 @@ kcctl resource list|grep v3.21.2
 > 2. 找到 ssh 配置项，添加 pkFile 字段配置，值为当前服务器的 ssh 公钥文件的绝对路径。  
 > ![](/images/docs-faq/add-key.png)
 
-通过命令行安装 k8s 集群，在 KubeClipper 管理后台查看操作日志
+通过命令行安装 kubernetes 集群，在 KubeClipper 管理后台查看操作日志
 
 ```bash
 kcctl create cluster --name test --master 192.168.10.98 --untaint-master
 ```
 
-查看 k8s 集群 pods 运行状态
+查看 kubernetes 集群 pods 运行状态
 
 ```bash
 kubectl get pods -A

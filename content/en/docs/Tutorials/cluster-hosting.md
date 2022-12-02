@@ -3,7 +3,7 @@ title: "Cluster hosting"
 date: 2022-11-29
 weight: 3
 description: >
-  For K8S clusters running outside the kubeclipper platform, you can host them within the kubeclipper platform for management. The current version supports host kubeadmin clusters.
+  For kubernetes clusters running outside the kubeclipper platform, you can host them within the kubeclipper platform for management. The current version supports host kubeadmin clusters.
 ---
 
 ## Kubeadm cluster hosting
