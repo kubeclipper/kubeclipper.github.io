@@ -22,7 +22,7 @@ KubeClipper provides a command line tool 🔧 kcctl to simplify operation and ma
 # The latest distribution is installed by default
 curl -sfL https://oss.kubeclipper.io/kcctl.sh | bash -
 # Install the specified version
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=v1.2.1 bash -
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=v1.3.1 bash -
 #If you are in China, you can use cn environment variables during installation, in this case we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
 Curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn bash -
 ```
