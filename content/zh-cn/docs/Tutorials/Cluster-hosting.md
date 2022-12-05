@@ -3,12 +3,12 @@ title: "集群托管"
 date: 2022-11-29
 weight: 3
 description: >
-  对于在 kubeclipper 平台外运行的 K8S 集群，您可以托管至 kubeclipper 平台内进行管理，当前版本支持托管 kubeadmin 集群。
+  对于在 kubeclipper 平台外运行的 kubernetes 集群，您可以托管至 kubeclipper 平台内进行管理，当前版本支持托管 kubeadmin 集群。
 ---
 
 ## Kubeadm 集群托管
 
-托管由 kubeadm 创建和管理的 K8S 集群，kubeclipper 会通过 kubeconfig 文件，获取集群和节点信息，并导入到 kubeclipper 平台中。
+托管由 kubeadm 创建和管理的 kubernetes 集群，kubeclipper 会通过 kubeconfig 文件，获取集群和节点信息，并导入到 kubeclipper 平台中。
 
 点击“集群管理”>“集群托管”按钮进入集群托管页面，点击左上角“添加”按钮，在添加提供商弹窗中，填写提供商名称（如 kubeadm-demo）和描述后，填写以下信息：
 

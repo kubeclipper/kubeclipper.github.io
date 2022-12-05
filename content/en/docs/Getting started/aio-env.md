@@ -22,7 +22,7 @@ KubeClipper provides a command line tool 🔧 kcctl to simplify operation and ma
 # The latest distribution is installed by default
 curl -sfL https://oss.kubeclipper.io/kcctl.sh | bash -
 # Install the specified version
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=v1.2.1 bash -
+curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=v1.3.1 bash -
 #If you are in China, you can use cn environment variables during installation, in this case we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
 Curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn bash -
 ```
@@ -37,42 +37,36 @@ Kcctl version
 
 ### Start installation
 
-In this quickstart tutorial, you only need to execute one command to install KubeClipper with a template like this:
+You can use 'kcctl deploy' to quickly install and deploy KubeClipper. kcctl uses SSH to access the target node where KubeClipper is finally deployed, so you need to provide SSH access credentials, and the following way to pass the credentials:
 
-```Bash
-Kcctl deploy [--user root] (--passwd SSH_PASSWD | --pk-file SSH_PRIVATE_KEY)
+```bash
+Kcctl deploy [--user <username>] [--passwd <password> | --pk-file <private key path>]
 ```
 
-If you use the ssh passwd method, the command is as follows:
-
-```Bash
-Kcctl deploy --user root --passwd $SSH_PASSWD
+Example：
+```bash
+# Use the private key
+kcctl deploy --user root --pk-file /root/.ssh/id_rsa
+# Use a password
+kcctl deploy --user root --passwd password
 ```
 
-The private key is as follows:
+Execute the 'kcctl deploy' command kcctl will check your installation environment and will automatically enter the installation process if the conditions are met. If you see the following KubeClipper banner, the installation is successful.
 
-```Bash
-Kcctl deploy --user root --pk-file $SSH_PRIVATE_KEY
+```console
+ _   __      _          _____ _ _
+| | / /     | |        /  __ \ (_)
+| |/ / _   _| |__   ___| /  \/ |_ _ __  _ __   ___ _ __
+|    \| | | | '_ \ / _ \ |   | | | '_ \| '_ \ / _ \ '__|
+| |\  \ |_| | |_) |  __/ \__/\ | | |_) | |_) |  __/ |
+\_| \_/\__,_|_.__/ \___|\____/_|_| .__/| .__/ \___|_|
+                                 | |   | |
+                                 |_|   |_|
 ```
 
-> You only need to provide the ssh user and ssh passwd or ssh private key to deploy KubeClipper natively.
-
-After executing this command, Kcctl will check your installation environment, and if the conditions are met, it will enter the installation process. After printing the following KubeClipper banner, the installation is complete.
-
-```Console
- _ __ _ _____ _ _ 
-| | / / | | / __ \ ( _)
-| |/ / _ _ | |__ ___| / \/ | _ _ _ __ _ __ ___ _ __
-| \| | | | ' _\/_ \ | | | | ' _\ | '_\/_ \ '__|
-| |\ \ | _ | | | _ ) | __/ \__/\ | | | _ ) | | _ ) | __/ |
-\ _ |\ _ /\__, _ | _ .__/ \___|\____/ _ | _ | .__/| .__/ \___| _ |
-| | | |
-| _ | | _ |
-```
-
-> You can also deploy the master version of KubeClipper to experience the latest features
+> You can also deploy the master version of KubeClipper to experience the latest features (the master version is not rigorously validated and may contain unknown bugs that affect the experience)
 >
-> 1. Install kcctl
+> 1. Install the master version kcctl
 >
 > ```bash
 > curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=master bash -
@@ -92,7 +86,7 @@ After executing this command, Kcctl will check your installation environment, an
 
 ### Login to console
 
-After the installation is complete, open a browser and visit  http://$IP  to enter the KubeClipper console.
+After the installation is complete, open a browser and visit 'http:<kc-server ip address>' to enter the KubeClipper console. (Usually kc-server IP is the IP of the node where you deploy kubeClipper)
 
 ![console](/images/docs-quickstart/console-login.png)
 
@@ -100,17 +94,17 @@ You can use the default account password " admin/Thinkbig1 " to log in.
 
 > You may need to configure port forwarding rules and open ports in security groups for external users to access the console.
 
-## Create k8s cluster
+## Create kubernetes cluster
 
-After successful deployment you can create a k8s cluster using the ** kcctl tool ** or via the ** console ** . Use the kcctl tool to create it in this quickstart tutorial.
+After successful deployment you can create a kubernetes cluster using the ** kcctl tool ** or via the ** console ** . Use the kcctl tool to create it in this quickstart tutorial.
 
 First, use the default account password to log in and obtain the token, which is convenient for subsequent interaction between kcctl and kc-server.
 
 ```Bash
-Kcctl login -H http://localhost -u admin -p Thinkbig1
+kcctl login -H http://<kc-server ip address>:8080 -u admin -p Thinkbig1
 ```
 
-Then create a k8s cluster with the following command:
+Then create a Kubernetes cluster with the following command:
 
 ```Bash
 NODE = $ (kcctl get node -o yaml | grep ipv4DefaultIP: | sed's/ipv4DefaultIP : //')
@@ -126,4 +120,4 @@ Kcctl get cluster -o yaml | grep status -A5
 
 > You can also go to the console to view the real-time log.
 
-Entering the Running state means that the cluster installation is complete, you can use the  kubectl get cs  command to view the cluster health.
+The cluster installation is complete when the cluster is in the Running state, and you can use the 'kubectl get cs' command to view the cluster health.

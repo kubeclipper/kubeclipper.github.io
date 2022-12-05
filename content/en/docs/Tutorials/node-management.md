@@ -22,9 +22,9 @@ The node status in KubeClipper represents the management status of the node by k
 
 ### **Add node**
 
-When deploying KubeClipper, you can add the initial server nodes which are used to deploy KubeClipper\'s own services, and agent nodes which are used to deploy K8S clusters. In a KubeClipper environment for experimentation or development, you can add a server node as an agent node at the same time. However, if it is used for a production environment, it is recommended not to reuse the server node as an agent node.
+When deploying KubeClipper, you can add the initial server nodes which are used to deploy KubeClipper\'s own services, and agent nodes which are used to deploy kubernetes clusters. In a KubeClipper environment for experimentation or development, you can add a server node as an agent node at the same time. However, if it is used for a production environment, it is recommended not to reuse the server node as an agent node.
 
-You can also use the kcctl join command to add agent nodes to KubeClipper, and mark a region for each agent node. The region can be a physical or logical location. You can use nodes in the same region to create a K8S cluster, but cannot use nodes across regions to create a cluster. Nodes in unmarked regions belong to the default region.
+You can also use the kcctl join command to add agent nodes to KubeClipper, and mark a region for each agent node. The region can be a physical or logical location. You can use nodes in the same region to create a kubernetes cluster, but cannot use nodes across regions to create a cluster. Nodes in unmarked regions belong to the default region.
 
 Command line example:
 

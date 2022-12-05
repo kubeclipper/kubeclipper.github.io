@@ -94,9 +94,9 @@ kcctl deploy --user root --pk-file $SSH_PRIVATE_KEY
 
 > 您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。
 
-### 创建 k8s 集群
+### 创建 kubernetes 集群
 
-部署成功后您可以使用 **kcctl 工具**或者通过**控制台**创建 k8s 集群。在本快速入门教程中使用 kcctl 工具进行创建。
+部署成功后您可以使用 **kcctl 工具**或者通过**控制台**创建 kubernetes 集群。在本快速入门教程中使用 kcctl 工具进行创建。
 
 首先使用默认帐号密码进行登录获取 token，便于后续 kcctl 和 kc-server 进行交互。
 
@@ -104,7 +104,7 @@ kcctl deploy --user root --pk-file $SSH_PRIVATE_KEY
 kcctl login -H http://localhost -u admin -p Thinkbig1
 ```
 
-然后使用以下命令创建 k8s 集群:
+然后使用以下命令创建 kubernetes 集群:
 
 ```bash
 NODE=$(kcctl get node -o yaml|grep ipv4DefaultIP:|sed 's/ipv4DefaultIP: //')

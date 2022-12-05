@@ -3,14 +3,14 @@ title: "Create clusters"
 date: 2022-11-29
 weight: 2
 description: >
-  KubeClipper supports the creation of K8S clusters via a wizard-style page.
+  KubeClipper supports the creation of kubernetes clusters via a wizard-style page.
 ---
 
 ### **Prepare to create a cluster**
 
 1. You need to have enough available nodes. To add nodes, refer to \"[Add Nodes](/en/docs/tutorials/node-management/#add-node)\".
 
-2. Prepare the image or binary files of K8S, CRI, calico, CSI and other plug-ins that need to be installed. You can choose online/offline according to the network environment of the platform, and choose the recommended K8S version on page. You can also upload the image required for deployment to your own image repository in advance, and specify the image repository during deployment. For more installation configuration, refer to \"[Cluster Configuration Guide](#cluster-configuration)\".
+2. Prepare the image or binary files of kubernetes, CRI, calico, CSI and other plug-ins that need to be installed. You can choose online/offline according to the network environment of the platform, and choose the recommended kubernetes version on page. You can also upload the image required for deployment to your own image repository in advance, and specify the image repository during deployment. For more installation configuration, refer to \"[Cluster Configuration Guide](#cluster-configuration)\".
 
 
 ### **Create an AIO experimental cluster**
@@ -39,7 +39,7 @@ If you create a cluster that contains large images, it is recommended that you u
 
 You can use cluster templates to simplify the cluster creation process.
 
-1. Add a template. There are two ways to save a template. You can add a cluster template on the \"Cluster Management\" \> \"Template Management\" page, and select the template when creating a new cluster. You can also save the existing cluster configuration as a template by clicking \"More\" \>\"Cluster setings\"> \"Save as Template\" in the cluster operation, so as to create a K8S cluster with the same configuration as the former cluster.
+1. Add a template. There are two ways to save a template. You can add a cluster template on the \"Cluster Management\" \> \"Template Management\" page, and select the template when creating a new cluster. You can also save the existing cluster configuration as a template by clicking \"More\" \>\"Cluster setings\"> \"Save as Template\" in the cluster operation, so as to create a kubernetes cluster with the same configuration as the former cluster.
 
 2. Create a cluster. Click \"Cluster Management\" \> \"Cluster\" to enter the cluster list page, click the \"Create Cluster\" button in the upper left corner, enter the cluster creation page, fill in the \"cluster name\", such as \"demo\", select the cluster template saved in the first step. Add the required nodes, click the \"Create Quickly\" button in the lower right corner, jump to the \"Confirm Config\" page, after checking the template information, click the \"Confirm\" button to create a cluster.
 
@@ -50,7 +50,7 @@ You can use cluster templates to simplify the cluster creation process.
 
 On the node config page, you can configure the node as follows:
 
-- Region: The region to which the cluster belongs. When adding a node, a physical or logical region can be specified for the node. The K8S cluster created by the node under this region also belongs to this region. Creating a cluster with nodes from multiple regionals is not supported.
+- Region: The region to which the cluster belongs. When adding a node, a physical or logical region can be specified for the node. The kubernetes cluster created by the node under this region also belongs to this region. Creating a cluster with nodes from multiple regionals is not supported.
 
 - Master Nodes: Specify an odd number of master nodes for the cluster. The production environments generally use 3 master nodes to achieve high availability.
 
@@ -71,22 +71,22 @@ On the cluster configuration page, you can configure the cluster as follows:
   - Online: public network environment
   - Offline: intranet environment
 
-|             | no private registry                                          | Specified private registry                                   |
-| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **Online**  | Configuration package: Download from kubeclipper.io. <br />Images: The image is pulled from the official registry by default, for example, k8s image pulled from k8s.gcr.io, calico pulled from docker.io. | Configuration package source: Download from kubeclipper.io.<br />Images: Pulled from the filled private registry. The components will inherit the registry by default. Please ensure that the required images are stored in the registry. You can also set an independent registry for a specific component, and the component image will be pulled from this registry. |
+|             | no private registry                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Specified private registry                                   |
+| ----------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------ |
+| **Online**  | Configuration package: Download from kubeclipper.io. <br />Images: The image is pulled from the official registry by default, for example, kubernetes image pulled from k8s.gcr.io, calico pulled from docker.io.                                                                                                                                                                                                                                                                                                                                   | Configuration package source: Download from kubeclipper.io.<br />Images: Pulled from the filled private registry. The components will inherit the registry by default. Please ensure that the required images are stored in the registry. You can also set an independent registry for a specific component, and the component image will be pulled from this registry. |
 | **Offline** | Configuration package: Download from the local kubeclipper server nodes, you can use the "kcctl resource list" command to check the available configuration packages, or use the "kcctl resource push" command to upload the required configuration packages.<br />Images: Download from the local kubeclipper server nodes, and CRI will import the images after downloading. You can use the "kcctl resource list" command to check the available image packages, or use the "kcctl resource push" command to upload the required image packages. | Configuration package: Download from the local kubeclipper server nodes, you can use the "kcctl resource list" command to check the available configuration packages, or use the "kcctl resource push" command to upload the required configuration packages.<br />Images: Pulled from the filled private registry. The components will inherit the registry by default. Please ensure that  the required images are stored in the registry. You can also set an independent registry for a specific component, and the component image will be pulled from this address. kubeclipper provides the Docker Registry and uses the "kcctl registry" command for management. You can also use your own private registry. |
 
-- K8S version: Specify the cluster K8S version. When you choose to install offline, you can choose from the K8S version of the configuration packages in the current environment; when you choose to install online, you can choose from the officially recommended versions by kubeclipper.
+- kubernetes version: Specify the cluster kubernetes version. When you choose to install offline, you can choose from the kubernetes version of the configuration packages in the current environment; when you choose to install online, you can choose from the officially recommended versions by kubeclipper.
 
 - ETCD Data Dir: You can specify the ETCD data directory, which defaults to /var/lib/etcd.
 
 - kubelet Data Dir: You can specify the ETCD data directory, which defaults to /var/lib/kubelet.
 
-- CertSANs: The IP address or domain name of the k8s cluster ca certificate signature, more than one can be filled in.
+- CertSANs: The IP address or domain name of the kubernetes cluster ca certificate signature, more than one can be filled in.
 
-- Container Runtime: According to the specified K8S version, the default container runtime is Docker for K8S version before v1.20.0, the default container runtime is Contianerd after v1.20.0; Docker is not supported after v1.24.0.
+- Container Runtime: According to the specified kubernetes version, the default container runtime is Docker for kubernetes version before v1.20.0, the default container runtime is Contianerd after v1.20.0; Docker is not supported after v1.24.0.
 
-- Container Runtime version: Specify the containerd/docker version. As with K8S, when you choose to install offline, you can choose from the version of the configuration package in the current environment; when you choose to install online, you can choose from the officially recommended version by kubeclipper.
+- Container Runtime version: Specify the containerd/docker version. As with kubernetes, when you choose to install offline, you can choose from the version of the configuration package in the current environment; when you choose to install online, you can choose from the officially recommended version by kubeclipper.
 
 - Containerd data Path: The \"root dir\" in the config.toml configuration can be filled in. which defaults to /var/lib/containerd.
 
@@ -96,7 +96,7 @@ On the cluster configuration page, you can configure the cluster as follows:
 
 - Docker registry: The registry address where the images are stored, the insecure registry in the daemon.json configuration, more than one can be filled in.
 
-- DNS domain name: The domain name of the k8s cluster, which defaults to cluster.local.
+- DNS domain name: The domain name of the kubernetes cluster, which defaults to cluster.local.
 
 - Worker load IP: Used for load balancing from worker nodes to multiple masters, no need to be set for a single master node cluster.
 

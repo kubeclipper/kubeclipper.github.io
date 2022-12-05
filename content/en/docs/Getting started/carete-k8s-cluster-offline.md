@@ -1,9 +1,9 @@
 ---
-title: "Create k8s clusters offline using the kubeclipper platform"
-linkTitle: "create k8s cluster offline"
+title: "Create kubernetes clusters offline using the kubeclipper platform"
+linkTitle: "create kubernetes cluster offline"
 weight: 2
 description: >
-  How to create a k8s cluster offline using the KC platform
+  How to create a kubernetes cluster offline using the KC platform
 ---
 
 ## 1. Go to the creation screen
