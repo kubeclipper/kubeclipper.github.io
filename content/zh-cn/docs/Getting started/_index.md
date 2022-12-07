@@ -88,7 +88,7 @@ kcctl deploy --user root --pk-file $SSH_PRIVATE_KEY
 
 安装完成后，打开浏览器，访问 `http://$IP` 即可进入 KubeClipper 控制台。
 
-![console](docs/img/console-login.png)
+![console](/images/docs-quickstart/console-login.png)
 
 您可以使用默认帐号密码 `admin / Thinkbig1` 进行登录。
 
