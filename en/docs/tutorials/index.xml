@@ -1,150 +1,155 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Tutorials</title><link>https://www.kubeclipper.io/en/docs/tutorials/</link><description>Recent content in Tutorials on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 04 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/en/docs/tutorials/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Cluster management</title><link>https://www.kubeclipper.io/en/docs/tutorials/cluster-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/cluster-manage/</guid><description>
-&lt;h2 id="create-a-kubernetes-cluster">&lt;strong>Create a kubernetes cluster&lt;/strong>&lt;/h2>
-&lt;p>You can create a kubernetes cluster through the wizard-style page, and install the required plugins such as CNI and CSI. You can also save the cluster template in advance, and create a cluster quickly after selecting the template.&lt;/p>
-&lt;h2 id="prepare-to-create-a-cluster">&lt;strong>Prepare to create a cluster&lt;/strong>&lt;/h2>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Tutorials</title><link>https://www.kubeclipper.io/en/docs/tutorials/</link><description>Recent content in Tutorials on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 04 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/en/docs/tutorials/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Create clusters</title><link>https://www.kubeclipper.io/en/docs/tutorials/create-clusters/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/create-clusters/</guid><description>
+&lt;h3 id="prepare-to-create-a-cluster">&lt;strong>Prepare to create a cluster&lt;/strong>&lt;/h3>
 &lt;ol>
 &lt;li>
-&lt;p>You need to have enough available nodes. To add nodes, refer to &amp;quot;Add Nodes&amp;quot;.&lt;/p>
+&lt;p>You need to have enough available nodes. To add nodes, refer to &amp;quot;&lt;a href="https://www.kubeclipper.io/en/docs/tutorials/node-management/#add-node">Add Nodes&lt;/a>&amp;quot;.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Prepare the image or binary files of K8S, CRI, calico, CSI and other plug-ins that need to be installed. You can choose online/offline according to the network environment of the platform, and then choose the recommended K8S version on page. You can also upload the image required for deployment to your own image repository in advance, and specify the image repository during deployment. For more installation configuration, refer to &amp;quot;Cluster Configuration Guide&amp;quot;.&lt;/p>
+&lt;p>Prepare the image or binary files of kubernetes, CRI, calico, CSI and other plug-ins that need to be installed. You can choose online/offline according to the network environment of the platform, and choose the recommended kubernetes version on page. You can also upload the image required for deployment to your own image repository in advance, and specify the image repository during deployment. For more installation configuration, refer to &amp;quot;&lt;a href="#cluster-configuration">Cluster Configuration Guide&lt;/a>&amp;quot;.&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;h2 id="create-a-single-node-experimental-cluster">&lt;strong>Create a single-node experimental cluster&lt;/strong>&lt;/h2>
+&lt;h3 id="create-an-aio-experimental-cluster">&lt;strong>Create an AIO experimental cluster&lt;/strong>&lt;/h3>
 &lt;ol>
 &lt;li>
 &lt;p>Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Cluster&amp;quot; to enter the cluster list page, and click the &amp;quot;Create Cluster&amp;quot; button in the upper left corner.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Enter the &amp;quot;Node Configuration&amp;quot; page of the Create Cluster Wizard page. Fill in the &amp;quot;Cluster Name&amp;quot;, such as &amp;quot;test&amp;quot;, without selecting &amp;quot;Cluster Template&amp;quot;. Select an available node, add it as a control node, and remove the taint from the master node in the taint management list. Click the &amp;quot;Next&amp;quot; button.&lt;/p>
+&lt;p>Enter the &amp;quot;Node Config&amp;quot; page of the Create Cluster Wizard page. Fill in the &amp;quot;Cluster Name&amp;quot;, such as &amp;quot;test&amp;quot;, without selecting &amp;quot;Cluster Template&amp;quot;. Select an available node, add it as a master node, and remove the taint from the master node in the taints list. Click the &amp;quot;Next&amp;quot; button.&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/select-node.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/aioen.png" alt="">&lt;/p>
 &lt;ol start="3">
 &lt;li>
-&lt;p>Enter the &amp;quot;Cluster Configuration&amp;quot; page of the Create Cluster Wizard page. Select &amp;quot;Offline Installation&amp;quot;, no need to specify &amp;quot;Mirror Repository&amp;quot;, retain the default values for other configurations, click the &amp;quot;Quick Create&amp;quot; button, jump to the configuration confirmation page, and click the &amp;quot;OK&amp;quot; button.&lt;/p>
+&lt;p>Enter the &amp;quot;Cluster Config&amp;quot; page. Select &amp;quot;Offline&amp;quot; for &amp;ldquo;Image Type&amp;rdquo;, retain the default values for other configurations, click the &amp;quot;Create Quickly&amp;quot; button, jump to the &amp;ldquo;Confirm Config&amp;rdquo; page, and click the &amp;quot;Confirm&amp;quot; button.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>The experimental cluster of a single node is created. You can view the cluster details on the cluster details page, or click the &amp;quot;ViewLog&amp;quot; button to view the real-time log during the cluster creation process.&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;h2 id="create-a-cluster-using-a-mirror-repository">&lt;strong>Create a cluster using a mirror repository&lt;/strong>&lt;/h2>
-&lt;p>If you create a cluster that contains large images, it is recommended that you upload all images to a specific image repository, the creating process will be faster and smoother.&lt;/p>
+&lt;h3 id="create-a-cluster-using-a-private-registry">&lt;strong>Create a cluster using a private registry&lt;/strong>&lt;/h3>
+&lt;p>If you create a cluster that contains large images, it is recommended that you upload the requred images to a private registry to speed up the installing process.&lt;/p>
 &lt;ol>
 &lt;li>
-&lt;p>Add a mirror repository. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Mirror Repository&amp;quot; to enter the mirror repository list page, and click the &amp;quot;Add&amp;quot; button in the upper left corner. Enter the IP address of the repository where the mirror is stored in the pop-up window of adding a mirror repository, and click the &amp;quot;OK&amp;quot; button.&lt;/p>
+&lt;p>Add a private registry. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Registry&amp;quot; to enter the registry list page, and click the &amp;quot;Add&amp;quot; button in the upper left corner. In the pop-up window, enter the name and address of the registry where the images are stored, and click the &amp;quot;OK&amp;quot; button.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Create a cluster. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Cluster&amp;quot; to enter the cluster list page, and click the &amp;quot;Create Cluster&amp;quot; button in the upper left corner. Configure the cluster nodes as needed. In the &amp;quot;Mirror Repository&amp;quot; of the &amp;quot;Cluster Configuration&amp;quot; page, select the mirror repository added in the first step, and create the cluster after completing other configurations of the cluster as needed.&lt;/p>
+&lt;p>Create a cluster. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Cluster&amp;quot; to enter the cluster list page, and click the &amp;quot;Create Cluster&amp;quot; button in the upper left corner. Configure the cluster nodes as needed. In the &amp;quot;Private Registry&amp;quot; of the &amp;quot;Cluster Config&amp;quot; page, select the registry added in the first step, and create the cluster after completing other configurations of the cluster as needed.&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;h2 id="create-a-cluster-using-the-cluster-template">&lt;strong>Create a cluster using the cluster template&lt;/strong>&lt;/h2>
+&lt;h3 id="create-a-cluster-using-the-cluster-template">&lt;strong>Create a cluster using the cluster template&lt;/strong>&lt;/h3>
 &lt;p>You can use cluster templates to simplify the cluster creation process.&lt;/p>
 &lt;ol>
 &lt;li>
-&lt;p>Add a template. There are two ways to save a template. You can add a cluster template on the &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Template Management&amp;quot; page, and select the template when creating a new cluster. You can also save the existing cluster configuration as a template by clicking &amp;quot;More&amp;quot; &amp;gt; &amp;quot;Save as Template&amp;quot; in the cluster operation, so as to create a K8S cluster with the same configuration as the former cluster.&lt;/p>
+&lt;p>Add a template. There are two ways to save a template. You can add a cluster template on the &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Template Management&amp;quot; page, and select the template when creating a new cluster. You can also save the existing cluster configuration as a template by clicking &amp;quot;More&amp;quot; &amp;gt;&amp;quot;Cluster setings&amp;quot;&amp;gt; &amp;quot;Save as Template&amp;quot; in the cluster operation, so as to create a kubernetes cluster with the same configuration as the former cluster.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Create a cluster. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Cluster&amp;quot; to enter the cluster list page, click the &amp;quot;Create Cluster&amp;quot; button in the upper left corner, enter the cluster creation page, fill in the &amp;quot;cluster name&amp;quot;, such as &amp;quot;demo&amp;quot;, select the cluster template saved in the first step, Add the required nodes, click the &amp;quot;Quick Create&amp;quot; button in the lower right corner, jump to the &amp;quot;Configuration Confirmation&amp;quot; page, after checking the template information, click the &amp;quot;OK&amp;quot; button to create a cluster.&lt;/p>
+&lt;p>Create a cluster. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Cluster&amp;quot; to enter the cluster list page, click the &amp;quot;Create Cluster&amp;quot; button in the upper left corner, enter the cluster creation page, fill in the &amp;quot;cluster name&amp;quot;, such as &amp;quot;demo&amp;quot;, select the cluster template saved in the first step. Add the required nodes, click the &amp;quot;Create Quickly&amp;quot; button in the lower right corner, jump to the &amp;quot;Confirm Config&amp;quot; page, after checking the template information, click the &amp;quot;Confirm&amp;quot; button to create a cluster.&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;h2 id="cluster-configuration-guide">&lt;strong>Cluster Configuration Guide&lt;/strong>&lt;/h2>
-&lt;h3 id="node-configuration-steps">&lt;strong>Node configuration steps&lt;/strong>&lt;/h3>
-&lt;p>On the node configuration page, you can configure the node as follows:&lt;/p>
+&lt;h3 id="cluster-configuration-guide">&lt;strong>Cluster Configuration Guide&lt;/strong>&lt;/h3>
+&lt;h4 id="node-configuration">&lt;strong>Node configuration&lt;/strong>&lt;/h4>
+&lt;p>On the node config page, you can configure the node as follows:&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;p>Region: The region to which the cluster belongs. When adding a node, a physical or logical region can be specified for the node. The K8S cluster created by the node under this area also belongs to this region. Creating a cluster using multiple regional nodes is not supported.&lt;/p>
+&lt;p>Region: The region to which the cluster belongs. When adding a node, a physical or logical region can be specified for the node. The kubernetes cluster created by the node under this region also belongs to this region. Creating a cluster with nodes from multiple regionals is not supported.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Control Nodes: Specify an odd number of control nodes for the cluster. The production environments generally use 3 control nodes to achieve high availability.&lt;/p>
+&lt;p>Master Nodes: Specify an odd number of master nodes for the cluster. The production environments generally use 3 master nodes to achieve high availability.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>Worker nodes: Add worker nodes to the new cluster according to the business size.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Taint management: You can configure taint for added nodes, kubeclipper will automatically add no schedule taint to the control nodes, and you can also make changes as needed.&lt;/p>
+&lt;p>Taint management: You can configure taint for added nodes, kubeclipper will automatically add noschedule taint to the master nodes, and you can also make changes as needed.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>Node Labels: You can configure labels for added cluster nodes as needed.&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>You can configure the required nodes according to your business needs. If you need to create a non-highly available experimental cluster, you can also add only one control node, and remove the taint automatically added for the control node. For details, see &amp;quot;Creating a Single-Node Experimental Cluster&amp;quot;.&lt;/p>
-&lt;h3 id="cluster-configuration-steps">&lt;strong>Cluster configuration steps&lt;/strong>&lt;/h3>
+&lt;p>You can configure the required nodes according to your business needs. If you need to create a non-highly available experimental cluster, you can also add only one master node, and remove the taint automatically added for the master node. For details, refer to &amp;quot;&lt;a href="#create-an-aio-experimental-cluster">Creating an AIO Experimental Cluster&lt;/a>&amp;quot;.&lt;/p>
+&lt;h4 id="cluster-configuration">&lt;strong>Cluster configuration&lt;/strong>&lt;/h4>
 &lt;p>On the cluster configuration page, you can configure the cluster as follows:&lt;/p>
-&lt;p>Installation method and mirror repository:&lt;/p>
+&lt;ul>
+&lt;li>Installation method and registry:
+&lt;ul>
+&lt;li>Online: public network environment&lt;/li>
+&lt;li>Offline: intranet environment&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
 &lt;table>
 &lt;thead>
 &lt;tr>
-&lt;th>Page configuration&lt;/th>
-&lt;th>Configure Package/Image Sources&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>no private registry&lt;/th>
+&lt;th>Specified private registry&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>&lt;strong>Online&lt;/strong> (public network environment)&lt;strong>Mirror repository&lt;/strong> is empty&lt;/td>
-&lt;td>Configuration package source: Download from kubeclipper.io.Image pull method: The image is pulled from the official image repository by default, such as k8s image pulled from k8s.gcr.io, calico pulled from docker.io.&lt;/td>
+&lt;td>&lt;strong>Online&lt;/strong>&lt;/td>
+&lt;td>Configuration package: Download from kubeclipper.io. &lt;br />Images: The image is pulled from the official registry by default, for example, kubernetes image pulled from k8s.gcr.io, calico pulled from docker.io.&lt;/td>
+&lt;td>Configuration package source: Download from kubeclipper.io.&lt;br />Images: Pulled from the filled private registry. The components will inherit the registry by default. Please ensure that the required images are stored in the registry. You can also set an independent registry for a specific component, and the component image will be pulled from this registry.&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;strong>Online&lt;/strong> (public network environment)&lt;strong>Mirror repository&lt;/strong> specification&lt;/td>
-&lt;td>Configuration package source: Download from kubeclipper.io.Image pull method: Pull from the filled mirror repository. The components will inherit the repository address by default. Please ensure that the repository has the related component images. You can also set an independent mirror repository for a specific component, and the component image will be pulled from this address.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Offline&lt;/strong> (intranet environment)&lt;strong>Mirror repository&lt;/strong> is empty&lt;/td>
-&lt;td>Configuration package source: Download from the local kubeclipper cluster server node, you can use the &amp;ldquo;kcctl resource list&amp;rdquo; command to check the available configuration packages, or use the &amp;ldquo;kcctl resource push&amp;rdquo; command to upload the required configuration packages.Image pull method: Download from the local kubeclipper cluster server node. CRI will import the image after downloading. You can use the &amp;ldquo;kcctl resource list&amp;rdquo; command to check the available image packages, or use the &amp;ldquo;kcctl resource push&amp;rdquo; command to upload the required image packages.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Offline&lt;/strong> (intranet environment)&lt;strong>Mirror repository&lt;/strong> specification&lt;/td>
-&lt;td>Configuration package source: Download from the local kubeclipper cluster server node, you can use the &amp;ldquo;kcctl resource list&amp;rdquo; command to check the available configuration packages, or use the &amp;ldquo;kcctl resource push&amp;rdquo; command to upload the required configuration packages.Image pull method: Pull from the filled mirror repository. The components will inherit the repository address by default. Please ensure that the repository has the related component images. You can also set an independent mirror repository for a specific component, and the component image will be pulled from this address. kubeclipper provides the Docker Registry and uses the kcctl registry command for management. You can also use your own image repositories.&lt;/td>
+&lt;td>&lt;strong>Offline&lt;/strong>&lt;/td>
+&lt;td>Configuration package: Download from the local kubeclipper server nodes, you can use the &amp;ldquo;kcctl resource list&amp;rdquo; command to check the available configuration packages, or use the &amp;ldquo;kcctl resource push&amp;rdquo; command to upload the required configuration packages.&lt;br />Images: Download from the local kubeclipper server nodes, and CRI will import the images after downloading. You can use the &amp;ldquo;kcctl resource list&amp;rdquo; command to check the available image packages, or use the &amp;ldquo;kcctl resource push&amp;rdquo; command to upload the required image packages.&lt;/td>
+&lt;td>Configuration package: Download from the local kubeclipper server nodes, you can use the &amp;ldquo;kcctl resource list&amp;rdquo; command to check the available configuration packages, or use the &amp;ldquo;kcctl resource push&amp;rdquo; command to upload the required configuration packages.&lt;br />Images: Pulled from the filled private registry. The components will inherit the registry by default. Please ensure that the required images are stored in the registry. You can also set an independent registry for a specific component, and the component image will be pulled from this address. kubeclipper provides the Docker Registry and uses the &amp;ldquo;kcctl registry&amp;rdquo; command for management. You can also use your own private registry.&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
 &lt;ul>
 &lt;li>
-&lt;p>K8S version: Specify the cluster K8S version. When you choose to install offline, you can choose from the K8S version of the configuration package in the current environment; when you choose to install online, you can choose from the officially recommended version of kubeclipper.&lt;/p>
+&lt;p>kubernetes version: Specify the cluster kubernetes version. When you choose to install offline, you can choose from the kubernetes version of the configuration packages in the current environment; when you choose to install online, you can choose from the officially recommended versions by kubeclipper.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>ETCD Data Dir: You can specify the ETCD data directory, the default is /var/lib/etcd.&lt;/p>
+&lt;p>ETCD Data Dir: You can specify the ETCD data directory, which defaults to /var/lib/etcd.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>CertSANs: The IP address or domain name of the k8s cluster ca certificate signature, more than one can be filled in.&lt;/p>
+&lt;p>kubelet Data Dir: You can specify the ETCD data directory, which defaults to /var/lib/kubelet.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Container Runtime: According to the specified K8S version, the default container runtime is Docker for K8S version before v1.20.0, the default container runtime is Contianerd after v1.20.0; Docker is not supported after v1.24.0.&lt;/p>
+&lt;p>CertSANs: The IP address or domain name of the kubernetes cluster ca certificate signature, more than one can be filled in.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Container Runtime version: Specify the containerd/docker version. As with K8S, when you choose to install offline, you can choose from the version of the configuration package in the current environment; when you choose to install online, you can choose from the officially recommended version of kubeclipper.&lt;/p>
+&lt;p>Container Runtime: According to the specified kubernetes version, the default container runtime is Docker for kubernetes version before v1.20.0, the default container runtime is Contianerd after v1.20.0; Docker is not supported after v1.24.0.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Containerd data Path: The &amp;quot;root dir&amp;quot; in the config.toml configuration can be filled in. The default is /var/lib/containerd.&lt;/p>
+&lt;p>Container Runtime version: Specify the containerd/docker version. As with kubernetes, when you choose to install offline, you can choose from the version of the configuration package in the current environment; when you choose to install online, you can choose from the officially recommended version by kubeclipper.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Docker data Path: The &amp;quot;root dir&amp;quot; in the daemon.json configuration can be filled in . The default is /var/lib/docker.&lt;/p>
+&lt;p>Containerd data Path: The &amp;quot;root dir&amp;quot; in the config.toml configuration can be filled in. which defaults to /var/lib/containerd.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Containerd image repository: The repository address where the containerd image is stored, the &amp;quot;registry.mirrors&amp;quot; in the config.toml configuration, more than one can be filled in.&lt;/p>
+&lt;p>Docker data Path: The &amp;quot;root dir&amp;quot; in the daemon.json configuration can be filled in . which defaults to /var/lib/docker.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Docker image repository: The repository address where the Docker image is stored, the insecure registry in the daemon.json configuration, more than one can be filled in.&lt;/p>
+&lt;p>Containerd registry: The registry address where the images are stored, the &amp;quot;registry.mirrors&amp;quot; in the config.toml configuration, more than one can be filled in.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>DNS domain name: The domain name of the k8s cluster, the default is cluster.local.&lt;/p>
+&lt;p>Docker registry: The registry address where the images are stored, the insecure registry in the daemon.json configuration, more than one can be filled in.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Worker load IP: Used for load balancing from worker nodes to multiple masters, a single master does not need to be set.&lt;/p>
+&lt;p>DNS domain name: The domain name of the kubernetes cluster, which defaults to cluster.local.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Worker load IP: Used for load balancing from worker nodes to multiple masters, no need to be set for a single master node cluster.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>External access IP: You can fill in a floating IP for user access, which can be empty.&lt;/p>
 &lt;/li>
+&lt;li>
+&lt;p>Backup space: Storage location of cluster backup files.&lt;/p>
+&lt;/li>
 &lt;/ul>
-&lt;h3 id="cni-configuration">&lt;strong>CNI configuration&lt;/strong>&lt;/h3>
-&lt;p>The current version kubeclipper only supports Calico as cluster CNI.&lt;/p>
+&lt;h4 id="cni-configuration">&lt;strong>CNI configuration&lt;/strong>&lt;/h4>
+&lt;p>The current version kubeclipper supports Calico as cluster CNI.&lt;/p>
 &lt;p>Calico divides the pod CIDR set by users into several blocks (network segments), dynamically allocates them to the required nodes according to business requirements, and maintains the routing table of the cluster nodes through the bgp peer in the nodes.&lt;/p>
 &lt;p>For example: container address pool: 172.25.0.0/16, dynamically allocated network segment pool: 172.25.0.0 - 172.25.255.192 (172.25.0.0/26 i.e. 10 bits), the number of dynamically allocated network segments: 1023, the number of pods per network segment: 61 (193-254), the total number of pods is 1023 * 61 = 62403, the relative maximum number of nodes (according to the 200 service pod as the reference value): 312.&lt;/p>
 &lt;p>Clusters larger than 50 nodes are currently not recommended. Clusters larger than 50 nodes are recommended to manually configure route reflection to optimize the stability of routing table maintenance for nodes in the cluster.&lt;/p>
 &lt;p>To use Calico as the cluster CNI, you need the following configuration:&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;p>Calico mode: 5 network modes are supported:&lt;/p>
+&lt;li>Calico mode: 5 network modes are supported:
 &lt;ul>
 &lt;li>Overlay-IPIP-All: Use IP-in-IP technology to open up the network of pods of different nodes. Usually, this method is used in the environment where the underlying platform is IaaS. Of course, if your underlying network environment is directly a physical device, it is also completely can be used, but the efficiency and flexibility will be greatly reduced. It should be noted that you need to confirm that the underlying network environment (underlay) supports the IPIP protocol. (The network method using overlay will have a certain impact on network performance).&lt;/li>
 &lt;li>Overlay-Vxlan-All: Use IP-in-IP technology to open up the network of pods of different nodes. Usually, this method is used in the environment where the underlying platform is IaaS. Of course, if your underlying network environment is directly a physical device, it is also completely can be used, but the efficiency and flexibility will be greatly reduced. In theory, it can run on any network environment. Usually, we will use it when the underlying environment does not support the IPIP protocol. (The network method using overlay has a certain impact on network performance).&lt;/li>
@@ -153,28 +158,19 @@
 &lt;li>Overly-Vxlan-Cross-Subnet: The logic is similar to that of Overly-IPIP-Cross-Subnet.&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>
-&lt;p>IP version: The IP version can be specified as IPV4 or IPV4 IPV6 dual stack.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Service subnet: Fill in the service subnet CIDR, v4 defaults to: 10.96.0.0/16, v6 defaults to fd03::/112, note that the Service network must not overlap with any host network.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Pod CIDR: Fill in the pod subnet CIDR, v4 default: 172.25.0.0/24, v6 default is fd05::/120, note that the Pod network must not overlap with any host network.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>The bottom layer of the pod network:&lt;/p>
+&lt;li>IP version: The IP version can be specified as IPV4 or IPV4 IPV6 dual stack.&lt;/li>
+&lt;li>Service subnet: Fill in the service subnet CIDR, v4 defaults to: 10.96.0.0/16, v6 defaults to fd03::/112, note that the Service network must not overlap with any host network.&lt;/li>
+&lt;li>Pod CIDR: Fill in the pod subnet CIDR, v4 default: 172.25.0.0/24, v6 default is fd05::/120, note that the Pod network must not overlap with any host network.&lt;/li>
+&lt;li>The bottom layer of the pod network:
 &lt;ul>
 &lt;li>First-found (default): The program will traverse all valid IP addresses (local, loop back, docker bridge, etc. will be automatically excluded) according to ipfamily (v4 or v6). Usually, if it is a multi-network interface card, it will exclude the default gateway. The network interface card ip other than the gateway will be used as the routing address between nodes.&lt;/li>
 &lt;li>Can-reach: Set the routing address between nodes by checking the reachability of the domain names or IP addresses.&lt;/li>
 &lt;li>Interface: Get all network interface card device names that satisfy the regular expression and return the address of the first network interface card as the routing address between nodes.&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>
-&lt;p>MTU: Configure the maximum transmission unit (MTU) for the Calico environment. It is recommended to be no larger than 1440. The default is 1440. See &lt;a href="https://docs.projectcalico.org/networking/mtu">https://docs.projectcalico.org/networking/mtu&lt;/a> for details.&lt;/p>
-&lt;/li>
+&lt;li>MTU: Configure the maximum transmission unit (MTU) for the Calico environment. It is recommended to be no larger than 1440. The default is 1440. See &lt;a href="https://docs.projectcalico.org/networking/mtu">https://docs.projectcalico.org/networking/mtu&lt;/a> for details.&lt;/li>
 &lt;/ul>
-&lt;h3 id="storage-configuration">&lt;strong>Storage configuration&lt;/strong>&lt;/h3>
+&lt;h4 id="storage-configuration">&lt;strong>Storage configuration&lt;/strong>&lt;/h4>
 &lt;p>The current version of Kubeclipper supports NFS as external storage types.&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>Connect to NFS storage&lt;/strong>&lt;/li>
@@ -226,48 +222,176 @@
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>By default, multiple NFS storage types can be connected. Click the &amp;quot;Continue to add&amp;quot; button below to add another NFS storage. Note that the storage class name cannot be repeated.&lt;/p>
 &lt;p>After setting up the external storage, the card below will show the storages you have enabled. You can choose a storage class as the default storage. For PVCs that do not specify a specific StorageClass, the default storage class will be used.&lt;/p>
-&lt;h2 id="cluster-operation-log-view">&lt;strong>Cluster operation log view&lt;/strong>&lt;/h2>
-&lt;p>On the cluster details page, click the &amp;quot;operation log&amp;quot; tab to view the cluster operation log list. Click the &amp;quot;View Log&amp;quot; button on the right side of an operation log to view the detailed logs of all steps and nodes in the pop-up window. Click the step name on the left to view the detailed log output of the execution steps.&lt;/p>
-&lt;p>During the execution of cluster operations, click View Log, you can view real-time log updates to trace the operation execution. For tasks that fail to execute, you can also view the log to find the execution steps and nodes marked with red dots, quickly locate errors, and troubleshoot the cause of operation failure.&lt;/p>
-&lt;p>&lt;img src="https://zhc3o5gmf9.feishu.cn/space/api/box/stream/download/asynccode/?code=YmM4ZjUzODc3MThmZWIxNTVmODUzZmI1YzMzNzAxYTVfOVJ3QURVS2RnOWJrRTJiRHBPOWpDZEdpMWJZRU4yWm5fVG9rZW46Ym94Y25Xc3VmcE52dE1LNGJRRlRvTk9GTEtnXzE2NjA2MzQzNzE6MTY2MDYzNzk3MV9WNA" alt="">&lt;/p>
-&lt;h2 id="access-cluster-kubectl">&lt;strong>Access cluster kubectl&lt;/strong>&lt;/h2>
-&lt;p>You can access the kubectl of the running cluster, click &amp;quot;More&amp;quot; &amp;gt; &amp;quot;Connect Terminal&amp;quot; in the cluster operation, and you can execute the kubectl command line operation in the cluster kuebectl pop-up window.&lt;/p>
-&lt;h2 id="cluster-plugin-management">&lt;strong>Cluster plugin management&lt;/strong>&lt;/h2>
-&lt;p>In addition to installing plugins when creating a cluster, you can also install plugins for a running cluster. Taking the installation of storage plugins as an example, click the &amp;quot;More&amp;quot; &amp;gt; &amp;quot;Add Storage Item&amp;quot; button in the cluster operation to enter the Add Storage Item page. You can install NFS plugins for the cluster. The installation configuration is the same as the configuration in cluster creation.&lt;/p>
-&lt;p>For installed plugins, you can view the plugin information on the cluster details page. You can click the &amp;quot;Save as Template&amp;quot; button in the upper right corner of the plugin card to save the plugin information as a template. You can also uninstall the cluster plugin by clicking the &amp;quot;Remove&amp;quot; button in the upper right corner of the plugin card.&lt;/p>
-&lt;h2 id="cluster-node-management">&lt;strong>Cluster node management&lt;/strong>&lt;/h2>
-&lt;p>On the &amp;quot;Nodes&amp;quot; list page of the cluster detail page, you can view the list of nodes in the current cluster, their specifications, status and role information.&lt;/p>
-&lt;h3 id="add-cluster-node">&lt;strong>Add cluster node&lt;/strong>&lt;/h3>
-&lt;p>When the cluster load is high, you can add nodes to the cluster to expand capacity. Adding nodes does not affect the running services.&lt;/p>
-&lt;p>On the cluster details page, under the Node List tab, click the &amp;quot;Add Node&amp;quot; button on the left, select the available nodes in the pop-up window, set the node labels, and click the &amp;quot;OK&amp;quot; button. The current version only supports adding worker nodes.&lt;/p>
-&lt;h3 id="remove-cluster-node">&lt;strong>Remove cluster node&lt;/strong>&lt;/h3>
-&lt;p>On the cluster details page, under the Node List tab, you can remove a node by clicking the &amp;quot;Remove&amp;quot; button on the right of the node. The current version only supports removing worker nodes.&lt;/p>
-&lt;p>Note: To remove cluster nodes, you need to pay attention to security issues in production to avoid application interruptions.&lt;/p>
-&lt;h2 id="cluster-version-upgrade">&lt;strong>Cluster version upgrade&lt;/strong>&lt;/h2>
-&lt;p>If the cluster version does not meet the requirements, you can upgrade the K8S version for the cluster. Similar to creating a cluster, you need to prepare the configuration package required for the cluster version and the K8S image of the target version and upload it to the specified location. For details, see &amp;quot;Preparing to Create a Cluster&amp;quot;.&lt;/p>
-&lt;p>Click the &amp;quot;More&amp;quot; &amp;gt; &amp;quot;Cluster Upgrade&amp;quot; button of the cluster operation. In the cluster upgrade pop-up window, select the installation mode and mirror repository, and select the target version of the upgrade. The installation method of the upgrade and the configuration of the K8S version are the same as those of creating a cluster. For details, please refer to &amp;quot;Cluster Configuration Guide&amp;quot;.&lt;/p>
-&lt;p>Cluster upgrades can be performed across minor versions, but upgrades skipped over later versions are not supported. For example, you can upgrade from v1.20.2 to v1.20.13, or from v1.20.x to v1.21.x, but not from v1.20.x to v1.22.x. For version 1.23.x, upgrading to version 1.24.x is not currently supported.&lt;/p>
-&lt;p>The cluster upgrade operation may take a long time. You can view the operation log on the cluster details page to track the cluster upgrade status.&lt;/p>
-&lt;h2 id="cluster-backup-and-recovery">&lt;strong>Cluster Backup and Recovery&lt;/strong>&lt;/h2>
-&lt;p>The backup of K8S cluster by KubeClipper mainly backs up ETCD database data, and k8s resource object, such as namespaces, deployments, configMaps. The files and data generated by the resource itself are not backed up. For example, the data and files generated by the mysql pod will not be backed up. Similarly, the files under the PV object of the file class are not backed up, only the pv object is backed up. The backup function provided by KubeClipper is hot backup, which does not affect cluster usage during backup. While KubeClipper is not against backing up during the &amp;quot;busy period&amp;quot; of the cluster, it also strongly disapproves of backing up during the &amp;quot;busy period&amp;quot; of the cluster.&lt;/p>
-&lt;h3 id="create-a-backup-point">&lt;strong>Create a backup point&lt;/strong>&lt;/h3>
-&lt;p>Before performing a backup, you need to set a backup point for the cluster, that is, set the storage location of the backup files. The storage type of the backup point can be FS storage or S3 storage . The following are node local storage , NFS storage and MINIO storage as examples:&lt;/p>
+&lt;h4 id="configuration-confirm">Configuration Confirm&lt;/h4>
+&lt;p>You can check the cluster configuration information on the Confirm Config page. After confirming the information, click Confirm. You can also click the &amp;ldquo;Edit&amp;rdquo; button of each card to skip back to the corresponding step to modify the cluster information.&lt;/p>
+&lt;p>The cluster installation may take several minutes. You can check the operation logs on the cluster detail page to track the cluster installation status.&lt;/p></description></item><item><title>Docs: Cluster hosting</title><link>https://www.kubeclipper.io/en/docs/tutorials/cluster-hosting/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/cluster-hosting/</guid><description>
+&lt;h2 id="kubeadm-cluster-hosting">Kubeadm cluster hosting&lt;/h2>
+&lt;p>For a host cluster created and managed by kubeadm, kubeclipper gets the cluster and node information from the kubeconfig file and imports it into the kubeclipper platform.&lt;/p>
+&lt;p>Click &amp;ldquo;Cluster Management&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Hosting&amp;rdquo; button to enter the cluster hosting page. Click &amp;ldquo;Add&amp;rdquo; button at the upper left corner. In the pop-up window of Add Provider, fill in the provider name (such as kubeadm-demo) and description, and then fill in the following information:&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;h3 id="node-local-storage-only-for-single-node-experimental-clusters">&lt;strong>Node local storage (only for single-node experimental clusters):&lt;/strong>&lt;/h3>
+&lt;p>Region: The region of the cluster and node in the kubeclipper platform.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Provider type: Select kubeadm.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>SSH: Specifies the connection method of cluster nodes. Private Key or Password can be selected. Ensure that all cluster nodes can be connected through the selected method.&lt;/p>
+&lt;ul>
+&lt;li>Private Key: enter the node user name and private key information.&lt;/li>
+&lt;li>Password: enter the node user name and password.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Cluster name: Specifies the display name on the platform and cannot be the same as any other clusters.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>KubeConfig: The KubeConfig file of the host cluster.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>Click the &amp;ldquo;OK&amp;rdquo; button to import the cluster and node into the platform. Click the provider name (kubeadm-demo) to enter the Provider detail page, where you can view the cluster under the provider and perform the following operations on the provider:&lt;/p>
+&lt;ul>
+&lt;li>Synchronization: Kubeclipper synchronizes cluster information every four hours. You can also click &amp;ldquo;Synchronize&amp;rdquo; to manually perform the operation.&lt;/li>
+&lt;li>Edit: Edit the provider&amp;rsquo;s name, description, access information, and node connection method.&lt;/li>
+&lt;li>Remove: Remove the cluster information from kubeclipper, but the cluster will not be uninstalled.&lt;/li>
+&lt;/ul>
+&lt;h2 id="managed-cluster-management">Managed cluster management&lt;/h2>
+&lt;p>You can choose &amp;ldquo;Cluster Management&amp;rdquo; &amp;gt; &amp;ldquo;Cluster&amp;rdquo; to go to the cluster list page and view the list of all clusters, including hosted clusters and local clusters. The following table lists the operations supported by different clusters:&lt;/p>
+&lt;p>Note that &amp;ldquo;docker.io&amp;rdquo; will be used as image resource by default when you install external storage and other plug-ins for host clusters. If you are in an offline environment, you need to fill in the address of the accessible private registry during plug-in installation. The private registry must be added to the CRI registry of the cluster. For details, refer to &lt;a href="https://www.kubeclipper.io/en/docs/tutorials/cluster-management/#cri-registry">CRI Registry&lt;/a>.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Function&lt;/th>
+&lt;th>Clusters created by Kubeclipper&lt;/th>
+&lt;th>Hosted kubeadm cluster&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>View log&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Retry after failed task&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Access Kubectl&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Edit&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Save as template&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✘&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>CRI Registry&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Add/remove cluster nodes&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Cluster Backup and Recovery&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Version Upgrade&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✘&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Delete cluster&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✘&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Remove cluster (provider)&lt;/td>
+&lt;td>/&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Reset status&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Cluster plugin management&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Update cluster certificate&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>View kubeconfig file&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;td>✔&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>Docs: Cluster management</title><link>https://www.kubeclipper.io/en/docs/tutorials/cluster-management/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/cluster-management/</guid><description>
+&lt;h2 id="view-cluster-operations">&lt;strong>View Cluster operations&lt;/strong>&lt;/h2>
+&lt;p>On the cluster details page, click the &amp;quot;Operation Log&amp;quot; tab to see the cluster operation records. Click the &amp;quot;ViewLog&amp;quot; button on the right side to inspect the detailed logs of all steps and nodes in the pop-up window. Click the step name on the left to inspect the detailed log of the execution steps.&lt;/p>
+&lt;p>During the execution of cluster operations, you can inspect real-time log updates to trace the operation execution. For operations that failed to execute, you can also locate error by red dot under the step name, and troubleshoot the cause of the operation failure.&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/log.png" alt="">&lt;/p>
+&lt;h3 id="try-again-after-failed-task">Try again after failed task&lt;/h3>
+&lt;p>If the task failed but you do not need to modify the task parameters after troubleshooting, you can click &amp;ldquo;Retry&amp;rdquo; on the right of the operation record to retry the task at the breakpoint.&lt;/p>
+&lt;p>Note: The retry operation is not universal. You need to determine the cause of the task failure by yourself.&lt;/p>
+&lt;p>After cluster operation (such as creation, restoration, and upgrade) failure, the cluster status may be displayed as &amp;ldquo;xx failed&amp;rdquo; and other operations cannot be performed. If the operation can not be retrayed successflly. You need to refer to the O&amp;amp;M document to manually rectify the cluster error, and click More &amp;gt; Cluster Status &amp;gt; Reset Status to reset the cluster to normal status.&lt;/p>
+&lt;h3 id="access-kubectl">&lt;strong>Access Kubectl&lt;/strong>&lt;/h3>
+&lt;p>The Kubernetes command-line tool, kubectl, allows you to run commands on Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, view logs, and more.&lt;/p>
+&lt;p>Click &amp;quot;More&amp;quot; &amp;gt; &amp;quot;Connect Terminal&amp;quot; in the cluster operation, and you can execute the kubectl commands in the cluster kuebectl pop-up window.&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/kubectl.png" alt="">&lt;/p>
+&lt;h2 id="cluster-settings">Cluster Settings&lt;/h2>
+&lt;h3 id="edit">Edit&lt;/h3>
+&lt;p>You can click More &amp;gt; Cluster Settings &amp;gt; Edit on the right of the cluster list to edit the cluster description, backup space, external access IP address, and cluster label information.&lt;/p>
+&lt;h3 id="save-as-template">Save as template&lt;/h3>
+&lt;p>You can click More &amp;gt; Cluster Settings &amp;gt; Save as Template on the right of the cluster list to save the cluster settings as a template and use it to creat new clusters with similar configurations.&lt;/p>
+&lt;h3 id="cri-registry">CRI Registry&lt;/h3>
+&lt;p>Docker and Containerd use dockerhub as the default registry. If you need to use other private registry (especially self-signed https registries or http registries), you need to configure CRI registry.&lt;/p>
+&lt;p>Click &amp;ldquo;More&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Settings&amp;rdquo; &amp;gt; &amp;ldquo;CRI Registry&amp;rdquo; on the right of the cluster page. In the pop-up window configure the required private registry. You can select an existing registry on the platform or temporarily enter the address of a registry. For a self-signed https or http registry, it is recommended to add the registry information on the Cluster Management &amp;gt; Registry in advance.&lt;/p>
+&lt;h2 id="cluster-node-management">&lt;strong>Cluster node management&lt;/strong>&lt;/h2>
+&lt;p>On the &amp;quot;Nodes list&amp;quot; page of the cluster detail page, you can view the list of nodes in the cluster, specification, status and role information of the nodes.&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/cluster.png" alt="">&lt;/p>
+&lt;h3 id="add-cluster-node">&lt;strong>Add cluster node&lt;/strong>&lt;/h3>
+&lt;p>When the cluster load is high, you can add nodes to the cluster to expand capacity. Adding nodes operation does not affect the running services.&lt;/p>
+&lt;p>On the cluster detail page, under the Node List tab, click the &amp;quot;AddNode&amp;quot; button on the left, select the available nodes in the pop-up window, set the node labels, and click the &amp;quot;OK&amp;quot; button. The current version only supports adding worker nodes.&lt;/p>
+&lt;h3 id="remove-cluster-node">&lt;strong>Remove cluster node&lt;/strong>&lt;/h3>
+&lt;p>On the cluster detail page, under the Node List tab, you can remove a node by clicking the &amp;quot;Remove&amp;quot; button on the right of the node. The current version only supports removing worker nodes.&lt;/p>
+&lt;p>Note: To remove cluster nodes, you need to pay attention to security issues in production to avoid application interruptions.&lt;/p>
+&lt;h2 id="cluster-backup-and-recovery">&lt;strong>Cluster Backup and Recovery&lt;/strong>&lt;/h2>
+&lt;p>The backup of kubernetes cluster by KubeClipper backs up the data of ETCD database, and kubernetes resource object, such as namespaces, deployments, configMaps. The files and data generated by the resource itself are not backed up. For example, the data and files generated by the mysql pod will not be backed up. Similarly, the files under the PV object are not backed up, only the pv object is backed up. The backup function provided by KubeClipper is hot backup, which does not affect cluster usage. While KubeClipper strongly disapproves of backing up during the &amp;quot;busy period&amp;quot; of the cluster.&lt;/p>
+&lt;h3 id="create-a-backup-space">&lt;strong>Create a backup space&lt;/strong>&lt;/h3>
+&lt;p>Before performing a backup operation, you need to set a backup space for the cluster, that is, set the storage location of the backup files. The storage type of the backup space can be FS storage or S3 storage . Tack the node local storage , NFS storage and MINIO storage as examples:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;h4 id="node-local-storage-only-for-aio-experimental-clusters">&lt;strong>Node local storage (only for AIO experimental clusters):&lt;/strong>&lt;/h4>
 &lt;/li>
 &lt;/ul>
 &lt;ol>
 &lt;li>
-&lt;p>Create a storage directory. Connect to the cluster master node terminal (see Connect Nodes Terminal) and use the mkdir command to create the &amp;quot;/root/backup&amp;quot; directory in the master node.&lt;/p>
+&lt;p>Create a storage directory. Connect to the cluster master node terminal ( refer to &lt;a href="https://www.kubeclipper.io/en/docs/tutorials/node-management/#connect-terminal">Connect Nodes Terminal&lt;/a> ) and use the mkdir command to create the &amp;quot;/root/backup&amp;quot; directory in the master node.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Create a backup point. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Backup Point&amp;quot; to enter the backup point list page, click the &amp;quot;Create&amp;quot; button in the upper left corner, in the Create Backup Point pop-up window, enter &amp;quot;Backup Point Name&amp;quot;, such as &amp;quot;local&amp;quot;, select &amp;quot;Storage Type&amp;quot; as &amp;quot;FS&amp;quot;, fill in &amp;quot;Backup Path&amp;quot;, such as &amp;quot;/root/backup&amp;quot;.&lt;/p>
+&lt;p>Create a backup space. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;backup space&amp;quot; to enter the backup space list page, click the &amp;quot;Create&amp;quot; button in the upper left corner, in the Create pop-up window, enter &amp;quot;Backup Space Name&amp;quot;, such as &amp;quot;local&amp;quot;, select &amp;quot;StorageType&amp;quot; as &amp;quot;FS&amp;quot;, fill in &amp;quot;backupRootDir&amp;quot; as &amp;quot;/root/backup&amp;quot;.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Set up a cluster backup point. When creating a cluster, select &amp;quot;Backup Point&amp;quot; as &amp;quot;local&amp;quot; on the &amp;quot;Cluster Configuration&amp;quot; page, or edit an existing cluster and select &amp;quot;local&amp;quot; in the &amp;quot;Backup Point&amp;quot; pop-up.&lt;/p>
+&lt;p>Set up the cluster backup space. When creating a cluster, select &amp;quot;backup space&amp;quot; as &amp;quot;local&amp;quot; on the &amp;quot;Cluster Config&amp;quot; page, or edit an existing cluster and select &amp;quot;local&amp;quot; as the &amp;quot;backup space&amp;quot;.&lt;/p>
 &lt;/li>
 &lt;/ol>
 &lt;p>Note: Using a local node to store backup files does not require the introduction of external storage. The disadvantage is that if the local node is damaged, the backup files will also be lost, so it is strongly disapproved in a production environment .&lt;/p>
@@ -279,13 +403,15 @@
 &lt;p>Prepare NFS storage. Prepare an NFS service and create a directory on the NFS server to store backup files, such as &amp;quot;/data/kubeclipper/cluster-backups&amp;quot;.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Mount the storage directory. Connect the cluster master node terminal (see Connect node Terminal), use the mkdir command to create the &amp;quot;/data/kubeclipper/cluster-backups&amp;quot; directory in each master node, and mount it to the /data/kubeclipper/cluster-backups directory of the NFS server. Command example: mount -t nfs {NFS_IP}:/data/kubeclipper/cluster-backups /opt/kubeclipper/cluster-backups -o proto = tcp -o nolock.&lt;/p>
+&lt;p>Mount the storage directory. Connect the cluster master node terminal ( refer to &lt;a href="https://www.kubeclipper.io/en/docs/tutorials/node-management/#connect-terminal">Connect node Terminal&lt;/a> ), use the mkdir command to create the &amp;quot;/data/kubeclipper/cluster-backups&amp;quot; directory in each master node, and mount it to the /data/kubeclipper/cluster-backups directory of the NFS server.&lt;/p>
+&lt;p>Command example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mount -t nfs &lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>NFS&lt;span style="color:#4e9a06">\_&lt;/span>IP&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>:/data/kubeclipper/cluster-backups /opt/kubeclipper/cluster-backups -o &lt;span style="color:#000">proto&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> tcp -o nolock
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Create a backup space. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Backup Space&amp;quot; to enter the backup space list page, click the &amp;quot;Create&amp;quot; button in the upper left corner, in the Create pop-up window, enter &amp;quot;Backup Space Name&amp;quot;, such as &amp;quot;nfs&amp;quot;, select &amp;quot;StorageType&amp;quot; as &amp;quot;FS&amp;quot;, fill in &amp;quot;backupRootDir&amp;quot; as &amp;quot;/opt/kubeclipper/cluster-backups&amp;quot;.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Create a backup point. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Backup Point&amp;quot; to enter the backup point list page, click the &amp;quot;Create&amp;quot; button in the upper left corner, in the Create Backup Point pop-up window, enter &amp;quot;Backup Point Name&amp;quot;, such as &amp;quot;nfs&amp;quot;, select &amp;quot;Storage Type&amp;quot; as &amp;quot;FS&amp;quot;, fill in &amp;quot;Backup Path&amp;quot; as &amp;quot;/opt/kubeclipper/cluster-backups&amp;quot;.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Set up a cluster backup point. When creating a cluster, select &amp;quot;Backup Point&amp;quot; as &amp;quot;nfs&amp;quot; on the &amp;quot;Cluster Configuration&amp;quot; page, or edit an existing cluster and select &amp;quot;nfs&amp;quot; in the &amp;quot;Backup Point&amp;quot; pop-up.&lt;/p>
+&lt;p>Set up the cluster backup space. When creating a cluster, select &amp;quot;backup space&amp;quot; as &amp;quot;nfs&amp;quot; on the &amp;quot;Cluster Config&amp;quot; page, or edit an existing cluster and select &amp;quot;nfs&amp;quot; as the &amp;quot;backup space&amp;quot;.&lt;/p>
 &lt;/li>
 &lt;/ol>
 &lt;ul>
@@ -296,24 +422,24 @@
 &lt;p>Prepare MINIO storage. Build MINIO services, refer to the official website &lt;a href="https://docs.min.io/docs/minio-quickstart-guide.html">https://docs.min.io/docs/minio-quickstart-guide.html&lt;/a> for the deployment process, or use existing MINIO services.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Create a backup point. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Backup Point&amp;quot; to enter the backup point list page, click the &amp;quot;Create&amp;quot; button in the upper left corner, in the Create Backup Point pop-up window, enter &amp;quot;Backup Point Name&amp;quot;, such as &amp;quot;minio&amp;quot;, select &amp;quot;Storage Type&amp;quot; as &amp;quot;S3&amp;quot;, fill in &amp;quot;bucket name&amp;quot;, such as &amp;quot;kubeclipper-backups&amp;quot;, the bucket will be automatically created by kubeclipper, fill in the IP and port number of the MINIO storage service in the first step in &amp;quot;Endpoint&amp;quot;, fill in the service username and password, click the &amp;quot;OK&amp;quot; button.&lt;/p>
+&lt;p>Create a backup space. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Backup Space&amp;quot; to enter the backup space list page, click the &amp;quot;Create&amp;quot; button in the upper left corner, in the Create window, enter &amp;quot;Backup Space Name&amp;quot;, such as &amp;quot;minio&amp;quot;, select &amp;quot;Storage Type&amp;quot; as &amp;quot;S3&amp;quot;, fill in &amp;quot;bucket name&amp;quot;, such as &amp;quot;kubeclipper-backups&amp;quot;, the bucket will be automatically created by kubeclipper, fill in the IP and port number of the MINIO storage service in the first step in &amp;quot;Endpoint&amp;quot;, fill in the service username and password, click the &amp;quot;OK&amp;quot; button.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Set up a cluster backup point. When creating a cluster, select &amp;quot;backup point&amp;quot; as &amp;quot;minio&amp;quot; on the &amp;quot;Cluster Configuration&amp;quot; page, or edit an existing cluster and select &amp;quot;minio&amp;quot; in the &amp;quot;Backup Point&amp;quot; pop-up.&lt;/p>
+&lt;p>Set up the cluster backup space. When creating a cluster, select &amp;quot;backup space&amp;quot; as &amp;quot;minio&amp;quot; on the &amp;quot;Cluster Config&amp;quot; page, or edit an existing cluster and select &amp;quot;minio&amp;quot; as the &amp;quot;backup space&amp;quot;.&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;p>You can view the list and details of all backup points on the &amp;quot;Backup Points&amp;quot; page of &amp;quot;Cluster Management&amp;quot; and do the following:&lt;/p>
+&lt;p>You can view the list and details of all backup spaces on the &amp;quot;Cluster Management&amp;quot;&amp;gt;&amp;quot;backup spaces&amp;quot; page and perform the following operations:&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;p>Edit: Edit the backup point description, and the username/password of the S3 type backup point.&lt;/p>
+&lt;p>Edit: Edit the backup space description, and the username/password of the S3 type backup space.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Delete: Delete the backup point. If there are backup files under the backup point, deletion is not allowed.&lt;/p>
+&lt;p>Delete: Delete the backup space. If there are backup files under the backup space, deletion is not allowed.&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;h3 id="cluster-backup">&lt;strong>Cluster backup&lt;/strong>&lt;/h3>
-&lt;p>You can back up your cluster ETCD data by clicking the &amp;quot;More&amp;quot; &amp;gt; &amp;quot;Cluster Backup&amp;quot; button in the cluster operation.&lt;/p>
-&lt;p>You can view all backup files for the current cluster under the Backup tab on the cluster details page, and you can also perform the following operations for backups:&lt;/p>
+&lt;p>You can back up your cluster ETCD data by clicking the &amp;quot;More&amp;quot; &amp;gt; &amp;ldquo;Backup and recovery&amp;rdquo; &amp;gt; &amp;quot;Backup Cluster&amp;quot; button in the cluster operation.&lt;/p>
+&lt;p>You can view all backup files of the cluster under the Backup tab on the cluster detail page, and you can perform the following operations for backups:&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>Edit: Edit the backup description.&lt;/p>
@@ -326,58 +452,86 @@
 &lt;/li>
 &lt;/ul>
 &lt;h3 id="scheduled-backup">&lt;strong>Scheduled backup&lt;/strong>&lt;/h3>
-&lt;p>You can also create a timed backup for the cluster, click the &amp;quot;More&amp;quot; &amp;gt; &amp;quot;Scheduled Backup&amp;quot; button in the cluster operation, in the timed backup pop-up window, enter the timed backup name, execution type ( repeat / only once) and execution time, and set the number of valid backups for repeated timed backups, and click the &amp;quot;OK&amp;quot; button.&lt;/p>
-&lt;p>kubeClipper will perform backup tasks for the cluster at the execution time you set, and the backup file will be automatically named &amp;quot;Cluster Name - Timed Backup Name - Random Code&amp;quot;. For repeated timed backups, when the number of backup files exceeds the number of valid backup files, kubeClipper will automatically delete the later backup files.&lt;/p>
-&lt;p>After the scheduled backup is added, you can view the scheduled backup information on the &amp;quot;Scheduled Backup&amp;quot; tab of the cluster details page, and you can also view the backup files generated by the scheduled backup on the &amp;quot;Backup&amp;quot; tab.&lt;/p>
+&lt;p>You can also create a scheduled backup task for the cluster, click the &amp;quot;More&amp;quot; &amp;gt; &amp;ldquo;Backup and recovery&amp;rdquo; &amp;gt; &amp;quot;Scheduled Backup&amp;quot; button in the cluster operation, in the Scheduled Backup pop-up window, enter the scheduled backup name, execution type ( repeat / onlyonce) and execution time, and set the number of valid backups for a repeat scheduled backups, and click the &amp;quot;OK&amp;quot; button.&lt;/p>
+&lt;p>kubeClipper will perform backup tasks for the cluster at the execution time you set, and the backup file will be automatically named &amp;quot;Cluster Name - Scheduled Backup Name - Random Code&amp;quot;. For repeat scheduled backups, when the number of backup files exceeds the number of valid backup files, kubeClipper will automatically delete the earlier backup files.&lt;/p>
+&lt;p>After the scheduled backup task is added, you can view the scheduled backup task information on the &amp;quot;Scheduled Backup&amp;quot; tab of the cluster detail page, and you can also view the backup files generated by the scheduled backup on the &amp;quot;Backup&amp;quot; tab.&lt;/p>
 &lt;p>For scheduled backup tasks, you can also perform the following operations:&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;p>Edit: Edit the execution time of the scheduled backup task and the number of valid backups for repeated scheduled backups.&lt;/p>
+&lt;p>Edit: Edit the execution time of the scheduled backup task and the number of valid backups for repeat scheduled backups.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>Enable/Disable: Disabled scheduled backup tasks are temporarily stopped.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Delete: Deletes a scheduled backup task.&lt;/p>
+&lt;p>Delete: Delete a scheduled backup task.&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;h3 id="cluster-backup-restore">&lt;strong>Cluster Backup Restore&lt;/strong>&lt;/h3>
-&lt;p>If you perform restore operation while the cluster is running, KubeClipper will perform overlay recovery on the cluster, that is, backup the ETCD data in the file, overwriting the existing data .&lt;/p>
-&lt;p>You can click the &amp;quot;Restore&amp;quot; button on the right side of the backup under the Backup tab of the cluster details page; or click the &amp;quot;More&amp;quot; &amp;gt; &amp;quot;Restore Cluster&amp;quot; button in the cluster operation, and select the backup to be restored in the Restore Cluster pop-up window. The current cluster can be restored to the specified backup state.&lt;/p>
-&lt;p>Note: After the K8S version of the cluster is upgraded, it will no longer be possible to restore the backup to the pre-upgrade version.&lt;/p></description></item><item><title>Docs: Node &amp; Zone Management</title><link>https://www.kubeclipper.io/en/docs/tutorials/node-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/node-manage/</guid><description>
-&lt;p>On the &amp;quot;Node Information&amp;quot; page, you can view the list of all nodes managed in the platform, node specifications, status and other information. Click the node name to enter the node details page, you can view detailed node basic information and system information.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/node-info.png" alt="">&lt;/p>
-&lt;p>The node status in KubeClipper represents the management status of the node by kc-gent. Under normal circumstances, the node status is displayed as &amp;quot;Ready&amp;quot;. When the node is out of contact for 4 minutes (within 10s of the error time), the status will be updated to &amp;quot;Unknown&amp;quot;. Nodes with unknown status cannot perform any operations, nor can they create clusters or add/remove nodes for clusters.&lt;/p>
-&lt;h2 id="add-node">&lt;strong>Add node&lt;/strong>&lt;/h2>
-&lt;p>When deploying KubeClipper, you can add the initial server nodes which are used to deploy KubeClipper's own services, and agent nodes which are used to deploy K8S clusters. In a KubeClipper environment for experimentation or development, you can add a server node as an agent node at the same time. However, if it is used in a production environment, it is recommended not to reuse the server node as an agent node.&lt;/p>
-&lt;p>You can also use the kcctl join command to add agent nodes to KubeClipper, and mark a region for each agent node. The region can be a physical or logical location. You can use nodes in the same region to create a K8S cluster, but you cannot use nodes across regions to create a cluster. Nodes in unmarked regions belong to the default region. For details, see &amp;quot;Kcctl Operation Guide&amp;quot;.&lt;/p>
+&lt;h3 id="restore-cluster">&lt;strong>Restore Cluster&lt;/strong>&lt;/h3>
+&lt;p>If you perform restore operation while the cluster is running, KubeClipper will perform overlay recovery on the cluster, that is, the ETCD data in the backup file, overwriting the existing data .&lt;/p>
+&lt;p>You can click the &amp;quot;Restore&amp;quot; button on the right side of the backup under the Backup tab of the cluster detail page; or click the &amp;quot;More&amp;quot; &amp;gt; &amp;ldquo;Backup and recovery&amp;rdquo; &amp;gt; &amp;quot;Restore Cluster&amp;quot; button in the cluster operation, and select the backup to be restored in the Restore Cluster pop-up window. The current cluster can be restored to the specified backup state.&lt;/p>
+&lt;p>Note: After the kubernetes version of the cluster is upgraded, it will no longer be possible to restore the cluster to the pre-upgrade backup version.&lt;/p>
+&lt;h2 id="cluster-status">Cluster Status&lt;/h2>
+&lt;h3 id="cluster-version-upgrade">&lt;strong>Cluster version upgrade&lt;/strong>&lt;/h3>
+&lt;p>If the cluster version does not meet the requirements, you can upgrade the kubernetes version of the cluster. Similar to creating a cluster, you need to prepare the configuration package required and the kubernetes image of the target version, upload them to the specified location. For details, refer to &lt;a href="https://www.kubeclipper.io/en/docs/tutorials/create-clusters/#prepare-to-create-a-cluster">Prepare to Create a Cluster&lt;/a>.&lt;/p>
+&lt;p>Click the &amp;quot;More&amp;quot; &amp;gt; &amp;ldquo;Cluster status&amp;rdquo; &amp;gt; &amp;quot;Cluster Upgrade&amp;quot; button of the cluster operation. In the cluster upgrade pop-up window, select the installation method and registry, and select the target upgrade version. The installation method and the configuration of the kubernetes version are the same as those of creating a cluster. For details, please refer to &lt;a href="https://www.kubeclipper.io/en/docs/tutorials/create-clusters/#cluster-configuration">Cluster Configuration Guide&lt;/a>.&lt;/p>
+&lt;p>Cluster upgrades can be performed across minor versions, but upgrades skipped over later versions are not supported. For example, you can upgrade from v1.20.2 to v1.20.13, or from v1.20.x to v1.21.x, but not from v1.20.x to v1.22.x. For version 1.23.x, upgrading to version 1.24.x is not currently supported.&lt;/p>
+&lt;p>The cluster upgrade operation may take a long time. You can view the operation log on the cluster detail page to track the cluster upgrade status.&lt;/p>
+&lt;h3 id="delete-cluster">Delete cluster&lt;/h3>
+&lt;p>You can click &amp;ldquo;More&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Status&amp;rdquo; &amp;gt; &amp;ldquo;Delete Cluster&amp;rdquo; on the right of the cluster list to delete the cluster.&lt;/p>
+&lt;p>Note that after the cluster is deleted, it cannot be restored. You must perform this operation with great caution. If the cluster is connected to an external storage device, the volumes in the storage class whose reclaim policy is &amp;ldquo;Retain&amp;rdquo; will be retained. You can access them in other ways or manually delete them. Volumes in the storage class whose reclaim policy is &amp;ldquo;Delete&amp;rdquo; will be automatically deleted when the cluster is deleted.&lt;/p>
+&lt;h3 id="reset-the-status">Reset the status&lt;/h3>
+&lt;p>After cluster operation (such as creation, restoration, and upgrade) failure, the cluster status may be displayed as &amp;ldquo;xx failed&amp;rdquo; and other operations cannot be performed. If the operation can not be retrayed successflly. You need to refer to the O&amp;amp;M document to manually rectify the cluster error, and click More &amp;gt; Cluster Status &amp;gt; Reset Status to reset the cluster to normal status.&lt;/p>
+&lt;h2 id="cluster-plugin-management">&lt;strong>Cluster plugin management&lt;/strong>&lt;/h2>
+&lt;p>In addition to installing plugins when creating a cluster, you can also install plugins for a running cluster. Taking the installation of storage plugins as an example, click the &amp;quot;More&amp;quot; &amp;gt; &amp;ldquo;plugin management&amp;rdquo;&amp;gt;&amp;quot;Add Storage&amp;quot; button in the cluster operation to enter the Add Storage page. You can install NFS plugins for the cluster. The installation configuration is the same as the configuration in cluster creation.&lt;/p>
+&lt;p>For installed plugins, you can view the plugin information on the cluster detail page, and perform the following operations:&lt;/p>
+&lt;ul>
+&lt;li>Save as Template: Save the plugin information as a template for use by other clusters&lt;/li>
+&lt;li>Remove plug-in: Uninstalls the cluster plug-in.&lt;/li>
+&lt;/ul>
+&lt;h2 id="cluster-certificate-management">Cluster certificate management&lt;/h2>
+&lt;h3 id="update-cluster-certificate">Update cluster certificate&lt;/h3>
+&lt;p>The default validity period of the kubernetes cluster certificate is one year. You can view the certificate expiration time in the basic information on the cluster detail page. You can also view the certificate expiration notification in the cluster list the day before the certificate expires. To update the cluster certificate, click &amp;ldquo;More&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Certificate&amp;rdquo; &amp;gt; &amp;ldquo;Update Cluster Certificate&amp;rdquo; in the cluster operation to update all cluster certificates.&lt;/p>
+&lt;h3 id="view-kubeconfig-file">View kubeconfig file&lt;/h3>
+&lt;p>You can click &amp;ldquo;More&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Certificate&amp;rdquo; &amp;gt; &amp;ldquo;View KubeConfig File&amp;rdquo; button in the cluster operation to view the cluster kubeconfig file, or click &amp;ldquo;Download&amp;rdquo; button in the pop-up window to download the kubeconfig file.&lt;/p></description></item><item><title>Docs: Node management</title><link>https://www.kubeclipper.io/en/docs/tutorials/node-management/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/node-management/</guid><description>
+&lt;h2 id="region-management">Region management&lt;/h2>
+&lt;p>KubeClipper supports multi-region management. That is, all nodes and clusters managed by the platform are divided into physical or logical regions. On the Region Management page, you can view all regions in the platform. Click a region name to enter the region detail page, and you can view the clusters and nodes in the region.&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/region-en.png" alt="">&lt;/p>
+&lt;h2 id="node-management">Node management&lt;/h2>
+&lt;p>The platform supports multi-region management, that is, the owning region of all nodes managed by the platform. On the Region Management page, you can view all regions managed by the platform. Click a region name to go to the region details page, where you can view the list of all clusters and nodes in the region.&lt;/p>
+&lt;p>On the &amp;quot;Node Info&amp;quot; page, you can view the list of all nodes managed in the platform, node specifications, status and other information. Click the node name to enter the node detail page, you can view detailed node basic information and system information.&lt;/p>
+&lt;p>The node status in KubeClipper represents the management status of the node by kc-gent. Under normal circumstances, the node status is displayed as &amp;quot;Ready&amp;quot;. When the node is out of contact for 4 minutes (within 10s of the error time), the status will be updated to &amp;quot;Unknown&amp;quot;. Nodes with unknown status cannot perform any operations, nor can they create clusters or add/remove nodes to clusters.&lt;/p>
+&lt;h3 id="add-node">&lt;strong>Add node&lt;/strong>&lt;/h3>
+&lt;p>When deploying KubeClipper, you can add the initial server nodes which are used to deploy KubeClipper's own services, and agent nodes which are used to deploy kubernetes clusters. In a KubeClipper environment for experimentation or development, you can add a server node as an agent node at the same time. However, if it is used for a production environment, it is recommended not to reuse the server node as an agent node.&lt;/p>
+&lt;p>You can also use the kcctl join command to add agent nodes to KubeClipper, and mark a region for each agent node. The region can be a physical or logical location. You can use nodes in the same region to create a kubernetes cluster, but cannot use nodes across regions to create a cluster. Nodes in unmarked regions belong to the default region.&lt;/p>
 &lt;p>Command line example:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plaintext" data-lang="Plaintext">&lt;span style="display:flex;">&lt;span>kcctl join --agent beijing:1.2.3.4 --agent shanghai:2.3.4.5
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="remove-node">&lt;strong>Remove node&lt;/strong>&lt;/h2>
-&lt;p>When you no longer need some nodes, you can use the kcctl drain command to remove nodes from the platform. See &amp;quot;Kcctl Operation Guide&amp;quot; for details.&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="remove-node">&lt;strong>Remove node&lt;/strong>&lt;/h3>
+&lt;p>When you no longer need some nodes, you can use the kcctl drain command to remove nodes from the platform.&lt;/p>
 &lt;p>Command line example:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plaintext" data-lang="Plaintext">&lt;span style="display:flex;">&lt;span>kcctl drain --agent 192.168.10.19
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="connect-terminal">&lt;strong>Connect Terminal&lt;/strong>&lt;/h2>
-&lt;p>On the node list page, you can click the &amp;quot;Connect Terminal&amp;quot; button on the right side of the target node, enter the node port and username password information in the pop-up window, access the node SSH console and execute the command.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/node-terminal.png" alt="">&lt;/p></description></item><item><title>Docs: Access control</title><link>https://www.kubeclipper.io/en/docs/tutorials/access-control/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/access-control/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="connect-terminal">&lt;strong>Connect Terminal&lt;/strong>&lt;/h3>
+&lt;p>On the node list page, you can click the &amp;quot;Connect Terminal&amp;quot; button on the right side of the target node, enter the node port and username password information in the pop-up window, access the node SSH console and execute command tasks.&lt;/p>
+&lt;h3 id="enabledisable-a-node">Enable/disable a node&lt;/h3>
+&lt;p>You can click the Disable button on the right side of the node to temporarily disable the node. The node in the disabled state cannot be created or added to the cluster.&lt;/p></description></item><item><title>Docs: Access control</title><link>https://www.kubeclipper.io/en/docs/tutorials/access-control/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/access-control/</guid><description>
 &lt;h2 id="create-user">&lt;strong>Create user&lt;/strong>&lt;/h2>
-&lt;p>After installing KubeClipper, you need to create a user for the desired role. Initially, the system has only one user, admin, by default, with the platform administrator role.&lt;/p>
-&lt;p>Click &amp;quot;Access Control&amp;quot; &amp;gt; &amp;quot;Users&amp;quot; to enter the user management page, click the &amp;quot;Create User&amp;quot; button in the upper left corner, fill in the user name, password, mobile phone number, email and other information in the pop-up window, specify the user role, and click the &amp;quot;OK&amp;quot; button. The four built-in roles in the system are as follows:&lt;/p>
+&lt;p>After installing KubeClipper, you need to create a user of a desired role. Initially, there is only one user, admin, by default, with the platform administrator role.&lt;/p>
+&lt;p>Click &amp;quot;Access Control&amp;quot; &amp;gt; &amp;quot;Users&amp;quot; to enter the user management page, click the &amp;quot;Create User&amp;quot; button in the upper left corner, fill in the user name, password, alias name and other information in the pop-up window, specify the user role, and click the &amp;quot;OK&amp;quot; button. The four initial roles in the system are as follows:&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;p>Platform administrator: have platform configuration, cluster management, user management and other platform viewing and operation rights.&lt;/p>
+&lt;p>platform-admin: Platform administrator, with the authority to set platform, cluster management, user management, audit, etc.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Cluster Administrator: Have all cluster management rights.&lt;/p>
+&lt;p>cluster-manager: Cluster administrator, with all cluster management permissions.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>User Administrator: Have all user management rights.&lt;/p>
+&lt;p>iam-manager: User administrator, with all user management permissions.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Platform read-only users: have platform viewing rights.&lt;/p>
+&lt;p>Platform-view: Platform read-only user, with all platform viewing permissions.&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>After the user is created, you can view the user details and login logs on the user details page and do the following:&lt;/p>
+&lt;p>After the user is created, you can view the user details and login logs on the user detail page and perform the following operations:&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>Edit: Edit user alias, role, mobile phone number, email information.&lt;/p>
@@ -390,24 +544,24 @@
 &lt;/li>
 &lt;/ul>
 &lt;h2 id="create-a-custom-role">&lt;strong>Create a custom role&lt;/strong>&lt;/h2>
-&lt;p>In addition to system built-in roles, you can also create custom roles to meet business needs.&lt;/p>
+&lt;p>In addition to system initial roles, you can also create customized roles to meet business needs.&lt;/p>
 &lt;p>Click &amp;quot;Access Control&amp;quot; &amp;gt; &amp;quot;Roles&amp;quot; to enter the role management page. You can click the &amp;quot;Create Role&amp;quot; button in the upper left corner to create a custom role.&lt;/p>
-&lt;p>On the Create Role page, you need to fill in the role name and description, and check the permissions required to customize the role. Some permissions depend on other permissions. When these permissions are selected, the dependent permissions will be automatically selected.&lt;/p>
-&lt;p>After creating a custom role, you can view the basic role information, role permission list, authorized user list on the role details page, and perform the following operations for the custom role:&lt;/p>
+&lt;p>On the Create Role page, you need to fill in the role name and description, and check the permissions required. Some permissions depend on other permissions. When these permissions are selected, the dependent permissions will be automatically selected.&lt;/p>
+&lt;p>After creating a customized role, you can view the basic role information, role permission list, authorized user list on the role detail page, and perform the following operations:&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;p>Edit: Edit the custom role alias.&lt;/p>
+&lt;p>Edit: Edit the custom role description.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Edit permissions: Edit permissions under the custom role.&lt;/p>
+&lt;p>Edit permissions: Edit permissions of the customized role.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Delete: To delete a custom role, make sure that no user is using the role to be deleted.&lt;/p>
+&lt;p>Delete: To delete a customized role, make sure that no user is using the role to be deleted.&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;h2 id="access-to-external-users">&lt;strong>Access to external users&lt;/strong>&lt;/h2>
-&lt;p>KubeClipper can log in using external users via the OIDC protocol .&lt;/p>
-&lt;p>First, the platform administrator needs to log in to the platform server node and insert the following information under authentication in the kubeclipepr-server.yaml file:&lt;/p>
+&lt;p>External users can log in to KubeClipper via the OIDC protocol .&lt;/p>
+&lt;p>First, the platform administrator needs to log in to the platform server node and insert the following information under &amp;ldquo;authentication&amp;rdquo; in the kubeclipepr-server.yaml file:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plain" data-lang="Plain">&lt;span style="display:flex;">&lt;span>oauthOptions:
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> identityProviders:
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - name: keycloak
@@ -422,18 +576,18 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - email
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> redirectURL: http://{kc-console-address}/oatuh2/redirect/{IDP-Name}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Under &amp;quot;provider&amp;quot;, you need to fill in the clientID , clientSecret , and issuer information of your OAuth2 service, taking keycloack as an example, as shown in the figure below.&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/keycloak-clients.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/keycloak-secret.png" alt="">&lt;/p>
 &lt;p>RedirectURL example: http://172.0.0.90/oauth2/redirect/keycloack&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/keycloak-client.png" alt="">&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/keycloak-client2.png" alt="">&lt;/p>
-&lt;p>OAuth2 users can access and use the KubeClipper platform by following these steps:&lt;/p>
+&lt;p>OAuth2 users can log in to the KubeClipper platform by following these steps:&lt;/p>
 &lt;ol>
 &lt;li>
-&lt;p>Click the &amp;quot;OAuth2 Login&amp;quot; button on the login page, enter the OAuth2 login page, enter the username and password to log in, enter the KubeClipper platform. When logging in for the first time, you will not be able to access the platform because you have not been granted any permission.&lt;/p>
+&lt;p>Click the &amp;quot;OAuth2 Login&amp;quot; button on the login page, enter the OAuth2 login page, fill in the username and password to enter the KubeClipper platform. When logging in for the first time, you will not be able to access the platform because you have not been granted any permission.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>The platform administrator or other user with user management rights log in to KubeClipper, find the target OAuth2 user on the user management page, and set the user role by editing the user information.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>The OAuth2 user repeats the first step, logs in to KubeClipper, and can access the platform normally and perform operations within the role permissions.&lt;/p>
+&lt;p>The OAuth2 user repeats the first step, logs in to KubeClipper, and accesses the platform normally.&lt;/p>
 &lt;/li>
 &lt;/ol></description></item></channel></rss>
