@@ -15,7 +15,7 @@ description: >
 安装 v1.2.1 版本的 kcctl
 
 ```bash
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=v1.2.1 bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_VERSION=v1.2.1 bash -
 ```
 
 通过 kcctl deploy 命令部署 KubeClipper 集群

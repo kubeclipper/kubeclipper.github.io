@@ -45,14 +45,14 @@ agent 节点
 
 ```bash
 # 默认安装最新发行版
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | bash -
 
 # 安装指定版本
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=v1.3.1 bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_VERSION=v1.3.1 bash -
 
 # 如果您在中国，您可以在安装时指定 KC_REGION 环境变量，此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io
 # 这对于在线安装 k8s 集群非常有用
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_REGION=cn bash -
 ```
 
 安装成功后，会输出安装版本以及安装路径等信息。
