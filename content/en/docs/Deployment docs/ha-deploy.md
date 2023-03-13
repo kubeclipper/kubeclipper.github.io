@@ -45,14 +45,14 @@ Agent node
 Install kcctl:
 ```bash
 # The latest release is installed by default
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | bash -
 
 # Install the specified version
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=v1.3.1 bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_VERSION=v1.3.1 bash -
 
 # If you are in China, you can specify the KC_REGION environment variable during installation, at this time we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
 # This is very useful for online installation of k8s cluster
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_REGION=cn bash -
 ```
 
 After the installation is successful, the installation version and installation Path will be output.

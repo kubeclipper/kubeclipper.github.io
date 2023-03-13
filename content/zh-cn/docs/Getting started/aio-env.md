@@ -20,11 +20,11 @@ KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以
 
 ```bash
 # 默认安装最新的发行版
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | bash -
 # 安装指定版本
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=v1.3.1 bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_VERSION=v1.3.1 bash -
 # 如果您在中国， 您可以在安装时使用 cn  环境变量, 此时 KubeClipper 会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io
-curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_REGION=cn bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_REGION=cn bash -
 ```
 
 > 您也可以在 [GitHub Release Page](https://github.com/kubeclipper/kubeclipper/releases) 下载指定版本。
@@ -70,7 +70,7 @@ kcctl deploy --user root --passwd password
 > 1. 安装 master 版本 kcctl
 > 
 > ```bash
-> curl -sfL https://oss.kubeclipper.io/kcctl.sh | KC_VERSION=master bash -
+> curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_VERSION=master bash -
 > ```
 > 
 > 2. 在安装服务器上设置环境变量
