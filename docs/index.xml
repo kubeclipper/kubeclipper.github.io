@@ -227,11 +227,11 @@
 &lt;h3 id="下载并安装-kcctl">下载并安装 kcctl&lt;/h3>
 &lt;p>KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 默认安装最新的发行版&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装指定版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果您在中国， 您可以在安装时使用 cn 环境变量, 此时 KubeClipper 会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>您也可以在 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 下载指定版本。&lt;/p>
 &lt;/blockquote>
@@ -260,7 +260,7 @@
 &lt;ol>
 &lt;li>安装 master 版本 kcctl&lt;/li>
 &lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master bash -
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
 &lt;li>在安装服务器上设置环境变量&lt;/li>
 &lt;/ol>
@@ -331,14 +331,14 @@
 &lt;/blockquote>
 &lt;p>安装 kcctl：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 默认安装最新发行版&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装指定版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果您在中国，您可以在安装时指定 KC_REGION 环境变量，此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 这对于在线安装 k8s 集群非常有用&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装成功后，会输出安装版本以及安装路径等信息。&lt;/p>
 &lt;blockquote>
 &lt;p>您也可以在 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 下载指定的 kcctl 版本&lt;/p>
@@ -711,7 +711,7 @@ GOARCH：系统架构，amd64 （又名 x84_64），arm64（又名 aarch64）&lt
 &lt;p>您可以点击集群操作中的“更多”&amp;gt;“集群证书”&amp;gt;“查看 kubeconfig 文件”按钮，查看集群 kubeconfig 文件，也可以点击弹窗中的“下载”按钮，下载 kubeconfig 文件。&lt;/p></description></item><item><title>Docs: 通过 kcctl 命令创建集群错误</title><link>https://www.kubeclipper.io/docs/faq/kcctl-create-cluster-error/</link><pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/faq/kcctl-create-cluster-error/</guid><description>
 &lt;h2 id="问题复现">问题复现&lt;/h2>
 &lt;p>安装 v1.2.1 版本的 kcctl&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.2.1 bash -
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.2.1 bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过 kcctl deploy 命令部署 KubeClipper 集群&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装 AIO 环境&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy

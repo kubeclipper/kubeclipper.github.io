@@ -4,11 +4,11 @@
 &lt;h3 id="download-kcctl">Download kcctl&lt;/h3>
 &lt;p>KubeClipper provides a command line tool 🔧 kcctl to simplify operation and maintenance. You can download the latest version of kcctl directly with the following command:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># The latest distribution is installed by default&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Install the specified version&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#If you are in China, you can use cn environment variables during installation, in this case we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>You can also download the specified version from the [GitHub Release Page] ( &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">https://github.com/kubeclipper/kubeclipper/releases&lt;/a> ) .&lt;/p>
 &lt;/blockquote>
@@ -36,7 +36,7 @@
 &lt;ol>
 &lt;li>Install the master version kcctl&lt;/li>
 &lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master bash -
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
 &lt;li>Set environment variables on the installation server&lt;/li>
 &lt;/ol>
@@ -334,14 +334,14 @@ Generally speaking, for deploying highly available distributed application clust
 &lt;/blockquote>
 &lt;p>Install kcctl:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># The latest release is installed by default&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Install the specified version&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># If you are in China, you can specify the KC_REGION environment variable during installation, at this time we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># This is very useful for online installation of k8s cluster&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/kcctl.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After the installation is successful, the installation version and installation Path will be output.&lt;/p>
 &lt;blockquote>
 &lt;p>You can also download the &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> download the specified kcctl version&lt;/p>
