@@ -102,7 +102,7 @@ kcctl deploy --user root --passwd password
 首先使用默认帐号密码进行登录获取 token，便于后续 kcctl 和 kc-server 进行交互。
 
 ```bash
-kcctl login -H http://<kc-server ip address>:8080 -u admin -p Thinkbig1
+kcctl login -H https://<kc-server ip address>:8080 -u admin -p Thinkbig1
 ```
 
 通过以下命令创建 Kubernetes 集群:
