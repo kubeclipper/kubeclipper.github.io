@@ -8,7 +8,12 @@ description: >
 
 ## What is KubeClipper?
 
-KubeClipper aims to provide easy-to-use, easy-to-operate, lightweight, product-grade kubernetes multi-cluster full lifecycle management service, freeing operation and maintenance engineers from complicated configuration and obscure command lines to achieve one-stop management of multi-K8 s clusters across regions and infrastructure.
+KubeClipper is a lightweight and stable platform that provides a friendly web GUI, APIs, and a CLI tool for Kubernetes cluster lifecycle management.
+KubeClipper provides flexible Kubernetes as a Service (KaaS), which allows users to rapidly deploy K8S clusters in enterprise owned infrastructure and provides continuous lifecycle management capabilities (installation, deleting, upgrading, backup and restoration, cluster scaling, remote access, plug-in management, application store), and also supports other environments (cloud, hypervisor, bare metal) with consistent services.
+
+## Project Goal
+
+Manage kubernetes in the most light and convenient way.
 
 ## Why do I want KubeClipper?
 
