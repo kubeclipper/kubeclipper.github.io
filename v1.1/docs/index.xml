@@ -394,22 +394,7 @@
 &lt;h3 id="集群备份恢复">集群备份恢复&lt;/h3>
 &lt;p>如果您在集群正常运行期间执行恢复操作，则 KubeClipper 将对该集群进行覆盖式恢复，就是备份文件里面的 etcd 数据，覆盖现有的数据。&lt;/p>
 &lt;p>您可以在集群详情页的备份标签页下，点击备份右侧的 “恢复”按钮；或点击集群操作中的“更多”&amp;gt;“恢复集群”按钮，在恢复集群弹窗中选择需要恢复的备份，可以将当前集群恢复至指定备份状态。&lt;/p>
-&lt;p>注意：集群升级后，将无法再恢复到升级前版本的备份。&lt;/p></description></item><item><title>Docs: 节点管理</title><link>https://www.kubeclipper.io//v1.1/docs/tutorials/node-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/tutorials/node-manage/</guid><description>
-&lt;p>在“节点信息”页面，您可以查看平台中管理的全部节点列表，节点规格、状态等信息。点击节点名称进入节点详情页面，您可以查看详细的节点基本信息和系统信息。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/node-info.png" alt="">&lt;/p>
-&lt;p>KubeClipper 中的节点状态表示 kc-gent 对节点的管理状态。正常情况下，节点状态显示为“就绪”，当节点失联4分钟（误差时间10s内）后，状态会更新为“未知”，未知状态的节点无法进行任何操作，也无法创建集群或为集群添加/移除节点。&lt;/p>
-&lt;h2 id="添加节点">添加节点&lt;/h2>
-&lt;p>在部署 KubeClipper 时，您就可以添加初始的 server 节点和 agent 节点，其中，server节点用于部署 KubeClipper 自身服务，agent 节点可用于部署 K8S 集群。在用于实验或开发的 KubeClipper 环境，您可以将 server 节点同时添加为 agent 节点。但如果用于生产环境，建议不要将 server 节点复用为 agent 节点。&lt;/p>
-&lt;p>您也可以使用 kcctl join 命令为 KubeClipper 添加 agent 节点。同时，您可以为每个 agent 节点标记一个区域，区域可以是物理的或逻辑的位置，您可以使用同一区域的节点创建 K8S 集群，但不可以使用跨区域的节点创建集群。未标记区域的节点默认属于 default 区域。详情参见“Kcctl 操作指南“。&lt;/p>
-&lt;p>命令行示例：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plaintext" data-lang="Plaintext">&lt;span style="display:flex;">&lt;span>kcctl join --agent beijing:1.2.3.4 --agent shanghai:2.3.4.5
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="移除节点">移除节点&lt;/h2>
-&lt;p>当您不再需要某些节点，可以使用 kcctl drain 命令将节点从平台中移除。详情参见“Kcctl 操作指南“。&lt;/p>
-&lt;p>命令行示例：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plaintext" data-lang="Plaintext">&lt;span style="display:flex;">&lt;span>kcctl drain --agent 192.168.10.19
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="连接终端">连接终端&lt;/h2>
-&lt;p>在节点列表页面，您可以点击目标节点右侧的“连接终端”按钮，在连接终端的弹窗中输入节点端口和用户名密码信息后，访问节点SSH控制台并执行命令。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/node-terminal.png" alt="">&lt;/p></description></item><item><title>Docs: 部署 HA</title><link>https://www.kubeclipper.io//v1.1/docs/deployment-docs/ha-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/deployment-docs/ha-env/</guid><description>
+&lt;p>注意：集群升级后，将无法再恢复到升级前版本的备份。&lt;/p></description></item><item><title>Docs: 部署 HA</title><link>https://www.kubeclipper.io//v1.1/docs/deployment-docs/ha-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/deployment-docs/ha-env/</guid><description>
 &lt;p>本文档旨在通过简单的操作部署一个 HA 版本的 kubeclipper。&lt;/p>
 &lt;blockquote>
 &lt;p>如果只是想简单体验一下，请参考 &lt;a href="https://github.com/kubeclipper/kubeclipper/blob/master/README_zh.md#quick-start">QuickStart&lt;/a> 部署 AIO 环境。&lt;/p>
@@ -518,7 +503,22 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>您也可以进入控制台查看实时日志。&lt;/p>
 &lt;/blockquote>
-&lt;p>进入 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 访问控制</title><link>https://www.kubeclipper.io//v1.1/docs/tutorials/access-control/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/tutorials/access-control/</guid><description>
+&lt;p>进入 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 节点管理</title><link>https://www.kubeclipper.io//v1.1/docs/tutorials/node-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/tutorials/node-manage/</guid><description>
+&lt;p>在“节点信息”页面，您可以查看平台中管理的全部节点列表，节点规格、状态等信息。点击节点名称进入节点详情页面，您可以查看详细的节点基本信息和系统信息。&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/node-info.png" alt="">&lt;/p>
+&lt;p>KubeClipper 中的节点状态表示 kc-gent 对节点的管理状态。正常情况下，节点状态显示为“就绪”，当节点失联4分钟（误差时间10s内）后，状态会更新为“未知”，未知状态的节点无法进行任何操作，也无法创建集群或为集群添加/移除节点。&lt;/p>
+&lt;h2 id="添加节点">添加节点&lt;/h2>
+&lt;p>在部署 KubeClipper 时，您就可以添加初始的 server 节点和 agent 节点，其中，server节点用于部署 KubeClipper 自身服务，agent 节点可用于部署 K8S 集群。在用于实验或开发的 KubeClipper 环境，您可以将 server 节点同时添加为 agent 节点。但如果用于生产环境，建议不要将 server 节点复用为 agent 节点。&lt;/p>
+&lt;p>您也可以使用 kcctl join 命令为 KubeClipper 添加 agent 节点。同时，您可以为每个 agent 节点标记一个区域，区域可以是物理的或逻辑的位置，您可以使用同一区域的节点创建 K8S 集群，但不可以使用跨区域的节点创建集群。未标记区域的节点默认属于 default 区域。详情参见“Kcctl 操作指南“。&lt;/p>
+&lt;p>命令行示例：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plaintext" data-lang="Plaintext">&lt;span style="display:flex;">&lt;span>kcctl join --agent beijing:1.2.3.4 --agent shanghai:2.3.4.5
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="移除节点">移除节点&lt;/h2>
+&lt;p>当您不再需要某些节点，可以使用 kcctl drain 命令将节点从平台中移除。详情参见“Kcctl 操作指南“。&lt;/p>
+&lt;p>命令行示例：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plaintext" data-lang="Plaintext">&lt;span style="display:flex;">&lt;span>kcctl drain --agent 192.168.10.19
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="连接终端">连接终端&lt;/h2>
+&lt;p>在节点列表页面，您可以点击目标节点右侧的“连接终端”按钮，在连接终端的弹窗中输入节点端口和用户名密码信息后，访问节点SSH控制台并执行命令。&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/node-terminal.png" alt="">&lt;/p></description></item><item><title>Docs: 访问控制</title><link>https://www.kubeclipper.io//v1.1/docs/tutorials/access-control/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/tutorials/access-control/</guid><description>
 &lt;h2 id="创建用户">创建用户&lt;/h2>
 &lt;p>安装 KubeClipper 之后，您需要创建所需角色的用户。一开始，系统默认只有一个用户 admin，具有平台管理员角色。&lt;/p>
 &lt;p>点击“访问控制”&amp;gt;“用户”，进入用户管理页面，点击左上角“创建用户”按钮，在弹窗中填写用户名、密码、手机号码、邮箱等信息，并指定用户角色，点击“确认”按钮。系统内置四个角色如下：&lt;/p>
