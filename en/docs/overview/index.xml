@@ -1,1 +1,44 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Overview</title><link>https://www.kubeclipper.io/en/docs/overview/</link><description>Recent content in Overview on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.kubeclipper.io/en/docs/overview/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Overview</title><link>https://www.kubeclipper.io/en/docs/overview/</link><description>Recent content in Overview on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/en/docs/overview/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Feature</title><link>https://www.kubeclipper.io/en/docs/overview/feature/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/overview/feature/</guid><description>
+&lt;h2 id="cluster-lifecycle-management">Cluster LifeCycle Management&lt;/h2>
+&lt;ul>
+&lt;li>Lifecycle Management: cluster creation, deletion, backup, restoration, upgrade, and node manipulation&lt;/li>
+&lt;li>Multiple Deployment Modes: online/offline deployment support&lt;/li>
+&lt;li>Multi-Architecture: x86/64 &amp;amp; arm64 support&lt;/li>
+&lt;li>Cluster Import: registration and management of external clusters (non-Kubeclipper created)&lt;/li>
+&lt;/ul>
+&lt;h2 id="node-management">Node Management&lt;/h2>
+&lt;ul>
+&lt;li>Automatic node registration&lt;/li>
+&lt;li>Node information collection&lt;/li>
+&lt;li>Node terminal&lt;/li>
+&lt;/ul>
+&lt;h2 id="identity-and-access-management-iam">Identity and Access Management (IAM)&lt;/h2>
+&lt;ul>
+&lt;li>RBAC-based user permission system&lt;/li>
+&lt;li>OIDC integration&lt;/li>
+&lt;/ul></description></item><item><title>Docs: Roadmap</title><link>https://www.kubeclipper.io/en/docs/overview/roadmap/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/overview/roadmap/</guid><description>
+&lt;p>🚀 Cluster Installation Optimization&lt;/p>
+&lt;ul>
+&lt;li>Use images to encapsulate installation package resources to reduce complexity. Reuse mature image technology&lt;/li>
+&lt;/ul>
+&lt;p>💻 Kubernetes Web Console&lt;/p>
+&lt;ul>
+&lt;li>Workload resources &amp;amp; monitoring presentation&lt;/li>
+&lt;li>Tenant based cluster access control&lt;/li>
+&lt;/ul>
+&lt;p>📦 Application Store&lt;/p>
+&lt;ul>
+&lt;li>Application lifecycle management&lt;/li>
+&lt;li>Support web UI &amp;amp; CLI interface&lt;/li>
+&lt;/ul>
+&lt;p>🧩 Common Application and Plugin Integrations&lt;/p>
+&lt;ul>
+&lt;li>LB &amp;amp; Ingress&lt;/li>
+&lt;li>Monitoring&lt;/li>
+&lt;li>Kubernetes Dashboard&lt;/li>
+&lt;li>KubeEdge&lt;/li>
+&lt;/ul>
+&lt;p>🕸 Managed Clusters&lt;/p>
+&lt;ul>
+&lt;li>Support KoK clusters.&lt;/li>
+&lt;/ul></description></item></channel></rss>

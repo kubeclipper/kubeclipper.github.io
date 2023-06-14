@@ -1,0 +1,151 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Deployment docs</title><link>https://www.kubeclipper.io//v1.3/en/docs/deployment-docs/</link><description>Recent content in Deployment docs on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.3/en/docs/deployment-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploy Highly Available KubeClipper</title><link>https://www.kubeclipper.io//v1.3/en/docs/deployment-docs/ha-deploy/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.3/en/docs/deployment-docs/ha-deploy/</guid><description>
+&lt;blockquote>
+&lt;p>For the first contact with KubeClipper, it is recommended to deploy AIO environment and quickly get started to experience the features provided by KubeClipper.
+If you want to apply KubeClipper to a build environment, then this document may be helpful.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>According to the KubeClipper architecture design, KubeClipper has the following 4 core components:&lt;/p>
+&lt;ul>
+&lt;li>Kc-server: mainly includes APISERVER, controller, static resource services and built-in message queue, etc., kc-server communicates with kc-agent through message queue (supports external); kc-server has no master-slave relationship and is independent of each other; usually deployed in independent nodes to provide stable and reliable services to the outside world.&lt;/li>
+&lt;li>Kc-agent: mainly includes the task processor, which is responsible for receiving the tasks delivered by the kc-server and feeding back the task processing results; usually deployed in nodes that need to install kubernetes, it is an ultra-lightweight service process.&lt;/li>
+&lt;li>Kc-etcd: The backend database of kc-server, deployed on the same node as kc-server.&lt;/li>
+&lt;li>Kc-dashboard: graphical management interface, deployed on the same node with kc-server.
+To sum up, we call the node that deploys kc-server as server, and the node that deploys kc-agent as agent.&lt;/li>
+&lt;/ul>
+&lt;p>Then the key point of deploying a highly available KubeClipper cluster is how to plan and deploy server nodes while ensuring the high availability of kc-etcd.&lt;br>
+Generally speaking, for deploying highly available distributed application clusters, it is basically recommended to have at least 3 nodes; also for KubeClipper, 3 nodes can ensure that kc-server can still provide services after 2 nodes Downtime, and can ensure that kc-etcd will not appear Split-Brain exception.&lt;/p>
+&lt;blockquote>
+&lt;p>The above brief introduction to the KubeClipper architecture and core components is to better understand how to deploy a highly available KubeClipper cluster, so as to lead to thinking about server node planning and Hardware configuration requirements.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="recommended-configuration">Recommended configuration&lt;/h2>
+&lt;blockquote>
+&lt;p>KubeClipper as an extremely lightweight Kubernetes multi-cluster full lifecycle management tool, itself will not take up too many resources.&lt;/p>
+&lt;/blockquote>
+&lt;p>server node&lt;/p>
+&lt;ul>
+&lt;li>Quantity: 3 and more&lt;/li>
+&lt;li>Hardware requirements: CPU &amp;gt; = 2 cores, RAM &amp;gt; = 2GB, hard disk &amp;gt; = 20GB&lt;/li>
+&lt;li>System: CentOS 7.x/Ubuntu 18.04/Ubuntu 20.04&lt;/li>
+&lt;/ul>
+&lt;p>Agent node&lt;/p>
+&lt;ul>
+&lt;li>Quantity: any&lt;/li>
+&lt;li>Hardware requirements: according to actual needs&lt;/li>
+&lt;li>System: CentOS 7.x/Ubuntu 18.04/Ubuntu 20.04&lt;/li>
+&lt;/ul>
+&lt;h2 id="start-by-installing-kcctl">Start by installing kcctl&lt;/h2>
+&lt;blockquote>
+&lt;p>Kcctl is a command line tool provided by KubeClipper that enables rapid deployment of KubeClipper clusters and most Kuberneters cluster management features to simplify operations.&lt;/p>
+&lt;/blockquote>
+&lt;p>Install kcctl:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># The latest release is installed by default&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Install the specified version&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># If you are in China, you can specify the KC_REGION environment variable during installation, at this time we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># This is very useful for online installation of k8s cluster&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After the installation is successful, the installation version and installation Path will be output.&lt;/p>
+&lt;blockquote>
+&lt;p>You can also download the &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> download the specified kcctl version&lt;/p>
+&lt;/blockquote>
+&lt;p>Verify installation:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version -o json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl version:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;major&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;1&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;minor&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;3&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitVersion&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;v1.3.1&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitCommit&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;5f19dcf78d3a9dc2d1035a779152fa993e0553df&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitTreeState&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;clean&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;buildDate&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;2022-12-02T10:12:36Z&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;goVersion&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;go1.19.2&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;compiler&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;gc&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;platform&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;linux/amd64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># View help documentation&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl -h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="learn-about-the-kcctl-deploy-command">Learn about the kcctl deploy command&lt;/h2>
+&lt;blockquote>
+&lt;p>The kcctl deploy -h command is specially used to deploy KubeClipper cluster, for more examples and parameter explanation, please execute &lt;code>kcctl deploy -h&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;p>Introduction to common parameters&lt;/p>
+&lt;ul>
+&lt;li>&amp;ndash;Server: IP server node, such as 192.168.10.10, 192.168.10.11, IP separated by commas.&lt;/li>
+&lt;li>&amp;ndash;Agent: Agent node IP, such as 192.168.10.10, 192.168.10.11, IP separated by commas.&lt;/li>
+&lt;li>&amp;ndash;Pk-file: ssh password-free login private key, it is recommended to use password-free login on the command line.&lt;/li>
+&lt;li>&amp;ndash;User: ssh login username, default is root.&lt;/li>
+&lt;li>&amp;ndash;Passwd: ssh login password, it is not recommended to use the password to log in at the command line.&lt;/li>
+&lt;li>&amp;ndash;Pkg: Installation package Path, support local Path and online link; get online installation package link rules: &lt;a href="https://oss.kubeclipper.io/release/">https://oss.kubeclipper.io/release/&lt;/a> {KC_VERSION}/kc- {GOARCH} .tar.gz . KC_VERSION for Release Version default setting current kcctl corresponding version, GOARCH is amd64 or arm64, default setting current kcctl Compilation architecture.&lt;/li>
+&lt;li>&amp;ndash;Ip-detect: Node IP discovery rules, support a variety of rules, such as specifying the name of the network interface card, etc., very useful for multiple network interface card nodes, the default is &amp;ldquo;first-found&amp;rdquo;.&lt;/li>
+&lt;/ul>
+&lt;p>After understanding the basic usage of kcctl deploy, let&amp;rsquo;s start deploying the KubeClipper cluster.&lt;/p>
+&lt;h2 id="deploy-kubeclipper-with-kcctl">Deploy KubeClipper with kcctl&lt;/h2>
+&lt;blockquote>
+&lt;p>We recommend that in the multi-node installation scenario, the server nodes involved are uniformly set up password-free login to avoid password Plain Text leakage.&lt;/p>
+&lt;/blockquote>
+&lt;p>Deploy 3 server nodes with private key:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--pkg https://oss.kubeclipper.io/release/&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>KC_VERSION&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>/kc-&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>GOARCH&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>.tar.gz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Deploy 3 server + 3 agent nodes in private key mode, specify pkg:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--pkg https://oss.kubeclipper.io/release/&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>KC_VERSION&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>/kc-&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>GOARCH&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>.tar.gz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Deploy 3 server + 3 agent nodes with private key, pkg is not specified, and the default is the same as the installed version of kcctl (recommended):&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Private key deployment 3 server + 3 agent node, specify etcd port, default port is client-12379 | peer-12380 | metrics-12381 :&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--etcd-port &lt;span style="color:#0000cf;font-weight:bold">12379&lt;/span> --etcd-peer-port &lt;span style="color:#0000cf;font-weight:bold">12380&lt;/span> --etcd-metric-port &lt;span style="color:#0000cf;font-weight:bold">12381&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>Parameter input example:&lt;br>
+SERVER_IPS: 192.168.10.20,192.168.10.21&lt;br>
+AGENT_IPS: 192.168.10.30,192.168.10.31&lt;br>
+KC_VERSION : KubeClipper release version, see &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a>&lt;br>
+GOARCH System Architecture, AMD64 (aka x84_64), ARM64 (aka AARCH 64)&lt;/p>
+&lt;/blockquote>
+&lt;p>Kcctl deploy supports a variety of parameters, which can meet your specific needs for deploying KubeClipper clusters, and more functions are waiting for you to explore.&lt;br>
+After executing the kcctl deploy command, the command will detect whether your environment meets the installation requirements, and will synchronize warning messages, installation progress, etc. to the Console. Finally, the following KubeClipper banner will be printed after the installation is successful:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> _ __ _ _____ _ _
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> / / &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> / __ &lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>/ / _ _&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>__ ___&lt;span style="color:#000;font-weight:bold">|&lt;/span> / &lt;span style="color:#4e9a06">\/&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_ _ __ _ __ ___ _ __
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">\|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;_ \ / _ \ | | | | &amp;#39;&lt;/span>_ &lt;span style="color:#4e9a06">\|&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;_ \ / _ \ &amp;#39;&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>&lt;span style="color:#4e9a06">\ &lt;/span> &lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> __/ &lt;span style="color:#4e9a06">\_&lt;/span>_/&lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> __/ &lt;span style="color:#000;font-weight:bold">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">\_&lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">\_&lt;/span>/&lt;span style="color:#4e9a06">\_&lt;/span>_,_&lt;span style="color:#000;font-weight:bold">|&lt;/span>_.__/ &lt;span style="color:#4e9a06">\_&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>&lt;span style="color:#4e9a06">\_&lt;/span>___/_&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> .__/&lt;span style="color:#000;font-weight:bold">|&lt;/span> .__/ &lt;span style="color:#4e9a06">\_&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>System default management account: &lt;code>admin/Thinkbig1&lt;/code>
+Login to Console:
+Open a browser and visit &lt;code>http://SERVER_IP&lt;/code> (accessible through any Server node) to enter the KubeClipper Console&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io//v1.3/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>Login command line:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://SERVER_IP -u admin -p Thinkbig1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>Most kcctl commands rely on login status, so it&amp;rsquo;s best to log in early when you execute the cli command.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="add-agent-node-to-kubeclipper-using-kcctl">Add agent node to KubeClipper using kcctl&lt;/h2>
+&lt;blockquote>
+&lt;p>The current kcctl join command only supports adding agent nodes, and will gradually support adding server nodes in the future.&lt;br>
+Newly added agent nodes should also be uniformly set up password-free login, and the private key is the same.&lt;/p>
+&lt;/blockquote>
+&lt;p>Join agent node:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl join --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="remove-agent-node-from-kubeclipper-using-kcctl">Remove agent node from KubeClipper using kcctl&lt;/h2>
+&lt;blockquote>
+&lt;p>The current kcctl drain command only supports deleting agent nodes, and will gradually support deleting server nodes in the future.&lt;/p>
+&lt;/blockquote>
+&lt;p>Drain agent node:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl drain --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Force drain node, ignore errors&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl drain --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS --force
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you find that KubeClipper cannot be successfully deployed according to this document, please move to the &lt;a href="https://github.com/kubeclipper/kubeclipper/issues">KubeClipper Github Issue&lt;/a> to provide your comments or feedback.&lt;/p></description></item></channel></rss>

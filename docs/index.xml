@@ -280,7 +280,7 @@
 &lt;h2 id="创建-kubernetes-集群">创建 Kubernetes 集群&lt;/h2>
 &lt;p>部署成功后您可以使用 &lt;strong>kcctl 工具&lt;/strong>或者通过&lt;strong>控制台&lt;/strong>创建 Kubernetes 集群。在本快速入门教程中使用 kcctl 工具进行创建。&lt;/p>
 &lt;p>首先使用默认帐号密码进行登录获取 token，便于后续 kcctl 和 kc-server 进行交互。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://&amp;lt;kc-server ip address&amp;gt;:8080 -u admin -p Thinkbig1
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H https://&amp;lt;kc-server ip address&amp;gt;:8080 -u admin -p Thinkbig1
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过以下命令创建 Kubernetes 集群:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">NODE&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>kcctl get node -o yaml&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep ipv4DefaultIP:&lt;span style="color:#000;font-weight:bold">|&lt;/span>sed &lt;span style="color:#4e9a06">&amp;#39;s/ipv4DefaultIP: //&amp;#39;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>

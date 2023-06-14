@@ -1,0 +1,151 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 部署文档</title><link>https://www.kubeclipper.io//v1.3/docs/deployment-docs/</link><description>Recent content in 部署文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.3/docs/deployment-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 部署高可用 KubeClipper</title><link>https://www.kubeclipper.io//v1.3/docs/deployment-docs/ha-deploy/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.3/docs/deployment-docs/ha-deploy/</guid><description>
+&lt;blockquote>
+&lt;p>对于初次接触 KubeClipper，建议部署 AIO 环境，快速上手体验 KubeClipper 提供的功能特性。
+对于想将 KubeClipper 应用到生成环境，那么本文档或许对您有所帮助。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="概述">概述&lt;/h2>
+&lt;p>根据 KubeClipper 架构设计可知，KubeClipper 有以下 4 个核心组件：&lt;/p>
+&lt;ul>
+&lt;li>kc-server：主要包括 APISERVER 、控制器、静态资源服务以及内置消息队列等，kc-server 通过消息队列（支持外置）与 kc-agent 通信；kc-server 之间无主从关系，且相互独立；通常部署在独立的节点，从而对外提供稳定可靠的服务。&lt;/li>
+&lt;li>kc-agent：主要包括任务处理器，负责接收 kc-server 投递的任务，并反馈任务处理结果；通常部署在需要安装 kubernetes 的节点，是一个超轻量级的服务进程。&lt;/li>
+&lt;li>kc-etcd：kc-server 的后端数据库，跟随 kc-server 部署在同一节点上。&lt;/li>
+&lt;li>kc-dashboard：图形化管理界面，跟随 kc-server 部署在同一节点。
+综上，我们将部署 kc-server 的节点称为 server，部署 kc-agent 的节点称为 agent。&lt;/li>
+&lt;/ul>
+&lt;p>那么部署高可用 KubeClipper 集群的关键点，就在于如何规划部署 server 节点同时保证 kc-etcd 的高可用。
+通常来看，对于部署高可用的分布式应用集群，基本建议节点至少 3 个；同样对于 KubeClipper，3 个节点能保证 kc-server 在其中 2 个节点宕机后依旧可以提供服务，同时能保证 kc-etcd 不会出现脑裂异常。&lt;/p>
+&lt;blockquote>
+&lt;p>以上简单介绍了 KubeClipper 架构以及核心组件，是为了更好的理解该如何部署高可用 KubeClipper 集群，从而引出关于对服务器节点规划以及硬件配置要求的思考。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="推荐配置">推荐配置&lt;/h2>
+&lt;blockquote>
+&lt;p>KubeClipper 作为一个极轻量的 Kubernetes 多集群全生命周期管理工具，本身不会占用太多资源&lt;/p>
+&lt;/blockquote>
+&lt;p>server 节点&lt;/p>
+&lt;ul>
+&lt;li>数量：3 个及以上&lt;/li>
+&lt;li>硬件要求：CPU &amp;gt;= 2 核，内存 &amp;gt;= 2GB，硬盘 &amp;gt;= 20GB&lt;/li>
+&lt;li>系统：CentOS 7.x / Ubuntu 18.04 / Ubuntu 20.04&lt;/li>
+&lt;/ul>
+&lt;p>agent 节点&lt;/p>
+&lt;ul>
+&lt;li>数量：任意&lt;/li>
+&lt;li>硬件要求：依据实际需求而定&lt;/li>
+&lt;li>系统：CentOS 7.x / Ubuntu 18.04 / Ubuntu 20.04&lt;/li>
+&lt;/ul>
+&lt;h2 id="从安装-kcctl-开始">从安装 kcctl 开始&lt;/h2>
+&lt;blockquote>
+&lt;p>kcctl 是 KubeClipper 提供的命令行工具，它支持快速部署 KubeClipper 集群以及大部分 Kuberneters 集群管理功能，用以简化运维工作。&lt;/p>
+&lt;/blockquote>
+&lt;p>安装 kcctl：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 默认安装最新发行版&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装指定版本&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果您在中国，您可以在安装时指定 KC_REGION 环境变量，此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 这对于在线安装 k8s 集群非常有用&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装成功后，会输出安装版本以及安装路径等信息。&lt;/p>
+&lt;blockquote>
+&lt;p>您也可以在 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 下载指定的 kcctl 版本&lt;/p>
+&lt;/blockquote>
+&lt;p>验证安装：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version -o json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl version:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;major&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;1&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;minor&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;3&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitVersion&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;v1.3.1&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitCommit&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;5f19dcf78d3a9dc2d1035a779152fa993e0553df&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitTreeState&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;clean&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;buildDate&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;2022-12-02T10:12:36Z&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;goVersion&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;go1.19.2&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;compiler&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;gc&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;platform&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;linux/amd64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 查看帮助文档&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl -h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="了解-kcctl-deploy-命令">了解 kcctl deploy 命令&lt;/h2>
+&lt;blockquote>
+&lt;p>kcctl deploy 命令是专门用于部署 KubeClipper 集群，更多示例以及参数解释请执行 kcctl deploy -h&lt;/p>
+&lt;/blockquote>
+&lt;p>常用参数简介&lt;/p>
+&lt;ul>
+&lt;li>&amp;ndash;server: server 节点 IP，例如 192.168.10.10,192.168.10.11，多个 IP 以逗号隔开。&lt;/li>
+&lt;li>&amp;ndash;agent: agent 节点 IP，例如 192.168.10.10,192.168.10.11，多个 IP 以逗号隔开。&lt;/li>
+&lt;li>&amp;ndash;pk-file: ssh 免密登录私钥，推荐在命令行使用免密登录。&lt;/li>
+&lt;li>&amp;ndash;user: ssh 登录用户名，默认为 root。&lt;/li>
+&lt;li>&amp;ndash;passwd: ssh 登录密码，不推荐在命令行使用密码登录。&lt;/li>
+&lt;li>&amp;ndash;pkg: 安装包路径，支持本地路径以及在线链接；获取在线安装包链接规则：https://oss.kubeclipper.io/release/{KC_VERSION}/kc-{GOARCH}.tar.gz 。KC_VERSION 为 Release Version 默认设置当前 kcctl 对应版本，GOARCH 为 amd64 或 arm64，默认设置当前 kcctl 的编译架构。&lt;/li>
+&lt;li>&amp;ndash;ip-detect: 节点 ip 发现规则，支持多种规则，例如指定网卡名称等，对于多网卡节点非常有用，默认为 &amp;ldquo;first-found&amp;rdquo;。&lt;/li>
+&lt;/ul>
+&lt;p>了解完 kcctl deploy 的基础使用，那么接下来就开始部署 KubeClipper 集群吧。&lt;/p>
+&lt;h2 id="使用-kcctl-部署-kubeclipper">使用 kcctl 部署 KubeClipper&lt;/h2>
+&lt;blockquote>
+&lt;p>我们推荐在多节点安装场景中，将涉及到的服务器节点都统一设置免密登录，避免密码明文泄露。&lt;/p>
+&lt;/blockquote>
+&lt;p>私钥方式部署 3 server 节点：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--pkg https://oss.kubeclipper.io/release/&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>KC_VERSION&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>/kc-&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>GOARCH&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>.tar.gz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>私钥方式部署 3 server + 3 agent 节点，指定 pkg：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--pkg https://oss.kubeclipper.io/release/&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>KC_VERSION&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>/kc-&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>GOARCH&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>.tar.gz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>私钥方式部署 3 server + 3 agent 节点，未指定 pkg，默认与 kcctl 安装版本一致（推荐）：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>私钥方式部署 3 server + 3 agent 节点，指定 etcd 端口，默认端口为 client-12379 | peer-12380 | metrics-12381：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--etcd-port &lt;span style="color:#0000cf;font-weight:bold">12379&lt;/span> --etcd-peer-port &lt;span style="color:#0000cf;font-weight:bold">12380&lt;/span> --etcd-metric-port &lt;span style="color:#0000cf;font-weight:bold">12381&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>参数输入示例：&lt;br>
+SERVER_IPS: 192.168.10.20,192.168.10.21&lt;br>
+AGENT_IPS: 192.168.10.30,192.168.10.31&lt;br>
+KC_VERSION: KubeClipper 的 release version，查看 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 获取&lt;br>
+GOARCH：系统架构，amd64 （又名 x84_64），arm64（又名 aarch64）&lt;/p>
+&lt;/blockquote>
+&lt;p>kcctl deploy 支持多种参数，能够满足您对部署 KubeClipper 集群的特定需求，更多功能等您探索。&lt;br>
+在执行 kcctl deploy 命令后，命令会检测您的环境是否符合安装要求，会将警告信息、安装进度等同步输出到控制台，最后在安装成功后会打印如下 KubeClipper banner：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> _ __ _ _____ _ _
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> / / &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> / __ &lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>/ / _ _&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>__ ___&lt;span style="color:#000;font-weight:bold">|&lt;/span> / &lt;span style="color:#4e9a06">\/&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_ _ __ _ __ ___ _ __
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">\|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;_ \ / _ \ | | | | &amp;#39;&lt;/span>_ &lt;span style="color:#4e9a06">\|&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;_ \ / _ \ &amp;#39;&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>&lt;span style="color:#4e9a06">\ &lt;/span> &lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> __/ &lt;span style="color:#4e9a06">\_&lt;/span>_/&lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> __/ &lt;span style="color:#000;font-weight:bold">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">\_&lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">\_&lt;/span>/&lt;span style="color:#4e9a06">\_&lt;/span>_,_&lt;span style="color:#000;font-weight:bold">|&lt;/span>_.__/ &lt;span style="color:#4e9a06">\_&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>&lt;span style="color:#4e9a06">\_&lt;/span>___/_&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> .__/&lt;span style="color:#000;font-weight:bold">|&lt;/span> .__/ &lt;span style="color:#4e9a06">\_&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>系统默认管理账号：&lt;code>admin / Thinkbig1&lt;/code>&lt;/p>
+&lt;p>登录控制台：
+打开浏览器，访问 &lt;code>http://SERVER_IP&lt;/code> （通过任意一个 Server 节点均可访问）即可进入 KubeClipper 控制台&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io//v1.3/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>登录命令行：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://SERVER_IP -u admin -p Thinkbig1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>大多数 kcctl 命令都依赖登录状态，因此最好在执行 cli 命令时提前登录。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="使用-kcctl-添加-agent-节点到-kubeclipper">使用 kcctl 添加 agent 节点到 KubeClipper&lt;/h2>
+&lt;blockquote>
+&lt;p>当前 kcctl join 命令仅支持添加 agent 节点，后续会逐步支持添加 server 节点。
+新加入的 agent 节点也应该统一设置免密登录，且私钥相同。&lt;/p>
+&lt;/blockquote>
+&lt;p>Join agent 节点：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl join --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="使用-kcctl-从-kubeclipper-中删除-agent-节点">使用 kcctl 从 KubeClipper 中删除 agent 节点&lt;/h2>
+&lt;blockquote>
+&lt;p>当前 kcctl drain 命令仅支持删除 agent 节点，后续会逐步支持删除 server 节点。&lt;/p>
+&lt;/blockquote>
+&lt;p>Drain agent 节点：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl drain --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 强制 drain 节点，忽略错误&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl drain --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS --force
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果您发现根据本文档无法成功部署 KubeClipper，请移步 &lt;a href="https://github.com/kubeclipper/kubeclipper/issues">KubeClipper Github Issue&lt;/a>，提出您的意见或反馈。&lt;/p></description></item></channel></rss>

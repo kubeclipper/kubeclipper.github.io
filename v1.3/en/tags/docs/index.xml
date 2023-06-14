@@ -1,0 +1,69 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – docs</title><link>https://www.kubeclipper.io//v1.3/en/tags/docs/</link><description>Recent content in docs on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.3/en/tags/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploying AIO</title><link>https://www.kubeclipper.io//v1.3/en/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.3/en/docs/getting-started/aio-env/</guid><description>
+&lt;p>For users who are new to KubeClipper and want to get started quickly, it is recommended to use the All-in-One installation mode, which can help you quickly deploy KubeClipper with zero configuration.&lt;/p>
+&lt;h2 id="deploy-kubeclipper">Deploy KubeClipper&lt;/h2>
+&lt;h3 id="download-kcctl">Download kcctl&lt;/h3>
+&lt;p>KubeClipper provides a command line tool 🔧 kcctl to simplify operation and maintenance. You can download the latest version of kcctl directly with the following command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># The latest distribution is installed by default&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Install the specified version&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#If you are in China, you can use cn environment variables during installation, in this case we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>You can also download the specified version from the [GitHub Release Page] ( &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">https://github.com/kubeclipper/kubeclipper/releases&lt;/a> ) .&lt;/p>
+&lt;/blockquote>
+&lt;p>Check if the installation was successful with the following command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>Kcctl version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="start-installation">Start installation&lt;/h3>
+&lt;p>You can use &amp;lsquo;kcctl deploy&amp;rsquo; to quickly install and deploy KubeClipper. kcctl uses SSH to access the target node where KubeClipper is finally deployed, so you need to provide SSH access credentials, and the following way to pass the credentials:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>Kcctl deploy &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--user &amp;lt;username&amp;gt;&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--passwd &amp;lt;password&amp;gt; &lt;span style="color:#000;font-weight:bold">|&lt;/span> --pk-file &amp;lt;private key path&amp;gt;&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Example：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Use the private key&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --pk-file /root/.ssh/id_rsa
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Use a password&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --passwd password
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Execute the &amp;lsquo;kcctl deploy&amp;rsquo; command kcctl will check your installation environment and will automatically enter the installation process if the conditions are met. If you see the following KubeClipper banner, the installation is successful.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> _ __ _ _____ _ _
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| | / / | | / __ \ (_)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |/ / _ _| |__ ___| / \/ |_ _ __ _ __ ___ _ __
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| \| | | | &amp;#39;_ \ / _ \ | | | | &amp;#39;_ \| &amp;#39;_ \ / _ \ &amp;#39;__|
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |\ \ |_| | |_) | __/ \__/\ | | |_) | |_) | __/ |
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">\_| \_/\__,_|_.__/ \___|\____/_|_| .__/| .__/ \___|_|
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> | | | |
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> |_| |_|
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>You can also deploy the master version of KubeClipper to experience the latest features (the master version is not rigorously validated and may contain unknown bugs that affect the experience)&lt;/p>
+&lt;ol>
+&lt;li>Install the master version kcctl&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>Set environment variables on the installation server&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">export&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>Deploy KubeClipper AIO environment&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;h3 id="login-to-console">Login to console&lt;/h3>
+&lt;p>After the installation is complete, open a browser and visit &amp;lsquo;http:&lt;kc-server ip address>&amp;rsquo; to enter the KubeClipper console. (Usually kc-server IP is the IP of the node where you deploy kubeClipper)&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io//v1.3/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>You can use the default account password &amp;quot; admin/Thinkbig1 &amp;quot; to log in.&lt;/p>
+&lt;blockquote>
+&lt;p>You may need to configure port forwarding rules and open ports in security groups for external users to access the console.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="create-kubernetes-cluster">Create kubernetes cluster&lt;/h2>
+&lt;p>After successful deployment you can create a kubernetes cluster using the ** kcctl tool ** or via the ** console ** . Use the kcctl tool to create it in this quickstart tutorial.&lt;/p>
+&lt;p>First, use the default account password to log in and obtain the token, which is convenient for subsequent interaction between kcctl and kc-server.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://&amp;lt;kc-server ip address&amp;gt;:8080 -u admin -p Thinkbig1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Then create a Kubernetes cluster with the following command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">NODE&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> $ &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>kcctl get node -o yaml &lt;span style="color:#000;font-weight:bold">|&lt;/span> grep ipv4DefaultIP: &lt;span style="color:#000;font-weight:bold">|&lt;/span> sed&lt;span style="color:#4e9a06">&amp;#39;s/ipv4DefaultIP : //&amp;#39;&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Kcctl create cluster --master &lt;span style="color:#000">$NODE&lt;/span> --name demo --untaint-master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>It takes about 3 minutes to complete the cluster creation, or you can use the following command to view the cluster status&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>Kcctl get cluster -o yaml &lt;span style="color:#000;font-weight:bold">|&lt;/span> grep status -A5
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>You can also go to the console to view the real-time log.&lt;/p>
+&lt;/blockquote>
+&lt;p>The cluster installation is complete when the cluster is in the Running state, and you can use the &amp;lsquo;kubectl get cs&amp;rsquo; command to view the cluster health.&lt;/p></description></item><item><title>Docs: Getting Started</title><link>https://www.kubeclipper.io//v1.3/en/docs/getting-started/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.3/en/docs/getting-started/</guid><description/></item></channel></rss>

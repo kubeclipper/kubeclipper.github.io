@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Documentation</title><link>https://www.kubeclipper.io/en/docs/</link><description>Recent content in Documentation on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 02 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/en/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploying AIO</title><link>https://www.kubeclipper.io/en/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/getting-started/aio-env/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Documentation</title><link>https://www.kubeclipper.io/en/docs/</link><description>Recent content in Documentation on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/en/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploying AIO</title><link>https://www.kubeclipper.io/en/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/getting-started/aio-env/</guid><description>
 &lt;p>For users who are new to KubeClipper and want to get started quickly, it is recommended to use the All-in-One installation mode, which can help you quickly deploy KubeClipper with zero configuration.&lt;/p>
 &lt;h2 id="deploy-kubeclipper">Deploy KubeClipper&lt;/h2>
 &lt;h3 id="download-kcctl">Download kcctl&lt;/h3>
@@ -56,7 +56,7 @@
 &lt;h2 id="create-kubernetes-cluster">Create kubernetes cluster&lt;/h2>
 &lt;p>After successful deployment you can create a kubernetes cluster using the ** kcctl tool ** or via the ** console ** . Use the kcctl tool to create it in this quickstart tutorial.&lt;/p>
 &lt;p>First, use the default account password to log in and obtain the token, which is convenient for subsequent interaction between kcctl and kc-server.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://&amp;lt;kc-server ip address&amp;gt;:8080 -u admin -p Thinkbig1
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>kcctl login -H https://&amp;lt;kc-server ip address&amp;gt;:8080 -u admin -p Thinkbig1
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Then create a Kubernetes cluster with the following command:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">NODE&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> $ &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>kcctl get node -o yaml &lt;span style="color:#000;font-weight:bold">|&lt;/span> grep ipv4DefaultIP: &lt;span style="color:#000;font-weight:bold">|&lt;/span> sed&lt;span style="color:#4e9a06">&amp;#39;s/ipv4DefaultIP : //&amp;#39;&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -66,7 +66,25 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>You can also go to the console to view the real-time log.&lt;/p>
 &lt;/blockquote>
-&lt;p>The cluster installation is complete when the cluster is in the Running state, and you can use the &amp;lsquo;kubectl get cs&amp;rsquo; command to view the cluster health.&lt;/p></description></item><item><title>Docs: Create clusters</title><link>https://www.kubeclipper.io/en/docs/tutorials/create-clusters/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/create-clusters/</guid><description>
+&lt;p>The cluster installation is complete when the cluster is in the Running state, and you can use the &amp;lsquo;kubectl get cs&amp;rsquo; command to view the cluster health.&lt;/p></description></item><item><title>Docs: Feature</title><link>https://www.kubeclipper.io/en/docs/overview/feature/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/overview/feature/</guid><description>
+&lt;h2 id="cluster-lifecycle-management">Cluster LifeCycle Management&lt;/h2>
+&lt;ul>
+&lt;li>Lifecycle Management: cluster creation, deletion, backup, restoration, upgrade, and node manipulation&lt;/li>
+&lt;li>Multiple Deployment Modes: online/offline deployment support&lt;/li>
+&lt;li>Multi-Architecture: x86/64 &amp;amp; arm64 support&lt;/li>
+&lt;li>Cluster Import: registration and management of external clusters (non-Kubeclipper created)&lt;/li>
+&lt;/ul>
+&lt;h2 id="node-management">Node Management&lt;/h2>
+&lt;ul>
+&lt;li>Automatic node registration&lt;/li>
+&lt;li>Node information collection&lt;/li>
+&lt;li>Node terminal&lt;/li>
+&lt;/ul>
+&lt;h2 id="identity-and-access-management-iam">Identity and Access Management (IAM)&lt;/h2>
+&lt;ul>
+&lt;li>RBAC-based user permission system&lt;/li>
+&lt;li>OIDC integration&lt;/li>
+&lt;/ul></description></item><item><title>Docs: Create clusters</title><link>https://www.kubeclipper.io/en/docs/tutorials/create-clusters/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/create-clusters/</guid><description>
 &lt;h3 id="prepare-to-create-a-cluster">&lt;strong>Prepare to create a cluster&lt;/strong>&lt;/h3>
 &lt;ol>
 &lt;li>
@@ -462,7 +480,32 @@ Newly added agent nodes should also be uniformly set up password-free login, and
 &lt;p>Complete all configurations to confirm installation&lt;/p>
 &lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
 &lt;p>Installation is successful and the cluster is up and running&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item><item><title>Docs: Cluster hosting</title><link>https://www.kubeclipper.io/en/docs/tutorials/cluster-hosting/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/cluster-hosting/</guid><description>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item><item><title>Docs: Roadmap</title><link>https://www.kubeclipper.io/en/docs/overview/roadmap/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/overview/roadmap/</guid><description>
+&lt;p>🚀 Cluster Installation Optimization&lt;/p>
+&lt;ul>
+&lt;li>Use images to encapsulate installation package resources to reduce complexity. Reuse mature image technology&lt;/li>
+&lt;/ul>
+&lt;p>💻 Kubernetes Web Console&lt;/p>
+&lt;ul>
+&lt;li>Workload resources &amp;amp; monitoring presentation&lt;/li>
+&lt;li>Tenant based cluster access control&lt;/li>
+&lt;/ul>
+&lt;p>📦 Application Store&lt;/p>
+&lt;ul>
+&lt;li>Application lifecycle management&lt;/li>
+&lt;li>Support web UI &amp;amp; CLI interface&lt;/li>
+&lt;/ul>
+&lt;p>🧩 Common Application and Plugin Integrations&lt;/p>
+&lt;ul>
+&lt;li>LB &amp;amp; Ingress&lt;/li>
+&lt;li>Monitoring&lt;/li>
+&lt;li>Kubernetes Dashboard&lt;/li>
+&lt;li>KubeEdge&lt;/li>
+&lt;/ul>
+&lt;p>🕸 Managed Clusters&lt;/p>
+&lt;ul>
+&lt;li>Support KoK clusters.&lt;/li>
+&lt;/ul></description></item><item><title>Docs: Cluster hosting</title><link>https://www.kubeclipper.io/en/docs/tutorials/cluster-hosting/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/cluster-hosting/</guid><description>
 &lt;h2 id="kubeadm-cluster-hosting">Kubeadm cluster hosting&lt;/h2>
 &lt;p>For a host cluster created and managed by kubeadm, kubeclipper gets the cluster and node information from the kubeconfig file and imports it into the kubeclipper platform.&lt;/p>
 &lt;p>Click &amp;ldquo;Cluster Management&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Hosting&amp;rdquo; button to enter the cluster hosting page. Click &amp;ldquo;Add&amp;rdquo; button at the upper left corner. In the pop-up window of Add Provider, fill in the provider name (such as kubeadm-demo) and description, and then fill in the following information:&lt;/p>
