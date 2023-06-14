@@ -3,7 +3,7 @@ name: Release github pages
 on:
   push:
     branches:
-      - master  # Set a branch to deploy
+      - release/latest
 
 jobs:
   build:
