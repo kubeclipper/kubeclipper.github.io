@@ -101,7 +101,7 @@ After successful deployment you can create a kubernetes cluster using the ** kcc
 First, use the default account password to log in and obtain the token, which is convenient for subsequent interaction between kcctl and kc-server.
 
 ```Bash
-kcctl login -H http://<kc-server ip address>:8080 -u admin -p Thinkbig1
+kcctl login -H https://<kc-server ip address>:8080 -u admin -p Thinkbig1
 ```
 
 Then create a Kubernetes cluster with the following command:
