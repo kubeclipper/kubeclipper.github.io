@@ -1,4 +1,4 @@
---- 
+---
 categories: ["QuickStart"]
 tags: ["aio", "sample", "docs"]
 title: "Deploying AIO"
@@ -22,7 +22,7 @@ KubeClipper provides a command line tool 🔧 kcctl to simplify operation and ma
 # The latest distribution is installed by default
 curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | bash -
 # Install the specified version
-curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_VERSION=v1.3.1 bash -
+curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_VERSION=master bash -
 #If you are in China, you can use cn environment variables during installation, in this case we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
 Curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_REGION=cn bash -
 ```
@@ -32,7 +32,7 @@ Curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_REGION=cn bash -
 Check if the installation was successful with the following command:
 
 ```Bash
-Kcctl version
+kcctl version
 ```
 
 ### Start installation
@@ -40,7 +40,7 @@ Kcctl version
 You can use 'kcctl deploy' to quickly install and deploy KubeClipper. kcctl uses SSH to access the target node where KubeClipper is finally deployed, so you need to provide SSH access credentials, and the following way to pass the credentials:
 
 ```bash
-Kcctl deploy [--user <username>] [--passwd <password> | --pk-file <private key path>]
+kcctl deploy [--user <username>] [--passwd <password> | --pk-file <private key path>]
 ```
 
 Example：
@@ -49,6 +49,8 @@ Example：
 kcctl deploy --user root --pk-file /root/.ssh/id_rsa
 # Use a password
 kcctl deploy --user root --passwd password
+# Deploy AIO
+kcctl deploy
 ```
 
 Execute the 'kcctl deploy' command kcctl will check your installation environment and will automatically enter the installation process if the conditions are met. If you see the following KubeClipper banner, the installation is successful.
@@ -63,26 +65,6 @@ Execute the 'kcctl deploy' command kcctl will check your installation environmen
                                  | |   | |
                                  |_|   |_|
 ```
-
-> You can also deploy the master version of KubeClipper to experience the latest features (the master version is not rigorously validated and may contain unknown bugs that affect the experience)
->
-> 1. Install the master version kcctl
->
-> ```bash
-> curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_VERSION=master bash -
-> ```
->
-> 2. Set environment variables on the installation server
->
-> ```bash
-> export KC_VERSION=master
-> ```
->
-> 3. Deploy KubeClipper AIO environment
->
-> ```bash
-> kcctl deploy
-> ```
 
 ### Login to console
 
