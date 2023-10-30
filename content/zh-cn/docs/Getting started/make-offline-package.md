@@ -1,3 +1,14 @@
+---
+categories: ["QuickStart"]
+tags: ["offline", "package", "docs"]
+title: "制作 K8S 组件离线安装包"
+linkTitle: "制作 K8S 组件离线安装包"
+weight: 3
+date: 2023-10-30
+description: >
+制作 K8S 组件离线安装包
+---
+
 # 制作 K8S 组件离线安装包
 
 本文档介绍如何制作 K8S 组件离线安装包，对于没有外网的环境，可以通过离线安装包进行安装。
