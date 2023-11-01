@@ -1,4 +1,72 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – docs</title><link>https://www.kubeclipper.io/tags/docs/</link><description>Recent content in docs on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/tags/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 部署 AIO</title><link>https://www.kubeclipper.io/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/getting-started/aio-env/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – docs</title><link>https://www.kubeclipper.io/tags/docs/</link><description>Recent content in docs on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/tags/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 快速开始</title><link>https://www.kubeclipper.io/docs/getting-started/</link><pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/getting-started/</guid><description>
+&lt;p>对于初次接触 KubeClipper 并想快速上手的用户，建议使用 All-in-One 安装模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p>
+&lt;h3 id="准备工作">准备工作&lt;/h3>
+&lt;p>KubeClipper 本身并不会占用太多资源，但是为了后续更好的运行 Kubernetes 建议硬件配置不低于最低要求。&lt;/p>
+&lt;p>您仅需参考以下对机器硬件和操作系统的要求准备一台主机。&lt;/p>
+&lt;h4 id="硬件推荐配置">硬件推荐配置&lt;/h4>
+&lt;ul>
+&lt;li>确保您的机器满足最低硬件要求：CPU &amp;gt;= 2 核，内存 &amp;gt;= 2GB。&lt;/li>
+&lt;li>操作系统：CentOS 7.x / Ubuntu 18.04 / Ubuntu 20.04。&lt;/li>
+&lt;/ul>
+&lt;h4 id="节点要求">节点要求&lt;/h4>
+&lt;ul>
+&lt;li>节点必须能够通过 &lt;code>SSH&lt;/code> 连接。&lt;/li>
+&lt;li>节点上可以使用 &lt;code>sudo&lt;/code> / &lt;code>curl&lt;/code> / &lt;code>wget&lt;/code> / &lt;code>tar&lt;/code> 命令。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>建议您的操作系统处于干净状态（不安装任何其他软件），否则可能会发生冲突。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="部署-kubeclipper">部署 KubeClipper&lt;/h3>
+&lt;h4 id="下载-kcctl">下载 kcctl&lt;/h4>
+&lt;p>KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | bash -&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果你在中国， 你可以在安装时使用 cn 环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>您也可以在 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 下载指定版本。&lt;/p>
+&lt;/blockquote>
+&lt;p>通过以下命令检测是否安装成功:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="开始安装">开始安装&lt;/h4>
+&lt;p>在本快速入门教程中，您只需执行一个命令即可安装 KubeClipper，其模板如下所示：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>若使用 ssh passwd 方式则命令如下所示:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --passwd &lt;span style="color:#000">$SSH_PASSWD&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>私钥方式如下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --pk-file &lt;span style="color:#000">$SSH_PRIVATE_KEY&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>您只需要提供 ssh user 以及 ssh passwd 或者 ssh 私钥即可在本机部署 KubeClipper。&lt;/p>
+&lt;/blockquote>
+&lt;p>执行该命令后，Kcctl 将检查您的安装环境，若满足条件将会进入安装流程。在打印出如下的 KubeClipper banner 后即表示安装完成。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> _ __ _ _____ _ _
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| | / / | | / __ \ (_)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |/ / _ _| |__ ___| / \/ |_ _ __ _ __ ___ _ __
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| \| | | | &amp;#39;_ \ / _ \ | | | | &amp;#39;_ \| &amp;#39;_ \ / _ \ &amp;#39;__|
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |\ \ |_| | |_) | __/ \__/\ | | |_) | |_) | __/ |
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">\_| \_/\__,_|_.__/ \___|\____/_|_| .__/| .__/ \___|_|
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> | | | |
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> |_| |_|
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="登录控制台">登录控制台&lt;/h3>
+&lt;p>安装完成后，打开浏览器，访问 &lt;code>http://$IP&lt;/code> 即可进入 KubeClipper 控制台。&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>您可以使用默认帐号密码 &lt;code>admin / Thinkbig1&lt;/code> 进行登录。&lt;/p>
+&lt;blockquote>
+&lt;p>您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="创建-kubernetes-集群">创建 kubernetes 集群&lt;/h3>
+&lt;p>部署成功后您可以使用 &lt;strong>kcctl 工具&lt;/strong>或者通过&lt;strong>控制台&lt;/strong>创建 kubernetes 集群。在本快速入门教程中使用 kcctl 工具进行创建。&lt;/p>
+&lt;p>首先使用默认帐号密码进行登录获取 token，便于后续 kcctl 和 kc-server 进行交互。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://localhost -u admin -p Thinkbig1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后使用以下命令创建 kubernetes 集群:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">NODE&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>kcctl get node -o yaml&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep ipv4DefaultIP:&lt;span style="color:#000;font-weight:bold">|&lt;/span>sed &lt;span style="color:#4e9a06">&amp;#39;s/ipv4DefaultIP: //&amp;#39;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl create cluster --master &lt;span style="color:#000">$NODE&lt;/span> --name demo --untaint-master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>大概 3 分钟左右即可完成集群创建,也可以使用以下命令查看集群状态&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl get cluster -o yaml&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep status -A5
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>您也可以进入控制台查看实时日志。&lt;/p>
+&lt;/blockquote>
+&lt;p>进入 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 部署 AIO</title><link>https://www.kubeclipper.io/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/getting-started/aio-env/</guid><description>
 &lt;p>对于初次接触 KubeClipper 并想快速上手的用户，建议使用 AIO（即 All-in-One，使用单个节点安装 KubeClipper）模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p>
 &lt;h2 id="部署-kubeclipper">部署 KubeClipper&lt;/h2>
 &lt;h3 id="下载并安装-kcctl">下载并安装 kcctl&lt;/h3>
@@ -67,72 +135,299 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>您也可以进入控制台查看实时日志。&lt;/p>
 &lt;/blockquote>
-&lt;p>集群处于 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 快速开始</title><link>https://www.kubeclipper.io/docs/getting-started/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/getting-started/</guid><description>
-&lt;p>对于初次接触 KubeClipper 并想快速上手的用户，建议使用 All-in-One 安装模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p>
-&lt;h3 id="准备工作">准备工作&lt;/h3>
-&lt;p>KubeClipper 本身并不会占用太多资源，但是为了后续更好的运行 Kubernetes 建议硬件配置不低于最低要求。&lt;/p>
-&lt;p>您仅需参考以下对机器硬件和操作系统的要求准备一台主机。&lt;/p>
-&lt;h4 id="硬件推荐配置">硬件推荐配置&lt;/h4>
+&lt;p>集群处于 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 制作 K8S 组件离线安装包</title><link>https://www.kubeclipper.io/docs/getting-started/make-offline-package/</link><pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/getting-started/make-offline-package/</guid><description>
+&lt;p>本文档介绍如何制作 K8S 组件离线安装包，对于没有外网的环境，可以通过离线安装包进行安装。&lt;/p>
+&lt;p>当前 kubeclipper v1.4 版本离线部署包中仅包含以下 K8S 组件：&lt;/p>
 &lt;ul>
-&lt;li>确保您的机器满足最低硬件要求：CPU &amp;gt;= 2 核，内存 &amp;gt;= 2GB。&lt;/li>
-&lt;li>操作系统：CentOS 7.x / Ubuntu 18.04 / Ubuntu 20.04。&lt;/li>
+&lt;li>k8s: v1.27.4&lt;/li>
+&lt;li>containerd: v1.6.4&lt;/li>
+&lt;li>calico: v3.26.1&lt;/li>
 &lt;/ul>
-&lt;h4 id="节点要求">节点要求&lt;/h4>
-&lt;ul>
-&lt;li>节点必须能够通过 &lt;code>SSH&lt;/code> 连接。&lt;/li>
-&lt;li>节点上可以使用 &lt;code>sudo&lt;/code> / &lt;code>curl&lt;/code> / &lt;code>wget&lt;/code> / &lt;code>tar&lt;/code> 命令。&lt;/li>
-&lt;/ul>
-&lt;blockquote>
-&lt;p>建议您的操作系统处于干净状态（不安装任何其他软件），否则可能会发生冲突。&lt;/p>
-&lt;/blockquote>
-&lt;h3 id="部署-kubeclipper">部署 KubeClipper&lt;/h3>
-&lt;h4 id="下载-kcctl">下载 kcctl&lt;/h4>
-&lt;p>KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | bash -&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果你在中国， 你可以在安装时使用 cn 环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>您也可以在 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 下载指定版本。&lt;/p>
-&lt;/blockquote>
-&lt;p>通过以下命令检测是否安装成功:&lt;/p>
+&lt;p>对于有特殊需求的用户，可以通过本文档介绍的方法自行制作离线组件包，然后在 kubeclipper 中使用。&lt;/p>
+&lt;h2 id="1-准备工作">1. 准备工作&lt;/h2>
+&lt;p>按照 &lt;a href="https://github.com/kubeclipper/kubeclipper">文档&lt;/a> 部署好 kubeclipper，确保 &lt;code>kcctl&lt;/code> 命令可以正常使用。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="开始安装">开始安装&lt;/h4>
-&lt;p>在本快速入门教程中，您只需执行一个命令即可安装 KubeClipper，其模板如下所示：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>若使用 ssh passwd 方式则命令如下所示:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --passwd &lt;span style="color:#000">$SSH_PASSWD&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>私钥方式如下：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --pk-file &lt;span style="color:#000">$SSH_PRIVATE_KEY&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>您只需要提供 ssh user 以及 ssh passwd 或者 ssh 私钥即可在本机部署 KubeClipper。&lt;/p>
-&lt;/blockquote>
-&lt;p>执行该命令后，Kcctl 将检查您的安装环境，若满足条件将会进入安装流程。在打印出如下的 KubeClipper banner 后即表示安装完成。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> _ __ _ _____ _ _
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| | / / | | / __ \ (_)
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |/ / _ _| |__ ___| / \/ |_ _ __ _ __ ___ _ __
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| \| | | | &amp;#39;_ \ / _ \ | | | | &amp;#39;_ \| &amp;#39;_ \ / _ \ &amp;#39;__|
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |\ \ |_| | |_) | __/ \__/\ | | |_) | |_) | __/ |
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">\_| \_/\__,_|_.__/ \___|\____/_|_| .__/| .__/ \___|_|
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> | | | |
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> |_| |_|
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="登录控制台">登录控制台&lt;/h3>
-&lt;p>安装完成后，打开浏览器，访问 &lt;code>http://$IP&lt;/code> 即可进入 KubeClipper 控制台。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
-&lt;p>您可以使用默认帐号密码 &lt;code>admin / Thinkbig1&lt;/code> 进行登录。&lt;/p>
-&lt;blockquote>
-&lt;p>您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。&lt;/p>
-&lt;/blockquote>
-&lt;h3 id="创建-kubernetes-集群">创建 kubernetes 集群&lt;/h3>
-&lt;p>部署成功后您可以使用 &lt;strong>kcctl 工具&lt;/strong>或者通过&lt;strong>控制台&lt;/strong>创建 kubernetes 集群。在本快速入门教程中使用 kcctl 工具进行创建。&lt;/p>
-&lt;p>首先使用默认帐号密码进行登录获取 token，便于后续 kcctl 和 kc-server 进行交互。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://localhost -u admin -p Thinkbig1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后使用以下命令创建 kubernetes 集群:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">NODE&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>kcctl get node -o yaml&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep ipv4DefaultIP:&lt;span style="color:#000;font-weight:bold">|&lt;/span>sed &lt;span style="color:#4e9a06">&amp;#39;s/ipv4DefaultIP: //&amp;#39;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以下操作均在 kubeclipper 部署节点上执行，使用 &lt;code>kcctl resource&lt;/code> 命令进行组件包上传。&lt;/p>
+&lt;h2 id="2-确认组件版本">2. 确认组件版本&lt;/h2>
+&lt;p>根据以下两个表格信息，确认需要制作的组件包版本，使用推送脚本或者手动上传组件包到 kubeclipper。&lt;/p>
+&lt;p>&lt;code>k8s 组件包表&lt;/code> 记录当前对象存储里已制作好的各类组件包，后续我们将逐步开源更多组件包以及打包脚本。&lt;br>
+&lt;code>k8s 版本与组件推荐版本对应关系表&lt;/code> 记录了各个 k8s 版本对应的组件版本，可以根据自己的需求选择对应的组件版本。&lt;/p>
+&lt;h4 id="k8s-版本与组件推荐版本对应关系表">k8s 版本与组件推荐版本对应关系表&lt;/h4>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left">k8s 版本&lt;/th>
+&lt;th style="text-align:left">containerd 版本&lt;/th>
+&lt;th style="text-align:left">docker 版本&lt;/th>
+&lt;th style="text-align:left">calico 版本&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">v1.28.0&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.27.4&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.26.7&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.25.4&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.24.8&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.23.9&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.23.6&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.22.12&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.21.14&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.20.15&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.16.10&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.19.16&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.16.10&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.18.20&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.16.10&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="k8s-组件包表">k8s 组件包表&lt;/h4>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left">组件名称&lt;/th>
+&lt;th style="text-align:left">版本&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.28.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.27.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.26.7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.25.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.24.8&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.23.9&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.23.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.22.12&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.21.14&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.20.15&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.19.16&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.18.20&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">containerd&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">docker&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">calico&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">calico&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">calico&lt;/td>
+&lt;td style="text-align:left">v3.21.2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">calico&lt;/td>
+&lt;td style="text-align:left">v3.16.10&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">calico&lt;/td>
+&lt;td style="text-align:left">v3.11.2&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="3-推送离线组件包到-kubeclipper">3. 推送离线组件包到 kubeclipper&lt;/h2>
+&lt;p>&lt;code>push_component.sh&lt;/code> 脚本：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#!/usr/bin/env bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">set&lt;/span> -e
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl create cluster --master &lt;span style="color:#000">$NODE&lt;/span> --name demo --untaint-master
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>大概 3 分钟左右即可完成集群创建,也可以使用以下命令查看集群状态&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl get cluster -o yaml&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep status -A5
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>您也可以进入控制台查看实时日志。&lt;/p>
-&lt;/blockquote>
-&lt;p>进入 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#204a87">type&lt;/span> kcctl &lt;span style="color:#000;font-weight:bold">&amp;amp;&lt;/span>&amp;gt;/dev/null&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> kcctl version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;kcctl command not found, please install it first!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">PKG_URL_PREFIX&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;https://oss.kubeclipper.io/packages&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=()&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000">$1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;k8s&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;calico&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;containerd&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;docker&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;only &amp;#39;k8s&amp;#39;, &amp;#39;calico&amp;#39; packages are supported. default: &lt;/span>&lt;span style="color:#000">$name&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">exit&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000">$2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> -z &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Please specify the package version!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">exit&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000">$3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;amd64&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;arm64&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;only &amp;#39;amd64&amp;#39;, &amp;#39;arm64&amp;#39; architectures are supported. default: &lt;/span>&lt;span style="color:#000">$arch&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">exit&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>-&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>-&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;k8s&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>packaging&lt;span style="color:#ce5c00;font-weight:bold">()&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">case&lt;/span> &lt;span style="color:#000">$name&lt;/span> in
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> k8s&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> images.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> configs.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;k8s&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> calico&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> images.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>&lt;span style="color:#204a87">echo&lt;/span> -e &lt;span style="color:#4e9a06">&amp;#34;3.26\n&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> sort -V &lt;span style="color:#000;font-weight:bold">|&lt;/span> tail -n 1&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">==&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> images.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> charts.tgz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;cni&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> containerd,docker&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> configs.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;cri&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">esac&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">for&lt;/span> file in &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#000;font-weight:bold">[@]&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;download &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">file&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> wget &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_URL_PREFIX&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">file&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span> -P &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;packaging &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tar -zcvf &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span> &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;packaging &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06"> done&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;push &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06"> to kc...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> kcctl resource push --pkg &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span> --type &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;push &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06"> to kc done&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>packaging
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;clean up...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -rf &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -rf &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;clean up done&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>使用 &lt;code>push_component.sh&lt;/code> 脚本推送组件包到 kubeclipper：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>chmod +x push_component.sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 k8s 组件包&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh k8s v1.23.9 amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 calico 组件包&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh calico v3.22.4 amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 containerd 组件包&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh containerd v1.6.4 amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 docker 组件包&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh docker 20.10.20 amd64
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="4-查看离线组件包">4. 查看离线组件包&lt;/h2>
+&lt;p>使用 &lt;code>kcctl resource list&lt;/code> 命令查看已上传的离线组件包：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="5-使用离线组件包">5. 使用离线组件包&lt;/h2>
+&lt;p>登录 kubeclipper 控制台，点击&lt;code>创建集群&lt;/code>，进入&lt;code>集群配置&lt;/code>页，&lt;code>镜像类型&lt;/code>选择&lt;code>离线&lt;/code>，即可选择已上传的离线组件包。&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-config01.png" alt="集群配置01">
+&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-config02.png" alt="集群配置02">&lt;/p></description></item></channel></rss>

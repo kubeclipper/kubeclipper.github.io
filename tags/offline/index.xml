@@ -1,0 +1,296 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – offline</title><link>https://www.kubeclipper.io/tags/offline/</link><description>Recent content in offline on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/tags/offline/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 制作 K8S 组件离线安装包</title><link>https://www.kubeclipper.io/docs/getting-started/make-offline-package/</link><pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/getting-started/make-offline-package/</guid><description>
+&lt;p>本文档介绍如何制作 K8S 组件离线安装包，对于没有外网的环境，可以通过离线安装包进行安装。&lt;/p>
+&lt;p>当前 kubeclipper v1.4 版本离线部署包中仅包含以下 K8S 组件：&lt;/p>
+&lt;ul>
+&lt;li>k8s: v1.27.4&lt;/li>
+&lt;li>containerd: v1.6.4&lt;/li>
+&lt;li>calico: v3.26.1&lt;/li>
+&lt;/ul>
+&lt;p>对于有特殊需求的用户，可以通过本文档介绍的方法自行制作离线组件包，然后在 kubeclipper 中使用。&lt;/p>
+&lt;h2 id="1-准备工作">1. 准备工作&lt;/h2>
+&lt;p>按照 &lt;a href="https://github.com/kubeclipper/kubeclipper">文档&lt;/a> 部署好 kubeclipper，确保 &lt;code>kcctl&lt;/code> 命令可以正常使用。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以下操作均在 kubeclipper 部署节点上执行，使用 &lt;code>kcctl resource&lt;/code> 命令进行组件包上传。&lt;/p>
+&lt;h2 id="2-确认组件版本">2. 确认组件版本&lt;/h2>
+&lt;p>根据以下两个表格信息，确认需要制作的组件包版本，使用推送脚本或者手动上传组件包到 kubeclipper。&lt;/p>
+&lt;p>&lt;code>k8s 组件包表&lt;/code> 记录当前对象存储里已制作好的各类组件包，后续我们将逐步开源更多组件包以及打包脚本。&lt;br>
+&lt;code>k8s 版本与组件推荐版本对应关系表&lt;/code> 记录了各个 k8s 版本对应的组件版本，可以根据自己的需求选择对应的组件版本。&lt;/p>
+&lt;h4 id="k8s-版本与组件推荐版本对应关系表">k8s 版本与组件推荐版本对应关系表&lt;/h4>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left">k8s 版本&lt;/th>
+&lt;th style="text-align:left">containerd 版本&lt;/th>
+&lt;th style="text-align:left">docker 版本&lt;/th>
+&lt;th style="text-align:left">calico 版本&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">v1.28.0&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.27.4&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.26.7&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.25.4&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.24.8&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.23.9&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.23.6&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.22.12&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.21.14&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.20.15&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.16.10&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.19.16&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.16.10&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.18.20&lt;/td>
+&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;td style="text-align:left">v3.16.10&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="k8s-组件包表">k8s 组件包表&lt;/h4>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left">组件名称&lt;/th>
+&lt;th style="text-align:left">版本&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.28.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.27.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.26.7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.25.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.24.8&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.23.9&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.23.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.22.12&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.21.14&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.20.15&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.19.16&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.18.20&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">containerd&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">docker&lt;/td>
+&lt;td style="text-align:left">20.10.20&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">calico&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">calico&lt;/td>
+&lt;td style="text-align:left">v3.22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">calico&lt;/td>
+&lt;td style="text-align:left">v3.21.2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">calico&lt;/td>
+&lt;td style="text-align:left">v3.16.10&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">calico&lt;/td>
+&lt;td style="text-align:left">v3.11.2&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="3-推送离线组件包到-kubeclipper">3. 推送离线组件包到 kubeclipper&lt;/h2>
+&lt;p>&lt;code>push_component.sh&lt;/code> 脚本：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#!/usr/bin/env bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">set&lt;/span> -e
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#204a87">type&lt;/span> kcctl &lt;span style="color:#000;font-weight:bold">&amp;amp;&lt;/span>&amp;gt;/dev/null&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> kcctl version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;kcctl command not found, please install it first!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">PKG_URL_PREFIX&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;https://oss.kubeclipper.io/packages&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=()&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000">$1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;k8s&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;calico&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;containerd&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;docker&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;only &amp;#39;k8s&amp;#39;, &amp;#39;calico&amp;#39; packages are supported. default: &lt;/span>&lt;span style="color:#000">$name&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">exit&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000">$2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> -z &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Please specify the package version!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">exit&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000">$3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;amd64&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;arm64&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;only &amp;#39;amd64&amp;#39;, &amp;#39;arm64&amp;#39; architectures are supported. default: &lt;/span>&lt;span style="color:#000">$arch&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">exit&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>-&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>-&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;k8s&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>packaging&lt;span style="color:#ce5c00;font-weight:bold">()&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">case&lt;/span> &lt;span style="color:#000">$name&lt;/span> in
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> k8s&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> images.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> configs.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;k8s&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> calico&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> images.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>&lt;span style="color:#204a87">echo&lt;/span> -e &lt;span style="color:#4e9a06">&amp;#34;3.26\n&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> sort -V &lt;span style="color:#000;font-weight:bold">|&lt;/span> tail -n 1&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">==&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> images.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> charts.tgz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;cni&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> containerd,docker&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> configs.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;cri&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">esac&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">for&lt;/span> file in &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#000;font-weight:bold">[@]&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;download &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">file&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> wget &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_URL_PREFIX&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">file&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span> -P &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;packaging &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tar -zcvf &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span> &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;packaging &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06"> done&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;push &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06"> to kc...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> kcctl resource push --pkg &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span> --type &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;push &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06"> to kc done&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>packaging
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;clean up...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -rf &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -rf &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;clean up done&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>使用 &lt;code>push_component.sh&lt;/code> 脚本推送组件包到 kubeclipper：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>chmod +x push_component.sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 k8s 组件包&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh k8s v1.23.9 amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 calico 组件包&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh calico v3.22.4 amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 containerd 组件包&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh containerd v1.6.4 amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 docker 组件包&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh docker 20.10.20 amd64
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="4-查看离线组件包">4. 查看离线组件包&lt;/h2>
+&lt;p>使用 &lt;code>kcctl resource list&lt;/code> 命令查看已上传的离线组件包：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="5-使用离线组件包">5. 使用离线组件包&lt;/h2>
+&lt;p>登录 kubeclipper 控制台，点击&lt;code>创建集群&lt;/code>，进入&lt;code>集群配置&lt;/code>页，&lt;code>镜像类型&lt;/code>选择&lt;code>离线&lt;/code>，即可选择已上传的离线组件包。&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-config01.png" alt="集群配置01">
+&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-config02.png" alt="集群配置02">&lt;/p></description></item></channel></rss>
