@@ -83,6 +83,8 @@ kcctl version
 
 ```bash
 #!/usr/bin/env bash
+# usage: ./push_component.sh [component] [version] [arch]
+# usage: ./push_component.sh k8s v1.23.9 amd64
 
 set -e
 
@@ -96,8 +98,8 @@ PKG_URL_PREFIX="https://oss.kubeclipper.io/packages"
 fileList=()
 
 name=$1
-if [[ "${name}" != "k8s" ]] && [[ "${name}" != "calico" ]] && [[ "${name}" != "containerd" ]] && [[ "${name}" != "docker" ]]; then
-  echo "only 'k8s', 'calico' packages are supported. default: $name"
+if [[ "${name}" != "k8s" ]] && [[ "${name}" != "calico" ]] && [[ "${name}" != "containerd" ]] && [[ "${name}" != "docker" ]] && [[ "${name}" != "metallb" ]]; then
+  echo "only 'k8s', 'calico','containerd','docker','metallb' packages are supported. default: $name"
   exit 1
 fi
 version=$2
@@ -110,7 +112,7 @@ if [[ "${arch}" != "amd64" ]] && [[ "${arch}" != "arm64" ]]; then
   echo "only 'amd64', 'arm64' architectures are supported. default: $arch"
   exit 1
 fi
-
+``
 build_dir=${name}/${version}/${arch}
 pkg_name=${name}-${version}-${arch}.tar.gz
 pkg_type="k8s"
@@ -145,6 +147,13 @@ packaging() {
       manifest.json
     )
     pkg_type="cri"
+    ;;
+  metallb)
+    fileList=(
+      images.tar.gz
+      manifest.json
+    )
+    pkg_type="metallb"
     ;;
   esac
 
@@ -184,6 +193,9 @@ chmod +x push_component.sh
 
 # 推送 docker 组件包
 ./push_component.sh docker 20.10.20 amd64
+
+# 推送 metallb 组件包
+./push_component.sh metallb v0.13.7 amd64
 ```
 
 ## 4. 查看离线组件包
