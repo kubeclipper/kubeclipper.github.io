@@ -140,7 +140,7 @@
 &lt;p>当前 kubeclipper v1.4 版本离线部署包中仅包含以下 K8S 组件：&lt;/p>
 &lt;ul>
 &lt;li>k8s: v1.27.4&lt;/li>
-&lt;li>containerd: v1.6.4&lt;/li>
+&lt;li>containerd: 1.6.4&lt;/li>
 &lt;li>calico: v3.26.1&lt;/li>
 &lt;/ul>
 &lt;p>对于有特殊需求的用户，可以通过本文档介绍的方法自行制作离线组件包，然后在 kubeclipper 中使用。&lt;/p>
@@ -164,74 +164,98 @@
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
+&lt;td style="text-align:left">v1.33.0&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.31.1&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.30.6&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">v1.29.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
+&lt;td style="text-align:left">-&lt;/td>
+&lt;td style="text-align:left">v3.26.1&lt;/td>
+&lt;/tr>
+&lt;tr>
 &lt;td style="text-align:left">v1.28.0&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">-&lt;/td>
 &lt;td style="text-align:left">v3.26.1&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.27.4&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">-&lt;/td>
 &lt;td style="text-align:left">v3.26.1&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.26.7&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">-&lt;/td>
 &lt;td style="text-align:left">v3.26.1&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.25.4&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">-&lt;/td>
 &lt;td style="text-align:left">v3.22.4&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.24.8&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">-&lt;/td>
 &lt;td style="text-align:left">v3.22.4&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.23.9&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">20.10.20&lt;/td>
 &lt;td style="text-align:left">v3.22.4&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.23.6&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">20.10.20&lt;/td>
 &lt;td style="text-align:left">v3.22.4&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.22.12&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">20.10.20&lt;/td>
 &lt;td style="text-align:left">v3.22.4&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.21.14&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">20.10.20&lt;/td>
 &lt;td style="text-align:left">v3.22.4&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.20.15&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">20.10.20&lt;/td>
 &lt;td style="text-align:left">v3.16.10&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.19.16&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">20.10.20&lt;/td>
 &lt;td style="text-align:left">v3.16.10&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">v1.18.20&lt;/td>
-&lt;td style="text-align:left">v1.6.4&lt;/td>
+&lt;td style="text-align:left">1.6.4&lt;/td>
 &lt;td style="text-align:left">20.10.20&lt;/td>
 &lt;td style="text-align:left">v3.16.10&lt;/td>
 &lt;/tr>
@@ -246,6 +270,22 @@
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.33.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.31.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.30.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">k8s&lt;/td>
+&lt;td style="text-align:left">v1.29.4&lt;/td>
+&lt;/tr>
 &lt;tr>
 &lt;td style="text-align:left">k8s&lt;/td>
 &lt;td style="text-align:left">v1.28.0&lt;/td>
@@ -385,7 +425,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;cni&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> containerd,docker&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> containerd&lt;span style="color:#000;font-weight:bold">|&lt;/span>docker&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> configs.tar.gz
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
@@ -423,13 +463,13 @@
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>chmod +x push_component.sh
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 k8s 组件包&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh k8s v1.23.9 amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh k8s v1.33.0 amd64
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 calico 组件包&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh calico v3.22.4 amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh calico v3.26.1 amd64
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 containerd 组件包&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh containerd v1.6.4 amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh containerd 1.6.4 amd64
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 docker 组件包&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh docker 20.10.20 amd64
