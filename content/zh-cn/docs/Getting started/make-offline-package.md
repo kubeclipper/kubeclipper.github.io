@@ -194,7 +194,7 @@ chmod +x push_component.sh
 ./push_component.sh k8s v1.33.0 amd64
 
 # 推送 calico 组件包
-./push_component.sh calico v3.226.1 amd64
+./push_component.sh calico v3.26.1 amd64
 
 # 推送 containerd 组件包
 ./push_component.sh containerd 1.6.4 amd64
