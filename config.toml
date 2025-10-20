@@ -101,7 +101,7 @@ section = ["HTML", "print", "RSS"]
 
 [params]
 copyright = "KubeClipper"
-privacy_policy = "https://policies.google.com/privacy"
+privacy_policy = "https://lfprojects.org/policies/privacy-policy/"
 
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
