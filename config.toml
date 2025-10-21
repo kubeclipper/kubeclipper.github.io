@@ -100,8 +100,8 @@ time_format_blog = "2006.01.02"
 section = ["HTML", "print", "RSS"]
 
 [params]
-copyright = "KubeClipper a Series of LF Projects, LLC. For website terms of use, trademark policy and other project policies please see https://lfprojects.org/policies/"
-privacy_policy = "https://policies.google.com/privacy"
+copyright = "KubeClipper"
+privacy_policy = "https://www.linuxfoundation.org/legal/privacy-policy"
 
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
