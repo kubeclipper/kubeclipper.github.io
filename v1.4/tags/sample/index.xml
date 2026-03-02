@@ -1,0 +1,70 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – sample</title><link>https://www.kubeclipper.io//v1.4/tags/sample/</link><description>Recent content in sample on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.4/tags/sample/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 部署 AIO</title><link>https://www.kubeclipper.io//v1.4/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.4/docs/getting-started/aio-env/</guid><description>
+&lt;p>对于初次接触 KubeClipper 并想快速上手的用户，建议使用 AIO（即 All-in-One，使用单个节点安装 KubeClipper）模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p>
+&lt;h2 id="部署-kubeclipper">部署 KubeClipper&lt;/h2>
+&lt;h3 id="下载并安装-kcctl">下载并安装 kcctl&lt;/h3>
+&lt;p>KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 默认安装最新的发行版&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装指定版本&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果您在中国， 您可以在安装时使用 cn 环境变量, 此时 KubeClipper 会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>您也可以在 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 下载指定版本。&lt;/p>
+&lt;/blockquote>
+&lt;p>可以通过以下命令验证 kcctl 是否安装成功:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果一切顺利，您将看到 kcctl 版本信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="开始安装">开始安装&lt;/h3>
+&lt;p>您可以使用 &lt;code>kcctl deploy&lt;/code> 快速安装部署 KubeClipper。kcctl 使用 SSH 访问最终部署 KubeClipper 的目标节点，因此需要您提供 SSH 访问凭证，传递凭证的方法如下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>Kcctl deploy &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--user &amp;lt;username&amp;gt;&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--passwd &amp;lt;password&amp;gt; &lt;span style="color:#000;font-weight:bold">|&lt;/span> --pk-file &amp;lt;private key path&amp;gt;&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>示例：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 使用私钥&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --pk-file /root/.ssh/id_rsa
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 使用密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --passwd password
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>执行 &lt;code>kcctl deploy&lt;/code> 命令 kcctl 将会检查您的安装环境，若满足条件将自动进入安装流程。若您看到如下 KubeClipper banner 后即表示安装成功。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> _ __ _ _____ _ _
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| | / / | | / __ \ (_)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |/ / _ _| |__ ___| / \/ |_ _ __ _ __ ___ _ __
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| \| | | | &amp;#39;_ \ / _ \ | | | | &amp;#39;_ \| &amp;#39;_ \ / _ \ &amp;#39;__|
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |\ \ |_| | |_) | __/ \__/\ | | |_) | |_) | __/ |
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">\_| \_/\__,_|_.__/ \___|\____/_|_| .__/| .__/ \___|_|
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> | | | |
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> |_| |_|
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>您也可以部署 master 版本的 KubeClipper，来体验最新的功能特性（master 版本没有经过严格验证，可能包含影响体验的未知错误）&lt;/p>
+&lt;ol>
+&lt;li>安装 master 版本 kcctl&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master bash -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>在安装服务器上设置环境变量&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">export&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>以 AIO 方式部署 KubeClipper&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;h3 id="登录控制台">登录控制台&lt;/h3>
+&lt;p>安装完成后，打开浏览器，访问 &lt;code>http://&amp;lt;kc-server ip address&amp;gt;&lt;/code> 即可进入 KubeClipper 控制台。(通常 kc-server ip 是您部署 kubeClipper 节点的 ip)&lt;/p>
+&lt;p>&lt;img src="https://www.kubeclipper.io//v1.4/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>您可以使用默认帐号密码 &lt;code>admin / Thinkbig1&lt;/code> 进行登录。&lt;/p>
+&lt;blockquote>
+&lt;p>您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="创建-kubernetes-集群">创建 Kubernetes 集群&lt;/h2>
+&lt;p>部署成功后您可以使用 &lt;strong>kcctl 工具&lt;/strong>或者通过&lt;strong>控制台&lt;/strong>创建 Kubernetes 集群。在本快速入门教程中使用 kcctl 工具进行创建。&lt;/p>
+&lt;p>首先使用默认帐号密码进行登录获取 token，便于后续 kcctl 和 kc-server 进行交互。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H https://&amp;lt;kc-server ip address&amp;gt;:8080 -u admin -p Thinkbig1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过以下命令创建 Kubernetes 集群:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">NODE&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>kcctl get node -o yaml&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep ipv4DefaultIP:&lt;span style="color:#000;font-weight:bold">|&lt;/span>sed &lt;span style="color:#4e9a06">&amp;#39;s/ipv4DefaultIP: //&amp;#39;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl create cluster --master &lt;span style="color:#000">$NODE&lt;/span> --name demo --untaint-master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>大概 3 分钟左右即可完成集群创建,您可以使用以下命令查看集群状态&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl get cluster -o yaml&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep status -A5
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>您也可以进入控制台查看实时日志。&lt;/p>
+&lt;/blockquote>
+&lt;p>集群处于 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item></channel></rss>
