@@ -34,3 +34,8 @@ pre {
   border-radius: 3px;
   white-space: pre-wrap;
 }
+
+// Keep the full footer visible inside Docsy's viewport-height flex layout.
+.td-outer > footer {
+  flex-shrink: 0;
+}
