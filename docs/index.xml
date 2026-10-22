@@ -444,6 +444,32 @@
 &lt;h2 id="确认成功">确认成功&lt;/h2>
 &lt;p>结合 Operation 结果、&lt;code>kcctl get cluster demo -o yaml&lt;/code>、Kubernetes 节点与 Pod 状态确认结果。集群删除后还要检查平台列表和节点残留。平台问题参考&lt;a href="https://kubeclipper.io/docs/tutorials/diagnostics/">诊断指南&lt;/a>。&lt;/p></description></item><item><title>Docs: 平台诊断</title><link>https://kubeclipper.io/docs/tutorials/diagnostics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/tutorials/diagnostics/</guid><description>
 &lt;p>先确定故障发生在平台、Agent、资源下载还是 Kubernetes 集群，再针对对应层排查。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>现象&lt;/th>
+&lt;th>先检查&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>控制台打不开或 API 连接失败&lt;/td>
+&lt;td>&lt;a href="#%E5%B9%B3%E5%8F%B0%E7%8A%B6%E6%80%81">平台状态&lt;/a>，确认控制台与 API 使用了正确地址和端口&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Agent 或节点未就绪&lt;/td>
+&lt;td>&lt;a href="#%E8%8A%82%E7%82%B9%E6%9C%8D%E5%8A%A1">节点服务&lt;/a>，检查对应节点的服务日志和连通性&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>安装预检查失败或资源包下载失败&lt;/td>
+&lt;td>&lt;a href="#%E9%83%A8%E7%BD%B2%E5%A4%B1%E8%B4%A5">部署失败&lt;/a>，按报错中的节点和检查项处理&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>创建集群的任务失败&lt;/td>
+&lt;td>&lt;a href="#%E9%9B%86%E7%BE%A4%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5">集群任务失败&lt;/a>，先找到 Operation 和失败步骤&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h2 id="平台状态">平台状态&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status

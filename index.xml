@@ -1,1 +1,10 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – Kubeclipper</title><link>https://kubeclipper.io/</link><description>Recent content in Kubeclipper on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 29 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – Kubeclipper</title><link>https://kubeclipper.io/</link><description>Recent content in Kubeclipper on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Thu, 22 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: KubeClipper 1.7 文档更新：从安装到排障</title><link>https://kubeclipper.io/blog/2026/10/22/kubeclipper-1.7-%E6%96%87%E6%A1%A3%E6%9B%B4%E6%96%B0%E4%BB%8E%E5%AE%89%E8%A3%85%E5%88%B0%E6%8E%92%E9%9A%9C/</link><pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/blog/2026/10/22/kubeclipper-1.7-%E6%96%87%E6%A1%A3%E6%9B%B4%E6%96%B0%E4%BB%8E%E5%AE%89%E8%A3%85%E5%88%B0%E6%8E%92%E9%9A%9C/</guid><description>
+&lt;p>我们更新了 KubeClipper v1.7.0 文档，方便首次部署和已有平台的使用者按任务查找步骤。本次是&lt;strong>文档更新&lt;/strong>；v1.7.0 软件于 2026 年 9 月 8 日发布，具体能力和组件版本以&lt;a href="https://kubeclipper.io/docs/overview/release-1.7/">1.7 发布说明&lt;/a>为准。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://kubeclipper.io/docs/getting-started/">快速开始&lt;/a>串起环境准备、平台部署、创建实验集群及完成检查。&lt;/li>
+&lt;li>&lt;a href="https://kubeclipper.io/docs/deployment-docs/upgrade/">升级指南&lt;/a>列出升级前检查和操作边界。&lt;/li>
+&lt;li>&lt;a href="https://kubeclipper.io/docs/tutorials/operations/">操作与日志&lt;/a>说明如何查看异步任务的状态、日志、重试和取消。&lt;/li>
+&lt;li>&lt;a href="https://kubeclipper.io/docs/tutorials/diagnostics/">平台诊断&lt;/a>帮助区分平台、Agent、资源包和集群故障。&lt;/li>
+&lt;li>版本菜单提供 1.1 至 1.6 的历史文档；当前文档对应 v1.7.0。&lt;/li>
+&lt;/ul>
+&lt;p>如果步骤有误或缺少你的使用场景，欢迎在&lt;a href="https://github.com/kubeclipper/kubeclipper.github.io/issues/new">文档仓库提交问题&lt;/a>。报告时请附页面地址、使用版本和脱敏后的错误信息。&lt;/p></description></item></channel></rss>

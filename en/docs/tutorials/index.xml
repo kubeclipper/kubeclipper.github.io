@@ -280,6 +280,32 @@
 &lt;h2 id="confirm-the-result">Confirm the result&lt;/h2>
 &lt;p>Check the Operation result, &lt;code>kcctl get cluster demo -o yaml&lt;/code>, Kubernetes nodes, and system Pods together. After cluster deletion, check the platform list and node residue. See &lt;a href="https://kubeclipper.io/en/docs/tutorials/diagnostics/">platform diagnostics&lt;/a> for platform-level issues.&lt;/p></description></item><item><title>Docs: Platform diagnostics</title><link>https://kubeclipper.io/en/docs/tutorials/diagnostics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/tutorials/diagnostics/</guid><description>
 &lt;p>Locate the failing layer first: the platform, Agent, resource downloads, or the Kubernetes cluster.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Symptom&lt;/th>
+&lt;th>Start with&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Console does not open or API connection fails&lt;/td>
+&lt;td>&lt;a href="#platform-health">Platform health&lt;/a>; check the console and API addresses and ports&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Agent or node is not ready&lt;/td>
+&lt;td>&lt;a href="#node-services">Node services&lt;/a>; inspect service logs and connectivity&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Deployment precheck or resource download fails&lt;/td>
+&lt;td>&lt;a href="#deployment-failures">Deployment failures&lt;/a>; follow the reported node and check&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Cluster creation task fails&lt;/td>
+&lt;td>&lt;a href="#cluster-task-failures">Cluster task failures&lt;/a>; locate the Operation and failing step&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h2 id="platform-health">Platform health&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
