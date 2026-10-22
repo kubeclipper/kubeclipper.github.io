@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Overview</title><link>https://www.kubeclipper.io//v1.4/en/docs/overview/</link><description>Recent content in Overview on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.4/en/docs/overview/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Feature</title><link>https://www.kubeclipper.io//v1.4/en/docs/overview/feature/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.4/en/docs/overview/feature/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Overview</title><link>https://kubeclipper.io/v1.4/en/docs/overview/</link><description>Recent content in Overview on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.4/en/docs/overview/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Feature</title><link>https://kubeclipper.io/v1.4/en/docs/overview/feature/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.4/en/docs/overview/feature/</guid><description>
 &lt;h2 id="cluster-lifecycle-management">Cluster LifeCycle Management&lt;/h2>
 &lt;ul>
 &lt;li>Lifecycle Management: cluster creation, deletion, backup, restoration, upgrade, and node manipulation&lt;/li>
@@ -16,7 +16,7 @@
 &lt;ul>
 &lt;li>RBAC-based user permission system&lt;/li>
 &lt;li>OIDC integration&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Roadmap</title><link>https://www.kubeclipper.io//v1.4/en/docs/overview/roadmap/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.4/en/docs/overview/roadmap/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Roadmap</title><link>https://kubeclipper.io/v1.4/en/docs/overview/roadmap/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.4/en/docs/overview/roadmap/</guid><description>
 &lt;p>🚀 Cluster Installation Optimization&lt;/p>
 &lt;ul>
 &lt;li>Use images to encapsulate installation package resources to reduce complexity. Reuse mature image technology&lt;/li>

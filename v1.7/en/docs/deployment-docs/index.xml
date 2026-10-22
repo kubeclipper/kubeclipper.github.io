@@ -1,0 +1,54 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Deployment docs</title><link>https://kubeclipper.io/v1.7/en/docs/deployment-docs/</link><description>Recent content in Deployment docs on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://kubeclipper.io/v1.7/en/docs/deployment-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: High availability</title><link>https://kubeclipper.io/v1.7/en/docs/deployment-docs/ha-deploy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.7/en/docs/deployment-docs/ha-deploy/</guid><description>
+&lt;p>This guide deploys a highly available KubeClipper control plane. Platform availability and the availability of managed Kubernetes clusters require separate planning.&lt;/p>
+&lt;h2 id="prepare-nodes-and-networking">Prepare nodes and networking&lt;/h2>
+&lt;p>Prepare three Linux Server nodes and the Agent nodes you want to manage. The deployment user needs SSH access to every node with the same private key and sudo privileges. See &lt;a href="https://kubeclipper.io/v1.7/en/docs/overview/">architecture and networking&lt;/a> for clock synchronization and ports.&lt;/p>
+&lt;p>Platform etcd runs on Server nodes. Plan membership and failure tolerance around etcd quorum requirements. Keep platform Servers separate from Kubernetes workload nodes in production.&lt;/p>
+&lt;h2 id="install-and-download">Install and download&lt;/h2>
+&lt;p>Follow &lt;a href="https://kubeclipper.io/v1.7/en/docs/getting-started/">Getting started&lt;/a> to install v1.7.0 kcctl and download the complete &lt;code>kc-amd64.tar.gz&lt;/code> or &lt;code>kc-arm64.tar.gz&lt;/code> package for your targets. GitHub Release client archives are not deployment packages for &lt;code>--pkg&lt;/code>.&lt;/p>
+&lt;h2 id="deploy-servers-and-agents">Deploy Servers and Agents&lt;/h2>
+&lt;p>Replace the IP addresses, private key, and package path. &lt;code>--server&lt;/code> accepts comma-separated addresses; &lt;code>--agent&lt;/code> can include a region.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">read&lt;/span> -r -s -p &lt;span style="color:#4e9a06">&amp;#39;Set the admin password: &amp;#39;&lt;/span> KC_ADMIN_PASSWORD
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">printf&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;\n&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --server 192.168.10.11,192.168.10.12,192.168.10.13 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --agent default:192.168.10.21,192.168.10.22 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --user root --pk-file &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$HOME&lt;/span>&lt;span style="color:#4e9a06">/.ssh/id_rsa&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --pkg &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$PWD&lt;/span>&lt;span style="color:#4e9a06">/kc-amd64.tar.gz&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --initial-password &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$KC_ADMIN_PASSWORD&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">unset&lt;/span> KC_ADMIN_PASSWORD
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Keep TLS enabled. On hosts with multiple interfaces, select reachable addresses using &lt;code>--ip-detect&lt;/code> and &lt;code>--node-ip-detect&lt;/code>; consult &lt;code>kcctl deploy -h&lt;/code>. Platform etcd ports default to 12379, 12380, and 12381.&lt;/p>
+&lt;h2 id="verify-the-platform">Verify the platform&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login --host https://192.168.10.11:8080 --username admin
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl doctor
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Check services on all three Servers, platform etcd membership, and Agent health. Repeat API connectivity checks against the other Servers. Configure a load balancer and certificates separately if you need a common hostname or VIP; deploying three Servers does not provision an entry-point VIP.&lt;/p>
+&lt;p>Browsers use each Server&amp;rsquo;s default HTTP port 80 console entry point; the CLI uses the HTTPS port 8080 API. Configure HTTPS at the production console entry point and restrict management ports to the intended networks.&lt;/p>
+&lt;h2 id="add-and-remove-agents">Add and remove Agents&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl join --agent default:192.168.10.23
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After confirming the node has no clusters or workloads to retain, remove it:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl drain --agent 192.168.10.23
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Investigate a normal drain failure before choosing further actions. Do not use force options by default. See the &lt;a href="https://kubeclipper.io/v1.7/en/docs/deployment-docs/upgrade/">upgrade checklist&lt;/a> before changing versions.&lt;/p></description></item><item><title>Docs: Upgrade checklist</title><link>https://kubeclipper.io/v1.7/en/docs/deployment-docs/upgrade/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.7/en/docs/deployment-docs/upgrade/</guid><description>
+&lt;p>Platform upgrades and managed Kubernetes upgrades are separate procedures. This page covers platform checks; it does not promise a direct upgrade from every older release to 1.7.&lt;/p>
+&lt;h2 id="before-upgrading">Before upgrading&lt;/h2>
+&lt;ol>
+&lt;li>Record Server, Agent, kcctl, and Console versions and node topology. Confirm package architecture.&lt;/li>
+&lt;li>Review release notes, security advisories, and configuration changes. 1.7 introduces Operation v2; inspect old operation records and task state in a test environment.&lt;/li>
+&lt;li>Choose a window with no running installation, upgrade, or backup operations. Resolve unfinished work first.&lt;/li>
+&lt;li>Back up platform etcd, Server and Agent configuration, certificates, and persistent authentication keys. Verify recovery. Back up managed-cluster data separately.&lt;/li>
+&lt;li>Rehearse the target upgrade path in a recoverable test environment and record interruption and recovery steps.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl doctor
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl upgrade -h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="upgrade">Upgrade&lt;/h2>
+&lt;p>&lt;code>kcctl upgrade&lt;/code> supports platform and component upgrades. Use a package with the structure described in command help that you have validated in a test environment. Client archives are not platform upgrade packages.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">UPGRADE_PACKAGE&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>/path/to/validated-upgrade-package.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl upgrade all --pkg &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$UPGRADE_PACKAGE&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Use online upgrades or individual component replacement only when the release or your validated deployment procedure supports them. Replacing one binary does not establish that the whole platform upgrade succeeded.&lt;/p>
+&lt;h2 id="after-upgrading">After upgrading&lt;/h2>
+&lt;p>Repeat &lt;code>kcctl status&lt;/code> and &lt;code>kcctl doctor&lt;/code> and verify versions running on every node. Check login, node data, operation details and logs, managed-cluster access, and basic Console flows. Exercise a controlled lifecycle operation and compare the Operation result with actual cluster state.&lt;/p>
+&lt;p>Preserve errors and logs on failure and follow the recovery procedure tested beforehand. Check data and configuration compatibility before restoring old binaries; do not repeatedly overwrite services in an unknown state.&lt;/p></description></item></channel></rss>

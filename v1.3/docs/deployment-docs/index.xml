@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 部署文档</title><link>https://www.kubeclipper.io//v1.3/docs/deployment-docs/</link><description>Recent content in 部署文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.3/docs/deployment-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 部署高可用 KubeClipper</title><link>https://www.kubeclipper.io//v1.3/docs/deployment-docs/ha-deploy/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.3/docs/deployment-docs/ha-deploy/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 部署文档</title><link>https://kubeclipper.io/v1.3/docs/deployment-docs/</link><description>Recent content in 部署文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.3/docs/deployment-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 部署高可用 KubeClipper</title><link>https://kubeclipper.io/v1.3/docs/deployment-docs/ha-deploy/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.3/docs/deployment-docs/ha-deploy/</guid><description>
 &lt;blockquote>
 &lt;p>对于初次接触 KubeClipper，建议部署 AIO 环境，快速上手体验 KubeClipper 提供的功能特性。
 对于想将 KubeClipper 应用到生成环境，那么本文档或许对您有所帮助。&lt;/p>
@@ -126,7 +126,7 @@ GOARCH：系统架构，amd64 （又名 x84_64），arm64（又名 aarch64）&lt
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>系统默认管理账号：&lt;code>admin / Thinkbig1&lt;/code>&lt;/p>
 &lt;p>登录控制台：
 打开浏览器，访问 &lt;code>http://SERVER_IP&lt;/code> （通过任意一个 Server 节点均可访问）即可进入 KubeClipper 控制台&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.3/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.3/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
 &lt;p>登录命令行：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://SERVER_IP -u admin -p Thinkbig1
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>

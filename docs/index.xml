@@ -1,446 +1,117 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 文档</title><link>https://www.kubeclipper.io/docs/</link><description>Recent content in 文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 创建集群</title><link>https://www.kubeclipper.io/docs/tutorials/create-clusters/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/tutorials/create-clusters/</guid><description>
-&lt;h2 id="创建集群准备工作">创建集群准备工作&lt;/h2>
-&lt;ol>
-&lt;li>您需要准备充足的可用节点，如需添加节点，参见“&lt;a href="https://www.kubeclipper.io/docs/tutorials/node-management/#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9">添加节点&lt;/a>”教程。&lt;/li>
-&lt;li>准备好需要部署的 kubernetes、CRI、calico、CSI 和其他插件的镜像或二进制文件，kubeclipper 提供了推荐的版本，您可以根据平台所处网络环境，选择在线 / 离线后，直接在页面上选取使用。您也可以将部署所需的镜像上传至自己的镜像仓库，并在部署时指定。更多安装配置，参考“&lt;a href="#%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE">集群配置&lt;/a>”章节。&lt;/li>
-&lt;/ol>
-&lt;h2 id="创建单节点实验集群">创建单节点实验集群&lt;/h2>
-&lt;ol>
-&lt;li>
-&lt;p>点击“集群管理”&amp;gt;“集群”，进入集群列表页面，点击左上角“创建集群”按钮。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>进入创建集群向导页面的“节点配置”页面。填写“集群名称”，如 “test”，不需选择“集群模版”。选择一个可用节点，添加为控制节点，并在污点管理列表中，将 master 节点的污点移除。点击“下一步”按钮。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/aio.png" alt="">&lt;/p>
-&lt;ol start="3">
-&lt;li>
-&lt;p>进入创建集群向导页面的“集群配置”页面。选择“离线安装”，“镜像仓库”不需填写，其他配置都可使用默认配置，点击“快速创建”按钮，跳转配置确认页面，点击“确认”按钮。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>单节点的实验集群创建完成，您可以在集群详情页查看集群详情，也可以点击“查看日志”按钮，查看集群创建过程中的实时日志。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h2 id="使用镜像仓库创建集群">使用镜像仓库创建集群&lt;/h2>
-&lt;p>如果创建的集群中包含较大的镜像，推荐您将所有镜像上传到特定的镜像仓库，创建集群会更快速更顺畅。&lt;/p>
-&lt;ol>
-&lt;li>添加镜像仓库。点击“集群管理”&amp;gt;“镜像仓库”，进入镜像仓库列表页面，点击左上角“添加”按钮。在添加镜像仓库的弹窗中输入镜像仓库名称和存放有镜像的仓库地址，点击“确定”按钮。&lt;/li>
-&lt;li>创建集群。点击“集群管理”&amp;gt;“集群”，进入集群列表页面，点击左上角“创建集群”按钮。按需配置集群节点，在“集群配置”页面的“镜像仓库”中，选择第一步添加的镜像仓库，根据需要完成集群其他配置后创建集群。&lt;/li>
-&lt;/ol>
-&lt;h2 id="使用集群模版创建集群">使用集群模版创建集群&lt;/h2>
-&lt;p>您可以使用集群模版，简化集群创建流程。&lt;/p>
-&lt;ol>
-&lt;li>添加模版。保存模版有两种方式，您可以在“集群管理”&amp;gt;“模版管理”页面，添加集群模版，以备创建集群时使用。也可以点击集群操作中的“更多”&amp;gt;“保存为模版”，将已存在的集群配置保存为模版，以便创建出和该集群同等配置的 kubernetes 集群。&lt;/li>
-&lt;li>创建集群。点击“集群管理”&amp;gt;“集群”，进入集群列表页面，点击左上角“创建集群”按钮，进入创建集群页面，填写“集群名称”，如 “demo”，选择第一步中保存的集群模版，添加所需节点，点击右下角“快速创建”按钮，跳转至“配置确认”页面，核对模版信息无误后，点击“确认”按钮，创建集群。&lt;/li>
-&lt;/ol>
-&lt;h2 id="集群配置指南">集群配置指南&lt;/h2>
-&lt;h3 id="节点配置">节点配置&lt;/h3>
-&lt;p>在节点配置页面，您可以对节点进行以下配置：&lt;/p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 文档</title><link>https://kubeclipper.io/docs/</link><description>Recent content in 文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 29 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 创建集群</title><link>https://kubeclipper.io/docs/tutorials/create-clusters/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/tutorials/create-clusters/</guid><description>
+&lt;p>创建集群前，确认 KubeClipper 平台可用、节点已注册并就绪、组件资源的版本和架构匹配。建议先完成&lt;a href="https://kubeclipper.io/docs/getting-started/">快速开始&lt;/a>，验证一条完整的部署路径。&lt;/p>
+&lt;h2 id="控制台创建">控制台创建&lt;/h2>
+&lt;p>登录控制台，在集群页面创建集群。填写名称，选择控制节点、工作节点及组件版本，再按实际网络规划设置 Pod / Service CIDR。生产集群需提前规划控制平面高可用、API 访问地址和存储；单节点实验配置不能直接用于生产。&lt;/p>
+&lt;p>1.7 的推荐组件组合参见&lt;a href="https://kubeclipper.io/docs/overview/release-1.7/">版本说明&lt;/a>。资源不在平台中时先&lt;a href="https://kubeclipper.io/docs/getting-started/make-offline-package/">上传组件包&lt;/a>。私有仓库相关字段参见 &lt;a href="https://kubeclipper.io/docs/tutorials/registries/">Registry&lt;/a>；镜像仓库和组件包是两种独立资源。&lt;/p>
+&lt;h2 id="cli-创建与验证">CLI 创建与验证&lt;/h2>
+&lt;p>&lt;a href="https://kubeclipper.io/docs/getting-started/carete-k8s-cluster-offline/">离线创建集群&lt;/a>提供带明确版本的 CLI 示例。创建请求提交后，在&lt;a href="https://kubeclipper.io/docs/tutorials/operations/">Operation&lt;/a>中查看执行结果，并检查集群状态、节点 Ready、系统 Pod 和 Kubernetes API 健康状态。失败时先保留日志并排查，不要通过重置状态跳过失败步骤。&lt;/p></description></item><item><title>Docs: 高可用部署</title><link>https://kubeclipper.io/docs/deployment-docs/ha-deploy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/deployment-docs/ha-deploy/</guid><description>
+&lt;p>本文部署 KubeClipper 平台的高可用控制面。平台 Server 的高可用与受管 Kubernetes 集群的高可用是两件事，需分别规划。&lt;/p>
+&lt;h2 id="准备节点与网络">准备节点与网络&lt;/h2>
+&lt;p>准备三个 Linux Server 节点，以及需要纳管的 Agent 节点。部署用户通过同一 SSH 私钥访问所有节点，并具备 sudo 权限。时间同步和端口要求见&lt;a href="https://kubeclipper.io/docs/overview/">架构与网络&lt;/a>。&lt;/p>
+&lt;p>Server 节点部署平台 etcd，节点数量和故障容忍按 etcd 仲裁要求规划。生产环境建议将平台 Server 与运行 Kubernetes 工作负载的节点分开。&lt;/p>
+&lt;h2 id="安装和下载">安装和下载&lt;/h2>
+&lt;p>按照&lt;a href="https://kubeclipper.io/docs/getting-started/">快速开始&lt;/a>安装 v1.7.0 kcctl，下载与目标架构匹配的完整 &lt;code>kc-amd64.tar.gz&lt;/code> 或 &lt;code>kc-arm64.tar.gz&lt;/code> 部署包。不要将 GitHub Release 的客户端二进制包传给 &lt;code>--pkg&lt;/code>。&lt;/p>
+&lt;h2 id="部署三个-server-和-agent">部署三个 Server 和 Agent&lt;/h2>
+&lt;p>将示例 IP、私钥和部署包路径替换为实际值。&lt;code>--server&lt;/code> 使用逗号分隔地址，&lt;code>--agent&lt;/code> 可按区域填写。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">read&lt;/span> -r -s -p &lt;span style="color:#4e9a06">&amp;#39;设置 admin 密码: &amp;#39;&lt;/span> KC_ADMIN_PASSWORD
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">printf&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;\n&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --server 192.168.10.11,192.168.10.12,192.168.10.13 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --agent default:192.168.10.21,192.168.10.22 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --user root --pk-file &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$HOME&lt;/span>&lt;span style="color:#4e9a06">/.ssh/id_rsa&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --pkg &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$PWD&lt;/span>&lt;span style="color:#4e9a06">/kc-amd64.tar.gz&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --initial-password &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$KC_ADMIN_PASSWORD&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">unset&lt;/span> KC_ADMIN_PASSWORD
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>保持 TLS 开启。多网卡环境通过 &lt;code>--ip-detect&lt;/code> 与 &lt;code>--node-ip-detect&lt;/code> 显式选择可达地址；可使用 &lt;code>kcctl deploy -h&lt;/code> 核对参数。默认平台 etcd 端口为 12379、12380、12381。&lt;/p>
+&lt;h2 id="验证结果">验证结果&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login --host https://192.168.10.11:8080 --username admin
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl doctor
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>检查三个 Server 的服务状态、平台 etcd 成员和 Agent 是否正常。在其他 Server 地址重复检查 API 可达性。需要统一域名或 VIP 时，另行配置入口负载均衡和证书；部署三个 Server 不会自动创建入口 VIP。&lt;/p>
+&lt;p>浏览器默认访问各 Server 的 HTTP 80 控制台入口；CLI 使用 HTTPS 8080 API。生产入口应配置 HTTPS，并按实际网络限制管理端口访问。&lt;/p>
+&lt;h2 id="添加和移除-agent">添加和移除 Agent&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl join --agent default:192.168.10.23
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>确认节点没有需要保留的集群和工作负载后，再执行移除：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl drain --agent 192.168.10.23
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>先查看正常 drain 的错误原因，再决定后续处理；不要默认使用强制参数。升级前参见&lt;a href="https://kubeclipper.io/docs/deployment-docs/upgrade/">升级检查&lt;/a>。&lt;/p></description></item><item><title>Docs: 集群创建排障</title><link>https://kubeclipper.io/docs/faq/kcctl-create-cluster-error/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/faq/kcctl-create-cluster-error/</guid><description>
+&lt;p>本页适用于 1.7。旧版 v1.2.1 的 Calico 下载问题及临时处理方法保留在&lt;a href="https://kubeclipper.io/v1.2/docs/faq/kcctl-create-cluster-error/">1.2 历史文档&lt;/a>，不应直接应用于 1.7。&lt;/p>
+&lt;h2 id="提交后集群没有就绪">提交后集群没有就绪&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation list -c demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster demo -o yaml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>继续查看 Operation 详情和日志。请求已接受、Operation 已结束和 Kubernetes 节点就绪需要分别确认。&lt;/p>
+&lt;h2 id="离线包或镜像错误">离线包或镜像错误&lt;/h2>
+&lt;p>用 &lt;code>kcctl resource list&lt;/code> 核对版本和架构；通过失败步骤日志确认镜像路径、认证和网络。参考&lt;a href="https://kubeclipper.io/docs/getting-started/carete-k8s-cluster-offline/">离线创建集群&lt;/a>。&lt;/p>
+&lt;h2 id="平台或-agent-异常">平台或 Agent 异常&lt;/h2>
+&lt;p>运行 &lt;code>kcctl status&lt;/code>、&lt;code>kcctl doctor&lt;/code>，检查 API 入口、服务和 SSH 访问。平台使用的 SSH 凭据应为私钥；不要把公钥路径填入私钥字段。&lt;/p>
+&lt;p>排查顺序和日志命令见&lt;a href="https://kubeclipper.io/docs/tutorials/diagnostics/">平台诊断&lt;/a>；重试和取消见&lt;a href="https://kubeclipper.io/docs/tutorials/operations/">操作与日志&lt;/a>。&lt;/p></description></item><item><title>Docs: 1.7 发布说明</title><link>https://kubeclipper.io/docs/overview/release-1.7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/overview/release-1.7/</guid><description>
+&lt;p>本套文档对应 &lt;strong>KubeClipper v1.7.0&lt;/strong>，发布于 2026 年 9 月 8 日。官方发布记录：&lt;a href="https://github.com/kubeclipper/kubeclipper/releases/tag/v1.7.0">v1.7.0&lt;/a>。&lt;/p>
+&lt;h2 id="主要变化">主要变化&lt;/h2>
 &lt;ul>
-&lt;li>区域：集群所属区域，添加节点时可为节点指定物理的或逻辑的区域，使用该区域下节点创建的 kubernetes 集群也属于该区域，不支持使用跨区域的多个节点创建集群。&lt;/li>
-&lt;li>控制节点：为集群指定奇数个的控制节点，生产环境一般使用3个控制节点以实现高可用。&lt;/li>
-&lt;li>工作节点：根据业务规模，为新集群添加工作节点。&lt;/li>
-&lt;li>污点管理：您可以为已添加的节点配置污点，kubeclipper 会自动为控制节点添加不允许调度（noschedule）的污点，您也可以根据需要进行更改。&lt;/li>
-&lt;li>节点标签：您可以根据需要为已添加的集群节点配置标签。&lt;/li>
+&lt;li>Operation v2 通过 API 管理操作、任务和执行状态，Agent 与 Server 使用 mTLS 通信。&lt;/li>
+&lt;li>&lt;code>kcctl operation&lt;/code> 提供操作列表、详情、日志、重试和取消。&lt;/li>
+&lt;li>&lt;code>kcctl status&lt;/code> 与 &lt;code>kcctl doctor&lt;/code> 提供平台状态检查和诊断。&lt;/li>
+&lt;li>Registry 资源可用于选择 Kubernetes 镜像仓库和配置 containerd 镜像拉取。&lt;/li>
+&lt;li>部署预检查给出节点、角色和错误原因；Server 安装前等待平台 etcd 健康。&lt;/li>
 &lt;/ul>
-&lt;p>您可以按业务需要配置所需节点。如果需要创建非高可用的实验集群，也可以仅添加一个控制节点，并将控制节点自动添加的污点移除，详细操作参见“&lt;a href="#%E5%88%9B%E5%BB%BA%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%9E%E9%AA%8C%E9%9B%86%E7%BE%A4">创建单节点实验集群&lt;/a>”。&lt;/p>
-&lt;h3 id="集群配置">集群配置&lt;/h3>
-&lt;p>在集群配置页面，您可以对集群进行以下配置：&lt;/p>
-&lt;ul>
-&lt;li>安装方式和镜像仓库：&lt;/li>
-&lt;/ul>
+&lt;h2 id="组件版本">组件版本&lt;/h2>
 &lt;table>
 &lt;thead>
 &lt;tr>
-&lt;th>&lt;/th>
-&lt;th>镜像仓库为空&lt;/th>
-&lt;th>指定镜像仓库&lt;/th>
+&lt;th>Kubernetes&lt;/th>
+&lt;th>containerd&lt;/th>
+&lt;th>Calico&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>&lt;strong>在线（公网环境）&lt;/strong>&lt;/td>
-&lt;td>配置包来源：从 kubeclipper.io 下载。&lt;br />镜像拉取方式：镜像默认从官方镜像仓库拉取，如 kubernetes 镜像从 k8s.gcr.io 拉取、calico 从 docker.io 拉取。如果您设置了国内镜像代理，镜像会从您指定的 “KC_IMAGE_REPO_MIRROR” 代理仓库拉取。&lt;/td>
-&lt;td>配置包来源：从 kubeclipper.io 下载。&lt;br />镜像拉取方式：从填写的镜像仓库拉取，组件将默认继承该仓库地址，请确保该仓库存在相关组件镜像；组件也会提供独立的镜像仓库参数，设置后组件镜像从该地址拉取。&lt;/td>
+&lt;td>v1.37.0&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>v3.31.5&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;strong>离线（内网环境）&lt;/strong>&lt;/td>
-&lt;td>配置包来源：从本地 kubeclipper 集群 server 节点下载，您可以使用 kcctl resource list 命令查看本地可用配置包，或使用 kcctl resource push 命令上传所需配置包。&lt;br />镜像拉取方式：从本地 kubeclipper 集群 server 节点下载，下载后由 CRI 进行镜像导入。您可以使用 kcctl resource list 命令查看本地可用镜像包，或使用 kcctl resource push 命令上传所需镜像包。&lt;/td>
-&lt;td>配置包来源：从本地下载，您可以使用 kcctl resource list 命令查看本地可用配置包，或使用 kcctl resource push 命令上传所需配置包。&lt;br />镜像拉取方式：从填写的镜像仓库拉取，组件将默认继承该仓库地址，请确保该仓库存在相关组件镜像；组件也会提供独立的镜像仓库参数，设置后组件镜像从该地址拉取。kubeclipper 提供 Docker Registry 方案，并使用 kcctl registry 命令行进行管理，您也可以使用其他自有镜像仓库。&lt;/td>
+&lt;td>v1.36.4&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>v3.31.5&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>v1.35.8&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>v3.31.5&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;ul>
-&lt;li>
-&lt;p>kubernetes 版本：指定集群 kubernetes 版本。当您选择离线安装的时候，可以从当前环境中配置包的 kubernetes 版本中选择；当您选择在线安装的时候，可以从 kubeclipper 官方推荐的版本中选择。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>ETCD 数据目录：可指定 ETCD 数据目录，默认为/var/lib/etcd。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>kubelet 数据目录：可指定 kubelet 数据目录，默认为 /var/lib/kubelet。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>CertSANs：kubernetes 集群 ca 证书签名的 ip 或者域名，可填写多个。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>容器运行时：根据指定 kubernetes 版本，kubernetes 版本在 v1.20.0 之前，容器运行时默认 docker，之后默认 containerd；v1.24.0 之后不支持 docker。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>容器运行时版本：指定 containerd / docker 版本。与 kubernetes 相同，当您选择离线安装的时候，可以从当前环境中配置包的版本中选择；当您选择在线安装的时候，可以从 kubeclipper 官方推荐的版本中选择。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Containerd 数据目录：可填写 config.toml 配置中的 root dir，默认为/var/lib/containerd。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Docker 数据目录：可填写 daemon.json 配置中的 root dir，默认为/var/lib/docker。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Containerd 镜像仓库：存放 containerd 镜像的仓库地址，config.toml 配置中的 registry.mirrors，可填写多个。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Docker 镜像仓库：存放 docker 镜像的仓库地址，daemon.json 配置中的 insecure registry,可填写多个。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>DNS 域名：kubernetes 集群的域名，默认为 cluster.local。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Worker 负载 IP：用于 worker 节点到多 master 的负载均衡，单一 master 不需要设置。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>外部访问 IP：可以填写一个浮动 IP 给用户访问，可为空。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>备份空间：集群备份文件存储位置。&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="cni-配置">CNI 配置&lt;/h3>
-&lt;p>当前版本仅支持 Calico 作为集群 CNI。&lt;/p>
-&lt;p>Calico 将用户设置的 pod cidr 分为若干个 block (网段)，根据业务需求动态的分配给需要的节点，并在节点中通过 bgp peer 维护集群节点的路由表。&lt;/p>
-&lt;p>例如：容器的地址池：172.25.0.0/16，动态分配的网段池: 172.25.0.0 - 172.25.255.192 (172.25.0.0/26 即 10 个比特位)，动态分配的网段数: 1023，每个网段的 pod 数量为: 61 (193-254)，总 pod 数量为1023 * 61 = 62403，相对最大节点数(按照200业务 pod 为基准值)：312。&lt;/p>
-&lt;p>目前不建议大于50个节点的集群，大于50个节点的集群建议手动配置 route reflection，用来优化集群中的节点的路由表维护的稳定性。&lt;/p>
-&lt;p>使用 Calico 作为集群 CNI，您需要进行以下配置：&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Calico 模式：支持5种网络模式：&lt;/p>
-&lt;ul>
-&lt;li>Overlay-IPIP-All: 使用 IP-in-IP 技术打通不同节点的 pod 的网络,通常这样的方式使用在底层平台是 iaas 的环境之中,当然如果你底层网路环境直接是物理设备的也完全可以使用只不过效率和灵活度都会大打折扣,需要注意的是你需要确认底层网络环境(underlay)是支持 IPIP 协议的.(使用 overlay 的网络方式对网络性能造成一定的影响)。&lt;/li>
-&lt;li>Overlay-Vxlan-All: 使用 IP-in-IP 技术打通不同节点的 pod 的网络,通常这样的方式使用在底层平台是 iaas 的环境之中,当然如果你底层网路环境直接是物理设备的也完全可以使用只不过效率和灵活度都会大打折扣,他理论上可以在任何的网络环境上运行,通常在底层环境不支持 IPIP 协议的时候我们会使用他.(使用 overlay 的网络方式对网络性能造成一定的影响)。&lt;/li>
-&lt;li>BGP: 使用 IP-in-IP 技术打通不同节点的 pod 的网络,通常这样的方式使用在裸机的环境上,当然底 Iaas 平台支持 BGP 的话也是可以使用的,这种模式下 pod 的 ip 通信是通过 集群中的各个节点中互相交换路由表来完成 pod 之间的通信的,如果你需要手动打通多个集群之间的 pod 网络需要注意你分配的地址断不应该有冲突。&lt;/li>
-&lt;li>Overaly-IPIP-Cross-Subnet: 使用 IP-in-IP 技术打通不同节点的 pod 的网络,通常这样的方式使用在底层平台是 iaas 的环境之中,需要注意的是你需要确认底层网络环境(underlay)是支持 IPIP 协议的.和 Overlay-IPIP-All 的不同之处在于,如果 2 个不同节点但在同一个网段中的上 pod 互相通信时是通过路由表,这样可以提高在不同节点但在同一个网段中的上 pod 互相通信时的效率。&lt;/li>
-&lt;li>Overaly-Vxlan-Cross-Subnet: 和 Overaly-IPIP-Cross-Subnet 逻辑相似不再做重复的解释。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>Calico 版本：指定 calico 版本。与 kubernetes 相同，当您选择离线安装的时候，可以从当前环境中配置包的版本中选择；当您选择在线安装的时候，可以从 kubeclipper 官方推荐的版本中选择。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>IP版本：可指定 IP 版本为 IPV4 或 IPV4 IPV6 双栈。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>服务子网：填写 service 子网 CIDR，v4 默认为：10.96.0.0/16，v6 默认为 fd03::/112，注意 Service 网络不得与任何主机网络重叠。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Pod CIDR：填写 Pod 子网 CIDR，v4 默认：172.25.0.0/24，v6 默认为 fd05::/120，注意 Pod 网络不得与任何主机网络重叠。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>pod网路的底层：&lt;/p>
-&lt;ul>
-&lt;li>first-found（默认）：程序会根据 ipfamily (v4 或 v6)遍历所有的有效的 ip 地址（local,loop back，docker bridge等会被自动排除）通常如果是多网卡时会排除默认网关以外的网卡的 ip 作为节点之间的路由地址。&lt;/li>
-&lt;li>can-reach：通过检查域名或者 ip 的可达性来设置节点之间的路由地址。&lt;/li>
-&lt;li>interface：根据正则表达式获取所有满足的网卡设备名称并返回第一个满足表达式网卡的地址作为节点之间的路由地址。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>MTU：为 Calico 环境配置最大传输单元(MTU)，建议不大于1440，默认为1440，详情见 &lt;a href="https://docs.projectcalico.org/networking/mtu">https://docs.projectcalico.org/networking/mtu&lt;/a>。&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="存储配置">存储配置&lt;/h3>
-&lt;p>Kubeclipper当前版本内置了 NFS 作为集群外接存储。&lt;/p>
-&lt;p>对接 NFS 类型的外接存储，您需要设置以下内容：&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>字段&lt;/th>
-&lt;th>作用说明&lt;/th>
-&lt;th>填写说明/可选项&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>服务地址&lt;/strong>&lt;/td>
-&lt;td>ServerAddr，NFS的服务地址&lt;/td>
-&lt;td>必填&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>共享路径&lt;/strong>&lt;/td>
-&lt;td>SharedPath，NFS的服务挂载路径&lt;/td>
-&lt;td>必填&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>存储类&lt;/strong>&lt;/td>
-&lt;td>StorageClassName，存储类的名称&lt;/td>
-&lt;td>默认为 nfs-sc，可自定义名称，不可与集群其他存储类重复&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>回收策略&lt;/strong>&lt;/td>
-&lt;td>ReclaimPolicy，VPC回收策略&lt;/td>
-&lt;td>删除 Delete / 保留 Retain&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>挂载选项&lt;/strong>&lt;/td>
-&lt;td>MountOptions，NFS 的 options 参数，如nfsvers=3&lt;/td>
-&lt;td>选填，可填写多个&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>副本数&lt;/strong>&lt;/td>
-&lt;td>Replicas，NFS provisioner副本数&lt;/td>
-&lt;td>默认为1&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>设置完外接存储后，下方卡片会显示您已经开启的存储，您可以选择一个存储类作为默认存储，对于未指定特定StorageClass 的 PVC ，会直接使用默认的存储类。&lt;/p>
-&lt;h3 id="配置确认">配置确认&lt;/h3>
-&lt;p>您可以在配置确认页面浏览集群的配置信息，确认无误后，点击“确认“按钮。也可以点击卡片右侧的“编辑”按钮，跳回到相应步骤修改集群信息。&lt;/p>
-&lt;p>安装集群可能需要较长时间，您可以在集群详情页面查看操作日志，跟踪集群安装状态。&lt;/p>
-&lt;h3 id="设置国内镜像代理可选">设置国内镜像代理（可选）&lt;/h3>
-&lt;blockquote>
-&lt;p>Q: 设置国内镜像代理有什么作用？&lt;/p>
-&lt;p>A: 设置了国内镜像代理，使用在线安装功能时，会从指定代理拉取 kubernetes 相关镜像，避免在国内无法访问 gcr 而导致集群安装失败问题。&lt;/p>
-&lt;/blockquote>
-&lt;p>以下设置方法需在执行 &lt;code>kcctl deploy&lt;/code> 部署命令的机器上完成，任选其一即可。&lt;/p>
-&lt;p>**方式一：**设置 KC_IMAGE_REPO_MIRROR 环境变量（推荐）&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 设置环境变量，推荐使用阿里云镜像代理，您也可以自行设定&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">export&lt;/span> &lt;span style="color:#000">KC_IMAGE_REPO_MIRROR&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;registry.aliyuncs.com/google_containers&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>**方式二：**设置 /etc/kc/kc.env 环境变量文件&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 创建 kc 目录&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -pv /etc/kc
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 创建 kc.env 文件并传入环境变量信息&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cat &lt;span style="color:#4e9a06">&amp;lt;&amp;lt;EOF &amp;gt; /etc/kc/kc.env
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">KC_IMAGE_REPO_MIRROR=&amp;#34;registry.aliyuncs.com/google_containers&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">EOF&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 部署 AIO</title><link>https://www.kubeclipper.io/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/getting-started/aio-env/</guid><description>
-&lt;p>对于初次接触 KubeClipper 并想快速上手的用户，建议使用 AIO（即 All-in-One，使用单个节点安装 KubeClipper）模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p>
-&lt;h2 id="部署-kubeclipper">部署 KubeClipper&lt;/h2>
-&lt;h3 id="下载并安装-kcctl">下载并安装 kcctl&lt;/h3>
-&lt;p>KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 默认安装最新的发行版&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装指定版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果您在中国， 您可以在安装时使用 cn 环境变量, 此时 KubeClipper 会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>您也可以在 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 下载指定版本。&lt;/p>
-&lt;/blockquote>
-&lt;p>可以通过以下命令验证 kcctl 是否安装成功:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果一切顺利，您将看到 kcctl 版本信息&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl version
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="开始安装">开始安装&lt;/h3>
-&lt;p>您可以使用 &lt;code>kcctl deploy&lt;/code> 快速安装部署 KubeClipper。kcctl 使用 SSH 访问最终部署 KubeClipper 的目标节点，因此需要您提供 SSH 访问凭证，传递凭证的方法如下：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>Kcctl deploy &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--user &amp;lt;username&amp;gt;&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--passwd &amp;lt;password&amp;gt; &lt;span style="color:#000;font-weight:bold">|&lt;/span> --pk-file &amp;lt;private key path&amp;gt;&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>示例：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 使用私钥&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --pk-file /root/.ssh/id_rsa
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 使用密码&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --passwd password
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>执行 &lt;code>kcctl deploy&lt;/code> 命令 kcctl 将会检查您的安装环境，若满足条件将自动进入安装流程。若您看到如下 KubeClipper banner 后即表示安装成功。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> _ __ _ _____ _ _
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| | / / | | / __ \ (_)
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |/ / _ _| |__ ___| / \/ |_ _ __ _ __ ___ _ __
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| \| | | | &amp;#39;_ \ / _ \ | | | | &amp;#39;_ \| &amp;#39;_ \ / _ \ &amp;#39;__|
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |\ \ |_| | |_) | __/ \__/\ | | |_) | |_) | __/ |
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">\_| \_/\__,_|_.__/ \___|\____/_|_| .__/| .__/ \___|_|
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> | | | |
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> |_| |_|
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>您也可以部署 master 版本的 KubeClipper，来体验最新的功能特性（master 版本没有经过严格验证，可能包含影响体验的未知错误）&lt;/p>
+&lt;p>默认 Kubernetes 版本为 v1.37.0。实际可选项以平台组件资源为准；离线环境还需准备对应 CPU 架构的包。版本来源：&lt;a href="https://github.com/kubeclipper/kubeclipper/blob/v1.7.0/README_zh.md#%E6%94%AF%E6%8C%81%E7%9A%84%E7%89%88%E6%9C%AC">v1.7.0 支持矩阵&lt;/a>。&lt;/p>
+&lt;h2 id="版本边界">版本边界&lt;/h2>
+&lt;p>本文描述 v1.7.0 已发布能力。生产使用前查看 Release、安全公告和所用二进制版本。升级前参考&lt;a href="https://kubeclipper.io/docs/deployment-docs/upgrade/">升级检查&lt;/a>。&lt;/p>
+&lt;p>版本菜单保留 1.6～1.1 历史文档。&lt;a href="https://kubeclipper.io/v1.6/docs/">1.6 文档&lt;/a>按 v1.6.0 发布标签整理。&lt;/p></description></item><item><title>Docs: 部署 AIO</title><link>https://kubeclipper.io/docs/getting-started/aio-env/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/getting-started/aio-env/</guid><description>
+&lt;p>All-in-One 将 Server 和 Agent 部署在同一台 Linux 主机上，适合体验和实验。&lt;/p>
+&lt;p>完整步骤见&lt;a href="https://kubeclipper.io/docs/getting-started/">快速开始&lt;/a>：准备主机、安装 v1.7.0 kcctl、下载完整部署包、部署平台并创建实验集群。&lt;/p>
+&lt;p>生产环境请先规划独立的 Server 和工作节点，参考&lt;a href="https://kubeclipper.io/docs/deployment-docs/ha-deploy/">高可用部署&lt;/a>。&lt;/p></description></item><item><title>Docs: 升级检查</title><link>https://kubeclipper.io/docs/deployment-docs/upgrade/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/deployment-docs/upgrade/</guid><description>
+&lt;p>平台升级与受管 Kubernetes 集群升级分别处理。本文介绍 KubeClipper 平台升级前后的检查，不承诺任意旧版本都可直接升级到 1.7。&lt;/p>
+&lt;h2 id="升级前">升级前&lt;/h2>
 &lt;ol>
-&lt;li>安装 master 版本 kcctl&lt;/li>
+&lt;li>记录 Server、Agent、kcctl 和 Console 的版本及节点拓扑，确认目标包的 CPU 架构。&lt;/li>
+&lt;li>查看目标版本的 Release、安全公告和配置变化。1.7 改用 Operation v2，旧操作记录和任务状态需要在测试环境核对。&lt;/li>
+&lt;li>在没有运行中安装、升级、备份等操作的窗口执行。先处理未完成或失败的操作。&lt;/li>
+&lt;li>备份平台 etcd、Server/Agent 配置、证书与持久化认证密钥，并验证恢复方法。受管集群的数据备份需要单独安排。&lt;/li>
+&lt;li>在可恢复的测试环境演练目标升级路径，记录服务中断和恢复步骤。&lt;/li>
 &lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
-&lt;li>在安装服务器上设置环境变量&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">export&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
-&lt;li>以 AIO 方式部署 KubeClipper&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
-&lt;h3 id="登录控制台">登录控制台&lt;/h3>
-&lt;p>安装完成后，打开浏览器，访问 &lt;code>http://&amp;lt;kc-server ip address&amp;gt;&lt;/code> 即可进入 KubeClipper 控制台。(通常 kc-server ip 是您部署 kubeClipper 节点的 ip)&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
-&lt;p>您可以使用默认帐号密码 &lt;code>admin / Thinkbig1&lt;/code> 进行登录。&lt;/p>
-&lt;blockquote>
-&lt;p>您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="创建-kubernetes-集群">创建 Kubernetes 集群&lt;/h2>
-&lt;p>部署成功后您可以使用 &lt;strong>kcctl 工具&lt;/strong>或者通过&lt;strong>控制台&lt;/strong>创建 Kubernetes 集群。在本快速入门教程中使用 kcctl 工具进行创建。&lt;/p>
-&lt;p>首先使用默认帐号密码进行登录获取 token，便于后续 kcctl 和 kc-server 进行交互。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H https://&amp;lt;kc-server ip address&amp;gt;:8080 -u admin -p Thinkbig1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过以下命令创建 Kubernetes 集群:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">NODE&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>kcctl get node -o yaml&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep ipv4DefaultIP:&lt;span style="color:#000;font-weight:bold">|&lt;/span>sed &lt;span style="color:#4e9a06">&amp;#39;s/ipv4DefaultIP: //&amp;#39;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl create cluster --master &lt;span style="color:#000">$NODE&lt;/span> --name demo --untaint-master
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>大概 3 分钟左右即可完成集群创建,您可以使用以下命令查看集群状态&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl get cluster -o yaml&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep status -A5
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>您也可以进入控制台查看实时日志。&lt;/p>
-&lt;/blockquote>
-&lt;p>集群处于 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 部署高可用 KubeClipper</title><link>https://www.kubeclipper.io/docs/deployment-docs/ha-deploy/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/deployment-docs/ha-deploy/</guid><description>
-&lt;blockquote>
-&lt;p>对于初次接触 KubeClipper，建议部署 AIO 环境，快速上手体验 KubeClipper 提供的功能特性。
-对于想将 KubeClipper 应用到生成环境，那么本文档或许对您有所帮助。&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="概述">概述&lt;/h2>
-&lt;p>根据 KubeClipper 架构设计可知，KubeClipper 有以下 4 个核心组件：&lt;/p>
-&lt;ul>
-&lt;li>kc-server：主要包括 APISERVER 、控制器、静态资源服务以及内置消息队列等，kc-server 通过消息队列（支持外置）与 kc-agent 通信；kc-server 之间无主从关系，且相互独立；通常部署在独立的节点，从而对外提供稳定可靠的服务。&lt;/li>
-&lt;li>kc-agent：主要包括任务处理器，负责接收 kc-server 投递的任务，并反馈任务处理结果；通常部署在需要安装 kubernetes 的节点，是一个超轻量级的服务进程。&lt;/li>
-&lt;li>kc-etcd：kc-server 的后端数据库，跟随 kc-server 部署在同一节点上。&lt;/li>
-&lt;li>kc-dashboard：图形化管理界面，跟随 kc-server 部署在同一节点。
-综上，我们将部署 kc-server 的节点称为 server，部署 kc-agent 的节点称为 agent。&lt;/li>
-&lt;/ul>
-&lt;p>那么部署高可用 KubeClipper 集群的关键点，就在于如何规划部署 server 节点同时保证 kc-etcd 的高可用。
-通常来看，对于部署高可用的分布式应用集群，基本建议节点至少 3 个；同样对于 KubeClipper，3 个节点能保证 kc-server 在其中 2 个节点宕机后依旧可以提供服务，同时能保证 kc-etcd 不会出现脑裂异常。&lt;/p>
-&lt;blockquote>
-&lt;p>以上简单介绍了 KubeClipper 架构以及核心组件，是为了更好的理解该如何部署高可用 KubeClipper 集群，从而引出关于对服务器节点规划以及硬件配置要求的思考。&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="推荐配置">推荐配置&lt;/h2>
-&lt;blockquote>
-&lt;p>KubeClipper 作为一个极轻量的 Kubernetes 多集群全生命周期管理工具，本身不会占用太多资源&lt;/p>
-&lt;/blockquote>
-&lt;p>server 节点&lt;/p>
-&lt;ul>
-&lt;li>数量：3 个及以上&lt;/li>
-&lt;li>硬件要求：CPU &amp;gt;= 2 核，内存 &amp;gt;= 2GB，硬盘 &amp;gt;= 20GB&lt;/li>
-&lt;li>系统：CentOS 7.x / Ubuntu 18.04 / Ubuntu 20.04&lt;/li>
-&lt;/ul>
-&lt;p>agent 节点&lt;/p>
-&lt;ul>
-&lt;li>数量：任意&lt;/li>
-&lt;li>硬件要求：依据实际需求而定&lt;/li>
-&lt;li>系统：CentOS 7.x / Ubuntu 18.04 / Ubuntu 20.04&lt;/li>
-&lt;/ul>
-&lt;h2 id="从安装-kcctl-开始">从安装 kcctl 开始&lt;/h2>
-&lt;blockquote>
-&lt;p>kcctl 是 KubeClipper 提供的命令行工具，它支持快速部署 KubeClipper 集群以及大部分 Kuberneters 集群管理功能，用以简化运维工作。&lt;/p>
-&lt;/blockquote>
-&lt;p>安装 kcctl：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 默认安装最新发行版&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装指定版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 如果您在中国，您可以在安装时指定 KC_REGION 环境变量，此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 这对于在线安装 k8s 集群非常有用&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装成功后，会输出安装版本以及安装路径等信息。&lt;/p>
-&lt;blockquote>
-&lt;p>您也可以在 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 下载指定的 kcctl 版本&lt;/p>
-&lt;/blockquote>
-&lt;p>验证安装：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version -o json
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl version:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;major&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;1&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;minor&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;3&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitVersion&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;v1.3.1&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitCommit&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;5f19dcf78d3a9dc2d1035a779152fa993e0553df&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitTreeState&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;clean&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;buildDate&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;2022-12-02T10:12:36Z&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;goVersion&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;go1.19.2&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;compiler&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;gc&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;platform&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;linux/amd64&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 查看帮助文档&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl -h
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="了解-kcctl-deploy-命令">了解 kcctl deploy 命令&lt;/h2>
-&lt;blockquote>
-&lt;p>kcctl deploy 命令是专门用于部署 KubeClipper 集群，更多示例以及参数解释请执行 kcctl deploy -h&lt;/p>
-&lt;/blockquote>
-&lt;p>常用参数简介&lt;/p>
-&lt;ul>
-&lt;li>&amp;ndash;server: server 节点 IP，例如 192.168.10.10,192.168.10.11，多个 IP 以逗号隔开。&lt;/li>
-&lt;li>&amp;ndash;agent: agent 节点 IP，例如 192.168.10.10,192.168.10.11，多个 IP 以逗号隔开。&lt;/li>
-&lt;li>&amp;ndash;pk-file: ssh 免密登录私钥，推荐在命令行使用免密登录。&lt;/li>
-&lt;li>&amp;ndash;user: ssh 登录用户名，默认为 root。&lt;/li>
-&lt;li>&amp;ndash;passwd: ssh 登录密码，不推荐在命令行使用密码登录。&lt;/li>
-&lt;li>&amp;ndash;pkg: 安装包路径，支持本地路径以及在线链接；获取在线安装包链接规则：https://oss.kubeclipper.io/release/{KC_VERSION}/kc-{GOARCH}.tar.gz 。KC_VERSION 为 Release Version 默认设置当前 kcctl 对应版本，GOARCH 为 amd64 或 arm64，默认设置当前 kcctl 的编译架构。&lt;/li>
-&lt;li>&amp;ndash;ip-detect: 节点 ip 发现规则，支持多种规则，例如指定网卡名称等，对于多网卡节点非常有用，默认为 &amp;ldquo;first-found&amp;rdquo;。&lt;/li>
-&lt;/ul>
-&lt;p>了解完 kcctl deploy 的基础使用，那么接下来就开始部署 KubeClipper 集群吧。&lt;/p>
-&lt;h2 id="使用-kcctl-部署-kubeclipper">使用 kcctl 部署 KubeClipper&lt;/h2>
-&lt;blockquote>
-&lt;p>我们推荐在多节点安装场景中，将涉及到的服务器节点都统一设置免密登录，避免密码明文泄露。&lt;/p>
-&lt;/blockquote>
-&lt;p>私钥方式部署 3 server 节点：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--pkg https://oss.kubeclipper.io/release/&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>KC_VERSION&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>/kc-&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>GOARCH&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>.tar.gz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>私钥方式部署 3 server + 3 agent 节点，指定 pkg：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--pkg https://oss.kubeclipper.io/release/&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>KC_VERSION&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>/kc-&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>GOARCH&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>.tar.gz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>私钥方式部署 3 server + 3 agent 节点，未指定 pkg，默认与 kcctl 安装版本一致（推荐）：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>私钥方式部署 3 server + 3 agent 节点，指定 etcd 端口，默认端口为 client-12379 | peer-12380 | metrics-12381：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--etcd-port &lt;span style="color:#0000cf;font-weight:bold">12379&lt;/span> --etcd-peer-port &lt;span style="color:#0000cf;font-weight:bold">12380&lt;/span> --etcd-metric-port &lt;span style="color:#0000cf;font-weight:bold">12381&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>参数输入示例：&lt;br>
-SERVER_IPS: 192.168.10.20,192.168.10.21&lt;br>
-AGENT_IPS: 192.168.10.30,192.168.10.31&lt;br>
-KC_VERSION: KubeClipper 的 release version，查看 &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> 获取&lt;br>
-GOARCH：系统架构，amd64 （又名 x84_64），arm64（又名 aarch64）&lt;/p>
-&lt;/blockquote>
-&lt;p>kcctl deploy 支持多种参数，能够满足您对部署 KubeClipper 集群的特定需求，更多功能等您探索。&lt;br>
-在执行 kcctl deploy 命令后，命令会检测您的环境是否符合安装要求，会将警告信息、安装进度等同步输出到控制台，最后在安装成功后会打印如下 KubeClipper banner：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> _ __ _ _____ _ _
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> / / &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> / __ &lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>/ / _ _&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>__ ___&lt;span style="color:#000;font-weight:bold">|&lt;/span> / &lt;span style="color:#4e9a06">\/&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_ _ __ _ __ ___ _ __
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">\|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;_ \ / _ \ | | | | &amp;#39;&lt;/span>_ &lt;span style="color:#4e9a06">\|&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;_ \ / _ \ &amp;#39;&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>&lt;span style="color:#4e9a06">\ &lt;/span> &lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> __/ &lt;span style="color:#4e9a06">\_&lt;/span>_/&lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> __/ &lt;span style="color:#000;font-weight:bold">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">\_&lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">\_&lt;/span>/&lt;span style="color:#4e9a06">\_&lt;/span>_,_&lt;span style="color:#000;font-weight:bold">|&lt;/span>_.__/ &lt;span style="color:#4e9a06">\_&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>&lt;span style="color:#4e9a06">\_&lt;/span>___/_&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> .__/&lt;span style="color:#000;font-weight:bold">|&lt;/span> .__/ &lt;span style="color:#4e9a06">\_&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>系统默认管理账号：&lt;code>admin / Thinkbig1&lt;/code>&lt;/p>
-&lt;p>登录控制台：
-打开浏览器，访问 &lt;code>http://SERVER_IP&lt;/code> （通过任意一个 Server 节点均可访问）即可进入 KubeClipper 控制台&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
-&lt;p>登录命令行：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://SERVER_IP -u admin -p Thinkbig1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>大多数 kcctl 命令都依赖登录状态，因此最好在执行 cli 命令时提前登录。&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="使用-kcctl-添加-agent-节点到-kubeclipper">使用 kcctl 添加 agent 节点到 KubeClipper&lt;/h2>
-&lt;blockquote>
-&lt;p>当前 kcctl join 命令仅支持添加 agent 节点，后续会逐步支持添加 server 节点。
-新加入的 agent 节点也应该统一设置免密登录，且私钥相同。&lt;/p>
-&lt;/blockquote>
-&lt;p>Join agent 节点：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl join --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="使用-kcctl-从-kubeclipper-中删除-agent-节点">使用 kcctl 从 KubeClipper 中删除 agent 节点&lt;/h2>
-&lt;blockquote>
-&lt;p>当前 kcctl drain 命令仅支持删除 agent 节点，后续会逐步支持删除 server 节点。&lt;/p>
-&lt;/blockquote>
-&lt;p>Drain agent 节点：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl drain --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 强制 drain 节点，忽略错误&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl drain --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS --force
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果您发现根据本文档无法成功部署 KubeClipper，请移步 &lt;a href="https://github.com/kubeclipper/kubeclipper/issues">KubeClipper Github Issue&lt;/a>，提出您的意见或反馈。&lt;/p></description></item><item><title>Docs: 集群托管</title><link>https://www.kubeclipper.io/docs/tutorials/cluster-hosting/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/tutorials/cluster-hosting/</guid><description>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl doctor
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl upgrade -h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="执行升级">执行升级&lt;/h2>
+&lt;p>&lt;code>kcctl upgrade&lt;/code> 支持整个平台或组件升级。目标包应满足命令帮助中的目录结构，并已经在测试环境验证；不要把客户端包当成平台升级包。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">UPGRADE_PACKAGE&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>/path/to/validated-upgrade-package.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl upgrade all --pkg &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$UPGRADE_PACKAGE&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>只有 Release 或已验证部署流程明确支持时，才使用在线升级或组件独立替换。不要把替换一个二进制文件视为整个升级完成。&lt;/p>
+&lt;h2 id="升级后">升级后&lt;/h2>
+&lt;p>再次检查 &lt;code>kcctl status&lt;/code>、&lt;code>kcctl doctor&lt;/code>，核对各节点实际运行版本。验证登录、节点信息、操作详情与日志、受管集群访问及 Console 基本流程。测试一个受控的生命周期操作，确认 Operation 和实际集群状态一致。&lt;/p>
+&lt;p>升级失败时保留错误和日志，按事先验证的恢复步骤处理。恢复旧二进制前先判断数据和配置是否仍兼容，不要在未知状态下反复覆盖服务。&lt;/p></description></item><item><title>Docs: 集群托管</title><link>https://kubeclipper.io/docs/tutorials/cluster-hosting/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/tutorials/cluster-hosting/</guid><description>
 &lt;h2 id="kubeadm-集群托管">Kubeadm 集群托管&lt;/h2>
 &lt;p>托管由 kubeadm 创建和管理的 kubernetes 集群，kubeclipper 会通过 kubeconfig 文件，获取集群和节点信息，并导入到 kubeclipper 平台中。&lt;/p>
 &lt;p>点击“集群管理”&amp;gt;“集群托管”按钮进入集群托管页面，点击左上角“添加”按钮，在添加提供商弹窗中，填写提供商名称（如 kubeadm-demo）和描述后，填写以下信息：&lt;/p>
@@ -460,11 +131,11 @@ GOARCH：系统架构，amd64 （又名 x84_64），arm64（又名 aarch64）&lt
 &lt;ul>
 &lt;li>同步：系统将每隔4小时定期同步集群信息，您也可以点击“同步”按钮手动执行。&lt;/li>
 &lt;li>编辑：编辑提供商的名称、描述、访问信息、节点连接方式。&lt;/li>
-&lt;li>移除：移除集群信息，但集群不会被卸载。&lt;/li>
+&lt;li>移除：解除平台对该集群的管理，保留 Kubernetes 集群本体。清理还会移除导入时安装的 kc-agent，以及平台创建的 ServiceAccount、ClusterRoleBinding 和 kubectl 终端服务；原本已纳管的节点有不同的保留逻辑。移除前核对节点归属并保存 kubeconfig。&lt;/li>
 &lt;/ul>
 &lt;h2 id="托管集群管理">托管集群管理&lt;/h2>
 &lt;p>您可以点击“集群管理”&amp;gt;“集群”进入集群列表页面，查看包括托管集群和本地集群在内的所有集群列表，对于不同集群，支持的管理操作如下表所示：&lt;/p>
-&lt;p>注意：托管的 kubeadm 集群安装插件或外接存储的镜像来源会默认使用 docker.io，如果您处于离线环境，需要在安装插件时填写可访问的离线镜像仓库地址，该离线镜像仓库的地址需要预先添加到 cri 的私有镜像仓库配置，参见 &lt;a href="https://www.kubeclipper.io/docs/tutorials/cluster-management/#cri-%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE">CRI 镜像仓库配置&lt;/a> 。&lt;/p>
+&lt;p>插件和外接存储的镜像来源以所选组件包及其配置为准。离线环境须提前准备镜像，并确认各节点能够从配置的仓库拉取；需要认证或自签名证书时，先配置 &lt;a href="https://kubeclipper.io/docs/tutorials/registries/">CRI 镜像仓库&lt;/a>。&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -550,567 +221,117 @@ GOARCH：系统架构，amd64 （又名 x84_64），arm64（又名 aarch64）&lt
 &lt;td>✔︎&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>Docs: 使用 Kubeclipper 离线创建 kubernetes 集群</title><link>https://www.kubeclipper.io/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
-&lt;h2 id="1-进入创建界面">1. 进入创建界面&lt;/h2>
-&lt;p>登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-begin.png" alt="">&lt;/p>
-&lt;h2 id="2-配置集群节点">2. 配置集群节点&lt;/h2>
-&lt;p>按照文字提示完成输入集群名称、选择节点等步骤&lt;/p>
-&lt;p>注意: master 节点数量不能为偶数&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-node-config.png" alt="">&lt;/p>
-&lt;h2 id="3-配置集群">3. 配置集群&lt;/h2>
-&lt;p>此步骤用于配置集群网络以及数据库、容器运行时等组件&lt;/p>
-&lt;p>选择离线安装并填写首先搭建好的镜像仓库地址&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-config.png" alt="">&lt;/p>
-&lt;h2 id="4-配置存储">4. 配置存储&lt;/h2>
-&lt;p>选择 nfs 存储，按照文字提示填写相应内容&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-storage-config.png" alt="">&lt;/p>
-&lt;h2 id="5-安装完成">5. 安装完成&lt;/h2>
-&lt;p>完成所有配置确认安装&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
-&lt;p>安装成功，集群正常运行&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item><item><title>Docs: 制作 K8S 组件离线安装包</title><link>https://www.kubeclipper.io/docs/getting-started/make-offline-package/</link><pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/getting-started/make-offline-package/</guid><description>
-&lt;p>本文档介绍如何制作 K8S 组件离线安装包，对于没有外网的环境，可以通过离线安装包进行安装。&lt;/p>
-&lt;p>当前 kubeclipper v1.4 版本离线部署包中仅包含以下 K8S 组件：&lt;/p>
-&lt;ul>
-&lt;li>k8s: v1.27.4&lt;/li>
-&lt;li>containerd: 1.6.4&lt;/li>
-&lt;li>calico: v3.26.1&lt;/li>
-&lt;/ul>
-&lt;p>对于有特殊需求的用户，可以通过本文档介绍的方法自行制作离线组件包，然后在 kubeclipper 中使用。&lt;/p>
-&lt;h2 id="1-准备工作">1. 准备工作&lt;/h2>
-&lt;p>按照 &lt;a href="https://github.com/kubeclipper/kubeclipper">文档&lt;/a> 部署好 kubeclipper，确保 &lt;code>kcctl&lt;/code> 命令可以正常使用。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以下操作均在 kubeclipper 部署节点上执行，使用 &lt;code>kcctl resource&lt;/code> 命令进行组件包上传。&lt;/p>
-&lt;h2 id="2-确认组件版本">2. 确认组件版本&lt;/h2>
-&lt;p>根据以下两个表格信息，确认需要制作的组件包版本，使用推送脚本或者手动上传组件包到 kubeclipper。&lt;/p>
-&lt;p>&lt;code>k8s 组件包表&lt;/code> 记录当前对象存储里已制作好的各类组件包，后续我们将逐步开源更多组件包以及打包脚本。&lt;br>
-&lt;code>k8s 版本与组件推荐版本对应关系表&lt;/code> 记录了各个 k8s 版本对应的组件版本，可以根据自己的需求选择对应的组件版本。&lt;/p>
-&lt;h4 id="k8s-版本与组件推荐版本对应关系表">k8s 版本与组件推荐版本对应关系表&lt;/h4>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">k8s 版本&lt;/th>
-&lt;th style="text-align:left">containerd 版本&lt;/th>
-&lt;th style="text-align:left">docker 版本&lt;/th>
-&lt;th style="text-align:left">calico 版本&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">v1.33.0&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">-&lt;/td>
-&lt;td style="text-align:left">v3.26.1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.31.1&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">-&lt;/td>
-&lt;td style="text-align:left">v3.26.1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.30.6&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">-&lt;/td>
-&lt;td style="text-align:left">v3.26.1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.29.4&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">-&lt;/td>
-&lt;td style="text-align:left">v3.26.1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.28.0&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">-&lt;/td>
-&lt;td style="text-align:left">v3.26.1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.27.4&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">-&lt;/td>
-&lt;td style="text-align:left">v3.26.1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.26.7&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">-&lt;/td>
-&lt;td style="text-align:left">v3.26.1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.25.4&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">-&lt;/td>
-&lt;td style="text-align:left">v3.22.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.24.8&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">-&lt;/td>
-&lt;td style="text-align:left">v3.22.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.23.9&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">20.10.20&lt;/td>
-&lt;td style="text-align:left">v3.22.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.23.6&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">20.10.20&lt;/td>
-&lt;td style="text-align:left">v3.22.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.22.12&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">20.10.20&lt;/td>
-&lt;td style="text-align:left">v3.22.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.21.14&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">20.10.20&lt;/td>
-&lt;td style="text-align:left">v3.22.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.20.15&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">20.10.20&lt;/td>
-&lt;td style="text-align:left">v3.16.10&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.19.16&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">20.10.20&lt;/td>
-&lt;td style="text-align:left">v3.16.10&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">v1.18.20&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;td style="text-align:left">20.10.20&lt;/td>
-&lt;td style="text-align:left">v3.16.10&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h4 id="k8s-组件包表">k8s 组件包表&lt;/h4>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">组件名称&lt;/th>
-&lt;th style="text-align:left">版本&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.33.0&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.31.1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.30.6&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.29.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.28.0&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.27.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.26.7&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.25.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.24.8&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.23.9&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.23.6&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.22.12&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.21.14&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.20.15&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.19.16&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">k8s&lt;/td>
-&lt;td style="text-align:left">v1.18.20&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">containerd&lt;/td>
-&lt;td style="text-align:left">1.6.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">docker&lt;/td>
-&lt;td style="text-align:left">20.10.20&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">calico&lt;/td>
-&lt;td style="text-align:left">v3.26.1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">calico&lt;/td>
-&lt;td style="text-align:left">v3.22.4&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">calico&lt;/td>
-&lt;td style="text-align:left">v3.21.2&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">calico&lt;/td>
-&lt;td style="text-align:left">v3.16.10&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">calico&lt;/td>
-&lt;td style="text-align:left">v3.11.2&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="3-推送离线组件包到-kubeclipper">3. 推送离线组件包到 kubeclipper&lt;/h2>
-&lt;p>&lt;code>push_component.sh&lt;/code> 脚本：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#!/usr/bin/env bash
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>&lt;span style="color:#8f5902;font-style:italic"># usage: ./push_component.sh [component] [version] [arch]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># usage: ./push_component.sh k8s v1.23.9 amd64&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">set&lt;/span> -e
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#204a87">type&lt;/span> kcctl &lt;span style="color:#000;font-weight:bold">&amp;amp;&lt;/span>&amp;gt;/dev/null&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> kcctl version
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">else&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;kcctl command not found, please install it first!&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">PKG_URL_PREFIX&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;https://oss.kubeclipper.io/packages&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=()&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000">$1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;k8s&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;calico&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;containerd&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;docker&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;metallb&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;only &amp;#39;k8s&amp;#39;, &amp;#39;calico&amp;#39;,&amp;#39;containerd&amp;#39;,&amp;#39;docker&amp;#39;,&amp;#39;metallb&amp;#39; packages are supported. default: &lt;/span>&lt;span style="color:#000">$name&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">exit&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000">$2&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> -z &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Please specify the package version!&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">exit&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000">$3&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;amd64&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> !&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;arm64&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;only &amp;#39;amd64&amp;#39;, &amp;#39;arm64&amp;#39; architectures are supported. default: &lt;/span>&lt;span style="color:#000">$arch&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">exit&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">``&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>-&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>-&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">arch&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>.tar.gz
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;k8s&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>packaging&lt;span style="color:#ce5c00;font-weight:bold">()&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">case&lt;/span> &lt;span style="color:#000">$name&lt;/span> in
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> k8s&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> images.tar.gz
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> configs.tar.gz
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;k8s&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> calico&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> images.tar.gz
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">if&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>&lt;span style="color:#204a87">echo&lt;/span> -e &lt;span style="color:#4e9a06">&amp;#34;3.26\n&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> sort -V &lt;span style="color:#000;font-weight:bold">|&lt;/span> tail -n 1&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">==&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">version&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">then&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> images.tar.gz
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> charts.tgz
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">fi&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;cni&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> containerd&lt;span style="color:#000;font-weight:bold">|&lt;/span>docker&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> configs.tar.gz
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;cri&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> metallb&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=(&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> images.tar.gz
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> manifest.json
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;metallb&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">;;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">esac&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">for&lt;/span> file in &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">fileList&lt;/span>&lt;span style="color:#000;font-weight:bold">[@]&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">do&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;download &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">file&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">...&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> wget &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_URL_PREFIX&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>/&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">file&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span> -P &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">done&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;packaging &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">...&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tar -zcvf &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span> &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;packaging &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06"> done&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;push &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06"> to kc...&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> kcctl resource push --pkg &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span> --type &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_type&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;push &lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06"> to kc done&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>packaging
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;clean up...&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -rf &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">build_dir&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -rf &lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">pkg_name&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">echo&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;clean up done&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>使用 &lt;code>push_component.sh&lt;/code> 脚本推送组件包到 kubeclipper：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>chmod +x push_component.sh
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 k8s 组件包&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh k8s v1.33.0 amd64
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 calico 组件包&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh calico v3.26.1 amd64
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 containerd 组件包&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh containerd 1.6.4 amd64
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 docker 组件包&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh docker 20.10.20 amd64
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送 metallb 组件包&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./push_component.sh metallb v0.13.7 amd64
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="4-查看离线组件包">4. 查看离线组件包&lt;/h2>
-&lt;p>使用 &lt;code>kcctl resource list&lt;/code> 命令查看已上传的离线组件包：&lt;/p>
+&lt;/table></description></item><item><title>Docs: 离线创建集群</title><link>https://kubeclipper.io/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
+&lt;p>离线安装需要先准备平台部署包，以及 Kubernetes、CRI、CNI 等组件资源。Registry 资源只描述镜像仓库，不能替代离线包。&lt;/p>
+&lt;h2 id="检查资源">检查资源&lt;/h2>
+&lt;p>完成&lt;a href="https://kubeclipper.io/docs/getting-started/">平台部署&lt;/a>后登录并检查：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource list
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="5-使用离线组件包">5. 使用离线组件包&lt;/h2>
-&lt;p>登录 kubeclipper 控制台，点击&lt;code>创建集群&lt;/code>，进入&lt;code>集群配置&lt;/code>页，&lt;code>镜像类型&lt;/code>选择&lt;code>离线&lt;/code>，即可选择已上传的离线组件包。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-config01.png" alt="集群配置01">
-&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-config02.png" alt="集群配置02">&lt;/p></description></item><item><title>Docs: 集群管理</title><link>https://www.kubeclipper.io/docs/tutorials/cluster-management/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/tutorials/cluster-management/</guid><description>
-&lt;h2 id="集群操作日志查看">集群操作日志查看&lt;/h2>
-&lt;p>在集群详情页面，点击“操作日志”标签页，可以查看集群操作日志列表。点击操作日志右侧“查看日志”按钮，可以在弹窗中查看全部步骤和节点的详细日志。点击左侧步骤名称，可查看执行步骤详细的日志输出。&lt;/p>
-&lt;p>在集群操作执行过程中，点击查看日志，您可以实时查看到日志更新来跟踪操作执行情况。对于执行失败的任务，您也可以通过查看日志，找到红色圆点标注的执行步骤和节点，快速定位错误，排查操作失败原因。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/log.png" alt="">&lt;/p>
-&lt;h3 id="任务失败后重试">任务失败后重试&lt;/h3>
-&lt;p>对于任务执行失败，但排查错误原因后不需要修改任务参数的情况，您可以点击操作日志右侧的“从断点处重试”按钮，从断点处重新执行任务。&lt;/p>
-&lt;p>注意：重试操作并不是万能的，您需要自行判断任务执行失败的原因，处理后如果不需要更改执行任务时填写的参数，就可以点击重试按钮，从错误处重新开始执行。&lt;/p>
-&lt;p>集群操作（如创建、恢复、升级等）执行失败，可能会导致集群状态显示为“xx失败”并无法正常执行其他操作，如果从断点处重试也无法执行成功，您可以参考运维文档，手动修复集群问题。问题修复后，您可以点击集群右侧“更多”&amp;gt;“集群状态”&amp;gt;“重置状态”按钮，重置集群至正常状态。&lt;/p>
-&lt;h2 id="访问集群-kubectl">访问集群 kubectl&lt;/h2>
-&lt;p>Kubectl 是 Kubernetes 命令行工具，您可以用它在 Kubernetes 集群上运行命令。Kubectl 可用于部署应用、查看和管理集群资源、查看日志等。&lt;/p>
-&lt;p>您可以访问运行中集群的 kubectl，点击集群操作中的“更多“&amp;gt;”访问 kubectl”，就可以在集群 kuebectl 弹窗中执行 kubectl 命令行操作。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/kubectl.png" alt="">&lt;/p>
-&lt;h2 id="集群设置">集群设置&lt;/h2>
-&lt;h3 id="编辑">编辑&lt;/h3>
-&lt;p>您可以点击集群列表右侧“更多”&amp;gt;“集群设置”&amp;gt;“编辑”按钮，编辑集群描述、备份空间、外部访问 IP、集群标签信息。&lt;/p>
-&lt;h3 id="保存为模版">保存为模版&lt;/h3>
-&lt;p>您可以点击集群列表右侧“更多”&amp;gt;“集群设置”&amp;gt;“保存为模版”按钮，将集群信息保存为模版，以便再次创建相似配置的集群时使用。&lt;/p>
-&lt;h3 id="cri-镜像仓库配置">CRI 镜像仓库配置&lt;/h3>
-&lt;p>Docker 和 Containerd 使用 dockerhub 作为默认镜像仓库，如果您需要使用其他镜像仓库（特别是使用自签名 https 仓库或者 http 仓库），您需要配置 CRI 镜像仓库。&lt;/p>
-&lt;p>点击集群右侧“更多”&amp;gt;“集群设置”&amp;gt;“CRI 镜像仓库”按钮，在 CRI 镜像仓库弹窗中，配置您需要的镜像仓库，您可以选择平台中已存在的镜像仓库，也可以临时填写镜像仓库地址。对于自签名 https 仓库或者 http 仓库，建议您先在“集群管理”&amp;gt;“镜像仓库”页面添加仓库信息，再在此操作中配置。&lt;/p>
-&lt;h2 id="集群节点管理">集群节点管理&lt;/h2>
-&lt;p>在集群详情页的“节点”列表页面，您可以查看当前集群中的节点列表，节点的规格、状态和角色信息。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/cluster.png" alt="">&lt;/p>
-&lt;h3 id="添加集群节点">添加集群节点&lt;/h3>
-&lt;p>当集群负载较高时，您可以通过为集群添加节点来达到主动扩容的目的，添加新的“节点”不会影响现有的业务的运行。&lt;/p>
-&lt;p>在集群详情页的节点列表标签页下，点击左侧的“添加节点”按钮，在弹窗中选择可用节点，设置节点标签，点击“确认”按钮。当前版本仅支持添加工作节点。&lt;/p>
-&lt;h3 id="移除集群节点">移除集群节点&lt;/h3>
-&lt;p>在集群详情页的节点列表标签页下，您可以点击节点右侧的 “移除”按钮移除节点。当前版本仅支持移除工作节点。&lt;/p>
-&lt;p>注意：移除集群节点，您需要注意生产中的安全问题，避免应用发生中断。&lt;/p>
-&lt;h2 id="集群备份和恢复">集群备份和恢复&lt;/h2>
-&lt;p>KubeClipper 对 kubernetes 集群的备份主要为备份 ETCD 数据库数据，以及 kubernetes 的资源对象备份，如 namespace，deployment、configMap。对资源自身产生的文件和数据不做备份，例如对集群中运行的 mysql pod，该 mysql pod 产生的数据和文件，不会为之备份，同理，文件类的 pv 对象下的文件，也不做备份，仅仅备份 pv 这个对象。KubeClipper 提供的备份功能是热备份，备份期间不影响集群的使用。KubeClipper 虽然不反对在集群 &amp;ldquo;繁忙期&amp;rdquo; 备份，但也强烈不赞成在集群 &amp;ldquo;繁忙期&amp;rdquo; 备份。&lt;/p>
-&lt;h3 id="创建备份空间">创建备份空间&lt;/h3>
-&lt;p>执行备份之前，您需要先为集群设置备份空间，即设置备份文件的存储位置。备份空间的存储类型可以是 FS 存储或 S3 存储，下面以节点本地存储、NFS 存储和 MINIO 存储为例：&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>节点本地存储（仅适用单节点实验集群）：&lt;/strong>&lt;/li>
-&lt;/ul>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>确认目标节点架构与资源包一致。1.7 推荐矩阵为 Kubernetes v1.37.0 / v1.36.4 / v1.35.8、containerd 2.2.4、Calico v3.31.5。需要补充组件包时参考&lt;a href="https://kubeclipper.io/docs/getting-started/make-offline-package/">准备离线组件包&lt;/a>。&lt;/p>
+&lt;h2 id="创建集群">创建集群&lt;/h2>
+&lt;p>&lt;code>kcctl create cluster&lt;/code> 默认离线安装。示例使用一个实验节点：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create cluster --name offline-demo --master 192.168.10.21 --untaint-master &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --k8s-version v1.37.0 --cri containerd --cri-version 2.2.4 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --cni calico --cni-version v3.31.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list -c offline-demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster offline-demo -o yaml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在 Console 创建时同样选择已准备好的组件版本、目标节点和离线方式。需要镜像仓库时先准备镜像并配置&lt;a href="https://kubeclipper.io/docs/tutorials/registries/">Registry 资源&lt;/a>。存储插件按实际需求单独选择，不把某一种 NFS 插件当作创建集群的必选步骤。&lt;/p>
+&lt;h2 id="确认安装结果">确认安装结果&lt;/h2>
+&lt;p>结合 Operation 和节点日志定位失败原因。取得 kubeconfig 后检查节点 Ready、系统 Pod 和 API readiness。离线资源缺失、架构不一致或镜像地址不可达时，先修正资源再重试，参见&lt;a href="https://kubeclipper.io/docs/tutorials/operations/">操作与日志&lt;/a>。&lt;/p></description></item><item><title>Docs: 集群管理</title><link>https://kubeclipper.io/docs/tutorials/cluster-management/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/tutorials/cluster-management/</guid><description>
+&lt;p>KubeClipper 1.7 的集群生命周期操作由 Operation v2 执行。先查看集群对象，再用操作详情和节点实际状态确认结果。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl get cluster
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster demo -o yaml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list -c demo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="日志重试和取消">日志、重试和取消&lt;/h2>
+&lt;p>完整命令见&lt;a href="https://kubeclipper.io/docs/tutorials/operations/">操作与日志&lt;/a>。失败后先处理根因再重试；重置集群状态不会修复失败的节点或撤销已执行操作。&lt;/p>
+&lt;h2 id="访问集群">访问集群&lt;/h2>
+&lt;p>在 Console 的集群详情页获取 kubeconfig，设置 &lt;code>KUBECONFIG&lt;/code> 后执行：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kubectl get nodes -o wide
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kubectl get pods -A
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kubectl get --raw&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;/readyz?verbose&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>平台状态正常不代表所有受管集群都正常。升级、扩缩容、备份和恢复后，都要检查对应集群中的节点、系统 Pod 和业务数据。&lt;/p>
+&lt;h2 id="扩缩容与镜像仓库">扩缩容与镜像仓库&lt;/h2>
+&lt;p>先用 &lt;code>kcctl join&lt;/code> 将新增机器纳入平台，确认节点就绪、区域与目标集群一致，再在集群详情中添加节点。移除节点前迁移工作负载并检查容量；平台的 &lt;code>kcctl drain&lt;/code> 用于移除平台 Agent，不等同于集群缩容。节点接入步骤见&lt;a href="https://kubeclipper.io/docs/tutorials/node-management/">节点管理&lt;/a>。&lt;/p>
+&lt;p>Kubernetes 镜像仓库与 containerd 拉取仓库分别配置，具体步骤见&lt;a href="https://kubeclipper.io/docs/tutorials/registries/">镜像仓库&lt;/a>。变更后检查实际镜像拉取结果。&lt;/p>
+&lt;h2 id="备份与恢复">备份与恢复&lt;/h2>
 &lt;ol>
-&lt;li>创建存储目录。连接集群 master 节点终端（可参见&lt;a href="https://www.kubeclipper.io/docs/tutorials/node-management/#%E8%BF%9E%E6%8E%A5%E7%BB%88%E7%AB%AF">连接节点终端&lt;/a>），使用 mkdir 命令，在 master 节点中创建“/root/backup”目录。&lt;/li>
-&lt;li>创建备份空间。点击“集群管理”&amp;gt;“备份空间”，进入备份空间列表页，点击右上角“创建”按钮，在创建备份空间弹窗中，输入“备份空间名称”，如 “local”，选择“存储类型”为 “FS”，填写“备份路径”，如 “/root/backup”。&lt;/li>
-&lt;li>设置集群备份空间。创建集群时，在“集群配置”页面选择“备份空间”为 “local”，或者编辑已有集群，在编辑集群弹窗中的“备份空间”中选择 “local”。&lt;/li>
+&lt;li>配置备份空间，并在编辑集群时关联该备份空间。使用目录备份空间时，先在相关节点创建并挂载约定路径，确认可写。&lt;/li>
+&lt;li>在集群中发起备份，或通过定时备份设置执行时间和保留数量；确认备份记录成功且文件可读取。&lt;/li>
+&lt;li>恢复时选择该集群的备份记录，跟踪恢复 Operation，完成后检查 API、节点、系统 Pod 和业务状态。&lt;/li>
 &lt;/ol>
-&lt;p>注意：使用本地节点存储备份文件，不需要引入外部存储，缺点是如果本地节点遭到破坏，备份文件也会丢失，所以强烈不赞成在生产环境中使用。&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>NFS：&lt;/strong>&lt;/li>
-&lt;/ul>
-&lt;ol>
-&lt;li>
-&lt;p>准备 NFS 存储。准备一台 NFS 服务，并在 NFS 服务器上创建一个用于存放备份文件的目录，如 “/data/kubeclipper/cluster-backups”。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>挂载存储目录。连接集群 master 节点终端（可参见&lt;a href="https://www.kubeclipper.io/docs/tutorials/node-management/#%E8%BF%9E%E6%8E%A5%E7%BB%88%E7%AB%AF">连接节点终端&lt;/a>），使用 mkdir 命令，在每个 master 节点中创建 “/data/kubeclipper/cluster-backups” 目录，并 mount 到 NFS 服务器的 /data/kubeclipper/cluster-backups 目录即可。&lt;/p>
-&lt;p>命令示例：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mount -t nfs &lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span> NFS_IP &lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>:/data/kubeclipper/cluster-backups /opt/kubeclipper/cluster-backups -o &lt;span style="color:#000">proto&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>tcp -o nolock
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>创建备份空间。点击“集群管理”&amp;gt;“备份空间”，进入备份空间列表页，点击右上角“创建”按钮，在创建备份空间弹窗中，输入“备份空间名称”，如 “nfs”，选择“存储类型”为 “FS”，填写“备份路径”为 “/opt/kubeclipper/cluster-backups”。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>设置集群备份空间。创建集群时，在“集群配置”页面选择“备份空间”为 “nfs”，或者编辑已有集群，在编辑集群弹窗中的“备份空间”中选择 “nfs”。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;ul>
-&lt;li>&lt;strong>MINIO：&lt;/strong>&lt;/li>
-&lt;/ul>
-&lt;ol>
-&lt;li>准备 MINIO 存储。搭建 MINIO 服务，部署过程参考官网 &lt;a href="https://docs.min.io/docs/minio-quickstart-guide.html">https://docs.min.io/docs/minio-quickstart-guide.html&lt;/a>，也可以使用已有 MINIO 服务。&lt;/li>
-&lt;li>创建备份空间。点击“集群管理”&amp;gt;“备份空间”，进入备份空间列表页，点击右上角“创建”按钮，在创建备份空间弹窗中，输入“备份空间名称”，如 “minio”，选择“存储类型”为 “S3”，填写 “bucket 名称”，如 “kubeclipper-backups”，该 bucket 将由 kubeclipper 自动创建，“Endpoint” 中填写第一步 MINIO 存储服务的 ip 和端口号，填写服务用户名和密码，点击“确定”按钮。&lt;/li>
-&lt;li>设置集群备份空间。创建集群时，在“集群配置”页面选择“备份空间”为 “minio”，或者编辑已有集群，在编辑集群弹窗中的“备份空间”中选择“minio”。&lt;/li>
-&lt;/ol>
-&lt;p>您可以在“集群管理”的“备份空间”页面查看所有备份空间列表和详细信息，并执行以下操作：&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>编辑：编辑备份空间描述，和 S3 类型备份空间的用户名/密码。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>删除：删除备份空间，备份空间下存在备份文件的，不允许删除。&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="集群备份">集群备份&lt;/h3>
-&lt;p>您可以点击集群操作中的“更多”&amp;gt;“备份和恢复”&amp;gt; “集群备份”按钮，备份集群 ETCD 数据。&lt;/p>
-&lt;p>您可以在集群详情页面的备份标签页下，查看当前集群的所有备份文件，还可以对备份执行以下操作：&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>编辑：编辑备份描述。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>恢复：执行集群恢复操作，将集群恢复至指定备份状态。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>删除：删除指定备份文件。&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="定时备份">定时备份&lt;/h3>
-&lt;p>您也可以为集群创建定时备份，点击集群操作中的“更多”&amp;gt;“备份和恢复”&amp;gt; “定时备份”按钮，在定时备份弹窗中，输入定时备份名称、执行类型（重复执行/仅执行一次）和执行时间，并为重复执行的定时备份设置有效备份个数，点击“确认”按钮。&lt;/p>
-&lt;p>kubeClipper 会在您设置的执行时间为集群执行备份任务，备份文件会自动命名为“集群名称-定时备份名称-随机码”，对于重复执行的定时备份，kubeClipper 会在该定时任务下的备份文件超过有效备份个数时，自动删除超出个数的较早的备份文件。&lt;/p>
-&lt;p>定时备份添加完成后，可以在集群详情页的“定时备份”标签页查看定时备份信息，也可以在“备份”标签页查看定时备份产生的备份文件。&lt;/p>
-&lt;p>对于定时备份任务，您还可以执行以下操作：&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>编辑：编辑定时备份任务执行时间，和重复执行的定时备份的有效备份个数。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>启用/禁用：禁用的定时备份任务将暂时停止执行。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>删除：删除定时备份任务。&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="集群备份恢复">集群备份恢复&lt;/h3>
-&lt;p>如果您在集群正常运行期间执行恢复操作，则 KubeClipper 将对该集群进行覆盖式恢复，就是备份文件里面的 etcd 数据，覆盖现有的数据。&lt;/p>
-&lt;p>您可以在集群详情页的备份标签页下，点击备份右侧的 “恢复”按钮；或点击集群操作中的“更多”&amp;gt;“备份和恢复”&amp;gt;“恢复集群”按钮，在恢复集群弹窗中选择需要恢复的备份，可以将当前集群恢复至指定备份状态。&lt;/p>
-&lt;p>注意：集群升级后，将无法再恢复到升级前版本的备份。&lt;/p>
-&lt;h2 id="集群状态">集群状态&lt;/h2>
-&lt;h3 id="集群版本升级">集群版本升级&lt;/h3>
-&lt;p>如当集群版本不满足需要，您可以为集群升级 kubernetes 版本。与创建集群一样，您需要准备好集群版本所需配置包和目标版本的 kubernetes 镜像并上传至指定位置，详情参见&lt;a href="https://www.kubeclipper.io/docs/tutorials/create-clusters/#%E5%88%9B%E5%BB%BA%E9%9B%86%E7%BE%A4%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">创建集群准备工作&lt;/a>。&lt;/p>
-&lt;p>点击集群操作的“更多”&amp;gt;“集群状态”&amp;gt; “集群升级”按钮，在集群升级弹窗中选择安装方式和镜像仓库，选择升级的目标版本，升级的安装方式和 kubernetes 版本的配置与创建集群相同，详情参见&lt;a href="https://www.kubeclipper.io/docs/tutorials/create-clusters/#%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE">集群配置指南&lt;/a>。&lt;/p>
-&lt;p>集群升级可以跨小版本，但不支持略过次版本的升级，如您可以从 v1.20.2 升级到 v1.20.13，或由 v1.20.x 升级到 v1.21.x，但不支持从 v1.20.x 升级到 v1.22.x。对于 1.23.x 版本，暂不支持升级到 1.24.x 版本。&lt;/p>
-&lt;p>升级集群操作可能需要较长时间，您可以在集群详情页面查看操作日志，跟踪集群升级状态。&lt;/p>
-&lt;h3 id="删除集群">删除集群&lt;/h3>
-&lt;p>您可以点击集群列表右侧“更多”&amp;gt;“集群状态”&amp;gt; “删除”按钮，删除集群。&lt;/p>
-&lt;p>注意删除后集群不可恢复。请谨慎操作。如果集群对接了外部存储，回收策略为“保留”的存储类中的数据卷会被保留，您可以通过其他方式访问，或手动删除；回收策略为“删除”的存储类中的数据卷，会在删除集群时自动删除。&lt;/p>
-&lt;h3 id="重置状态">重置状态&lt;/h3>
-&lt;p>集群操作（如创建、恢复、升级等）执行失败，可能会导致集群状态显示为“xx失败”并无法正常执行其他操作，如果从断点处重试也无法执行成功，您可以参考运维文档，手动修复集群问题。问题修复后，您可以点击集群右侧“更多”&amp;gt;“集群状态”&amp;gt;“重置状态”按钮，重置集群至正常状态。&lt;/p>
-&lt;h2 id="集群插件管理">集群插件管理&lt;/h2>
-&lt;p>除了在创建集群时安装插件，您也可以为运行中的集群安装存储和其他自定义插件。以安装存储插件为例，点击集群操作中的“更多”&amp;gt;“插件管理”&amp;gt;“添加存储项”按钮，进入添加存储项页面，可以为集群安装存储插件，安装配置与创建集群中的配置相同。&lt;/p>
-&lt;p>对于已安装的插件，您可以在集群详情页查看插件信息，并执行以下操作：&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>保存为模版：将插件信息保存为模版，以便为其他集群使用。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>移除插件：卸载集群插件。&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h2 id="集群证书管理">集群证书管理&lt;/h2>
-&lt;h3 id="更新集群证书">更新集群证书&lt;/h3>
-&lt;p>kubernetes 集群证书默认有效期为一年，您可以在集群详情页的基本信息中查看证书过期时间，证书过期前一天，您也可以在集群列表看到证书过期的提醒。更新集群证书，您可以点击集群操作中的“更多”&amp;gt;“集群证书”&amp;gt;“更新集群证书”按钮，更新集群全部证书。&lt;/p>
-&lt;h3 id="获取-kubeconfig-文件">获取 kubeconfig 文件&lt;/h3>
-&lt;p>您可以点击集群操作中的“更多”&amp;gt;“集群证书”&amp;gt;“查看 kubeconfig 文件”按钮，查看集群 kubeconfig 文件，也可以点击弹窗中的“下载”按钮，下载 kubeconfig 文件。&lt;/p></description></item><item><title>Docs: 通过 kcctl 命令创建集群错误</title><link>https://www.kubeclipper.io/docs/faq/kcctl-create-cluster-error/</link><pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/faq/kcctl-create-cluster-error/</guid><description>
-&lt;h2 id="问题复现">问题复现&lt;/h2>
-&lt;p>安装 v1.2.1 版本的 kcctl&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.2.1 bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过 kcctl deploy 命令部署 KubeClipper 集群&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 安装 AIO 环境&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过 kcctl create cluster 命令创建 kubernetes 集群&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 需要先登录&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl login --host http://127.0.0.1 --username admin --password Thinkbig1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 创建集群&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl create cluster --name &lt;span style="color:#204a87">test&lt;/span> --master 192.168.10.98 --untaint-master
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>登录 KubeClipper 管理界面，查看创建集群操作日志，日志显示在安装 cni 过程中发现下载 calico v3.21.2 404 无法找到&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-faq/create-cluster-error.png" alt="">&lt;/p>
-&lt;h2 id="问题修复-pr">问题修复 PR&lt;/h2>
-&lt;p>提交已经合并到了 master，PR：https://github.com/kubeclipper/kubeclipper/commit/7e6eb0ed199ff1cb00fde0c2624c62cdc5ca0b9c&lt;/p>
-&lt;p>但 v1.2.1 已经发布了，按照发版规范无法在该版本打补丁，需要等到后续 v1.2.2 发布解决，因此我们提供一种临时方案来解决这个问题。&lt;/p>
-&lt;h2 id="解决方法">解决方法&lt;/h2>
-&lt;p>制作离线资源包
-下载 calico v3.21.2 的安装包，打包为指定格式的离线资源包&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 创建资源目录&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -pv calico/v3.21.2/amd64
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 下载 v3.21.2 版本的 calico&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget -P calico/v3.21.2/amd64 https://oss.kubeclipper.io/packages/calico/v3.21.2/amd64/images.tar.gz
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget -P calico/v3.21.2/amd64 https://oss.kubeclipper.io/packages/calico/v3.21.2/amd64/manifest.json
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 压缩文件为指定命令&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -zcvf calico-v3.21.2-amd64.tar.gz calico
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>推送离线资源包&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 推送&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource push --pkg calico-v3.21.2-amd64.tar.gz --type cni
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># 验证&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource list&lt;span style="color:#000;font-weight:bold">|&lt;/span>grep v3.21.2
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>如果在执行 &lt;code>kcctl resource push&lt;/code> 报了如下错误：
-&lt;img src="https://www.kubeclipper.io/images/docs-faq/need-login.png" alt="">
-解决方法如下：&lt;/p>
-&lt;ol>
-&lt;li>编辑 /root/.kc/deploy-config.yaml 文件。&lt;/li>
-&lt;li>找到 ssh 配置项，添加 pkFile 字段配置，值为当前服务器的 ssh 公钥文件的绝对路径。&lt;br>
-&lt;img src="https://www.kubeclipper.io/images/docs-faq/add-key.png" alt="">&lt;/li>
-&lt;/ol>
-&lt;/blockquote>
-&lt;p>通过命令行安装 kubernetes 集群，在 KubeClipper 管理后台查看操作日志&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create cluster --name &lt;span style="color:#204a87">test&lt;/span> --master 192.168.10.98 --untaint-master
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看 kubernetes 集群 pods 运行状态&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kubectl get pods -A
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 节点管理</title><link>https://www.kubeclipper.io/docs/tutorials/node-management/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/tutorials/node-management/</guid><description>
+&lt;p>这里的集群备份以 Kubernetes etcd 快照为核心，不包含业务持久卷中的文件；应用数据需要另行备份。恢复会改变集群状态，先在隔离环境演练，不能仅凭备份记录存在判断可恢复。&lt;/p>
+&lt;h2 id="kubernetes-版本升级">Kubernetes 版本升级&lt;/h2>
+&lt;p>这与 KubeClipper 平台升级是两项操作。先备份并验证恢复方案，检查目标版本的组件资源、镜像和工作负载兼容性，再从集群的升级入口选择目标版本。托管的 kubeadm 集群不提供此升级入口。&lt;/p>
+&lt;p>CLI 参数可用下列命令查看：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl cluster upgrade --help
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>升级命令使用 &lt;code>--cluster-name&lt;/code> 和 &lt;code>--version&lt;/code> 指定集群与目标版本，默认采用离线方式；&lt;code>--online&lt;/code> 改为在线方式，&lt;code>--image-registry&lt;/code> 选择已配置的 Registry 资源。目标版本必须在平台可用资源中，不能将支持矩阵当作任意版本间升级成功的保证。提交后跟踪 Operation，并执行上面的集群健康检查。&lt;/p>
+&lt;h2 id="删除集群">删除集群&lt;/h2>
+&lt;p>先确认工作负载和数据已备份，再发起删除并跟踪 Operation：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl delete cluster demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list -c demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>确认删除结束后再复用节点。失败时保留日志和节点状态，参考&lt;a href="https://kubeclipper.io/docs/tutorials/diagnostics/">平台诊断&lt;/a>，不要用强制删除掩盖未完成的清理。&lt;/p></description></item><item><title>Docs: 准备离线组件包</title><link>https://kubeclipper.io/docs/getting-started/make-offline-package/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/getting-started/make-offline-package/</guid><description>
+&lt;p>1.7.0 的完整部署包和额外的 Kubernetes / CRI / CNI 组件包用途不同。先使用&lt;a href="https://kubeclipper.io/docs/getting-started/">快速开始&lt;/a>中的完整部署包部署平台，再按实际需求补充组件资源。&lt;/p>
+&lt;h2 id="选择版本和架构">选择版本和架构&lt;/h2>
+&lt;p>以 &lt;a href="https://kubeclipper.io/docs/overview/release-1.7/">1.7 版本说明&lt;/a>中的矩阵为准。以下示例下载 Kubernetes v1.37.0 的 amd64 组件；arm64 节点需准备 arm64 包，不要混用架构。&lt;/p>
+&lt;h2 id="在联网机器下载并打包">在联网机器下载并打包&lt;/h2>
+&lt;p>以下命令在 Bash 中执行，使用项目 OSS 原生域名。&lt;code>curl -fL&lt;/code> 会在下载失败时退出；不要忽略证书或 HTTP 错误后继续打包。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">set&lt;/span> -e
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.37.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>mktemp -d&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;k8s/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -p &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">for&lt;/span> FILE in manifest.json configs.tar.gz images.tar.gz&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> curl -fL -o &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">FILE&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://kubeclipper.oss-ap-southeast-1.aliyuncs.com/packages/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">FILE&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -czf &lt;span style="color:#4e9a06">&amp;#34;k8s-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">.tar.gz&amp;#34;&lt;/span> -C &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> k8s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -tzf &lt;span style="color:#4e9a06">&amp;#34;k8s-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">.tar.gz&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>归档中需保留 &lt;code>k8s/版本/架构/&lt;/code> 层级，不能只压缩文件本身。下载目录保留在 &lt;code>$PKG_DIR&lt;/code>，核对后可自行清理。&lt;/p>
+&lt;p>其他组件使用相同层级，按下表准备文件，再压缩对应组件目录：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>组件目录&lt;/th>
+&lt;th>版本&lt;/th>
+&lt;th>必需文件&lt;/th>
+&lt;th>上传类型&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>k8s&lt;/td>
+&lt;td>v1.37.0&lt;/td>
+&lt;td>manifest.json、configs.tar.gz、images.tar.gz&lt;/td>
+&lt;td>k8s&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>containerd&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>manifest.json、configs.tar.gz&lt;/td>
+&lt;td>cri&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>calico&lt;/td>
+&lt;td>v3.31.5&lt;/td>
+&lt;td>manifest.json、images.tar.gz、charts.tgz&lt;/td>
+&lt;td>cni&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>例如 Calico 路径为 &lt;code>packages/calico/v3.31.5/amd64/manifest.json&lt;/code>。这些是已有组件资源的打包方式，不代表任意自定义版本都已被平台支持。&lt;/p>
+&lt;h2 id="传入离线环境并上传">传入离线环境并上传&lt;/h2>
+&lt;p>把归档传到能访问平台的部署机。该机器需保留部署配置和可登录 Server 的 SSH 凭据。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource push --pkg k8s-v1.37.0-amd64.tar.gz --type k8s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>上传 containerd 和 Calico 时分别使用 &lt;code>--type cri&lt;/code>、&lt;code>--type cni&lt;/code>。确认平台能列出匹配的版本和架构，再按&lt;a href="https://kubeclipper.io/docs/getting-started/carete-k8s-cluster-offline/">离线创建集群&lt;/a>验证。镜像仓库的配置参见 &lt;a href="https://kubeclipper.io/docs/tutorials/registries/">Registry&lt;/a>。&lt;/p></description></item><item><title>Docs: 节点管理</title><link>https://kubeclipper.io/docs/tutorials/node-management/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/tutorials/node-management/</guid><description>
 &lt;h2 id="区域管理">区域管理&lt;/h2>
 &lt;p>平台支持多区域管理，即为平台管理的所有节点和集群进行物理或逻辑的区域划分。您可以在“区域管理”页面查看平台内管理的所有区域，点击区域名称，进入区域详情页面，可以查看区域下的所有集群列表和节点列表。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/region.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/images/docs-tutorials/region.png" alt="">&lt;/p>
 &lt;h2 id="节点管理">节点管理&lt;/h2>
 &lt;p>您可以在“节点信息”页面查看平台中管理的全部节点列表，和节点规格、状态等信息。点击节点名称进入节点详情页面，可以查看详细的节点基本信息和系统信息。&lt;/p>
-&lt;p>KubeClipper 中的节点状态表示 kc-agent 对节点的管理状态。正常情况下，节点状态显示为“就绪”，当节点失联4分钟（误差时间 10s 内）后，状态会更新为“未知”，未知状态的节点无法进行任何操作，也无法创建集群或为集群添加/移除节点。&lt;/p>
+&lt;p>KubeClipper 中的节点状态表示 kc-agent 对节点的管理状态。正常情况下，节点状态显示为“就绪”，默认节点健康监控宽限期为 4 分钟，每 10 秒检查一次；超过宽限期后，状态会更新为“未知”，实际显示时间还会受到调度和通信延迟影响。此时先排查 Agent、网络和 Server 连通性，恢复就绪后再安排新的集群部署或扩容。&lt;/p>
 &lt;h3 id="添加节点">添加节点&lt;/h3>
 &lt;p>在部署 KubeClipper 时，您就可以添加初始的 server 节点和 agent 节点，其中，server 节点用于部署 KubeClipper 自身服务，agent 节点可用于部署 kubernetes 集群。在用于实验或开发的 KubeClipper 环境，您可以将 server 节点同时添加为 agent 节点。但如果用于生产环境，建议不要将 server 节点复用为 agent 节点。&lt;/p>
 &lt;p>您也可以使用 kcctl join 命令为 KubeClipper 添加 agent 节点。同时，您可以为每个 agent 节点标记一个区域，区域可以是物理的或逻辑的位置，您可以使用同一区域的节点创建 kubernetes 集群，但不可以使用跨区域的节点创建集群。未标记区域的节点默认属于 default 区域。&lt;/p>
@@ -1123,7 +344,7 @@ GOARCH：系统架构，amd64 （又名 x84_64），arm64（又名 aarch64）&lt
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="连接终端">连接终端&lt;/h3>
 &lt;p>在节点列表页面，您可以点击目标节点右侧的“连接终端”按钮，在连接终端的弹窗中输入节点端口和用户名密码信息后，访问节点 SSH 控制台并执行命令。&lt;/p>
 &lt;h3 id="启用禁用节点">启用/禁用节点&lt;/h3>
-&lt;p>您可以点击节点右侧“禁用”按钮暂时禁用节点，禁用状态下的节点不允许创建或添加到集群。&lt;/p></description></item><item><title>Docs: 访问控制</title><link>https://www.kubeclipper.io/docs/tutorials/access-control/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/docs/tutorials/access-control/</guid><description>
+&lt;p>您可以点击节点右侧“禁用”按钮暂时禁用节点，禁用状态下的节点不允许创建或添加到集群。&lt;/p></description></item><item><title>Docs: 访问控制</title><link>https://kubeclipper.io/docs/tutorials/access-control/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/tutorials/access-control/</guid><description>
 &lt;h2 id="用户管理">用户管理&lt;/h2>
 &lt;p>安装 KubeClipper 之后，您需要创建所需角色的用户。一开始，系统默认只有一个用户 admin，具有平台管理员角色。&lt;/p>
 &lt;p>点击“访问控制”&amp;gt;“用户”，进入用户管理页面，点击左上角“创建用户”按钮，在弹窗中填写用户名、密码、手机号码、邮箱等信息，并指定用户角色，点击“确认”按钮。系统内置四个角色如下：&lt;/p>
@@ -1154,7 +375,7 @@ GOARCH：系统架构，amd64 （又名 x84_64），arm64（又名 aarch64）&lt
 &lt;/li>
 &lt;/ul>
 &lt;p>在用户详情页面，您还可以查看当前用户的登录日志列表。&lt;/p>
-&lt;p>您可以编辑平台 /etc/kubeclipper-server/kubeclipper-server.yaml 文件，根据需要设置用户登录日志的最大保留条数和保留期限，每个用户的登录日志超过最大条数后，超过最大条数和期限的日志会被自动删除，仅超过保留期限但未超过最大条数的日志数据将不会被删除。&lt;/p>
+&lt;p>您可以编辑平台 /etc/kubeclipper-server/kubeclipper-server.yaml 文件，根据需要设置用户登录日志的最大保留条数和保留期限，清理逻辑仅在该用户的日志总数超过最大条数时触发：先删除超额的旧记录，再清理剩余的过期记录；未超过最大条数时，不会仅因过期而删除。&lt;/p>
 &lt;h2 id="自定义角色">自定义角色&lt;/h2>
 &lt;p>除了系统内置角色，您也可以创建自定义角色，以满足业务需要。&lt;/p>
 &lt;p>点击“访问控制”&amp;gt;“角色”，进入角色管理页面，您可以点击左上角“创建角色”按钮，创建自定义角色。&lt;/p>
@@ -1162,7 +383,7 @@ GOARCH：系统架构，amd64 （又名 x84_64），arm64（又名 aarch64）&lt
 &lt;p>创建自定义角色完成后，您可以在角色详情页面查看角色基本信息、角色权限列表、授权用户列表，并对自定义角色执行以下操作：&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;p>编辑：编辑自定义角色别名。&lt;/p>
+&lt;p>编辑：编辑自定义角色描述。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>编辑权限：编辑自定义角色下的权限。&lt;/p>
@@ -1173,27 +394,92 @@ GOARCH：系统架构，amd64 （又名 x84_64），arm64（又名 aarch64）&lt
 &lt;/ul>
 &lt;h2 id="接入外部用户">接入外部用户&lt;/h2>
 &lt;p>KubeClipper 可以通过 OIDC 协议使用外部用户登录。&lt;/p>
-&lt;p>首先，平台管理员需要登录平台 server 节点，在 kubeclipepr-server.yaml 文件中的 authentication 下插入以下信息：&lt;/p>
-&lt;pre tabindex="0">&lt;code class="language-undefined" data-lang="undefined">oauthOptions:
-identityProviders:
-- name: keycloak
-type: OIDC
-mappingMethod: auto
-provider:
-clientID: kc
-clientSecret: EErn729BB1bKawdRtnZgrqj9Bx0]mzUs
-issuer: http://172.20.163.233:7777/auth/realms/kubeclipper
-scopes:
-- openid
-- email
-redirectURL: http://{kc-console-address}/oatuh2/redirect/{IDP-Name}
-&lt;/code>&lt;/pre>&lt;p>其中，“provider” 下需要您填写自己的 OAuth2 服务的&lt;code>clientID&lt;/code>、&lt;code>clientSecret&lt;/code>、&lt;code>issuer&lt;/code>信息，以 keycloack 为例，如下图所示。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/keycloak-clients.png" alt="">&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/keycloak-secret.png" alt="">&lt;/p>
-&lt;p>&lt;code>redirectURL&lt;/code>示例：http://172.0.0.90/oauth2/redirect/keycloack&lt;/p>
+&lt;p>首先，平台管理员需要登录平台 server 节点，在 kubeclipper-server.yaml 文件中的 authentication 下插入以下信息：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">oauthOptions&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">identityProviders&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>- &lt;span style="color:#204a87;font-weight:bold">name&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">keycloak&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">type&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">OIDC&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">mappingMethod&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">auto&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">provider&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">clientID&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">kc&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">clientSecret&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">REPLACE_WITH_CLIENT_SECRET&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">issuer&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">https://idp.example.com/realms/kubeclipper&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">scopes&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>- &lt;span style="color:#000">openid&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>- &lt;span style="color:#000">email&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">redirectURL&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">https://console.example.com/oauth2/redirect/keycloak&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这是 &lt;code>authentication&lt;/code> 下的配置片段，需合并到现有配置。将示例域名和 &lt;code>REPLACE_WITH_CLIENT_SECRET&lt;/code> 替换为实际值；IdP 注册的回调地址必须与 &lt;code>redirectURL&lt;/code> 完全一致，路径末尾的 &lt;code>keycloak&lt;/code> 与提供商 &lt;code>name&lt;/code> 一致。各 Server 更新配置后，按节点滚动重启 &lt;code>kc-server&lt;/code>。&lt;/p>
+&lt;p>其中，“provider” 下需要您填写自己的 OAuth2 服务的&lt;code>clientID&lt;/code>、&lt;code>clientSecret&lt;/code>、&lt;code>issuer&lt;/code>信息，以 keycloak 为例，如下图所示。&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/images/docs-tutorials/keycloak-clients.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/images/docs-tutorials/keycloak-secret.png" alt="">&lt;/p>
+&lt;p>&lt;code>redirectURL&lt;/code>示例：https://console.example.com/oauth2/redirect/keycloak&lt;/p>
 &lt;p>OAuth2 用户可以通过以下步骤访问和使用 KubeClipper 平台：&lt;/p>
 &lt;ol>
 &lt;li>点击登录页的 “OAuth2 登录”按钮，进入 OAuth2 登录页面，输入用户名密码登录，进入 KubeClipper 平台，首次登录，您会因未被授予权限而无法访问平台。&lt;/li>
 &lt;li>平台管理员或其他拥有用户管理权限的用户登录 KubeClipper，在用户管理页面，找到目标 OAuth2 用户，通过编辑用户指定用户角色。&lt;/li>
 &lt;li>OAuth2 用户重复第一步，登录 KubeClipper，就可以正常访问平台并执行角色权限内操作。&lt;/li>
-&lt;/ol></description></item></channel></rss>
+&lt;/ol></description></item><item><title>Docs: 操作与日志</title><link>https://kubeclipper.io/docs/tutorials/operations/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/tutorials/operations/</guid><description>
+&lt;p>KubeClipper 1.7 将安装、升级、备份、删除等工作建模为 Operation，并按步骤和节点执行 Task。提交命令成功只表示请求已被接受，最终结果需要继续查询。&lt;/p>
+&lt;h2 id="查找操作">查找操作&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list -c demo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>从列表复制实际操作 ID 后查看详情和日志：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">OPERATION_ID&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;&amp;lt;实际操作 ID&amp;gt;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation describe &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation logs &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation logs &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> --follow
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过日志定位失败步骤和节点。在交互式终端中，可按集群打开 TUI 日志视图：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation logs --cluster demo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>脚本和非交互终端使用带操作 ID 的纯文本日志命令。&lt;/p>
+&lt;h2 id="处理失败">处理失败&lt;/h2>
+&lt;p>先保留操作详情、失败节点日志和集群状态，处理包缺失、镜像下载、节点网络或服务异常等原因，再重试：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation retry &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation describe &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation logs &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> --follow
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>重试后再次检查实际集群和节点，不能只看 retry 命令返回值。若参数本身错误，先核对任务配置，不要用反复重试代替修正。&lt;/p>
+&lt;h2 id="取消操作">取消操作&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation cancel &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation describe &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>取消不等于回滚已经执行的安装或数据操作。继续确认任务是否停止，以及节点上已经产生的变更；清理前先确定资源归属。&lt;/p>
+&lt;h2 id="确认成功">确认成功&lt;/h2>
+&lt;p>结合 Operation 结果、&lt;code>kcctl get cluster demo -o yaml&lt;/code>、Kubernetes 节点与 Pod 状态确认结果。集群删除后还要检查平台列表和节点残留。平台问题参考&lt;a href="https://kubeclipper.io/docs/tutorials/diagnostics/">诊断指南&lt;/a>。&lt;/p></description></item><item><title>Docs: 平台诊断</title><link>https://kubeclipper.io/docs/tutorials/diagnostics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/tutorials/diagnostics/</guid><description>
+&lt;p>先确定故障发生在平台、Agent、资源下载还是 Kubernetes 集群，再针对对应层排查。&lt;/p>
+&lt;h2 id="平台状态">平台状态&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status -o json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl doctor
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>status&lt;/code> 汇总 kc-server、kc-etcd 和 kc-agent 的健康状态。&lt;code>doctor&lt;/code> 检查本地访问、服务、平台 etcd 和 Agent，并输出失败证据。非健康结果会返回非零退出码，适合用于检查脚本；两个命令都不会自动修复环境。&lt;/p>
+&lt;p>若平台 API 无法访问，检查 &lt;code>kcctl login&lt;/code> 使用的地址是否为 HTTPS API 入口，默认端口 8080。检查本地登录和部署配置，以及部署机到各节点的 SSH 连通性。&lt;/p>
+&lt;h2 id="节点服务">节点服务&lt;/h2>
+&lt;p>在对应的 Linux 节点执行：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl status kc-server kc-etcd kc-agent --no-pager
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo journalctl -u kc-server -n &lt;span style="color:#0000cf;font-weight:bold">100&lt;/span> --no-pager
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo journalctl -u kc-agent -n &lt;span style="color:#0000cf;font-weight:bold">100&lt;/span> --no-pager
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>只部署 Agent 的节点不应要求存在 Server 或平台 etcd 服务。结合实际节点角色解读结果，并检查磁盘、时间同步、管理地址和防火墙。&lt;/p>
+&lt;h2 id="部署失败">部署失败&lt;/h2>
+&lt;p>预检查错误会指出检查项和节点。若服务已存在，先确认该节点是否属于正在使用的平台；不要删除服务来绕过检查。下载错误应核对地址、证书、文件大小和包内容，不能用关闭证书校验掩盖错误。&lt;/p>
+&lt;h2 id="集群任务失败">集群任务失败&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation list -c demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster demo -o yaml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过&lt;a href="https://kubeclipper.io/docs/tutorials/operations/">操作与日志&lt;/a>定位具体步骤和节点。离线安装核对版本、架构和资源包；镜像拉取失败核对镜像仓库地址、认证和网络。提交 Issue 时提供版本、拓扑、脱敏后的错误和操作 ID，移除密码、token、私钥与 kubeconfig 凭据。&lt;/p></description></item><item><title>Docs: 镜像仓库</title><link>https://kubeclipper.io/docs/tutorials/registries/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/docs/tutorials/registries/</guid><description>
+&lt;p>Registry 资源用于描述 Kubernetes 镜像仓库或给 containerd 添加镜像拉取配置。它与平台离线资源包不是同一种对象，创建 Registry 也不会自动把镜像同步到仓库。&lt;/p>
+&lt;h2 id="创建-registry-资源">创建 Registry 资源&lt;/h2>
+&lt;p>以下是管理网络中 HTTP 镜像仓库的例子。生产仓库应按实际情况配置 HTTPS、CA 和认证；完整参数见命令帮助。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create registry --name internal --host registry.example.com:5000 --scheme http
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get registry
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl create registry -h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>需要认证时可通过 &lt;code>--auth-username&lt;/code> 和 &lt;code>--auth-password&lt;/code> 配置，注意命令历史和终端日志中的凭据暴露。使用 HTTPS 时核对 &lt;code>--ca&lt;/code> 与 &lt;code>--skip-tls-verify&lt;/code>，不要直接沿用 HTTP 示例配置。&lt;/p>
+&lt;h2 id="为集群选择仓库">为集群选择仓库&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create cluster --name demo --master 192.168.10.21 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --k8s-version v1.37.0 --cri containerd --cri-version 2.2.4 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --cni calico --cni-version v3.31.5 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --image-registry internal --cri-registry internal
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;code>--image-registry&lt;/code> 选择用于 Kubernetes 镜像的 Registry 资源。&lt;/li>
+&lt;li>&lt;code>--cri-registry&lt;/code> 将 Registry 资源的配置加入 containerd；可按需要指定多个资源。&lt;/li>
+&lt;li>未指定镜像仓库时，各组件采用各自的默认值和适用的 Agent 镜像源配置。不要假定 Kubernetes、Calico 等组件都从同一个默认仓库拉取。&lt;/li>
+&lt;/ul>
+&lt;p>创建前把所需镜像放入仓库，并检查集群节点实际可访问的镜像路径、认证和证书。离线安装还要满足&lt;a href="https://kubeclipper.io/docs/getting-started/carete-k8s-cluster-offline/">资源包要求&lt;/a>。&lt;/p></description></item></channel></rss>

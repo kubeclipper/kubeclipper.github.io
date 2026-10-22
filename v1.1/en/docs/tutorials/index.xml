@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Tutorials</title><link>https://www.kubeclipper.io//v1.1/en/docs/tutorials/</link><description>Recent content in Tutorials on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 04 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.1/en/docs/tutorials/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Cluster management</title><link>https://www.kubeclipper.io//v1.1/en/docs/tutorials/cluster-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/en/docs/tutorials/cluster-manage/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Tutorials</title><link>https://kubeclipper.io/v1.1/en/docs/tutorials/</link><description>Recent content in Tutorials on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 04 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.1/en/docs/tutorials/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Cluster management</title><link>https://kubeclipper.io/v1.1/en/docs/tutorials/cluster-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/en/docs/tutorials/cluster-manage/</guid><description>
 &lt;h2 id="create-a-kubernetes-cluster">&lt;strong>Create a kubernetes cluster&lt;/strong>&lt;/h2>
 &lt;p>You can create a kubernetes cluster through the wizard-style page, and install the required plugins such as CNI and CSI. You can also save the cluster template in advance, and create a cluster quickly after selecting the template.&lt;/p>
 &lt;h2 id="prepare-to-create-a-cluster">&lt;strong>Prepare to create a cluster&lt;/strong>&lt;/h2>
@@ -19,7 +19,7 @@
 &lt;p>Enter the &amp;quot;Node Configuration&amp;quot; page of the Create Cluster Wizard page. Fill in the &amp;quot;Cluster Name&amp;quot;, such as &amp;quot;test&amp;quot;, without selecting &amp;quot;Cluster Template&amp;quot;. Select an available node, add it as a control node, and remove the taint from the master node in the taint management list. Click the &amp;quot;Next&amp;quot; button.&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/select-node.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/select-node.png" alt="">&lt;/p>
 &lt;ol start="3">
 &lt;li>
 &lt;p>Enter the &amp;quot;Cluster Configuration&amp;quot; page of the Create Cluster Wizard page. Select &amp;quot;Offline Installation&amp;quot;, no need to specify &amp;quot;Mirror Repository&amp;quot;, retain the default values for other configurations, click the &amp;quot;Quick Create&amp;quot; button, jump to the configuration confirmation page, and click the &amp;quot;OK&amp;quot; button.&lt;/p>
@@ -344,9 +344,9 @@
 &lt;h3 id="cluster-backup-restore">&lt;strong>Cluster Backup Restore&lt;/strong>&lt;/h3>
 &lt;p>If you perform restore operation while the cluster is running, KubeClipper will perform overlay recovery on the cluster, that is, backup the ETCD data in the file, overwriting the existing data .&lt;/p>
 &lt;p>You can click the &amp;quot;Restore&amp;quot; button on the right side of the backup under the Backup tab of the cluster details page; or click the &amp;quot;More&amp;quot; &amp;gt; &amp;quot;Restore Cluster&amp;quot; button in the cluster operation, and select the backup to be restored in the Restore Cluster pop-up window. The current cluster can be restored to the specified backup state.&lt;/p>
-&lt;p>Note: After the K8S version of the cluster is upgraded, it will no longer be possible to restore the backup to the pre-upgrade version.&lt;/p></description></item><item><title>Docs: Node &amp; Zone Management</title><link>https://www.kubeclipper.io//v1.1/en/docs/tutorials/node-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/en/docs/tutorials/node-manage/</guid><description>
+&lt;p>Note: After the K8S version of the cluster is upgraded, it will no longer be possible to restore the backup to the pre-upgrade version.&lt;/p></description></item><item><title>Docs: Node &amp; Zone Management</title><link>https://kubeclipper.io/v1.1/en/docs/tutorials/node-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/en/docs/tutorials/node-manage/</guid><description>
 &lt;p>On the &amp;quot;Node Information&amp;quot; page, you can view the list of all nodes managed in the platform, node specifications, status and other information. Click the node name to enter the node details page, you can view detailed node basic information and system information.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/node-info.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/node-info.png" alt="">&lt;/p>
 &lt;p>The node status in KubeClipper represents the management status of the node by kc-gent. Under normal circumstances, the node status is displayed as &amp;quot;Ready&amp;quot;. When the node is out of contact for 4 minutes (within 10s of the error time), the status will be updated to &amp;quot;Unknown&amp;quot;. Nodes with unknown status cannot perform any operations, nor can they create clusters or add/remove nodes for clusters.&lt;/p>
 &lt;h2 id="add-node">&lt;strong>Add node&lt;/strong>&lt;/h2>
 &lt;p>When deploying KubeClipper, you can add the initial server nodes which are used to deploy KubeClipper's own services, and agent nodes which are used to deploy K8S clusters. In a KubeClipper environment for experimentation or development, you can add a server node as an agent node at the same time. However, if it is used in a production environment, it is recommended not to reuse the server node as an agent node.&lt;/p>
@@ -359,7 +359,7 @@
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plaintext" data-lang="Plaintext">&lt;span style="display:flex;">&lt;span>kcctl drain --agent 192.168.10.19
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="connect-terminal">&lt;strong>Connect Terminal&lt;/strong>&lt;/h2>
 &lt;p>On the node list page, you can click the &amp;quot;Connect Terminal&amp;quot; button on the right side of the target node, enter the node port and username password information in the pop-up window, access the node SSH console and execute the command.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/node-terminal.png" alt="">&lt;/p></description></item><item><title>Docs: Access control</title><link>https://www.kubeclipper.io//v1.1/en/docs/tutorials/access-control/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/en/docs/tutorials/access-control/</guid><description>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/node-terminal.png" alt="">&lt;/p></description></item><item><title>Docs: Access control</title><link>https://kubeclipper.io/v1.1/en/docs/tutorials/access-control/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/en/docs/tutorials/access-control/</guid><description>
 &lt;h2 id="create-user">&lt;strong>Create user&lt;/strong>&lt;/h2>
 &lt;p>After installing KubeClipper, you need to create a user for the desired role. Initially, the system has only one user, admin, by default, with the platform administrator role.&lt;/p>
 &lt;p>Click &amp;quot;Access Control&amp;quot; &amp;gt; &amp;quot;Users&amp;quot; to enter the user management page, click the &amp;quot;Create User&amp;quot; button in the upper left corner, fill in the user name, password, mobile phone number, email and other information in the pop-up window, specify the user role, and click the &amp;quot;OK&amp;quot; button. The four built-in roles in the system are as follows:&lt;/p>
@@ -423,8 +423,8 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> redirectURL: http://{kc-console-address}/oatuh2/redirect/{IDP-Name}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Under &amp;quot;provider&amp;quot;, you need to fill in the clientID , clientSecret , and issuer information of your OAuth2 service, taking keycloack as an example, as shown in the figure below.&lt;/p>
 &lt;p>RedirectURL example: http://172.0.0.90/oauth2/redirect/keycloack&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/keycloak-client.png" alt="">&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/keycloak-client2.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/keycloak-client.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/keycloak-client2.png" alt="">&lt;/p>
 &lt;p>OAuth2 users can access and use the KubeClipper platform by following these steps:&lt;/p>
 &lt;ol>
 &lt;li>

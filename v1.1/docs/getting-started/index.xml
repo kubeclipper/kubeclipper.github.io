@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 快速开始</title><link>https://www.kubeclipper.io//v1.1/docs/getting-started/</link><description>Recent content in 快速开始 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.1/docs/getting-started/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 部署AIO</title><link>https://www.kubeclipper.io//v1.1/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/getting-started/aio-env/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 快速开始</title><link>https://kubeclipper.io/v1.1/docs/getting-started/</link><description>Recent content in 快速开始 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.1/docs/getting-started/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 部署AIO</title><link>https://kubeclipper.io/v1.1/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/getting-started/aio-env/</guid><description>
 &lt;p>对于初次接触 KubeClipper 并想快速上手的用户，建议使用 All-in-One 安装模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p>
 &lt;h2 id="部署-kubeclipper">部署 KubeClipper&lt;/h2>
 &lt;h3 id="下载-kcctl">下载 kcctl&lt;/h3>
@@ -32,7 +32,7 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> |_| |_|
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="登录控制台">登录控制台&lt;/h3>
 &lt;p>安装完成后，打开浏览器，访问 &lt;code>http://$IP&lt;/code> 即可进入 KubeClipper 控制台。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
 &lt;p>您可以使用默认帐号密码 &lt;code>admin / Thinkbig1&lt;/code> 进行登录。&lt;/p>
 &lt;blockquote>
 &lt;p>您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。&lt;/p>
@@ -50,23 +50,23 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>您也可以进入控制台查看实时日志。&lt;/p>
 &lt;/blockquote>
-&lt;p>进入 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 使用 Kubeclipper 离线创建 k8s 集群</title><link>https://www.kubeclipper.io//v1.1/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
+&lt;p>进入 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 使用 Kubeclipper 离线创建 k8s 集群</title><link>https://kubeclipper.io/v1.1/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
 &lt;h2 id="1-进入创建界面">1. 进入创建界面&lt;/h2>
 &lt;p>登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-begin.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-begin.png" alt="">&lt;/p>
 &lt;h2 id="2-配置集群节点">2. 配置集群节点&lt;/h2>
 &lt;p>按照文字提示完成输入集群名称、选择节点等步骤&lt;/p>
 &lt;p>注意: master 节点数量不能为偶数&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-node-config.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-node-config.png" alt="">&lt;/p>
 &lt;h2 id="3-配置集群">3. 配置集群&lt;/h2>
 &lt;p>此步骤用于配置集群网络以及数据库、容器运行时等组件&lt;/p>
 &lt;p>选择离线安装并填写首先搭建好的镜像仓库地址&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-config.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-config.png" alt="">&lt;/p>
 &lt;h2 id="4-配置存储">4. 配置存储&lt;/h2>
 &lt;p>选择 nfs 存储，按照文字提示填写相应内容&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-storage-config.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-storage-config.png" alt="">&lt;/p>
 &lt;h2 id="5-安装完成">5. 安装完成&lt;/h2>
 &lt;p>完成所有配置确认安装&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
 &lt;p>安装成功，集群正常运行&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item></channel></rss>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item></channel></rss>

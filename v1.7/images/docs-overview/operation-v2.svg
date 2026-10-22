@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+<title id="title">KubeClipper 1.7 architecture</title>
+<desc id="desc">Console and kcctl submit requests to the Server API. Operations and Tasks are stored in etcd. Agents watch and report Tasks through the API using mutual TLS, and execute actions on Kubernetes nodes.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#345"/></marker></defs>
+<rect width="960" height="430" rx="12" fill="#f5f8fc"/>
+<g fill="#fff" stroke="#2374ab" stroke-width="2"><rect x="30" y="60" width="180" height="100" rx="10"/><rect x="330" y="60" width="260" height="100" rx="10"/><rect x="710" y="60" width="220" height="100" rx="10"/><rect x="330" y="290" width="260" height="100" rx="10"/><rect x="710" y="290" width="220" height="100" rx="10"/></g>
+<g font-family="sans-serif" font-size="20" fill="#123" text-anchor="middle"><text x="120" y="100">Console / kcctl</text><text x="120" y="132" font-size="16">User requests</text><text x="460" y="100">Server API :8080</text><text x="460" y="132" font-size="16">Operation v2 / Tasks</text><text x="820" y="100">Agent</text><text x="820" y="132" font-size="16">Watch / Execute / Report</text><text x="460" y="333">etcd</text><text x="460" y="365" font-size="16">Resources / Operation state</text><text x="820" y="333">Linux nodes</text><text x="820" y="365" font-size="16">Kubernetes / containerd</text></g>
+<g stroke="#345" stroke-width="2" marker-end="url(#arrow)"><path d="M210 110 H330"/><path d="M590 110 H710" marker-start="url(#arrow)"/><path d="M460 160 V290" marker-start="url(#arrow)"/><path d="M820 160 V290"/></g>
+<g font-family="sans-serif" font-size="16" fill="#345" text-anchor="middle"><text x="270" y="95">HTTPS</text><text x="650" y="95">mTLS</text><text x="516" y="229">Persist</text><text x="869" y="229">Execute</text></g>
+</svg>

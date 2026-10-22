@@ -1,498 +1,133 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Documentation</title><link>https://www.kubeclipper.io/en/docs/</link><description>Recent content in Documentation on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/en/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploying AIO</title><link>https://www.kubeclipper.io/en/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/getting-started/aio-env/</guid><description>
-&lt;p>For users who are new to KubeClipper and want to get started quickly, it is recommended to use the All-in-One installation mode, which can help you quickly deploy KubeClipper with zero configuration.&lt;/p>
-&lt;h2 id="deploy-kubeclipper">Deploy KubeClipper&lt;/h2>
-&lt;h3 id="download-kcctl">Download kcctl&lt;/h3>
-&lt;p>KubeClipper provides a command line tool 🔧 kcctl to simplify operation and maintenance. You can download the latest version of kcctl directly with the following command:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># The latest distribution is installed by default&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Install the specified version&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master bash -
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#If you are in China, you can use cn environment variables during installation, in this case we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>You can also download the specified version from the [GitHub Release Page] ( &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">https://github.com/kubeclipper/kubeclipper/releases&lt;/a> ) .&lt;/p>
-&lt;/blockquote>
-&lt;p>Check if the installation was successful with the following command:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>kcctl version
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="start-installation">Start installation&lt;/h3>
-&lt;p>You can use &amp;lsquo;kcctl deploy&amp;rsquo; to quickly install and deploy KubeClipper. kcctl uses SSH to access the target node where KubeClipper is finally deployed, so you need to provide SSH access credentials, and the following way to pass the credentials:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--user &amp;lt;username&amp;gt;&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--passwd &amp;lt;password&amp;gt; &lt;span style="color:#000;font-weight:bold">|&lt;/span> --pk-file &amp;lt;private key path&amp;gt;&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Example：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Use the private key&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --pk-file /root/.ssh/id_rsa
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Use a password&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --passwd password
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Deploy AIO&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Execute the &amp;lsquo;kcctl deploy&amp;rsquo; command kcctl will check your installation environment and will automatically enter the installation process if the conditions are met. If you see the following KubeClipper banner, the installation is successful.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> _ __ _ _____ _ _
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| | / / | | / __ \ (_)
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |/ / _ _| |__ ___| / \/ |_ _ __ _ __ ___ _ __
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| \| | | | &amp;#39;_ \ / _ \ | | | | &amp;#39;_ \| &amp;#39;_ \ / _ \ &amp;#39;__|
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |\ \ |_| | |_) | __/ \__/\ | | |_) | |_) | __/ |
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">\_| \_/\__,_|_.__/ \___|\____/_|_| .__/| .__/ \___|_|
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> | | | |
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> |_| |_|
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="login-to-console">Login to console&lt;/h3>
-&lt;p>After the installation is complete, open a browser and visit &amp;lsquo;http:&lt;kc-server ip address>&amp;rsquo; to enter the KubeClipper console. (Usually kc-server IP is the IP of the node where you deploy kubeClipper)&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
-&lt;p>You can use the default account password &amp;quot; admin/Thinkbig1 &amp;quot; to log in.&lt;/p>
-&lt;blockquote>
-&lt;p>You may need to configure port forwarding rules and open ports in security groups for external users to access the console.&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="create-kubernetes-cluster">Create kubernetes cluster&lt;/h2>
-&lt;p>After successful deployment you can create a kubernetes cluster using the ** kcctl tool ** or via the ** console ** . Use the kcctl tool to create it in this quickstart tutorial.&lt;/p>
-&lt;p>First, use the default account password to log in and obtain the token, which is convenient for subsequent interaction between kcctl and kc-server.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>kcctl login -H https://&amp;lt;kc-server ip address&amp;gt;:8080 -u admin -p Thinkbig1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Then create a Kubernetes cluster with the following command:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">NODE&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> $ &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>kcctl get node -o yaml &lt;span style="color:#000;font-weight:bold">|&lt;/span> grep ipv4DefaultIP: &lt;span style="color:#000;font-weight:bold">|&lt;/span> sed&lt;span style="color:#4e9a06">&amp;#39;s/ipv4DefaultIP : //&amp;#39;&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Kcctl create cluster --master &lt;span style="color:#000">$NODE&lt;/span> --name demo --untaint-master
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>It takes about 3 minutes to complete the cluster creation, or you can use the following command to view the cluster status&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>Kcctl get cluster -o yaml &lt;span style="color:#000;font-weight:bold">|&lt;/span> grep status -A5
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>You can also go to the console to view the real-time log.&lt;/p>
-&lt;/blockquote>
-&lt;p>The cluster installation is complete when the cluster is in the Running state, and you can use the &amp;lsquo;kubectl get cs&amp;rsquo; command to view the cluster health.&lt;/p></description></item><item><title>Docs: Feature</title><link>https://www.kubeclipper.io/en/docs/overview/feature/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/overview/feature/</guid><description>
-&lt;h2 id="cluster-lifecycle-management">Cluster LifeCycle Management&lt;/h2>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Documentation</title><link>https://kubeclipper.io/en/docs/</link><description>Recent content in Documentation on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/en/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Cluster creation troubleshooting</title><link>https://kubeclipper.io/en/docs/faq/kcctl-create-cluster-error/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/faq/kcctl-create-cluster-error/</guid><description>
+&lt;p>This page applies to 1.7. Older v1.2.1 Calico download workarounds do not apply directly to this release.&lt;/p>
+&lt;h2 id="cluster-not-ready-after-submission">Cluster not Ready after submission&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation list -c demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster demo -o yaml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Inspect operation details and logs next. Request acceptance, operation completion, and Kubernetes node readiness are separate checks.&lt;/p>
+&lt;h2 id="offline-package-or-image-errors">Offline package or image errors&lt;/h2>
+&lt;p>Use &lt;code>kcctl resource list&lt;/code> to confirm version and architecture. Inspect image paths, authentication, and connectivity using the failed step&amp;rsquo;s logs. See &lt;a href="https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/">offline clusters&lt;/a>.&lt;/p>
+&lt;h2 id="platform-or-agent-errors">Platform or Agent errors&lt;/h2>
+&lt;p>Run &lt;code>kcctl status&lt;/code> and &lt;code>kcctl doctor&lt;/code> to check API access, services, and SSH connectivity. Supply an SSH private key as deployment credentials, not a public key path.&lt;/p>
+&lt;p>See &lt;a href="https://kubeclipper.io/en/docs/tutorials/diagnostics/">platform diagnostics&lt;/a> for the investigation sequence and &lt;a href="https://kubeclipper.io/en/docs/tutorials/operations/">operations and logs&lt;/a> for retries and cancellation.&lt;/p></description></item><item><title>Docs: Create clusters</title><link>https://kubeclipper.io/en/docs/tutorials/create-clusters/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/tutorials/create-clusters/</guid><description>
+&lt;p>Before creating a cluster, confirm the platform is healthy, nodes are registered and ready, and resource versions match node architecture. Complete &lt;a href="https://kubeclipper.io/en/docs/getting-started/">Getting started&lt;/a> to validate the deployment path.&lt;/p>
+&lt;h2 id="create-in-the-console">Create in the Console&lt;/h2>
+&lt;p>Create a cluster from the cluster page. Set a name, control-plane and worker nodes, component versions, and Pod / Service CIDRs that fit your network. Plan control-plane availability, API access, and storage for production deployments; a single-node lab configuration is insufficient.&lt;/p>
+&lt;p>Use the &lt;a href="https://kubeclipper.io/en/docs/overview/release-1.7/">1.7 component matrix&lt;/a>. &lt;a href="https://kubeclipper.io/en/docs/getting-started/make-offline-package/">Upload missing resources&lt;/a> first. See &lt;a href="https://kubeclipper.io/en/docs/tutorials/registries/">Registry&lt;/a> for private image settings; image registries and component packages serve different purposes.&lt;/p>
+&lt;h2 id="cli-and-verification">CLI and verification&lt;/h2>
+&lt;p>&lt;a href="https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/">Offline cluster creation&lt;/a> includes a CLI example with explicit versions. After submitting the request, inspect the &lt;a href="https://kubeclipper.io/en/docs/tutorials/operations/">Operation&lt;/a> and confirm cluster state, Ready nodes, system Pods, and Kubernetes API health. Preserve logs when troubleshooting; resetting state does not resolve failed installation steps.&lt;/p></description></item><item><title>Docs: High availability</title><link>https://kubeclipper.io/en/docs/deployment-docs/ha-deploy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/deployment-docs/ha-deploy/</guid><description>
+&lt;p>This guide deploys a highly available KubeClipper control plane. Platform availability and the availability of managed Kubernetes clusters require separate planning.&lt;/p>
+&lt;h2 id="prepare-nodes-and-networking">Prepare nodes and networking&lt;/h2>
+&lt;p>Prepare three Linux Server nodes and the Agent nodes you want to manage. The deployment user needs SSH access to every node with the same private key and sudo privileges. See &lt;a href="https://kubeclipper.io/en/docs/overview/">architecture and networking&lt;/a> for clock synchronization and ports.&lt;/p>
+&lt;p>Platform etcd runs on Server nodes. Plan membership and failure tolerance around etcd quorum requirements. Keep platform Servers separate from Kubernetes workload nodes in production.&lt;/p>
+&lt;h2 id="install-and-download">Install and download&lt;/h2>
+&lt;p>Follow &lt;a href="https://kubeclipper.io/en/docs/getting-started/">Getting started&lt;/a> to install v1.7.0 kcctl and download the complete &lt;code>kc-amd64.tar.gz&lt;/code> or &lt;code>kc-arm64.tar.gz&lt;/code> package for your targets. GitHub Release client archives are not deployment packages for &lt;code>--pkg&lt;/code>.&lt;/p>
+&lt;h2 id="deploy-servers-and-agents">Deploy Servers and Agents&lt;/h2>
+&lt;p>Replace the IP addresses, private key, and package path. &lt;code>--server&lt;/code> accepts comma-separated addresses; &lt;code>--agent&lt;/code> can include a region.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">read&lt;/span> -r -s -p &lt;span style="color:#4e9a06">&amp;#39;Set the admin password: &amp;#39;&lt;/span> KC_ADMIN_PASSWORD
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">printf&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;\n&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --server 192.168.10.11,192.168.10.12,192.168.10.13 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --agent default:192.168.10.21,192.168.10.22 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --user root --pk-file &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$HOME&lt;/span>&lt;span style="color:#4e9a06">/.ssh/id_rsa&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --pkg &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$PWD&lt;/span>&lt;span style="color:#4e9a06">/kc-amd64.tar.gz&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --initial-password &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$KC_ADMIN_PASSWORD&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">unset&lt;/span> KC_ADMIN_PASSWORD
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Keep TLS enabled. On hosts with multiple interfaces, select reachable addresses using &lt;code>--ip-detect&lt;/code> and &lt;code>--node-ip-detect&lt;/code>; consult &lt;code>kcctl deploy -h&lt;/code>. Platform etcd ports default to 12379, 12380, and 12381.&lt;/p>
+&lt;h2 id="verify-the-platform">Verify the platform&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login --host https://192.168.10.11:8080 --username admin
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl doctor
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Check services on all three Servers, platform etcd membership, and Agent health. Repeat API connectivity checks against the other Servers. Configure a load balancer and certificates separately if you need a common hostname or VIP; deploying three Servers does not provision an entry-point VIP.&lt;/p>
+&lt;p>Browsers use each Server&amp;rsquo;s default HTTP port 80 console entry point; the CLI uses the HTTPS port 8080 API. Configure HTTPS at the production console entry point and restrict management ports to the intended networks.&lt;/p>
+&lt;h2 id="add-and-remove-agents">Add and remove Agents&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl join --agent default:192.168.10.23
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After confirming the node has no clusters or workloads to retain, remove it:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl drain --agent 192.168.10.23
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Investigate a normal drain failure before choosing further actions. Do not use force options by default. See the &lt;a href="https://kubeclipper.io/en/docs/deployment-docs/upgrade/">upgrade checklist&lt;/a> before changing versions.&lt;/p></description></item><item><title>Docs: 1.7 release notes</title><link>https://kubeclipper.io/en/docs/overview/release-1.7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/overview/release-1.7/</guid><description>
+&lt;p>This documentation targets &lt;strong>KubeClipper v1.7.0&lt;/strong>, released on September 8, 2026. See the official &lt;a href="https://github.com/kubeclipper/kubeclipper/releases/tag/v1.7.0">v1.7.0 release&lt;/a>.&lt;/p>
+&lt;h2 id="main-changes">Main changes&lt;/h2>
 &lt;ul>
-&lt;li>Lifecycle Management: cluster creation, deletion, backup, restoration, upgrade, and node manipulation&lt;/li>
-&lt;li>Multiple Deployment Modes: online/offline deployment support&lt;/li>
-&lt;li>Multi-Architecture: x86/64 &amp;amp; arm64 support&lt;/li>
-&lt;li>Cluster Import: registration and management of external clusters (non-Kubeclipper created)&lt;/li>
+&lt;li>API-driven Operation v2 manages operations, tasks, and execution state. Agents communicate with Servers over mTLS.&lt;/li>
+&lt;li>&lt;code>kcctl operation&lt;/code> provides lists, details, logs, retries, and cancellation.&lt;/li>
+&lt;li>&lt;code>kcctl status&lt;/code> and &lt;code>kcctl doctor&lt;/code> report platform health and diagnostic evidence.&lt;/li>
+&lt;li>Registry resources select Kubernetes image repositories and configure containerd image pulls.&lt;/li>
+&lt;li>Deployment prechecks identify the node, role, and underlying error. Server installation waits for platform etcd health.&lt;/li>
 &lt;/ul>
-&lt;h2 id="node-management">Node Management&lt;/h2>
-&lt;ul>
-&lt;li>Automatic node registration&lt;/li>
-&lt;li>Node information collection&lt;/li>
-&lt;li>Node terminal&lt;/li>
-&lt;/ul>
-&lt;h2 id="identity-and-access-management-iam">Identity and Access Management (IAM)&lt;/h2>
-&lt;ul>
-&lt;li>RBAC-based user permission system&lt;/li>
-&lt;li>OIDC integration&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Create clusters</title><link>https://www.kubeclipper.io/en/docs/tutorials/create-clusters/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/create-clusters/</guid><description>
-&lt;h3 id="prepare-to-create-a-cluster">&lt;strong>Prepare to create a cluster&lt;/strong>&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>You need to have enough available nodes. To add nodes, refer to &amp;quot;&lt;a href="https://www.kubeclipper.io/en/docs/tutorials/node-management/#add-node">Add Nodes&lt;/a>&amp;quot;.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Prepare the image or binary files of kubernetes, CRI, calico, CSI and other plug-ins that need to be installed. You can choose online/offline according to the network environment of the platform, and choose the recommended kubernetes version on page. You can also upload the image required for deployment to your own image repository in advance, and specify the image repository during deployment. For more installation configuration, refer to &amp;quot;&lt;a href="#cluster-configuration">Cluster Configuration Guide&lt;/a>&amp;quot;.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h3 id="create-an-aio-experimental-cluster">&lt;strong>Create an AIO experimental cluster&lt;/strong>&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Cluster&amp;quot; to enter the cluster list page, and click the &amp;quot;Create Cluster&amp;quot; button in the upper left corner.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Enter the &amp;quot;Node Config&amp;quot; page of the Create Cluster Wizard page. Fill in the &amp;quot;Cluster Name&amp;quot;, such as &amp;quot;test&amp;quot;, without selecting &amp;quot;Cluster Template&amp;quot;. Select an available node, add it as a master node, and remove the taint from the master node in the taints list. Click the &amp;quot;Next&amp;quot; button.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/aioen.png" alt="">&lt;/p>
-&lt;ol start="3">
-&lt;li>
-&lt;p>Enter the &amp;quot;Cluster Config&amp;quot; page. Select &amp;quot;Offline&amp;quot; for &amp;ldquo;Image Type&amp;rdquo;, retain the default values for other configurations, click the &amp;quot;Create Quickly&amp;quot; button, jump to the &amp;ldquo;Confirm Config&amp;rdquo; page, and click the &amp;quot;Confirm&amp;quot; button.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>The experimental cluster of a single node is created. You can view the cluster details on the cluster details page, or click the &amp;quot;ViewLog&amp;quot; button to view the real-time log during the cluster creation process.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h3 id="create-a-cluster-using-a-private-registry">&lt;strong>Create a cluster using a private registry&lt;/strong>&lt;/h3>
-&lt;p>If you create a cluster that contains large images, it is recommended that you upload the requred images to a private registry to speed up the installing process.&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>Add a private registry. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Registry&amp;quot; to enter the registry list page, and click the &amp;quot;Add&amp;quot; button in the upper left corner. In the pop-up window, enter the name and address of the registry where the images are stored, and click the &amp;quot;OK&amp;quot; button.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Create a cluster. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Cluster&amp;quot; to enter the cluster list page, and click the &amp;quot;Create Cluster&amp;quot; button in the upper left corner. Configure the cluster nodes as needed. In the &amp;quot;Private Registry&amp;quot; of the &amp;quot;Cluster Config&amp;quot; page, select the registry added in the first step, and create the cluster after completing other configurations of the cluster as needed.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h3 id="create-a-cluster-using-the-cluster-template">&lt;strong>Create a cluster using the cluster template&lt;/strong>&lt;/h3>
-&lt;p>You can use cluster templates to simplify the cluster creation process.&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>Add a template. There are two ways to save a template. You can add a cluster template on the &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Template Management&amp;quot; page, and select the template when creating a new cluster. You can also save the existing cluster configuration as a template by clicking &amp;quot;More&amp;quot; &amp;gt;&amp;quot;Cluster setings&amp;quot;&amp;gt; &amp;quot;Save as Template&amp;quot; in the cluster operation, so as to create a kubernetes cluster with the same configuration as the former cluster.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Create a cluster. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Cluster&amp;quot; to enter the cluster list page, click the &amp;quot;Create Cluster&amp;quot; button in the upper left corner, enter the cluster creation page, fill in the &amp;quot;cluster name&amp;quot;, such as &amp;quot;demo&amp;quot;, select the cluster template saved in the first step. Add the required nodes, click the &amp;quot;Create Quickly&amp;quot; button in the lower right corner, jump to the &amp;quot;Confirm Config&amp;quot; page, after checking the template information, click the &amp;quot;Confirm&amp;quot; button to create a cluster.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h3 id="cluster-configuration-guide">&lt;strong>Cluster Configuration Guide&lt;/strong>&lt;/h3>
-&lt;h4 id="node-configuration">&lt;strong>Node configuration&lt;/strong>&lt;/h4>
-&lt;p>On the node config page, you can configure the node as follows:&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Region: The region to which the cluster belongs. When adding a node, a physical or logical region can be specified for the node. The kubernetes cluster created by the node under this region also belongs to this region. Creating a cluster with nodes from multiple regionals is not supported.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Master Nodes: Specify an odd number of master nodes for the cluster. The production environments generally use 3 master nodes to achieve high availability.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Worker nodes: Add worker nodes to the new cluster according to the business size.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Taint management: You can configure taint for added nodes, kubeclipper will automatically add noschedule taint to the master nodes, and you can also make changes as needed.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Node Labels: You can configure labels for added cluster nodes as needed.&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>You can configure the required nodes according to your business needs. If you need to create a non-highly available experimental cluster, you can also add only one master node, and remove the taint automatically added for the master node. For details, refer to &amp;quot;&lt;a href="#create-an-aio-experimental-cluster">Creating an AIO Experimental Cluster&lt;/a>&amp;quot;.&lt;/p>
-&lt;h4 id="cluster-configuration">&lt;strong>Cluster configuration&lt;/strong>&lt;/h4>
-&lt;p>On the cluster configuration page, you can configure the cluster as follows:&lt;/p>
-&lt;ul>
-&lt;li>Installation method and registry:
-&lt;ul>
-&lt;li>Online: public network environment&lt;/li>
-&lt;li>Offline: intranet environment&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
+&lt;h2 id="component-versions">Component versions&lt;/h2>
 &lt;table>
 &lt;thead>
 &lt;tr>
-&lt;th>&lt;/th>
-&lt;th>no private registry&lt;/th>
-&lt;th>Specified private registry&lt;/th>
+&lt;th>Kubernetes&lt;/th>
+&lt;th>containerd&lt;/th>
+&lt;th>Calico&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>&lt;strong>Online&lt;/strong>&lt;/td>
-&lt;td>Configuration package: Download from kubeclipper.io. &lt;br />Images: The image is pulled from the official registry by default, for example, kubernetes image pulled from k8s.gcr.io, calico pulled from docker.io.&lt;/td>
-&lt;td>Configuration package source: Download from kubeclipper.io.&lt;br />Images: Pulled from the filled private registry. The components will inherit the registry by default. Please ensure that the required images are stored in the registry. You can also set an independent registry for a specific component, and the component image will be pulled from this registry.&lt;/td>
+&lt;td>v1.37.0&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>v3.31.5&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;strong>Offline&lt;/strong>&lt;/td>
-&lt;td>Configuration package: Download from the local kubeclipper server nodes, you can use the &amp;ldquo;kcctl resource list&amp;rdquo; command to check the available configuration packages, or use the &amp;ldquo;kcctl resource push&amp;rdquo; command to upload the required configuration packages.&lt;br />Images: Download from the local kubeclipper server nodes, and CRI will import the images after downloading. You can use the &amp;ldquo;kcctl resource list&amp;rdquo; command to check the available image packages, or use the &amp;ldquo;kcctl resource push&amp;rdquo; command to upload the required image packages.&lt;/td>
-&lt;td>Configuration package: Download from the local kubeclipper server nodes, you can use the &amp;ldquo;kcctl resource list&amp;rdquo; command to check the available configuration packages, or use the &amp;ldquo;kcctl resource push&amp;rdquo; command to upload the required configuration packages.&lt;br />Images: Pulled from the filled private registry. The components will inherit the registry by default. Please ensure that the required images are stored in the registry. You can also set an independent registry for a specific component, and the component image will be pulled from this address. kubeclipper provides the Docker Registry and uses the &amp;ldquo;kcctl registry&amp;rdquo; command for management. You can also use your own private registry.&lt;/td>
+&lt;td>v1.36.4&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>v3.31.5&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>v1.35.8&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>v3.31.5&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
+&lt;p>Kubernetes v1.37.0 is the default. Available selections depend on platform resources; offline installations also need packages for the target CPU architecture. Source: &lt;a href="https://github.com/kubeclipper/kubeclipper/blob/v1.7.0/README.md">v1.7.0 support matrix&lt;/a>.&lt;/p>
+&lt;h2 id="release-scope">Release scope&lt;/h2>
+&lt;p>This documentation describes v1.7.0. Review release notes, security advisories, and binary versions before production use. See the &lt;a href="https://kubeclipper.io/en/docs/deployment-docs/upgrade/">upgrade checklist&lt;/a>.&lt;/p>
+&lt;p>The version menu preserves documentation for 1.6 through 1.1. The &lt;a href="https://kubeclipper.io/v1.6/en/docs/">1.6 documentation&lt;/a> follows the v1.6.0 release tag.&lt;/p></description></item><item><title>Docs: All-in-One deployment</title><link>https://kubeclipper.io/en/docs/getting-started/aio-env/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/getting-started/aio-env/</guid><description>
+&lt;p>All-in-One runs the Server and Agent on the same Linux host for evaluation and testing.&lt;/p>
+&lt;p>Follow &lt;a href="https://kubeclipper.io/en/docs/getting-started/">Getting started&lt;/a> to prepare the host, install v1.7.0 kcctl, download the complete package, deploy the platform, and create a test cluster.&lt;/p>
+&lt;p>For production, plan separate Server and workload nodes and see &lt;a href="https://kubeclipper.io/en/docs/deployment-docs/ha-deploy/">high availability&lt;/a>.&lt;/p></description></item><item><title>Docs: Features</title><link>https://kubeclipper.io/en/docs/overview/feature/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/overview/feature/</guid><description>
+&lt;h2 id="cluster-lifecycle">Cluster lifecycle&lt;/h2>
+&lt;p>Create, delete, upgrade, back up, and restore Kubernetes clusters. Manage cluster nodes and import existing clusters. Online and offline installation support amd64 and arm64 resources; use the &lt;a href="https://kubeclipper.io/en/docs/overview/release-1.7/">1.7 component matrix&lt;/a> when selecting versions.&lt;/p>
+&lt;h2 id="operations-and-troubleshooting">Operations and troubleshooting&lt;/h2>
+&lt;p>Operation v2 records asynchronous cluster changes. Inspect execution state and logs, then retry or cancel when appropriate. &lt;a href="https://kubeclipper.io/en/docs/tutorials/operations/">Operation commands&lt;/a> and &lt;a href="https://kubeclipper.io/en/docs/tutorials/diagnostics/">platform diagnostics&lt;/a> help locate failures.&lt;/p>
+&lt;h2 id="image-and-resource-management">Image and resource management&lt;/h2>
+&lt;p>&lt;a href="https://kubeclipper.io/en/docs/tutorials/registries/">Registry resources&lt;/a> configure image sources and containerd pull settings. &lt;a href="https://kubeclipper.io/en/docs/getting-started/make-offline-package/">Offline packages&lt;/a> provide component resources separately.&lt;/p>
+&lt;h2 id="platform-and-access">Platform and access&lt;/h2>
+&lt;p>Deploy a single-node lab or a &lt;a href="https://kubeclipper.io/en/docs/deployment-docs/ha-deploy/">high-availability platform&lt;/a>. Agents use mTLS to access the Server API. RBAC provides user permissions; see &lt;a href="https://kubeclipper.io/en/docs/tutorials/access-control/">access control&lt;/a>.&lt;/p></description></item><item><title>Docs: Upgrade checklist</title><link>https://kubeclipper.io/en/docs/deployment-docs/upgrade/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/deployment-docs/upgrade/</guid><description>
+&lt;p>Platform upgrades and managed Kubernetes upgrades are separate procedures. This page covers platform checks; it does not promise a direct upgrade from every older release to 1.7.&lt;/p>
+&lt;h2 id="before-upgrading">Before upgrading&lt;/h2>
+&lt;ol>
+&lt;li>Record Server, Agent, kcctl, and Console versions and node topology. Confirm package architecture.&lt;/li>
+&lt;li>Review release notes, security advisories, and configuration changes. 1.7 introduces Operation v2; inspect old operation records and task state in a test environment.&lt;/li>
+&lt;li>Choose a window with no running installation, upgrade, or backup operations. Resolve unfinished work first.&lt;/li>
+&lt;li>Back up platform etcd, Server and Agent configuration, certificates, and persistent authentication keys. Verify recovery. Back up managed-cluster data separately.&lt;/li>
+&lt;li>Rehearse the target upgrade path in a recoverable test environment and record interruption and recovery steps.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl doctor
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl upgrade -h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="upgrade">Upgrade&lt;/h2>
+&lt;p>&lt;code>kcctl upgrade&lt;/code> supports platform and component upgrades. Use a package with the structure described in command help that you have validated in a test environment. Client archives are not platform upgrade packages.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">UPGRADE_PACKAGE&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>/path/to/validated-upgrade-package.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl upgrade all --pkg &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$UPGRADE_PACKAGE&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Use online upgrades or individual component replacement only when the release or your validated deployment procedure supports them. Replacing one binary does not establish that the whole platform upgrade succeeded.&lt;/p>
+&lt;h2 id="after-upgrading">After upgrading&lt;/h2>
+&lt;p>Repeat &lt;code>kcctl status&lt;/code> and &lt;code>kcctl doctor&lt;/code> and verify versions running on every node. Check login, node data, operation details and logs, managed-cluster access, and basic Console flows. Exercise a controlled lifecycle operation and compare the Operation result with actual cluster state.&lt;/p>
+&lt;p>Preserve errors and logs on failure and follow the recovery procedure tested beforehand. Check data and configuration compatibility before restoring old binaries; do not repeatedly overwrite services in an unknown state.&lt;/p></description></item><item><title>Docs: Roadmap</title><link>https://kubeclipper.io/en/docs/overview/roadmap/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/overview/roadmap/</guid><description>
+&lt;p>This page records development directions, not capabilities guaranteed by v1.7.0. Consult the &lt;a href="https://kubeclipper.io/en/docs/overview/release-1.7/">release notes&lt;/a> for shipped functionality and &lt;a href="https://github.com/kubeclipper/kubeclipper/issues">GitHub issues&lt;/a> for current discussions.&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;p>kubernetes version: Specify the cluster kubernetes version. When you choose to install offline, you can choose from the kubernetes version of the configuration packages in the current environment; when you choose to install online, you can choose from the officially recommended versions by kubeclipper.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>ETCD Data Dir: You can specify the ETCD data directory, which defaults to /var/lib/etcd.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>kubelet Data Dir: You can specify the ETCD data directory, which defaults to /var/lib/kubelet.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>CertSANs: The IP address or domain name of the kubernetes cluster ca certificate signature, more than one can be filled in.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Container Runtime: According to the specified kubernetes version, the default container runtime is Docker for kubernetes version before v1.20.0, the default container runtime is Contianerd after v1.20.0; Docker is not supported after v1.24.0.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Container Runtime version: Specify the containerd/docker version. As with kubernetes, when you choose to install offline, you can choose from the version of the configuration package in the current environment; when you choose to install online, you can choose from the officially recommended version by kubeclipper.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Containerd data Path: The &amp;quot;root dir&amp;quot; in the config.toml configuration can be filled in. which defaults to /var/lib/containerd.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Docker data Path: The &amp;quot;root dir&amp;quot; in the daemon.json configuration can be filled in . which defaults to /var/lib/docker.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Containerd registry: The registry address where the images are stored, the &amp;quot;registry.mirrors&amp;quot; in the config.toml configuration, more than one can be filled in.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Docker registry: The registry address where the images are stored, the insecure registry in the daemon.json configuration, more than one can be filled in.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>DNS domain name: The domain name of the kubernetes cluster, which defaults to cluster.local.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Worker load IP: Used for load balancing from worker nodes to multiple masters, no need to be set for a single master node cluster.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>External access IP: You can fill in a floating IP for user access, which can be empty.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Backup space: Storage location of cluster backup files.&lt;/p>
-&lt;/li>
+&lt;li>OCI-based distribution of installation resources&lt;/li>
+&lt;li>Kubernetes workload and monitoring views&lt;/li>
+&lt;li>Application and add-on lifecycle management&lt;/li>
+&lt;li>Additional managed-cluster deployment modes&lt;/li>
 &lt;/ul>
-&lt;h4 id="cni-configuration">&lt;strong>CNI configuration&lt;/strong>&lt;/h4>
-&lt;p>The current version kubeclipper supports Calico as cluster CNI.&lt;/p>
-&lt;p>Calico divides the pod CIDR set by users into several blocks (network segments), dynamically allocates them to the required nodes according to business requirements, and maintains the routing table of the cluster nodes through the bgp peer in the nodes.&lt;/p>
-&lt;p>For example: container address pool: 172.25.0.0/16, dynamically allocated network segment pool: 172.25.0.0 - 172.25.255.192 (172.25.0.0/26 i.e. 10 bits), the number of dynamically allocated network segments: 1023, the number of pods per network segment: 61 (193-254), the total number of pods is 1023 * 61 = 62403, the relative maximum number of nodes (according to the 200 service pod as the reference value): 312.&lt;/p>
-&lt;p>Clusters larger than 50 nodes are currently not recommended. Clusters larger than 50 nodes are recommended to manually configure route reflection to optimize the stability of routing table maintenance for nodes in the cluster.&lt;/p>
-&lt;p>To use Calico as the cluster CNI, you need the following configuration:&lt;/p>
-&lt;ul>
-&lt;li>Calico mode: 5 network modes are supported:
-&lt;ul>
-&lt;li>Overlay-IPIP-All: Use IP-in-IP technology to open up the network of pods of different nodes. Usually, this method is used in the environment where the underlying platform is IaaS. Of course, if your underlying network environment is directly a physical device, it is also completely can be used, but the efficiency and flexibility will be greatly reduced. It should be noted that you need to confirm that the underlying network environment (underlay) supports the IPIP protocol. (The network method using overlay will have a certain impact on network performance).&lt;/li>
-&lt;li>Overlay-Vxlan-All: Use IP-in-IP technology to open up the network of pods of different nodes. Usually, this method is used in the environment where the underlying platform is IaaS. Of course, if your underlying network environment is directly a physical device, it is also completely can be used, but the efficiency and flexibility will be greatly reduced. In theory, it can run on any network environment. Usually, we will use it when the underlying environment does not support the IPIP protocol. (The network method using overlay has a certain impact on network performance).&lt;/li>
-&lt;li>BGP : Use IP-in-IP technology to open up the network of pods of different nodes. Usually this method is used in a bare metal environment. Of course, if the Iaas platform supports BGP, it can also be used. In this mode, the IP communication of pods is accomplished by exchanging routing tables among nodes in the cluster. If you need to manually open up the pod network between multiple clusters, you need to pay attention that the addresses you assign should not conflict.&lt;/li>
-&lt;li>Overly-IPIP-Cross-Subnet: Use IP-in-IP technology to open up the network of pods of different nodes. Usually this method is used in the environment where the underlying platform is IaaS . It should be noted that you need to confirm the underlying network environment (underlay) supports the IPIP protocol. The difference with Overlay-IPIP-All is that if two upper Pods of different nodes in the same network segment communicate with each other through the routing table, the efficiency of upper Pods of different nodes in the same network segment can be improved.&lt;/li>
-&lt;li>Overly-Vxlan-Cross-Subnet: The logic is similar to that of Overly-IPIP-Cross-Subnet.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>IP version: The IP version can be specified as IPV4 or IPV4 IPV6 dual stack.&lt;/li>
-&lt;li>Service subnet: Fill in the service subnet CIDR, v4 defaults to: 10.96.0.0/16, v6 defaults to fd03::/112, note that the Service network must not overlap with any host network.&lt;/li>
-&lt;li>Pod CIDR: Fill in the pod subnet CIDR, v4 default: 172.25.0.0/24, v6 default is fd05::/120, note that the Pod network must not overlap with any host network.&lt;/li>
-&lt;li>The bottom layer of the pod network:
-&lt;ul>
-&lt;li>First-found (default): The program will traverse all valid IP addresses (local, loop back, docker bridge, etc. will be automatically excluded) according to ipfamily (v4 or v6). Usually, if it is a multi-network interface card, it will exclude the default gateway. The network interface card ip other than the gateway will be used as the routing address between nodes.&lt;/li>
-&lt;li>Can-reach: Set the routing address between nodes by checking the reachability of the domain names or IP addresses.&lt;/li>
-&lt;li>Interface: Get all network interface card device names that satisfy the regular expression and return the address of the first network interface card as the routing address between nodes.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>MTU: Configure the maximum transmission unit (MTU) for the Calico environment. It is recommended to be no larger than 1440. The default is 1440. See &lt;a href="https://docs.projectcalico.org/networking/mtu">https://docs.projectcalico.org/networking/mtu&lt;/a> for details.&lt;/li>
-&lt;/ul>
-&lt;h4 id="storage-configuration">&lt;strong>Storage configuration&lt;/strong>&lt;/h4>
-&lt;p>The current version of Kubeclipper supports NFS as external storage types.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Connect to NFS storage&lt;/strong>&lt;/li>
-&lt;/ul>
-&lt;p>For NFS type external storage, you need to set the following:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Field&lt;/th>
-&lt;th>Function description&lt;/th>
-&lt;th>description/optional&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>ServerAddr&lt;/td>
-&lt;td>ServerAddr, the service address of NFS&lt;/td>
-&lt;td>Required&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>SharedPath&lt;/td>
-&lt;td>SharedPath, the service mount path for NFS&lt;/td>
-&lt;td>Required&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>StorageClassName&lt;/td>
-&lt;td>StorageClassName, the name of the storage class&lt;/td>
-&lt;td>The default is nfs-sc, the name can be customized, and it cannot be repeated with other storage classes in the cluster&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>ReclaimPolicy&lt;/td>
-&lt;td>ReclaimPolicy, VPC recovery strategy&lt;/td>
-&lt;td>Delete/Retain&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>ArchiveOnDelete&lt;/td>
-&lt;td>ArchiveOnDelete, whether to archive PVC after deletion&lt;/td>
-&lt;td>Yes/No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>MountOptions&lt;/td>
-&lt;td>MountOptions, the options parameter of NFS, such as nfsvers = 4.1&lt;/td>
-&lt;td>Optional, you can fill in several&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Replicas&lt;/td>
-&lt;td>Replicas, number of NFS provisioners&lt;/td>
-&lt;td>Default is 1&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>After setting up the external storage, the card below will show the storages you have enabled. You can choose a storage class as the default storage. For PVCs that do not specify a specific StorageClass, the default storage class will be used.&lt;/p>
-&lt;h4 id="configuration-confirm">Configuration Confirm&lt;/h4>
-&lt;p>You can check the cluster configuration information on the Confirm Config page. After confirming the information, click Confirm. You can also click the &amp;ldquo;Edit&amp;rdquo; button of each card to skip back to the corresponding step to modify the cluster information.&lt;/p>
-&lt;p>The cluster installation may take several minutes. You can check the operation logs on the cluster detail page to track the cluster installation status.&lt;/p></description></item><item><title>Docs: Deploy Highly Available KubeClipper</title><link>https://www.kubeclipper.io/en/docs/deployment-docs/ha-deploy/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/deployment-docs/ha-deploy/</guid><description>
-&lt;blockquote>
-&lt;p>For the first contact with KubeClipper, it is recommended to deploy AIO environment and quickly get started to experience the features provided by KubeClipper.
-If you want to apply KubeClipper to a build environment, then this document may be helpful.&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>According to the KubeClipper architecture design, KubeClipper has the following 4 core components:&lt;/p>
-&lt;ul>
-&lt;li>Kc-server: mainly includes APISERVER, controller, static resource services and built-in message queue, etc., kc-server communicates with kc-agent through message queue (supports external); kc-server has no master-slave relationship and is independent of each other; usually deployed in independent nodes to provide stable and reliable services to the outside world.&lt;/li>
-&lt;li>Kc-agent: mainly includes the task processor, which is responsible for receiving the tasks delivered by the kc-server and feeding back the task processing results; usually deployed in nodes that need to install kubernetes, it is an ultra-lightweight service process.&lt;/li>
-&lt;li>Kc-etcd: The backend database of kc-server, deployed on the same node as kc-server.&lt;/li>
-&lt;li>Kc-dashboard: graphical management interface, deployed on the same node with kc-server.
-To sum up, we call the node that deploys kc-server as server, and the node that deploys kc-agent as agent.&lt;/li>
-&lt;/ul>
-&lt;p>Then the key point of deploying a highly available KubeClipper cluster is how to plan and deploy server nodes while ensuring the high availability of kc-etcd.&lt;br>
-Generally speaking, for deploying highly available distributed application clusters, it is basically recommended to have at least 3 nodes; also for KubeClipper, 3 nodes can ensure that kc-server can still provide services after 2 nodes Downtime, and can ensure that kc-etcd will not appear Split-Brain exception.&lt;/p>
-&lt;blockquote>
-&lt;p>The above brief introduction to the KubeClipper architecture and core components is to better understand how to deploy a highly available KubeClipper cluster, so as to lead to thinking about server node planning and Hardware configuration requirements.&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="recommended-configuration">Recommended configuration&lt;/h2>
-&lt;blockquote>
-&lt;p>KubeClipper as an extremely lightweight Kubernetes multi-cluster full lifecycle management tool, itself will not take up too many resources.&lt;/p>
-&lt;/blockquote>
-&lt;p>server node&lt;/p>
-&lt;ul>
-&lt;li>Quantity: 3 and more&lt;/li>
-&lt;li>Hardware requirements: CPU &amp;gt; = 2 cores, RAM &amp;gt; = 2GB, hard disk &amp;gt; = 20GB&lt;/li>
-&lt;li>System: CentOS 7.x/Ubuntu 18.04/Ubuntu 20.04&lt;/li>
-&lt;/ul>
-&lt;p>Agent node&lt;/p>
-&lt;ul>
-&lt;li>Quantity: any&lt;/li>
-&lt;li>Hardware requirements: according to actual needs&lt;/li>
-&lt;li>System: CentOS 7.x/Ubuntu 18.04/Ubuntu 20.04&lt;/li>
-&lt;/ul>
-&lt;h2 id="start-by-installing-kcctl">Start by installing kcctl&lt;/h2>
-&lt;blockquote>
-&lt;p>Kcctl is a command line tool provided by KubeClipper that enables rapid deployment of KubeClipper clusters and most Kuberneters cluster management features to simplify operations.&lt;/p>
-&lt;/blockquote>
-&lt;p>Install kcctl:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># The latest release is installed by default&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Install the specified version&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.3.1 bash -
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># If you are in China, you can specify the KC_REGION environment variable during installation, at this time we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># This is very useful for online installation of k8s cluster&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After the installation is successful, the installation version and installation Path will be output.&lt;/p>
-&lt;blockquote>
-&lt;p>You can also download the &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a> download the specified kcctl version&lt;/p>
-&lt;/blockquote>
-&lt;p>Verify installation:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version -o json
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl version:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;major&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;1&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;minor&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;3&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitVersion&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;v1.3.1&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitCommit&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;5f19dcf78d3a9dc2d1035a779152fa993e0553df&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;gitTreeState&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;clean&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;buildDate&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;2022-12-02T10:12:36Z&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;goVersion&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;go1.19.2&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;compiler&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;gc&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&amp;#34;platform&amp;#34;&lt;/span>: &lt;span style="color:#4e9a06">&amp;#34;linux/amd64&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># View help documentation&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl -h
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="learn-about-the-kcctl-deploy-command">Learn about the kcctl deploy command&lt;/h2>
-&lt;blockquote>
-&lt;p>The kcctl deploy -h command is specially used to deploy KubeClipper cluster, for more examples and parameter explanation, please execute &lt;code>kcctl deploy -h&lt;/code>&lt;/p>
-&lt;/blockquote>
-&lt;p>Introduction to common parameters&lt;/p>
-&lt;ul>
-&lt;li>&amp;ndash;Server: IP server node, such as 192.168.10.10, 192.168.10.11, IP separated by commas.&lt;/li>
-&lt;li>&amp;ndash;Agent: Agent node IP, such as 192.168.10.10, 192.168.10.11, IP separated by commas.&lt;/li>
-&lt;li>&amp;ndash;Pk-file: ssh password-free login private key, it is recommended to use password-free login on the command line.&lt;/li>
-&lt;li>&amp;ndash;User: ssh login username, default is root.&lt;/li>
-&lt;li>&amp;ndash;Passwd: ssh login password, it is not recommended to use the password to log in at the command line.&lt;/li>
-&lt;li>&amp;ndash;Pkg: Installation package Path, support local Path and online link; get online installation package link rules: &lt;a href="https://oss.kubeclipper.io/release/">https://oss.kubeclipper.io/release/&lt;/a> {KC_VERSION}/kc- {GOARCH} .tar.gz . KC_VERSION for Release Version default setting current kcctl corresponding version, GOARCH is amd64 or arm64, default setting current kcctl Compilation architecture.&lt;/li>
-&lt;li>&amp;ndash;Ip-detect: Node IP discovery rules, support a variety of rules, such as specifying the name of the network interface card, etc., very useful for multiple network interface card nodes, the default is &amp;ldquo;first-found&amp;rdquo;.&lt;/li>
-&lt;/ul>
-&lt;p>After understanding the basic usage of kcctl deploy, let&amp;rsquo;s start deploying the KubeClipper cluster.&lt;/p>
-&lt;h2 id="deploy-kubeclipper-with-kcctl">Deploy KubeClipper with kcctl&lt;/h2>
-&lt;blockquote>
-&lt;p>We recommend that in the multi-node installation scenario, the server nodes involved are uniformly set up password-free login to avoid password Plain Text leakage.&lt;/p>
-&lt;/blockquote>
-&lt;p>Deploy 3 server nodes with private key:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--pkg https://oss.kubeclipper.io/release/&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>KC_VERSION&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>/kc-&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>GOARCH&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>.tar.gz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Deploy 3 server + 3 agent nodes in private key mode, specify pkg:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--pkg https://oss.kubeclipper.io/release/&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>KC_VERSION&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>/kc-&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>GOARCH&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>.tar.gz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Deploy 3 server + 3 agent nodes with private key, pkg is not specified, and the default is the same as the installed version of kcctl (recommended):&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Private key deployment 3 server + 3 agent node, specify etcd port, default port is client-12379 | peer-12380 | metrics-12381 :&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy --pk-file&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>~/.ssh/id_rsa &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--server SERVER_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--agent AGENT_IPS &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span>--etcd-port &lt;span style="color:#0000cf;font-weight:bold">12379&lt;/span> --etcd-peer-port &lt;span style="color:#0000cf;font-weight:bold">12380&lt;/span> --etcd-metric-port &lt;span style="color:#0000cf;font-weight:bold">12381&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>Parameter input example:&lt;br>
-SERVER_IPS: 192.168.10.20,192.168.10.21&lt;br>
-AGENT_IPS: 192.168.10.30,192.168.10.31&lt;br>
-KC_VERSION : KubeClipper release version, see &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">GitHub Release Page&lt;/a>&lt;br>
-GOARCH System Architecture, AMD64 (aka x84_64), ARM64 (aka AARCH 64)&lt;/p>
-&lt;/blockquote>
-&lt;p>Kcctl deploy supports a variety of parameters, which can meet your specific needs for deploying KubeClipper clusters, and more functions are waiting for you to explore.&lt;br>
-After executing the kcctl deploy command, the command will detect whether your environment meets the installation requirements, and will synchronize warning messages, installation progress, etc. to the Console. Finally, the following KubeClipper banner will be printed after the installation is successful:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> _ __ _ _____ _ _
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> / / &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> / __ &lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>/ / _ _&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>__ ___&lt;span style="color:#000;font-weight:bold">|&lt;/span> / &lt;span style="color:#4e9a06">\/&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_ _ __ _ __ ___ _ __
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">\|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;_ \ / _ \ | | | | &amp;#39;&lt;/span>_ &lt;span style="color:#4e9a06">\|&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;_ \ / _ \ &amp;#39;&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>&lt;span style="color:#4e9a06">\ &lt;/span> &lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> __/ &lt;span style="color:#4e9a06">\_&lt;/span>_/&lt;span style="color:#4e9a06">\ &lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> __/ &lt;span style="color:#000;font-weight:bold">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">\_&lt;/span>&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#4e9a06">\_&lt;/span>/&lt;span style="color:#4e9a06">\_&lt;/span>_,_&lt;span style="color:#000;font-weight:bold">|&lt;/span>_.__/ &lt;span style="color:#4e9a06">\_&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>&lt;span style="color:#4e9a06">\_&lt;/span>___/_&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> .__/&lt;span style="color:#000;font-weight:bold">|&lt;/span> .__/ &lt;span style="color:#4e9a06">\_&lt;/span>__&lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span>_&lt;span style="color:#000;font-weight:bold">|&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>System default management account: &lt;code>admin/Thinkbig1&lt;/code>
-Login to Console:
-Open a browser and visit &lt;code>http://SERVER_IP&lt;/code> (accessible through any Server node) to enter the KubeClipper Console&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
-&lt;p>Login command line:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://SERVER_IP -u admin -p Thinkbig1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>Most kcctl commands rely on login status, so it&amp;rsquo;s best to log in early when you execute the cli command.&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="add-agent-node-to-kubeclipper-using-kcctl">Add agent node to KubeClipper using kcctl&lt;/h2>
-&lt;blockquote>
-&lt;p>The current kcctl join command only supports adding agent nodes, and will gradually support adding server nodes in the future.&lt;br>
-Newly added agent nodes should also be uniformly set up password-free login, and the private key is the same.&lt;/p>
-&lt;/blockquote>
-&lt;p>Join agent node:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl join --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="remove-agent-node-from-kubeclipper-using-kcctl">Remove agent node from KubeClipper using kcctl&lt;/h2>
-&lt;blockquote>
-&lt;p>The current kcctl drain command only supports deleting agent nodes, and will gradually support deleting server nodes in the future.&lt;/p>
-&lt;/blockquote>
-&lt;p>Drain agent node:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl drain --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Force drain node, ignore errors&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl drain --agent&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>AGENT_IPS --force
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you find that KubeClipper cannot be successfully deployed according to this document, please move to the &lt;a href="https://github.com/kubeclipper/kubeclipper/issues">KubeClipper Github Issue&lt;/a> to provide your comments or feedback.&lt;/p></description></item><item><title>Docs: Create kubernetes clusters offline using the kubeclipper platform</title><link>https://www.kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
-&lt;h2 id="1-go-to-the-creation-screen">1. Go to the creation screen&lt;/h2>
-&lt;p>Log in to the &lt;code>Kubeclipper&lt;/code> platform and click the button as shown in the figure to enter the cluster creation interface&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-begin.png" alt="">&lt;/p>
-&lt;h2 id="2-configure-cluster-nodes">2. Configure cluster nodes&lt;/h2>
-&lt;p>Follow the text prompts to complete the steps of entering the cluster name and selecting nodes&lt;/p>
-&lt;p>Note: The number of master nodes cannot be an even number.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-node-config.png" alt="">&lt;/p>
-&lt;h2 id="3-configure-cluster">3. Configure cluster&lt;/h2>
-&lt;p>This step is used to configure the cluster network and components such as the database and container runtime&lt;/p>
-&lt;p>Select offline installation and fill in the address of the image repository you have built first&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-config.png" alt="">&lt;/p>
-&lt;h2 id="4-configure-cluster-storage">4. Configure cluster storage&lt;/h2>
-&lt;p>Select nfs storage and follow the text prompts to fill in the appropriate fields&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-storage-config.png" alt="">&lt;/p>
-&lt;h2 id="5-installation-completed">5. Installation completed&lt;/h2>
-&lt;p>Complete all configurations to confirm installation&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
-&lt;p>Installation is successful and the cluster is up and running&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item><item><title>Docs: Roadmap</title><link>https://www.kubeclipper.io/en/docs/overview/roadmap/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/overview/roadmap/</guid><description>
-&lt;p>🚀 Cluster Installation Optimization&lt;/p>
-&lt;ul>
-&lt;li>Use images to encapsulate installation package resources to reduce complexity. Reuse mature image technology&lt;/li>
-&lt;/ul>
-&lt;p>💻 Kubernetes Web Console&lt;/p>
-&lt;ul>
-&lt;li>Workload resources &amp;amp; monitoring presentation&lt;/li>
-&lt;li>Tenant based cluster access control&lt;/li>
-&lt;/ul>
-&lt;p>📦 Application Store&lt;/p>
-&lt;ul>
-&lt;li>Application lifecycle management&lt;/li>
-&lt;li>Support web UI &amp;amp; CLI interface&lt;/li>
-&lt;/ul>
-&lt;p>🧩 Common Application and Plugin Integrations&lt;/p>
-&lt;ul>
-&lt;li>LB &amp;amp; Ingress&lt;/li>
-&lt;li>Monitoring&lt;/li>
-&lt;li>Kubernetes Dashboard&lt;/li>
-&lt;li>KubeEdge&lt;/li>
-&lt;/ul>
-&lt;p>🕸 Managed Clusters&lt;/p>
-&lt;ul>
-&lt;li>Support KoK clusters.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Cluster hosting</title><link>https://www.kubeclipper.io/en/docs/tutorials/cluster-hosting/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/cluster-hosting/</guid><description>
+&lt;p>No delivery dates are promised here. Validate experimental features separately before production use.&lt;/p></description></item><item><title>Docs: Cluster hosting</title><link>https://kubeclipper.io/en/docs/tutorials/cluster-hosting/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/tutorials/cluster-hosting/</guid><description>
 &lt;h2 id="kubeadm-cluster-hosting">Kubeadm cluster hosting&lt;/h2>
 &lt;p>For a host cluster created and managed by kubeadm, kubeclipper gets the cluster and node information from the kubeconfig file and imports it into the kubeclipper platform.&lt;/p>
 &lt;p>Click &amp;ldquo;Cluster Management&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Hosting&amp;rdquo; button to enter the cluster hosting page. Click &amp;ldquo;Add&amp;rdquo; button at the upper left corner. In the pop-up window of Add Provider, fill in the provider name (such as kubeadm-demo) and description, and then fill in the following information:&lt;/p>
@@ -521,11 +156,11 @@ Newly added agent nodes should also be uniformly set up password-free login, and
 &lt;ul>
 &lt;li>Synchronization: Kubeclipper synchronizes cluster information every four hours. You can also click &amp;ldquo;Synchronize&amp;rdquo; to manually perform the operation.&lt;/li>
 &lt;li>Edit: Edit the provider&amp;rsquo;s name, description, access information, and node connection method.&lt;/li>
-&lt;li>Remove: Remove the cluster information from kubeclipper, but the cluster will not be uninstalled.&lt;/li>
+&lt;li>Remove: Detach platform management while preserving Kubernetes itself. Cleanup also removes imported kc-agent installations and platform-created ServiceAccount, ClusterRoleBinding, and kubectl terminal resources. Previously managed nodes follow separate preservation rules. Check node ownership and retain kubeconfig before removal.&lt;/li>
 &lt;/ul>
 &lt;h2 id="managed-cluster-management">Managed cluster management&lt;/h2>
 &lt;p>You can choose &amp;ldquo;Cluster Management&amp;rdquo; &amp;gt; &amp;ldquo;Cluster&amp;rdquo; to go to the cluster list page and view the list of all clusters, including hosted clusters and local clusters. The following table lists the operations supported by different clusters:&lt;/p>
-&lt;p>Note that &amp;ldquo;docker.io&amp;rdquo; will be used as image resource by default when you install external storage and other plug-ins for host clusters. If you are in an offline environment, you need to fill in the address of the accessible private registry during plug-in installation. The private registry must be added to the CRI registry of the cluster. For details, refer to &lt;a href="https://www.kubeclipper.io/en/docs/tutorials/cluster-management/#cri-registry">CRI Registry&lt;/a>.&lt;/p>
+&lt;p>Image sources for plug-ins and external storage depend on the selected component package and configuration. Prepare images before offline installation and confirm that every node can pull them. Configure the &lt;a href="https://kubeclipper.io/en/docs/tutorials/registries/">CRI registry&lt;/a> first when authentication or a private CA is required.&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -611,163 +246,116 @@ Newly added agent nodes should also be uniformly set up password-free login, and
 &lt;td>✔&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>Docs: Cluster management</title><link>https://www.kubeclipper.io/en/docs/tutorials/cluster-management/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/cluster-management/</guid><description>
-&lt;h2 id="view-cluster-operations">&lt;strong>View Cluster operations&lt;/strong>&lt;/h2>
-&lt;p>On the cluster details page, click the &amp;quot;Operation Log&amp;quot; tab to see the cluster operation records. Click the &amp;quot;ViewLog&amp;quot; button on the right side to inspect the detailed logs of all steps and nodes in the pop-up window. Click the step name on the left to inspect the detailed log of the execution steps.&lt;/p>
-&lt;p>During the execution of cluster operations, you can inspect real-time log updates to trace the operation execution. For operations that failed to execute, you can also locate error by red dot under the step name, and troubleshoot the cause of the operation failure.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/log.png" alt="">&lt;/p>
-&lt;h3 id="try-again-after-failed-task">Try again after failed task&lt;/h3>
-&lt;p>If the task failed but you do not need to modify the task parameters after troubleshooting, you can click &amp;ldquo;Retry&amp;rdquo; on the right of the operation record to retry the task at the breakpoint.&lt;/p>
-&lt;p>Note: The retry operation is not universal. You need to determine the cause of the task failure by yourself.&lt;/p>
-&lt;p>After cluster operation (such as creation, restoration, and upgrade) failure, the cluster status may be displayed as &amp;ldquo;xx failed&amp;rdquo; and other operations cannot be performed. If the operation can not be retrayed successflly. You need to refer to the O&amp;amp;M document to manually rectify the cluster error, and click More &amp;gt; Cluster Status &amp;gt; Reset Status to reset the cluster to normal status.&lt;/p>
-&lt;h3 id="access-kubectl">&lt;strong>Access Kubectl&lt;/strong>&lt;/h3>
-&lt;p>The Kubernetes command-line tool, kubectl, allows you to run commands on Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, view logs, and more.&lt;/p>
-&lt;p>Click &amp;quot;More&amp;quot; &amp;gt; &amp;quot;Connect Terminal&amp;quot; in the cluster operation, and you can execute the kubectl commands in the cluster kuebectl pop-up window.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/kubectl.png" alt="">&lt;/p>
-&lt;h2 id="cluster-settings">Cluster Settings&lt;/h2>
-&lt;h3 id="edit">Edit&lt;/h3>
-&lt;p>You can click More &amp;gt; Cluster Settings &amp;gt; Edit on the right of the cluster list to edit the cluster description, backup space, external access IP address, and cluster label information.&lt;/p>
-&lt;h3 id="save-as-template">Save as template&lt;/h3>
-&lt;p>You can click More &amp;gt; Cluster Settings &amp;gt; Save as Template on the right of the cluster list to save the cluster settings as a template and use it to creat new clusters with similar configurations.&lt;/p>
-&lt;h3 id="cri-registry">CRI Registry&lt;/h3>
-&lt;p>Docker and Containerd use dockerhub as the default registry. If you need to use other private registry (especially self-signed https registries or http registries), you need to configure CRI registry.&lt;/p>
-&lt;p>Click &amp;ldquo;More&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Settings&amp;rdquo; &amp;gt; &amp;ldquo;CRI Registry&amp;rdquo; on the right of the cluster page. In the pop-up window configure the required private registry. You can select an existing registry on the platform or temporarily enter the address of a registry. For a self-signed https or http registry, it is recommended to add the registry information on the Cluster Management &amp;gt; Registry in advance.&lt;/p>
-&lt;h2 id="cluster-node-management">&lt;strong>Cluster node management&lt;/strong>&lt;/h2>
-&lt;p>On the &amp;quot;Nodes list&amp;quot; page of the cluster detail page, you can view the list of nodes in the cluster, specification, status and role information of the nodes.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/cluster.png" alt="">&lt;/p>
-&lt;h3 id="add-cluster-node">&lt;strong>Add cluster node&lt;/strong>&lt;/h3>
-&lt;p>When the cluster load is high, you can add nodes to the cluster to expand capacity. Adding nodes operation does not affect the running services.&lt;/p>
-&lt;p>On the cluster detail page, under the Node List tab, click the &amp;quot;AddNode&amp;quot; button on the left, select the available nodes in the pop-up window, set the node labels, and click the &amp;quot;OK&amp;quot; button. The current version only supports adding worker nodes.&lt;/p>
-&lt;h3 id="remove-cluster-node">&lt;strong>Remove cluster node&lt;/strong>&lt;/h3>
-&lt;p>On the cluster detail page, under the Node List tab, you can remove a node by clicking the &amp;quot;Remove&amp;quot; button on the right of the node. The current version only supports removing worker nodes.&lt;/p>
-&lt;p>Note: To remove cluster nodes, you need to pay attention to security issues in production to avoid application interruptions.&lt;/p>
-&lt;h2 id="cluster-backup-and-recovery">&lt;strong>Cluster Backup and Recovery&lt;/strong>&lt;/h2>
-&lt;p>The backup of kubernetes cluster by KubeClipper backs up the data of ETCD database, and kubernetes resource object, such as namespaces, deployments, configMaps. The files and data generated by the resource itself are not backed up. For example, the data and files generated by the mysql pod will not be backed up. Similarly, the files under the PV object are not backed up, only the pv object is backed up. The backup function provided by KubeClipper is hot backup, which does not affect cluster usage. While KubeClipper strongly disapproves of backing up during the &amp;quot;busy period&amp;quot; of the cluster.&lt;/p>
-&lt;h3 id="create-a-backup-space">&lt;strong>Create a backup space&lt;/strong>&lt;/h3>
-&lt;p>Before performing a backup operation, you need to set a backup space for the cluster, that is, set the storage location of the backup files. The storage type of the backup space can be FS storage or S3 storage . Tack the node local storage , NFS storage and MINIO storage as examples:&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;h4 id="node-local-storage-only-for-aio-experimental-clusters">&lt;strong>Node local storage (only for AIO experimental clusters):&lt;/strong>&lt;/h4>
-&lt;/li>
-&lt;/ul>
+&lt;/table></description></item><item><title>Docs: Offline clusters</title><link>https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
+&lt;p>Offline installation needs a platform deployment package and component resources for Kubernetes, the CRI, and the CNI. Registry resources describe image repositories; they do not replace offline packages.&lt;/p>
+&lt;h2 id="check-resources">Check resources&lt;/h2>
+&lt;p>After &lt;a href="https://kubeclipper.io/en/docs/getting-started/">deploying the platform&lt;/a>, log in and inspect resources and nodes:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Match package architecture to the target nodes. The 1.7 matrix uses Kubernetes v1.37.0 / v1.36.4 / v1.35.8, containerd 2.2.4, and Calico v3.31.5. See &lt;a href="https://kubeclipper.io/en/docs/getting-started/make-offline-package/">offline component packages&lt;/a> when more resources are needed.&lt;/p>
+&lt;h2 id="create-the-cluster">Create the cluster&lt;/h2>
+&lt;p>&lt;code>kcctl create cluster&lt;/code> defaults to offline installation. This example uses one test node:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create cluster --name offline-demo --master 192.168.10.21 --untaint-master &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --k8s-version v1.37.0 --cri containerd --cri-version 2.2.4 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --cni calico --cni-version v3.31.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list -c offline-demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster offline-demo -o yaml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>In the Console wizard, select prepared component versions, target nodes, and offline installation. Populate any image repository and configure its &lt;a href="https://kubeclipper.io/en/docs/tutorials/registries/">Registry resource&lt;/a> first. Select storage plugins according to actual requirements; a particular NFS plugin is not a mandatory cluster-creation step.&lt;/p>
+&lt;h2 id="confirm-installation">Confirm installation&lt;/h2>
+&lt;p>Use Operations and node logs to locate failures. After obtaining kubeconfig, check Ready nodes, system Pods, and API readiness. Resolve missing resources, architecture mismatches, and unreachable image paths before retrying. See &lt;a href="https://kubeclipper.io/en/docs/tutorials/operations/">operations and logs&lt;/a>.&lt;/p></description></item><item><title>Docs: Cluster management</title><link>https://kubeclipper.io/en/docs/tutorials/cluster-management/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/tutorials/cluster-management/</guid><description>
+&lt;p>KubeClipper 1.7 executes cluster lifecycle work through Operation v2. Inspect the cluster object, then confirm outcomes using operation details and actual nodes.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl get cluster
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster demo -o yaml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list -c demo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="logs-retries-and-cancellation">Logs, retries, and cancellation&lt;/h2>
+&lt;p>See &lt;a href="https://kubeclipper.io/en/docs/tutorials/operations/">operations and logs&lt;/a> for commands. Resolve the cause of a failure before retrying. Resetting cluster state does not repair nodes or undo completed work.&lt;/p>
+&lt;h2 id="access-a-cluster">Access a cluster&lt;/h2>
+&lt;p>Obtain kubeconfig from the Console cluster details page, set &lt;code>KUBECONFIG&lt;/code>, and run:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kubectl get nodes -o wide
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kubectl get pods -A
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kubectl get --raw&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;/readyz?verbose&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Healthy platform status does not establish the health of every managed cluster. After upgrades, scaling, backup, or recovery, inspect the relevant nodes, system Pods, and application data.&lt;/p>
+&lt;h2 id="scaling-and-registries">Scaling and registries&lt;/h2>
+&lt;p>Use &lt;code>kcctl join&lt;/code> to register new machines with the platform. Confirm that nodes are Ready and in the cluster&amp;rsquo;s region before adding them from the cluster details page. Evacuate workloads and check remaining capacity before removing cluster nodes. Platform &lt;code>kcctl drain&lt;/code> removes an Agent; it is a separate operation from shrinking a cluster. See &lt;a href="https://kubeclipper.io/en/docs/tutorials/node-management/">node management&lt;/a>.&lt;/p>
+&lt;p>Configure Kubernetes image repositories and containerd pull registries separately. See &lt;a href="https://kubeclipper.io/en/docs/tutorials/registries/">registries&lt;/a> and verify actual image pulls after changes.&lt;/p>
+&lt;h2 id="backup-and-restore">Backup and restore&lt;/h2>
 &lt;ol>
-&lt;li>
-&lt;p>Create a storage directory. Connect to the cluster master node terminal ( refer to &lt;a href="https://www.kubeclipper.io/en/docs/tutorials/node-management/#connect-terminal">Connect Nodes Terminal&lt;/a> ) and use the mkdir command to create the &amp;quot;/root/backup&amp;quot; directory in the master node.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Create a backup space. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;backup space&amp;quot; to enter the backup space list page, click the &amp;quot;Create&amp;quot; button in the upper left corner, in the Create pop-up window, enter &amp;quot;Backup Space Name&amp;quot;, such as &amp;quot;local&amp;quot;, select &amp;quot;StorageType&amp;quot; as &amp;quot;FS&amp;quot;, fill in &amp;quot;backupRootDir&amp;quot; as &amp;quot;/root/backup&amp;quot;.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Set up the cluster backup space. When creating a cluster, select &amp;quot;backup space&amp;quot; as &amp;quot;local&amp;quot; on the &amp;quot;Cluster Config&amp;quot; page, or edit an existing cluster and select &amp;quot;local&amp;quot; as the &amp;quot;backup space&amp;quot;.&lt;/p>
-&lt;/li>
+&lt;li>Configure a backup space and associate it with the cluster through the edit action. For directory backup spaces, create and mount the agreed path on the relevant nodes and confirm write access.&lt;/li>
+&lt;li>Start a backup, or configure a scheduled backup with its execution time and retention count. Confirm successful backup status and readable files.&lt;/li>
+&lt;li>Select a backup belonging to the cluster for restoration. Follow its Operation, then check the API, nodes, system Pods, and application state.&lt;/li>
 &lt;/ol>
-&lt;p>Note: Using a local node to store backup files does not require the introduction of external storage. The disadvantage is that if the local node is damaged, the backup files will also be lost, so it is strongly disapproved in a production environment .&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>NFS：&lt;/strong>&lt;/li>
-&lt;/ul>
-&lt;ol>
-&lt;li>
-&lt;p>Prepare NFS storage. Prepare an NFS service and create a directory on the NFS server to store backup files, such as &amp;quot;/data/kubeclipper/cluster-backups&amp;quot;.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Mount the storage directory. Connect the cluster master node terminal ( refer to &lt;a href="https://www.kubeclipper.io/en/docs/tutorials/node-management/#connect-terminal">Connect node Terminal&lt;/a> ), use the mkdir command to create the &amp;quot;/data/kubeclipper/cluster-backups&amp;quot; directory in each master node, and mount it to the /data/kubeclipper/cluster-backups directory of the NFS server.&lt;/p>
-&lt;p>Command example:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mount -t nfs &lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>NFS&lt;span style="color:#4e9a06">\_&lt;/span>IP&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>:/data/kubeclipper/cluster-backups /opt/kubeclipper/cluster-backups -o &lt;span style="color:#000">proto&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> tcp -o nolock
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>Create a backup space. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Backup Space&amp;quot; to enter the backup space list page, click the &amp;quot;Create&amp;quot; button in the upper left corner, in the Create pop-up window, enter &amp;quot;Backup Space Name&amp;quot;, such as &amp;quot;nfs&amp;quot;, select &amp;quot;StorageType&amp;quot; as &amp;quot;FS&amp;quot;, fill in &amp;quot;backupRootDir&amp;quot; as &amp;quot;/opt/kubeclipper/cluster-backups&amp;quot;.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Set up the cluster backup space. When creating a cluster, select &amp;quot;backup space&amp;quot; as &amp;quot;nfs&amp;quot; on the &amp;quot;Cluster Config&amp;quot; page, or edit an existing cluster and select &amp;quot;nfs&amp;quot; as the &amp;quot;backup space&amp;quot;.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;ul>
-&lt;li>&lt;strong>MINIO：&lt;/strong>&lt;/li>
-&lt;/ul>
-&lt;ol>
-&lt;li>
-&lt;p>Prepare MINIO storage. Build MINIO services, refer to the official website &lt;a href="https://docs.min.io/docs/minio-quickstart-guide.html">https://docs.min.io/docs/minio-quickstart-guide.html&lt;/a> for the deployment process, or use existing MINIO services.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Create a backup space. Click &amp;quot;Cluster Management&amp;quot; &amp;gt; &amp;quot;Backup Space&amp;quot; to enter the backup space list page, click the &amp;quot;Create&amp;quot; button in the upper left corner, in the Create window, enter &amp;quot;Backup Space Name&amp;quot;, such as &amp;quot;minio&amp;quot;, select &amp;quot;Storage Type&amp;quot; as &amp;quot;S3&amp;quot;, fill in &amp;quot;bucket name&amp;quot;, such as &amp;quot;kubeclipper-backups&amp;quot;, the bucket will be automatically created by kubeclipper, fill in the IP and port number of the MINIO storage service in the first step in &amp;quot;Endpoint&amp;quot;, fill in the service username and password, click the &amp;quot;OK&amp;quot; button.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Set up the cluster backup space. When creating a cluster, select &amp;quot;backup space&amp;quot; as &amp;quot;minio&amp;quot; on the &amp;quot;Cluster Config&amp;quot; page, or edit an existing cluster and select &amp;quot;minio&amp;quot; as the &amp;quot;backup space&amp;quot;.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;p>You can view the list and details of all backup spaces on the &amp;quot;Cluster Management&amp;quot;&amp;gt;&amp;quot;backup spaces&amp;quot; page and perform the following operations:&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Edit: Edit the backup space description, and the username/password of the S3 type backup space.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Delete: Delete the backup space. If there are backup files under the backup space, deletion is not allowed.&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="cluster-backup">&lt;strong>Cluster backup&lt;/strong>&lt;/h3>
-&lt;p>You can back up your cluster ETCD data by clicking the &amp;quot;More&amp;quot; &amp;gt; &amp;ldquo;Backup and recovery&amp;rdquo; &amp;gt; &amp;quot;Backup Cluster&amp;quot; button in the cluster operation.&lt;/p>
-&lt;p>You can view all backup files of the cluster under the Backup tab on the cluster detail page, and you can perform the following operations for backups:&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Edit: Edit the backup description.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Restore: Performs a cluster restore operation to restore the cluster to the specified backup state.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Delete: Deletes the backup file.&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="scheduled-backup">&lt;strong>Scheduled backup&lt;/strong>&lt;/h3>
-&lt;p>You can also create a scheduled backup task for the cluster, click the &amp;quot;More&amp;quot; &amp;gt; &amp;ldquo;Backup and recovery&amp;rdquo; &amp;gt; &amp;quot;Scheduled Backup&amp;quot; button in the cluster operation, in the Scheduled Backup pop-up window, enter the scheduled backup name, execution type ( repeat / onlyonce) and execution time, and set the number of valid backups for a repeat scheduled backups, and click the &amp;quot;OK&amp;quot; button.&lt;/p>
-&lt;p>kubeClipper will perform backup tasks for the cluster at the execution time you set, and the backup file will be automatically named &amp;quot;Cluster Name - Scheduled Backup Name - Random Code&amp;quot;. For repeat scheduled backups, when the number of backup files exceeds the number of valid backup files, kubeClipper will automatically delete the earlier backup files.&lt;/p>
-&lt;p>After the scheduled backup task is added, you can view the scheduled backup task information on the &amp;quot;Scheduled Backup&amp;quot; tab of the cluster detail page, and you can also view the backup files generated by the scheduled backup on the &amp;quot;Backup&amp;quot; tab.&lt;/p>
-&lt;p>For scheduled backup tasks, you can also perform the following operations:&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Edit: Edit the execution time of the scheduled backup task and the number of valid backups for repeat scheduled backups.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Enable/Disable: Disabled scheduled backup tasks are temporarily stopped.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Delete: Delete a scheduled backup task.&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="restore-cluster">&lt;strong>Restore Cluster&lt;/strong>&lt;/h3>
-&lt;p>If you perform restore operation while the cluster is running, KubeClipper will perform overlay recovery on the cluster, that is, the ETCD data in the backup file, overwriting the existing data .&lt;/p>
-&lt;p>You can click the &amp;quot;Restore&amp;quot; button on the right side of the backup under the Backup tab of the cluster detail page; or click the &amp;quot;More&amp;quot; &amp;gt; &amp;ldquo;Backup and recovery&amp;rdquo; &amp;gt; &amp;quot;Restore Cluster&amp;quot; button in the cluster operation, and select the backup to be restored in the Restore Cluster pop-up window. The current cluster can be restored to the specified backup state.&lt;/p>
-&lt;p>Note: After the kubernetes version of the cluster is upgraded, it will no longer be possible to restore the cluster to the pre-upgrade backup version.&lt;/p>
-&lt;h2 id="cluster-status">Cluster Status&lt;/h2>
-&lt;h3 id="cluster-version-upgrade">&lt;strong>Cluster version upgrade&lt;/strong>&lt;/h3>
-&lt;p>If the cluster version does not meet the requirements, you can upgrade the kubernetes version of the cluster. Similar to creating a cluster, you need to prepare the configuration package required and the kubernetes image of the target version, upload them to the specified location. For details, refer to &lt;a href="https://www.kubeclipper.io/en/docs/tutorials/create-clusters/#prepare-to-create-a-cluster">Prepare to Create a Cluster&lt;/a>.&lt;/p>
-&lt;p>Click the &amp;quot;More&amp;quot; &amp;gt; &amp;ldquo;Cluster status&amp;rdquo; &amp;gt; &amp;quot;Cluster Upgrade&amp;quot; button of the cluster operation. In the cluster upgrade pop-up window, select the installation method and registry, and select the target upgrade version. The installation method and the configuration of the kubernetes version are the same as those of creating a cluster. For details, please refer to &lt;a href="https://www.kubeclipper.io/en/docs/tutorials/create-clusters/#cluster-configuration">Cluster Configuration Guide&lt;/a>.&lt;/p>
-&lt;p>Cluster upgrades can be performed across minor versions, but upgrades skipped over later versions are not supported. For example, you can upgrade from v1.20.2 to v1.20.13, or from v1.20.x to v1.21.x, but not from v1.20.x to v1.22.x. For version 1.23.x, upgrading to version 1.24.x is not currently supported.&lt;/p>
-&lt;p>The cluster upgrade operation may take a long time. You can view the operation log on the cluster detail page to track the cluster upgrade status.&lt;/p>
-&lt;h3 id="delete-cluster">Delete cluster&lt;/h3>
-&lt;p>You can click &amp;ldquo;More&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Status&amp;rdquo; &amp;gt; &amp;ldquo;Delete Cluster&amp;rdquo; on the right of the cluster list to delete the cluster.&lt;/p>
-&lt;p>Note that after the cluster is deleted, it cannot be restored. You must perform this operation with great caution. If the cluster is connected to an external storage device, the volumes in the storage class whose reclaim policy is &amp;ldquo;Retain&amp;rdquo; will be retained. You can access them in other ways or manually delete them. Volumes in the storage class whose reclaim policy is &amp;ldquo;Delete&amp;rdquo; will be automatically deleted when the cluster is deleted.&lt;/p>
-&lt;h3 id="reset-the-status">Reset the status&lt;/h3>
-&lt;p>After cluster operation (such as creation, restoration, and upgrade) failure, the cluster status may be displayed as &amp;ldquo;xx failed&amp;rdquo; and other operations cannot be performed. If the operation can not be retrayed successflly. You need to refer to the O&amp;amp;M document to manually rectify the cluster error, and click More &amp;gt; Cluster Status &amp;gt; Reset Status to reset the cluster to normal status.&lt;/p>
-&lt;h2 id="cluster-plugin-management">&lt;strong>Cluster plugin management&lt;/strong>&lt;/h2>
-&lt;p>In addition to installing plugins when creating a cluster, you can also install plugins for a running cluster. Taking the installation of storage plugins as an example, click the &amp;quot;More&amp;quot; &amp;gt; &amp;ldquo;plugin management&amp;rdquo;&amp;gt;&amp;quot;Add Storage&amp;quot; button in the cluster operation to enter the Add Storage page. You can install NFS plugins for the cluster. The installation configuration is the same as the configuration in cluster creation.&lt;/p>
-&lt;p>For installed plugins, you can view the plugin information on the cluster detail page, and perform the following operations:&lt;/p>
-&lt;ul>
-&lt;li>Save as Template: Save the plugin information as a template for use by other clusters&lt;/li>
-&lt;li>Remove plug-in: Uninstalls the cluster plug-in.&lt;/li>
-&lt;/ul>
-&lt;h2 id="cluster-certificate-management">Cluster certificate management&lt;/h2>
-&lt;h3 id="update-cluster-certificate">Update cluster certificate&lt;/h3>
-&lt;p>The default validity period of the kubernetes cluster certificate is one year. You can view the certificate expiration time in the basic information on the cluster detail page. You can also view the certificate expiration notification in the cluster list the day before the certificate expires. To update the cluster certificate, click &amp;ldquo;More&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Certificate&amp;rdquo; &amp;gt; &amp;ldquo;Update Cluster Certificate&amp;rdquo; in the cluster operation to update all cluster certificates.&lt;/p>
-&lt;h3 id="view-kubeconfig-file">View kubeconfig file&lt;/h3>
-&lt;p>You can click &amp;ldquo;More&amp;rdquo; &amp;gt; &amp;ldquo;Cluster Certificate&amp;rdquo; &amp;gt; &amp;ldquo;View KubeConfig File&amp;rdquo; button in the cluster operation to view the cluster kubeconfig file, or click &amp;ldquo;Download&amp;rdquo; button in the pop-up window to download the kubeconfig file.&lt;/p></description></item><item><title>Docs: Node management</title><link>https://www.kubeclipper.io/en/docs/tutorials/node-management/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/node-management/</guid><description>
+&lt;p>Cluster backups center on Kubernetes etcd snapshots. They do not include application files in persistent volumes; back up those separately. Restoration changes cluster state. Rehearse in an isolated environment: the existence of a backup record alone does not establish recoverability.&lt;/p>
+&lt;h2 id="upgrade-kubernetes">Upgrade Kubernetes&lt;/h2>
+&lt;p>Kubernetes upgrades are separate from KubeClipper platform upgrades. Back up the cluster, validate restoration, and check target component resources, images, and workload compatibility before selecting a target in the cluster upgrade action. This action is unavailable for hosted kubeadm clusters.&lt;/p>
+&lt;p>Inspect the CLI parameters with:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl cluster upgrade --help
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Use &lt;code>--cluster-name&lt;/code> and &lt;code>--version&lt;/code> to select the cluster and target. Offline mode is the default; &lt;code>--online&lt;/code> selects online mode and &lt;code>--image-registry&lt;/code> selects a configured Registry resource. The target must exist in platform resources. The support matrix does not guarantee successful upgrades between every listed version. Follow the resulting Operation and repeat the cluster health checks above.&lt;/p>
+&lt;h2 id="delete-a-cluster">Delete a cluster&lt;/h2>
+&lt;p>Back up workloads and data before deletion, then follow the Operation:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl delete cluster demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list -c demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Confirm deletion has finished before reusing nodes. Preserve errors and node state for &lt;a href="https://kubeclipper.io/en/docs/tutorials/diagnostics/">diagnostics&lt;/a>; forced deletion does not establish that cleanup completed.&lt;/p></description></item><item><title>Docs: Offline component packages</title><link>https://kubeclipper.io/en/docs/getting-started/make-offline-package/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/getting-started/make-offline-package/</guid><description>
+&lt;p>The full 1.7.0 deployment package installs the platform. Additional Kubernetes, CRI, and CNI packages provide cluster resources. Deploy the platform using &lt;a href="https://kubeclipper.io/en/docs/getting-started/">Getting started&lt;/a> first.&lt;/p>
+&lt;h2 id="choose-versions-and-architecture">Choose versions and architecture&lt;/h2>
+&lt;p>Use the &lt;a href="https://kubeclipper.io/en/docs/overview/release-1.7/">1.7 matrix&lt;/a>. This Bash example prepares Kubernetes v1.37.0 for amd64. Prepare arm64 packages for arm64 nodes.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">set&lt;/span> -e
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.37.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>mktemp -d&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;k8s/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -p &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">for&lt;/span> FILE in manifest.json configs.tar.gz images.tar.gz&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> curl -fL -o &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">FILE&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://kubeclipper.oss-ap-southeast-1.aliyuncs.com/packages/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">FILE&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -czf &lt;span style="color:#4e9a06">&amp;#34;k8s-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">.tar.gz&amp;#34;&lt;/span> -C &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> k8s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -tzf &lt;span style="color:#4e9a06">&amp;#34;k8s-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">.tar.gz&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Preserve the &lt;code>k8s/version/architecture/&lt;/code> hierarchy. Keep certificate and HTTP verification enabled. The download directory remains at &lt;code>$PKG_DIR&lt;/code> for inspection and subsequent cleanup.&lt;/p>
+&lt;p>Other components use the same hierarchy. Archive the component directory with the following files:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Directory&lt;/th>
+&lt;th>Version&lt;/th>
+&lt;th>Required files&lt;/th>
+&lt;th>Upload type&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>k8s&lt;/td>
+&lt;td>v1.37.0&lt;/td>
+&lt;td>manifest.json, configs.tar.gz, images.tar.gz&lt;/td>
+&lt;td>k8s&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>containerd&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>manifest.json, configs.tar.gz&lt;/td>
+&lt;td>cri&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>calico&lt;/td>
+&lt;td>v3.31.5&lt;/td>
+&lt;td>manifest.json, images.tar.gz, charts.tgz&lt;/td>
+&lt;td>cni&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>For example, Calico uses &lt;code>packages/calico/v3.31.5/amd64/manifest.json&lt;/code>. Packaging existing resources does not imply support for arbitrary custom versions.&lt;/p>
+&lt;h2 id="upload-in-the-offline-environment">Upload in the offline environment&lt;/h2>
+&lt;p>Transfer the archive to a deployment machine that can reach the platform and has the deployment configuration and Server SSH credentials.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource push --pkg k8s-v1.37.0-amd64.tar.gz --type k8s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Use &lt;code>--type cri&lt;/code> for containerd and &lt;code>--type cni&lt;/code> for Calico. Confirm the versions and architecture in the resource list before &lt;a href="https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/">creating an offline cluster&lt;/a>. See &lt;a href="https://kubeclipper.io/en/docs/tutorials/registries/">Registry configuration&lt;/a> for image registry settings.&lt;/p></description></item><item><title>Docs: Node management</title><link>https://kubeclipper.io/en/docs/tutorials/node-management/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/tutorials/node-management/</guid><description>
 &lt;h2 id="region-management">Region management&lt;/h2>
 &lt;p>KubeClipper supports multi-region management. That is, all nodes and clusters managed by the platform are divided into physical or logical regions. On the Region Management page, you can view all regions in the platform. Click a region name to enter the region detail page, and you can view the clusters and nodes in the region.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/region-en.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/images/docs-tutorials/region-en.png" alt="">&lt;/p>
 &lt;h2 id="node-management">Node management&lt;/h2>
 &lt;p>The platform supports multi-region management, that is, the owning region of all nodes managed by the platform. On the Region Management page, you can view all regions managed by the platform. Click a region name to go to the region details page, where you can view the list of all clusters and nodes in the region.&lt;/p>
-&lt;p>On the &amp;quot;Node Info&amp;quot; page, you can view the list of all nodes managed in the platform, node specifications, status and other information. Click the node name to enter the node detail page, you can view detailed node basic information and system information.&lt;/p>
-&lt;p>The node status in KubeClipper represents the management status of the node by kc-gent. Under normal circumstances, the node status is displayed as &amp;quot;Ready&amp;quot;. When the node is out of contact for 4 minutes (within 10s of the error time), the status will be updated to &amp;quot;Unknown&amp;quot;. Nodes with unknown status cannot perform any operations, nor can they create clusters or add/remove nodes to clusters.&lt;/p>
+&lt;p>On the &amp;ldquo;Node Info&amp;rdquo; page, you can view the list of all nodes managed in the platform, node specifications, status and other information. Click the node name to enter the node detail page, you can view detailed node basic information and system information.&lt;/p>
+&lt;p>The node status in KubeClipper represents the management status of the node by kc-agent. Under normal circumstances, the node status is displayed as &amp;ldquo;Ready&amp;rdquo;. The default monitoring grace period is 4 minutes, checked every 10 seconds. After the grace period, the status changes to &amp;ldquo;Unknown&amp;rdquo;; scheduling or communication delays can affect when the change becomes visible. Investigate the Agent, network, and Server connectivity before scheduling new cluster installation or expansion on an unknown node.&lt;/p>
 &lt;h3 id="add-node">&lt;strong>Add node&lt;/strong>&lt;/h3>
 &lt;p>When deploying KubeClipper, you can add the initial server nodes which are used to deploy KubeClipper's own services, and agent nodes which are used to deploy kubernetes clusters. In a KubeClipper environment for experimentation or development, you can add a server node as an agent node at the same time. However, if it is used for a production environment, it is recommended not to reuse the server node as an agent node.&lt;/p>
 &lt;p>You can also use the kcctl join command to add agent nodes to KubeClipper, and mark a region for each agent node. The region can be a physical or logical location. You can use nodes in the same region to create a kubernetes cluster, but cannot use nodes across regions to create a cluster. Nodes in unmarked regions belong to the default region.&lt;/p>
@@ -778,12 +366,12 @@ Newly added agent nodes should also be uniformly set up password-free login, and
 &lt;p>Command line example:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plaintext" data-lang="Plaintext">&lt;span style="display:flex;">&lt;span>kcctl drain --agent 192.168.10.19
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="connect-terminal">&lt;strong>Connect Terminal&lt;/strong>&lt;/h3>
-&lt;p>On the node list page, you can click the &amp;quot;Connect Terminal&amp;quot; button on the right side of the target node, enter the node port and username password information in the pop-up window, access the node SSH console and execute command tasks.&lt;/p>
+&lt;p>On the node list page, you can click the &amp;ldquo;Connect Terminal&amp;rdquo; button on the right side of the target node, enter the node port and username password information in the pop-up window, access the node SSH console and execute command tasks.&lt;/p>
 &lt;h3 id="enabledisable-a-node">Enable/disable a node&lt;/h3>
-&lt;p>You can click the Disable button on the right side of the node to temporarily disable the node. The node in the disabled state cannot be created or added to the cluster.&lt;/p></description></item><item><title>Docs: Access control</title><link>https://www.kubeclipper.io/en/docs/tutorials/access-control/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/tutorials/access-control/</guid><description>
+&lt;p>You can click the Disable button on the right side of the node to temporarily disable the node. The node in the disabled state cannot be created or added to the cluster.&lt;/p></description></item><item><title>Docs: Access control</title><link>https://kubeclipper.io/en/docs/tutorials/access-control/</link><pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/tutorials/access-control/</guid><description>
 &lt;h2 id="create-user">&lt;strong>Create user&lt;/strong>&lt;/h2>
 &lt;p>After installing KubeClipper, you need to create a user of a desired role. Initially, there is only one user, admin, by default, with the platform administrator role.&lt;/p>
-&lt;p>Click &amp;quot;Access Control&amp;quot; &amp;gt; &amp;quot;Users&amp;quot; to enter the user management page, click the &amp;quot;Create User&amp;quot; button in the upper left corner, fill in the user name, password, alias name and other information in the pop-up window, specify the user role, and click the &amp;quot;OK&amp;quot; button. The four initial roles in the system are as follows:&lt;/p>
+&lt;p>Click &amp;ldquo;Access Control&amp;rdquo; &amp;gt; &amp;ldquo;Users&amp;rdquo; to enter the user management page, click the &amp;ldquo;Create User&amp;rdquo; button in the upper left corner, fill in the user name, password, alias name and other information in the pop-up window, specify the user role, and click the &amp;ldquo;OK&amp;rdquo; button. The four initial roles in the system are as follows:&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>platform-admin: Platform administrator, with the authority to set platform, cluster management, user management, audit, etc.&lt;/p>
@@ -795,7 +383,7 @@ Newly added agent nodes should also be uniformly set up password-free login, and
 &lt;p>iam-manager: User administrator, with all user management permissions.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Platform-view: Platform read-only user, with all platform viewing permissions.&lt;/p>
+&lt;p>platform-view: Platform read-only user, with all platform viewing permissions.&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;p>After the user is created, you can view the user details and login logs on the user detail page and perform the following operations:&lt;/p>
@@ -812,7 +400,7 @@ Newly added agent nodes should also be uniformly set up password-free login, and
 &lt;/ul>
 &lt;h2 id="create-a-custom-role">&lt;strong>Create a custom role&lt;/strong>&lt;/h2>
 &lt;p>In addition to system initial roles, you can also create customized roles to meet business needs.&lt;/p>
-&lt;p>Click &amp;quot;Access Control&amp;quot; &amp;gt; &amp;quot;Roles&amp;quot; to enter the role management page. You can click the &amp;quot;Create Role&amp;quot; button in the upper left corner to create a custom role.&lt;/p>
+&lt;p>Click &amp;ldquo;Access Control&amp;rdquo; &amp;gt; &amp;ldquo;Roles&amp;rdquo; to enter the role management page. You can click the &amp;ldquo;Create Role&amp;rdquo; button in the upper left corner to create a custom role.&lt;/p>
 &lt;p>On the Create Role page, you need to fill in the role name and description, and check the permissions required. Some permissions depend on other permissions. When these permissions are selected, the dependent permissions will be automatically selected.&lt;/p>
 &lt;p>After creating a customized role, you can view the basic role information, role permission list, authorized user list on the role detail page, and perform the following operations:&lt;/p>
 &lt;ul>
@@ -828,28 +416,29 @@ Newly added agent nodes should also be uniformly set up password-free login, and
 &lt;/ul>
 &lt;h2 id="access-to-external-users">&lt;strong>Access to external users&lt;/strong>&lt;/h2>
 &lt;p>External users can log in to KubeClipper via the OIDC protocol .&lt;/p>
-&lt;p>First, the platform administrator needs to log in to the platform server node and insert the following information under &amp;ldquo;authentication&amp;rdquo; in the kubeclipepr-server.yaml file:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plain" data-lang="Plain">&lt;span style="display:flex;">&lt;span>oauthOptions:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> identityProviders:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - name: keycloak
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> type: OIDC
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mappingMethod: auto
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> provider:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> clientID: kc
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> clientSecret: EErn729BB1bKawdRtnZgrqj9Bx0]mzUs
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> issuer: http://172.20.163.233:7777/auth/realms/kubeclipper
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> scopes:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - openid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - email
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> redirectURL: http://{kc-console-address}/oatuh2/redirect/{IDP-Name}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Under &amp;quot;provider&amp;quot;, you need to fill in the clientID , clientSecret , and issuer information of your OAuth2 service, taking keycloack as an example, as shown in the figure below.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/keycloak-clients.png" alt="">&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-tutorials/keycloak-secret.png" alt="">&lt;/p>
-&lt;p>RedirectURL example: http://172.0.0.90/oauth2/redirect/keycloack&lt;/p>
+&lt;p>First, the platform administrator needs to log in to the platform server node and insert the following information under &amp;ldquo;authentication&amp;rdquo; in the kubeclipper-server.yaml file:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">oauthOptions&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">identityProviders&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>- &lt;span style="color:#204a87;font-weight:bold">name&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">keycloak&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">type&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">OIDC&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">mappingMethod&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">auto&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">provider&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">clientID&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">kc&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">clientSecret&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">REPLACE_WITH_CLIENT_SECRET&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">issuer&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">https://idp.example.com/realms/kubeclipper&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">scopes&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>- &lt;span style="color:#000">openid&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>- &lt;span style="color:#000">email&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">redirectURL&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">https://console.example.com/oauth2/redirect/keycloak&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Merge this fragment under &lt;code>authentication&lt;/code> in the existing configuration. Replace the example domains and &lt;code>REPLACE_WITH_CLIENT_SECRET&lt;/code>. Register exactly the same &lt;code>redirectURL&lt;/code> with the IdP; its final path component must match the provider &lt;code>name&lt;/code>. Update each Server and restart &lt;code>kc-server&lt;/code> one node at a time.&lt;/p>
+&lt;p>Under &amp;ldquo;provider&amp;rdquo;, you need to fill in the clientID , clientSecret , and issuer information of your OAuth2 service, taking keycloak as an example, as shown in the figure below.&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/images/docs-tutorials/keycloak-clients.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/images/docs-tutorials/keycloak-secret.png" alt="">&lt;/p>
+&lt;p>RedirectURL example: &lt;a href="https://console.example.com/oauth2/redirect/keycloak">https://console.example.com/oauth2/redirect/keycloak&lt;/a>&lt;/p>
 &lt;p>OAuth2 users can log in to the KubeClipper platform by following these steps:&lt;/p>
 &lt;ol>
 &lt;li>
-&lt;p>Click the &amp;quot;OAuth2 Login&amp;quot; button on the login page, enter the OAuth2 login page, fill in the username and password to enter the KubeClipper platform. When logging in for the first time, you will not be able to access the platform because you have not been granted any permission.&lt;/p>
+&lt;p>Click the &amp;ldquo;OAuth2 Login&amp;rdquo; button on the login page, enter the OAuth2 login page, fill in the username and password to enter the KubeClipper platform. When logging in for the first time, you will not be able to access the platform because you have not been granted any permission.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>The platform administrator or other user with user management rights log in to KubeClipper, find the target OAuth2 user on the user management page, and set the user role by editing the user information.&lt;/p>
@@ -857,4 +446,68 @@ Newly added agent nodes should also be uniformly set up password-free login, and
 &lt;li>
 &lt;p>The OAuth2 user repeats the first step, logs in to KubeClipper, and accesses the platform normally.&lt;/p>
 &lt;/li>
-&lt;/ol></description></item></channel></rss>
+&lt;/ol></description></item><item><title>Docs: Operations and logs</title><link>https://kubeclipper.io/en/docs/tutorials/operations/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/tutorials/operations/</guid><description>
+&lt;p>KubeClipper 1.7 represents installation, upgrades, backup, and deletion as Operations, with Tasks assigned by step and node. A successful submission means the request was accepted; query its result afterward.&lt;/p>
+&lt;h2 id="find-an-operation">Find an operation&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list -c demo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Copy an actual operation ID from the list, then inspect details and logs:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">OPERATION_ID&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;&amp;lt;actual operation ID&amp;gt;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation describe &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation logs &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation logs &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> --follow
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Use logs to identify the failed step and node. In an interactive terminal, open the cluster&amp;rsquo;s TUI log viewer:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation logs --cluster demo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Use the operation-ID commands for plain-text logs in scripts and non-interactive terminals.&lt;/p>
+&lt;h2 id="handle-a-failure">Handle a failure&lt;/h2>
+&lt;p>Preserve operation details, failed-node logs, and cluster state. Resolve the missing package, image download, node connectivity, or service problem before retrying:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation retry &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation describe &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation logs &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> --follow
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Check actual cluster and node state after the retry. Its command return value alone does not establish recovery. If parameters are wrong, review the task configuration rather than retrying repeatedly.&lt;/p>
+&lt;h2 id="cancel-work">Cancel work&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation cancel &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation describe &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$OPERATION_ID&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Cancellation does not roll back installation or data changes that have already happened. Confirm tasks have stopped and inspect existing changes on the nodes before cleanup.&lt;/p>
+&lt;h2 id="confirm-the-result">Confirm the result&lt;/h2>
+&lt;p>Check the Operation result, &lt;code>kcctl get cluster demo -o yaml&lt;/code>, Kubernetes nodes, and system Pods together. After cluster deletion, check the platform list and node residue. See &lt;a href="https://kubeclipper.io/en/docs/tutorials/diagnostics/">platform diagnostics&lt;/a> for platform-level issues.&lt;/p></description></item><item><title>Docs: Platform diagnostics</title><link>https://kubeclipper.io/en/docs/tutorials/diagnostics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/tutorials/diagnostics/</guid><description>
+&lt;p>Locate the failing layer first: the platform, Agent, resource downloads, or the Kubernetes cluster.&lt;/p>
+&lt;h2 id="platform-health">Platform health&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status -o json
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl doctor
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>status&lt;/code> summarizes kc-server, kc-etcd, and kc-agent health. &lt;code>doctor&lt;/code> checks local access, services, platform etcd, and Agents, with evidence for failed checks. Unhealthy results return a nonzero exit code for scripting. Neither command repairs the environment.&lt;/p>
+&lt;p>If the API cannot be reached, check that &lt;code>kcctl login&lt;/code> points to the HTTPS API endpoint, normally port 8080. Inspect local login and deployment configuration and SSH connectivity from the deployment host.&lt;/p>
+&lt;h2 id="node-services">Node services&lt;/h2>
+&lt;p>Run on the relevant Linux node:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl status kc-server kc-etcd kc-agent --no-pager
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo journalctl -u kc-server -n &lt;span style="color:#0000cf;font-weight:bold">100&lt;/span> --no-pager
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo journalctl -u kc-agent -n &lt;span style="color:#0000cf;font-weight:bold">100&lt;/span> --no-pager
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>An Agent-only node is not expected to run a Server or platform etcd. Interpret service results according to node roles. Check disk space, clock synchronization, management addresses, and firewall rules.&lt;/p>
+&lt;h2 id="deployment-failures">Deployment failures&lt;/h2>
+&lt;p>Precheck errors identify the check and node. If services already exist, establish whether they belong to an active platform before changing anything. For download failures, verify the URL, certificate, file size, and archive contents. Do not hide certificate failures by disabling verification.&lt;/p>
+&lt;h2 id="cluster-task-failures">Cluster task failures&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl operation list -c demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster demo -o yaml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Use &lt;a href="https://kubeclipper.io/en/docs/tutorials/operations/">operations and logs&lt;/a> to locate the failing step and node. Check package versions and architectures for offline installation. For image pull failures, check the registry address, credentials, and connectivity. Include versions, topology, sanitized errors, and operation IDs in an issue; remove passwords, tokens, private keys, and kubeconfig credentials.&lt;/p></description></item><item><title>Docs: Image registries</title><link>https://kubeclipper.io/en/docs/tutorials/registries/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/tutorials/registries/</guid><description>
+&lt;p>A Registry resource describes a Kubernetes image source or adds image-pull configuration to containerd. It is separate from platform offline resource packages. Creating a Registry does not copy images into it.&lt;/p>
+&lt;h2 id="create-a-registry">Create a Registry&lt;/h2>
+&lt;p>The following example describes an HTTP registry on a management network. Configure HTTPS, CA trust, and authentication for your actual registry; consult command help for all flags.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create registry --name internal --host registry.example.com:5000 --scheme http
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get registry
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl create registry -h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Authentication uses &lt;code>--auth-username&lt;/code> and &lt;code>--auth-password&lt;/code>; protect credentials from shell history and terminal logs. For HTTPS, review &lt;code>--ca&lt;/code> and &lt;code>--skip-tls-verify&lt;/code> instead of reusing the HTTP example unchanged.&lt;/p>
+&lt;h2 id="select-a-registry-for-a-cluster">Select a registry for a cluster&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create cluster --name demo --master 192.168.10.21 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --k8s-version v1.37.0 --cri containerd --cri-version 2.2.4 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --cni calico --cni-version v3.31.5 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --image-registry internal --cri-registry internal
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;code>--image-registry&lt;/code> selects a Registry resource for Kubernetes images.&lt;/li>
+&lt;li>&lt;code>--cri-registry&lt;/code> adds Registry configuration to containerd; select multiple resources as needed.&lt;/li>
+&lt;li>Without an explicit image registry, components use their own defaults and applicable Agent image-mirror settings. Kubernetes and Calico do not necessarily use the same default repository.&lt;/li>
+&lt;/ul>
+&lt;p>Populate the registry with the required images first. Check actual image paths, authentication, certificates, and connectivity from cluster nodes. Offline installation also needs the &lt;a href="https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/">resource packages&lt;/a>.&lt;/p></description></item></channel></rss>

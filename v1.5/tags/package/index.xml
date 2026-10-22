@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – package</title><link>https://www.kubeclipper.io//v1.5/tags/package/</link><description>Recent content in package on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.5/tags/package/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 制作 K8S 组件离线安装包</title><link>https://www.kubeclipper.io//v1.5/docs/getting-started/make-offline-package/</link><pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.5/docs/getting-started/make-offline-package/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – package</title><link>https://kubeclipper.io/v1.5/tags/package/</link><description>Recent content in package on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.5/tags/package/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 制作 K8S 组件离线安装包</title><link>https://kubeclipper.io/v1.5/docs/getting-started/make-offline-package/</link><pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.5/docs/getting-started/make-offline-package/</guid><description>
 &lt;p>本文档介绍如何制作 K8S 组件离线安装包，对于没有外网的环境，可以通过离线安装包进行安装。&lt;/p>
 &lt;p>当前 kubeclipper v1.4 版本离线部署包中仅包含以下 K8S 组件：&lt;/p>
 &lt;ul>
@@ -344,5 +344,5 @@
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource list
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="5-使用离线组件包">5. 使用离线组件包&lt;/h2>
 &lt;p>登录 kubeclipper 控制台，点击&lt;code>创建集群&lt;/code>，进入&lt;code>集群配置&lt;/code>页，&lt;code>镜像类型&lt;/code>选择&lt;code>离线&lt;/code>，即可选择已上传的离线组件包。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.5/images/docs-quickstart/cluster-config01.png" alt="集群配置01">
-&lt;img src="https://www.kubeclipper.io//v1.5/images/docs-quickstart/cluster-config02.png" alt="集群配置02">&lt;/p></description></item></channel></rss>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.5/images/docs-quickstart/cluster-config01.png" alt="集群配置01">
+&lt;img src="https://kubeclipper.io/v1.5/images/docs-quickstart/cluster-config02.png" alt="集群配置02">&lt;/p></description></item></channel></rss>

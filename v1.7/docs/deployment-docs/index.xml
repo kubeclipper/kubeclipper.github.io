@@ -1,0 +1,54 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 部署文档</title><link>https://kubeclipper.io/v1.7/docs/deployment-docs/</link><description>Recent content in 部署文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://kubeclipper.io/v1.7/docs/deployment-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 高可用部署</title><link>https://kubeclipper.io/v1.7/docs/deployment-docs/ha-deploy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.7/docs/deployment-docs/ha-deploy/</guid><description>
+&lt;p>本文部署 KubeClipper 平台的高可用控制面。平台 Server 的高可用与受管 Kubernetes 集群的高可用是两件事，需分别规划。&lt;/p>
+&lt;h2 id="准备节点与网络">准备节点与网络&lt;/h2>
+&lt;p>准备三个 Linux Server 节点，以及需要纳管的 Agent 节点。部署用户通过同一 SSH 私钥访问所有节点，并具备 sudo 权限。时间同步和端口要求见&lt;a href="https://kubeclipper.io/v1.7/docs/overview/">架构与网络&lt;/a>。&lt;/p>
+&lt;p>Server 节点部署平台 etcd，节点数量和故障容忍按 etcd 仲裁要求规划。生产环境建议将平台 Server 与运行 Kubernetes 工作负载的节点分开。&lt;/p>
+&lt;h2 id="安装和下载">安装和下载&lt;/h2>
+&lt;p>按照&lt;a href="https://kubeclipper.io/v1.7/docs/getting-started/">快速开始&lt;/a>安装 v1.7.0 kcctl，下载与目标架构匹配的完整 &lt;code>kc-amd64.tar.gz&lt;/code> 或 &lt;code>kc-arm64.tar.gz&lt;/code> 部署包。不要将 GitHub Release 的客户端二进制包传给 &lt;code>--pkg&lt;/code>。&lt;/p>
+&lt;h2 id="部署三个-server-和-agent">部署三个 Server 和 Agent&lt;/h2>
+&lt;p>将示例 IP、私钥和部署包路径替换为实际值。&lt;code>--server&lt;/code> 使用逗号分隔地址，&lt;code>--agent&lt;/code> 可按区域填写。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">read&lt;/span> -r -s -p &lt;span style="color:#4e9a06">&amp;#39;设置 admin 密码: &amp;#39;&lt;/span> KC_ADMIN_PASSWORD
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">printf&lt;/span> &lt;span style="color:#4e9a06">&amp;#39;\n&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --server 192.168.10.11,192.168.10.12,192.168.10.13 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --agent default:192.168.10.21,192.168.10.22 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --user root --pk-file &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$HOME&lt;/span>&lt;span style="color:#4e9a06">/.ssh/id_rsa&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --pkg &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$PWD&lt;/span>&lt;span style="color:#4e9a06">/kc-amd64.tar.gz&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --initial-password &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$KC_ADMIN_PASSWORD&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">unset&lt;/span> KC_ADMIN_PASSWORD
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>保持 TLS 开启。多网卡环境通过 &lt;code>--ip-detect&lt;/code> 与 &lt;code>--node-ip-detect&lt;/code> 显式选择可达地址；可使用 &lt;code>kcctl deploy -h&lt;/code> 核对参数。默认平台 etcd 端口为 12379、12380、12381。&lt;/p>
+&lt;h2 id="验证结果">验证结果&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login --host https://192.168.10.11:8080 --username admin
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl doctor
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>检查三个 Server 的服务状态、平台 etcd 成员和 Agent 是否正常。在其他 Server 地址重复检查 API 可达性。需要统一域名或 VIP 时，另行配置入口负载均衡和证书；部署三个 Server 不会自动创建入口 VIP。&lt;/p>
+&lt;p>浏览器默认访问各 Server 的 HTTP 80 控制台入口；CLI 使用 HTTPS 8080 API。生产入口应配置 HTTPS，并按实际网络限制管理端口访问。&lt;/p>
+&lt;h2 id="添加和移除-agent">添加和移除 Agent&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl join --agent default:192.168.10.23
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>确认节点没有需要保留的集群和工作负载后，再执行移除：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl drain --agent 192.168.10.23
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>先查看正常 drain 的错误原因，再决定后续处理；不要默认使用强制参数。升级前参见&lt;a href="https://kubeclipper.io/v1.7/docs/deployment-docs/upgrade/">升级检查&lt;/a>。&lt;/p></description></item><item><title>Docs: 升级检查</title><link>https://kubeclipper.io/v1.7/docs/deployment-docs/upgrade/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.7/docs/deployment-docs/upgrade/</guid><description>
+&lt;p>平台升级与受管 Kubernetes 集群升级分别处理。本文介绍 KubeClipper 平台升级前后的检查，不承诺任意旧版本都可直接升级到 1.7。&lt;/p>
+&lt;h2 id="升级前">升级前&lt;/h2>
+&lt;ol>
+&lt;li>记录 Server、Agent、kcctl 和 Console 的版本及节点拓扑，确认目标包的 CPU 架构。&lt;/li>
+&lt;li>查看目标版本的 Release、安全公告和配置变化。1.7 改用 Operation v2，旧操作记录和任务状态需要在测试环境核对。&lt;/li>
+&lt;li>在没有运行中安装、升级、备份等操作的窗口执行。先处理未完成或失败的操作。&lt;/li>
+&lt;li>备份平台 etcd、Server/Agent 配置、证书与持久化认证密钥，并验证恢复方法。受管集群的数据备份需要单独安排。&lt;/li>
+&lt;li>在可恢复的测试环境演练目标升级路径，记录服务中断和恢复步骤。&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl doctor
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl upgrade -h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="执行升级">执行升级&lt;/h2>
+&lt;p>&lt;code>kcctl upgrade&lt;/code> 支持整个平台或组件升级。目标包应满足命令帮助中的目录结构，并已经在测试环境验证；不要把客户端包当成平台升级包。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">UPGRADE_PACKAGE&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>/path/to/validated-upgrade-package.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl upgrade all --pkg &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$UPGRADE_PACKAGE&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>只有 Release 或已验证部署流程明确支持时，才使用在线升级或组件独立替换。不要把替换一个二进制文件视为整个升级完成。&lt;/p>
+&lt;h2 id="升级后">升级后&lt;/h2>
+&lt;p>再次检查 &lt;code>kcctl status&lt;/code>、&lt;code>kcctl doctor&lt;/code>，核对各节点实际运行版本。验证登录、节点信息、操作详情与日志、受管集群访问及 Console 基本流程。测试一个受控的生命周期操作，确认 Operation 和实际集群状态一致。&lt;/p>
+&lt;p>升级失败时保留错误和日志，按事先验证的恢复步骤处理。恢复旧二进制前先判断数据和配置是否仍兼容，不要在未知状态下反复覆盖服务。&lt;/p></description></item></channel></rss>

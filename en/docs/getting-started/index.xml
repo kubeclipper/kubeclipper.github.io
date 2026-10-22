@@ -1,75 +1,73 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Getting Started</title><link>https://www.kubeclipper.io/en/docs/getting-started/</link><description>Recent content in Getting Started on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io/en/docs/getting-started/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploying AIO</title><link>https://www.kubeclipper.io/en/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/getting-started/aio-env/</guid><description>
-&lt;p>For users who are new to KubeClipper and want to get started quickly, it is recommended to use the All-in-One installation mode, which can help you quickly deploy KubeClipper with zero configuration.&lt;/p>
-&lt;h2 id="deploy-kubeclipper">Deploy KubeClipper&lt;/h2>
-&lt;h3 id="download-kcctl">Download kcctl&lt;/h3>
-&lt;p>KubeClipper provides a command line tool 🔧 kcctl to simplify operation and maintenance. You can download the latest version of kcctl directly with the following command:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># The latest distribution is installed by default&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> bash -
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Install the specified version&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>master bash -
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#If you are in China, you can use cn environment variables during installation, in this case we will use registry.aliyuncs.com/google_containers instead of k8s.gcr.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh &lt;span style="color:#000;font-weight:bold">|&lt;/span> &lt;span style="color:#000">KC_REGION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>cn bash -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>You can also download the specified version from the [GitHub Release Page] ( &lt;a href="https://github.com/kubeclipper/kubeclipper/releases">https://github.com/kubeclipper/kubeclipper/releases&lt;/a> ) .&lt;/p>
-&lt;/blockquote>
-&lt;p>Check if the installation was successful with the following command:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>kcctl version
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="start-installation">Start installation&lt;/h3>
-&lt;p>You can use &amp;lsquo;kcctl deploy&amp;rsquo; to quickly install and deploy KubeClipper. kcctl uses SSH to access the target node where KubeClipper is finally deployed, so you need to provide SSH access credentials, and the following way to pass the credentials:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl deploy &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--user &amp;lt;username&amp;gt;&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>--passwd &amp;lt;password&amp;gt; &lt;span style="color:#000;font-weight:bold">|&lt;/span> --pk-file &amp;lt;private key path&amp;gt;&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Example：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Use the private key&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --pk-file /root/.ssh/id_rsa
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Use a password&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy --user root --passwd password
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Deploy AIO&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl deploy
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Execute the &amp;lsquo;kcctl deploy&amp;rsquo; command kcctl will check your installation environment and will automatically enter the installation process if the conditions are met. If you see the following KubeClipper banner, the installation is successful.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> _ __ _ _____ _ _
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| | / / | | / __ \ (_)
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |/ / _ _| |__ ___| / \/ |_ _ __ _ __ ___ _ __
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| \| | | | &amp;#39;_ \ / _ \ | | | | &amp;#39;_ \| &amp;#39;_ \ / _ \ &amp;#39;__|
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">| |\ \ |_| | |_) | __/ \__/\ | | |_) | |_) | __/ |
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic">\_| \_/\__,_|_.__/ \___|\____/_|_| .__/| .__/ \___|_|
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> | | | |
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> |_| |_|
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="login-to-console">Login to console&lt;/h3>
-&lt;p>After the installation is complete, open a browser and visit &amp;lsquo;http:&lt;kc-server ip address>&amp;rsquo; to enter the KubeClipper console. (Usually kc-server IP is the IP of the node where you deploy kubeClipper)&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
-&lt;p>You can use the default account password &amp;quot; admin/Thinkbig1 &amp;quot; to log in.&lt;/p>
-&lt;blockquote>
-&lt;p>You may need to configure port forwarding rules and open ports in security groups for external users to access the console.&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="create-kubernetes-cluster">Create kubernetes cluster&lt;/h2>
-&lt;p>After successful deployment you can create a kubernetes cluster using the ** kcctl tool ** or via the ** console ** . Use the kcctl tool to create it in this quickstart tutorial.&lt;/p>
-&lt;p>First, use the default account password to log in and obtain the token, which is convenient for subsequent interaction between kcctl and kc-server.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>kcctl login -H https://&amp;lt;kc-server ip address&amp;gt;:8080 -u admin -p Thinkbig1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Then create a Kubernetes cluster with the following command:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">NODE&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> $ &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>kcctl get node -o yaml &lt;span style="color:#000;font-weight:bold">|&lt;/span> grep ipv4DefaultIP: &lt;span style="color:#000;font-weight:bold">|&lt;/span> sed&lt;span style="color:#4e9a06">&amp;#39;s/ipv4DefaultIP : //&amp;#39;&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Kcctl create cluster --master &lt;span style="color:#000">$NODE&lt;/span> --name demo --untaint-master
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>It takes about 3 minutes to complete the cluster creation, or you can use the following command to view the cluster status&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Bash" data-lang="Bash">&lt;span style="display:flex;">&lt;span>Kcctl get cluster -o yaml &lt;span style="color:#000;font-weight:bold">|&lt;/span> grep status -A5
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>You can also go to the console to view the real-time log.&lt;/p>
-&lt;/blockquote>
-&lt;p>The cluster installation is complete when the cluster is in the Running state, and you can use the &amp;lsquo;kubectl get cs&amp;rsquo; command to view the cluster health.&lt;/p></description></item><item><title>Docs: Create kubernetes clusters offline using the kubeclipper platform</title><link>https://www.kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
-&lt;h2 id="1-go-to-the-creation-screen">1. Go to the creation screen&lt;/h2>
-&lt;p>Log in to the &lt;code>Kubeclipper&lt;/code> platform and click the button as shown in the figure to enter the cluster creation interface&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-begin.png" alt="">&lt;/p>
-&lt;h2 id="2-configure-cluster-nodes">2. Configure cluster nodes&lt;/h2>
-&lt;p>Follow the text prompts to complete the steps of entering the cluster name and selecting nodes&lt;/p>
-&lt;p>Note: The number of master nodes cannot be an even number.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-node-config.png" alt="">&lt;/p>
-&lt;h2 id="3-configure-cluster">3. Configure cluster&lt;/h2>
-&lt;p>This step is used to configure the cluster network and components such as the database and container runtime&lt;/p>
-&lt;p>Select offline installation and fill in the address of the image repository you have built first&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-config.png" alt="">&lt;/p>
-&lt;h2 id="4-configure-cluster-storage">4. Configure cluster storage&lt;/h2>
-&lt;p>Select nfs storage and follow the text prompts to fill in the appropriate fields&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-storage-config.png" alt="">&lt;/p>
-&lt;h2 id="5-installation-completed">5. Installation completed&lt;/h2>
-&lt;p>Complete all configurations to confirm installation&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
-&lt;p>Installation is successful and the cluster is up and running&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Getting started</title><link>https://kubeclipper.io/en/docs/getting-started/</link><description>Recent content in Getting started on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://kubeclipper.io/en/docs/getting-started/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: All-in-One deployment</title><link>https://kubeclipper.io/en/docs/getting-started/aio-env/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/getting-started/aio-env/</guid><description>
+&lt;p>All-in-One runs the Server and Agent on the same Linux host for evaluation and testing.&lt;/p>
+&lt;p>Follow &lt;a href="https://kubeclipper.io/en/docs/getting-started/">Getting started&lt;/a> to prepare the host, install v1.7.0 kcctl, download the complete package, deploy the platform, and create a test cluster.&lt;/p>
+&lt;p>For production, plan separate Server and workload nodes and see &lt;a href="https://kubeclipper.io/en/docs/deployment-docs/ha-deploy/">high availability&lt;/a>.&lt;/p></description></item><item><title>Docs: Offline clusters</title><link>https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
+&lt;p>Offline installation needs a platform deployment package and component resources for Kubernetes, the CRI, and the CNI. Registry resources describe image repositories; they do not replace offline packages.&lt;/p>
+&lt;h2 id="check-resources">Check resources&lt;/h2>
+&lt;p>After &lt;a href="https://kubeclipper.io/en/docs/getting-started/">deploying the platform&lt;/a>, log in and inspect resources and nodes:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Match package architecture to the target nodes. The 1.7 matrix uses Kubernetes v1.37.0 / v1.36.4 / v1.35.8, containerd 2.2.4, and Calico v3.31.5. See &lt;a href="https://kubeclipper.io/en/docs/getting-started/make-offline-package/">offline component packages&lt;/a> when more resources are needed.&lt;/p>
+&lt;h2 id="create-the-cluster">Create the cluster&lt;/h2>
+&lt;p>&lt;code>kcctl create cluster&lt;/code> defaults to offline installation. This example uses one test node:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create cluster --name offline-demo --master 192.168.10.21 --untaint-master &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --k8s-version v1.37.0 --cri containerd --cri-version 2.2.4 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --cni calico --cni-version v3.31.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list -c offline-demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster offline-demo -o yaml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>In the Console wizard, select prepared component versions, target nodes, and offline installation. Populate any image repository and configure its &lt;a href="https://kubeclipper.io/en/docs/tutorials/registries/">Registry resource&lt;/a> first. Select storage plugins according to actual requirements; a particular NFS plugin is not a mandatory cluster-creation step.&lt;/p>
+&lt;h2 id="confirm-installation">Confirm installation&lt;/h2>
+&lt;p>Use Operations and node logs to locate failures. After obtaining kubeconfig, check Ready nodes, system Pods, and API readiness. Resolve missing resources, architecture mismatches, and unreachable image paths before retrying. See &lt;a href="https://kubeclipper.io/en/docs/tutorials/operations/">operations and logs&lt;/a>.&lt;/p></description></item><item><title>Docs: Offline component packages</title><link>https://kubeclipper.io/en/docs/getting-started/make-offline-package/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/en/docs/getting-started/make-offline-package/</guid><description>
+&lt;p>The full 1.7.0 deployment package installs the platform. Additional Kubernetes, CRI, and CNI packages provide cluster resources. Deploy the platform using &lt;a href="https://kubeclipper.io/en/docs/getting-started/">Getting started&lt;/a> first.&lt;/p>
+&lt;h2 id="choose-versions-and-architecture">Choose versions and architecture&lt;/h2>
+&lt;p>Use the &lt;a href="https://kubeclipper.io/en/docs/overview/release-1.7/">1.7 matrix&lt;/a>. This Bash example prepares Kubernetes v1.37.0 for amd64. Prepare arm64 packages for arm64 nodes.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">set&lt;/span> -e
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.37.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>mktemp -d&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;k8s/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -p &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">for&lt;/span> FILE in manifest.json configs.tar.gz images.tar.gz&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> curl -fL -o &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">FILE&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://kubeclipper.oss-ap-southeast-1.aliyuncs.com/packages/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">FILE&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -czf &lt;span style="color:#4e9a06">&amp;#34;k8s-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">.tar.gz&amp;#34;&lt;/span> -C &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> k8s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -tzf &lt;span style="color:#4e9a06">&amp;#34;k8s-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">.tar.gz&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Preserve the &lt;code>k8s/version/architecture/&lt;/code> hierarchy. Keep certificate and HTTP verification enabled. The download directory remains at &lt;code>$PKG_DIR&lt;/code> for inspection and subsequent cleanup.&lt;/p>
+&lt;p>Other components use the same hierarchy. Archive the component directory with the following files:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Directory&lt;/th>
+&lt;th>Version&lt;/th>
+&lt;th>Required files&lt;/th>
+&lt;th>Upload type&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>k8s&lt;/td>
+&lt;td>v1.37.0&lt;/td>
+&lt;td>manifest.json, configs.tar.gz, images.tar.gz&lt;/td>
+&lt;td>k8s&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>containerd&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>manifest.json, configs.tar.gz&lt;/td>
+&lt;td>cri&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>calico&lt;/td>
+&lt;td>v3.31.5&lt;/td>
+&lt;td>manifest.json, images.tar.gz, charts.tgz&lt;/td>
+&lt;td>cni&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>For example, Calico uses &lt;code>packages/calico/v3.31.5/amd64/manifest.json&lt;/code>. Packaging existing resources does not imply support for arbitrary custom versions.&lt;/p>
+&lt;h2 id="upload-in-the-offline-environment">Upload in the offline environment&lt;/h2>
+&lt;p>Transfer the archive to a deployment machine that can reach the platform and has the deployment configuration and Server SSH credentials.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource push --pkg k8s-v1.37.0-amd64.tar.gz --type k8s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Use &lt;code>--type cri&lt;/code> for containerd and &lt;code>--type cni&lt;/code> for Calico. Confirm the versions and architecture in the resource list before &lt;a href="https://kubeclipper.io/en/docs/getting-started/carete-k8s-cluster-offline/">creating an offline cluster&lt;/a>. See &lt;a href="https://kubeclipper.io/en/docs/tutorials/registries/">Registry configuration&lt;/a> for image registry settings.&lt;/p></description></item></channel></rss>

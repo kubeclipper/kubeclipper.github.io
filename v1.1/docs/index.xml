@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 文档</title><link>https://www.kubeclipper.io//v1.1/docs/</link><description>Recent content in 文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.1/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 集群管理</title><link>https://www.kubeclipper.io//v1.1/docs/tutorials/cluster-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/tutorials/cluster-manage/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 文档</title><link>https://kubeclipper.io/v1.1/docs/</link><description>Recent content in 文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.1/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 集群管理</title><link>https://kubeclipper.io/v1.1/docs/tutorials/cluster-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/tutorials/cluster-manage/</guid><description>
 &lt;h2 id="创建集群">创建集群&lt;/h2>
 &lt;p>您可以通过向导式的页面创建 K8S 集群，并安装CNI、CSI等所需插件。也可以提前保存好集群模版，选择模版后快速创建集群。&lt;/p>
 &lt;h3 id="创建集群准备工作">创建集群准备工作&lt;/h3>
@@ -49,7 +49,7 @@
 &lt;p>进入创建集群向导页面的“节点配置”页面。填写“集群名称”，如“test”，不需选择“集群模版”。选择一个可用节点，添加为控制节点，并在污点管理列表中，将 master 节点的污点移除。点击“下一步”按钮。&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/select-node.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/select-node.png" alt="">&lt;/p>
 &lt;ol>
 &lt;li>
 &lt;p>进入创建集群向导页面的“集群配置”页面。选择“离线安装”，“镜像仓库”不需填写，其他配置都可使用默认配置，点击“快速创建”按钮，跳转配置确认页面，点击“确认”按钮。&lt;/p>
@@ -394,7 +394,7 @@
 &lt;h3 id="集群备份恢复">集群备份恢复&lt;/h3>
 &lt;p>如果您在集群正常运行期间执行恢复操作，则 KubeClipper 将对该集群进行覆盖式恢复，就是备份文件里面的 etcd 数据，覆盖现有的数据。&lt;/p>
 &lt;p>您可以在集群详情页的备份标签页下，点击备份右侧的 “恢复”按钮；或点击集群操作中的“更多”&amp;gt;“恢复集群”按钮，在恢复集群弹窗中选择需要恢复的备份，可以将当前集群恢复至指定备份状态。&lt;/p>
-&lt;p>注意：集群升级后，将无法再恢复到升级前版本的备份。&lt;/p></description></item><item><title>Docs: 部署 HA</title><link>https://www.kubeclipper.io//v1.1/docs/deployment-docs/ha-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/deployment-docs/ha-env/</guid><description>
+&lt;p>注意：集群升级后，将无法再恢复到升级前版本的备份。&lt;/p></description></item><item><title>Docs: 部署 HA</title><link>https://kubeclipper.io/v1.1/docs/deployment-docs/ha-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/deployment-docs/ha-env/</guid><description>
 &lt;p>本文档旨在通过简单的操作部署一个 HA 版本的 kubeclipper。&lt;/p>
 &lt;blockquote>
 &lt;p>如果只是想简单体验一下，请参考 &lt;a href="https://github.com/kubeclipper/kubeclipper/blob/master/README_zh.md#quick-start">QuickStart&lt;/a> 部署 AIO 环境。&lt;/p>
@@ -447,11 +447,11 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> |_| |_|
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="登录控制台">登录控制台&lt;/h3>
 &lt;p>安装完成后，打开浏览器，访问 &lt;code>http://$IP&lt;/code> 即可进入 KubeClipper 控制台。
-&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
 &lt;p>您可以使用默认帐号密码 &lt;code>admin / Thinkbig1&lt;/code> 进行登录。&lt;/p>
 &lt;blockquote>
 &lt;p>您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。&lt;/p>
-&lt;/blockquote></description></item><item><title>Docs: 部署AIO</title><link>https://www.kubeclipper.io//v1.1/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/getting-started/aio-env/</guid><description>
+&lt;/blockquote></description></item><item><title>Docs: 部署AIO</title><link>https://kubeclipper.io/v1.1/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/getting-started/aio-env/</guid><description>
 &lt;p>对于初次接触 KubeClipper 并想快速上手的用户，建议使用 All-in-One 安装模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p>
 &lt;h2 id="部署-kubeclipper">部署 KubeClipper&lt;/h2>
 &lt;h3 id="下载-kcctl">下载 kcctl&lt;/h3>
@@ -485,7 +485,7 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> |_| |_|
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="登录控制台">登录控制台&lt;/h3>
 &lt;p>安装完成后，打开浏览器，访问 &lt;code>http://$IP&lt;/code> 即可进入 KubeClipper 控制台。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
 &lt;p>您可以使用默认帐号密码 &lt;code>admin / Thinkbig1&lt;/code> 进行登录。&lt;/p>
 &lt;blockquote>
 &lt;p>您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。&lt;/p>
@@ -503,9 +503,9 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>您也可以进入控制台查看实时日志。&lt;/p>
 &lt;/blockquote>
-&lt;p>进入 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 节点管理</title><link>https://www.kubeclipper.io//v1.1/docs/tutorials/node-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/tutorials/node-manage/</guid><description>
+&lt;p>进入 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 节点管理</title><link>https://kubeclipper.io/v1.1/docs/tutorials/node-manage/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/tutorials/node-manage/</guid><description>
 &lt;p>在“节点信息”页面，您可以查看平台中管理的全部节点列表，节点规格、状态等信息。点击节点名称进入节点详情页面，您可以查看详细的节点基本信息和系统信息。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/node-info.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/node-info.png" alt="">&lt;/p>
 &lt;p>KubeClipper 中的节点状态表示 kc-gent 对节点的管理状态。正常情况下，节点状态显示为“就绪”，当节点失联4分钟（误差时间10s内）后，状态会更新为“未知”，未知状态的节点无法进行任何操作，也无法创建集群或为集群添加/移除节点。&lt;/p>
 &lt;h2 id="添加节点">添加节点&lt;/h2>
 &lt;p>在部署 KubeClipper 时，您就可以添加初始的 server 节点和 agent 节点，其中，server节点用于部署 KubeClipper 自身服务，agent 节点可用于部署 K8S 集群。在用于实验或开发的 KubeClipper 环境，您可以将 server 节点同时添加为 agent 节点。但如果用于生产环境，建议不要将 server 节点复用为 agent 节点。&lt;/p>
@@ -518,7 +518,7 @@
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Plaintext" data-lang="Plaintext">&lt;span style="display:flex;">&lt;span>kcctl drain --agent 192.168.10.19
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="连接终端">连接终端&lt;/h2>
 &lt;p>在节点列表页面，您可以点击目标节点右侧的“连接终端”按钮，在连接终端的弹窗中输入节点端口和用户名密码信息后，访问节点SSH控制台并执行命令。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/node-terminal.png" alt="">&lt;/p></description></item><item><title>Docs: 访问控制</title><link>https://www.kubeclipper.io//v1.1/docs/tutorials/access-control/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/tutorials/access-control/</guid><description>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/node-terminal.png" alt="">&lt;/p></description></item><item><title>Docs: 访问控制</title><link>https://kubeclipper.io/v1.1/docs/tutorials/access-control/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/tutorials/access-control/</guid><description>
 &lt;h2 id="创建用户">创建用户&lt;/h2>
 &lt;p>安装 KubeClipper 之后，您需要创建所需角色的用户。一开始，系统默认只有一个用户 admin，具有平台管理员角色。&lt;/p>
 &lt;p>点击“访问控制”&amp;gt;“用户”，进入用户管理页面，点击左上角“创建用户”按钮，在弹窗中填写用户名、密码、手机号码、邮箱等信息，并指定用户角色，点击“确认”按钮。系统内置四个角色如下：&lt;/p>
@@ -552,7 +552,7 @@
 &lt;p>除了系统内置角色，您也可以创建自定义角色，已满足业务需要。&lt;/p>
 &lt;p>点击“访问控制”&amp;gt;“角色”，进入角色管理页面，您可以点击左上角“创建角色”按钮，创建自定义角色。&lt;/p>
 &lt;p>在创建角色页面，您需要填写角色名称和描述，并勾选自定义角色所需权限，一些权限依赖于其他权限，在选择这些权限时，将自动选中依赖的权限。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/role-policy.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/role-policy.png" alt="">&lt;/p>
 &lt;p>创建自定义角色完成后，您可以在角色详情页面查看角色基本信息、角色权限列表、授权用户列表，并对自定义角色执行以下操作：&lt;/p>
 &lt;ul>
 &lt;li>
@@ -571,8 +571,8 @@
 &lt;pre tabindex="0">&lt;code class="language-undefined" data-lang="undefined">oauthOptions: identityProviders: - name: keycloak type: OIDC mappingMethod: auto provider: clientID: kc clientSecret: EErn729BB1bKawdRtnZgrqj9Bx0]mzUs issuer: http://172.20.163.233:7777/auth/realms/kubeclipper scopes: - openid - email redirectURL: http://{kc-console-address}/oatuh2/redirect/{IDP-Name}
 &lt;/code>&lt;/pre>&lt;p>其中，“provider”下需要您填写自己的 OAuth2 服务的&lt;code>clientID&lt;/code>、&lt;code>clientSecret&lt;/code>、&lt;code>issuer&lt;/code>信息，以 keycloack 为例，如下图所示。&lt;/p>
 &lt;p>&lt;code>redirectURL&lt;/code>示例：http://172.0.0.90/oauth2/redirect/keycloack&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/keycloak-client.png" alt="">&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-tutorials/keycloak-client2.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/keycloak-client.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-tutorials/keycloak-client2.png" alt="">&lt;/p>
 &lt;p>OAuth2 用户可以通过以下步骤访问和使用 KubeClipper 平台：&lt;/p>
 &lt;ol>
 &lt;li>
@@ -584,23 +584,23 @@
 &lt;li>
 &lt;p>OAuth2 用户重复第一步，登录 KubeClipper，就可以正常访问平台并执行角色权限内操作。&lt;/p>
 &lt;/li>
-&lt;/ol></description></item><item><title>Docs: 使用 Kubeclipper 离线创建 k8s 集群</title><link>https://www.kubeclipper.io//v1.1/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
+&lt;/ol></description></item><item><title>Docs: 使用 Kubeclipper 离线创建 k8s 集群</title><link>https://kubeclipper.io/v1.1/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
 &lt;h2 id="1-进入创建界面">1. 进入创建界面&lt;/h2>
 &lt;p>登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-begin.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-begin.png" alt="">&lt;/p>
 &lt;h2 id="2-配置集群节点">2. 配置集群节点&lt;/h2>
 &lt;p>按照文字提示完成输入集群名称、选择节点等步骤&lt;/p>
 &lt;p>注意: master 节点数量不能为偶数&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-node-config.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-node-config.png" alt="">&lt;/p>
 &lt;h2 id="3-配置集群">3. 配置集群&lt;/h2>
 &lt;p>此步骤用于配置集群网络以及数据库、容器运行时等组件&lt;/p>
 &lt;p>选择离线安装并填写首先搭建好的镜像仓库地址&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-config.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-config.png" alt="">&lt;/p>
 &lt;h2 id="4-配置存储">4. 配置存储&lt;/h2>
 &lt;p>选择 nfs 存储，按照文字提示填写相应内容&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-storage-config.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-storage-config.png" alt="">&lt;/p>
 &lt;h2 id="5-安装完成">5. 安装完成&lt;/h2>
 &lt;p>完成所有配置确认安装&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
 &lt;p>安装成功，集群正常运行&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item></channel></rss>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item></channel></rss>

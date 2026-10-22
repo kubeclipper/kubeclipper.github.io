@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Deployment docs</title><link>https://www.kubeclipper.io//v1.4/en/docs/deployment-docs/</link><description>Recent content in Deployment docs on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.4/en/docs/deployment-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploy Highly Available KubeClipper</title><link>https://www.kubeclipper.io//v1.4/en/docs/deployment-docs/ha-deploy/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.4/en/docs/deployment-docs/ha-deploy/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Deployment docs</title><link>https://kubeclipper.io/v1.4/en/docs/deployment-docs/</link><description>Recent content in Deployment docs on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.4/en/docs/deployment-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploy Highly Available KubeClipper</title><link>https://kubeclipper.io/v1.4/en/docs/deployment-docs/ha-deploy/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.4/en/docs/deployment-docs/ha-deploy/</guid><description>
 &lt;blockquote>
 &lt;p>For the first contact with KubeClipper, it is recommended to deploy AIO environment and quickly get started to experience the features provided by KubeClipper.
 If you want to apply KubeClipper to a build environment, then this document may be helpful.&lt;/p>
@@ -126,7 +126,7 @@ After executing the kcctl deploy command, the command will detect whether your e
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>System default management account: &lt;code>admin/Thinkbig1&lt;/code>
 Login to Console:
 Open a browser and visit &lt;code>http://SERVER_IP&lt;/code> (accessible through any Server node) to enter the KubeClipper Console&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.4/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.4/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
 &lt;p>Login command line:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl login -H http://SERVER_IP -u admin -p Thinkbig1
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>

@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – aio</title><link>https://www.kubeclipper.io//v1.3/en/tags/aio/</link><description>Recent content in aio on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.3/en/tags/aio/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploying AIO</title><link>https://www.kubeclipper.io//v1.3/en/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.3/en/docs/getting-started/aio-env/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – aio</title><link>https://kubeclipper.io/v1.3/en/tags/aio/</link><description>Recent content in aio on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.3/en/tags/aio/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploying AIO</title><link>https://kubeclipper.io/v1.3/en/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.3/en/docs/getting-started/aio-env/</guid><description>
 &lt;p>For users who are new to KubeClipper and want to get started quickly, it is recommended to use the All-in-One installation mode, which can help you quickly deploy KubeClipper with zero configuration.&lt;/p>
 &lt;h2 id="deploy-kubeclipper">Deploy KubeClipper&lt;/h2>
 &lt;h3 id="download-kcctl">Download kcctl&lt;/h3>
@@ -48,7 +48,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
 &lt;h3 id="login-to-console">Login to console&lt;/h3>
 &lt;p>After the installation is complete, open a browser and visit &amp;lsquo;http:&lt;kc-server ip address>&amp;rsquo; to enter the KubeClipper console. (Usually kc-server IP is the IP of the node where you deploy kubeClipper)&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.3/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.3/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
 &lt;p>You can use the default account password &amp;quot; admin/Thinkbig1 &amp;quot; to log in.&lt;/p>
 &lt;blockquote>
 &lt;p>You may need to configure port forwarding rules and open ports in security groups for external users to access the console.&lt;/p>

@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – docs</title><link>https://www.kubeclipper.io//v1.1/tags/docs/</link><description>Recent content in docs on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.1/tags/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 快速开始</title><link>https://www.kubeclipper.io//v1.1/docs/getting-started/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/getting-started/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – docs</title><link>https://kubeclipper.io/v1.1/tags/docs/</link><description>Recent content in docs on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.1/tags/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 快速开始</title><link>https://kubeclipper.io/v1.1/docs/getting-started/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/getting-started/</guid><description>
 &lt;p>对于初次接触 KubeClipper 并想快速上手的用户，建议使用 All-in-One 安装模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p>
 &lt;h3 id="准备工作">准备工作&lt;/h3>
 &lt;p>KubeClipper 本身并不会占用太多资源，但是为了后续更好的运行 Kubernetes 建议硬件配置不低于最低要求。&lt;/p>
@@ -66,7 +66,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>您也可以进入控制台查看实时日志。&lt;/p>
 &lt;/blockquote>
-&lt;p>进入 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 部署AIO</title><link>https://www.kubeclipper.io//v1.1/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/getting-started/aio-env/</guid><description>
+&lt;p>进入 Running 状态即表示集群安装完成,您可以使用 &lt;code>kubectl get cs&lt;/code> 命令来查看集群健康状况。&lt;/p></description></item><item><title>Docs: 部署AIO</title><link>https://kubeclipper.io/v1.1/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/getting-started/aio-env/</guid><description>
 &lt;p>对于初次接触 KubeClipper 并想快速上手的用户，建议使用 All-in-One 安装模式，它能够帮助您零配置快速部署 KubeClipper。&lt;/p>
 &lt;h2 id="部署-kubeclipper">部署 KubeClipper&lt;/h2>
 &lt;h3 id="下载-kcctl">下载 kcctl&lt;/h3>
@@ -100,7 +100,7 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-style:italic"> |_| |_|
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="登录控制台">登录控制台&lt;/h3>
 &lt;p>安装完成后，打开浏览器，访问 &lt;code>http://$IP&lt;/code> 即可进入 KubeClipper 控制台。&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
 &lt;p>您可以使用默认帐号密码 &lt;code>admin / Thinkbig1&lt;/code> 进行登录。&lt;/p>
 &lt;blockquote>
 &lt;p>您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。&lt;/p>

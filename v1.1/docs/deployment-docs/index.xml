@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 部署文档</title><link>https://www.kubeclipper.io//v1.1/docs/deployment-docs/</link><description>Recent content in 部署文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.1/docs/deployment-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 部署 HA</title><link>https://www.kubeclipper.io//v1.1/docs/deployment-docs/ha-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.1/docs/deployment-docs/ha-env/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KubeClipper – 部署文档</title><link>https://kubeclipper.io/v1.1/docs/deployment-docs/</link><description>Recent content in 部署文档 on KubeClipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.1/docs/deployment-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 部署 HA</title><link>https://kubeclipper.io/v1.1/docs/deployment-docs/ha-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.1/docs/deployment-docs/ha-env/</guid><description>
 &lt;p>本文档旨在通过简单的操作部署一个 HA 版本的 kubeclipper。&lt;/p>
 &lt;blockquote>
 &lt;p>如果只是想简单体验一下，请参考 &lt;a href="https://github.com/kubeclipper/kubeclipper/blob/master/README_zh.md#quick-start">QuickStart&lt;/a> 部署 AIO 环境。&lt;/p>
@@ -51,7 +51,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> |_| |_|
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="登录控制台">登录控制台&lt;/h3>
 &lt;p>安装完成后，打开浏览器，访问 &lt;code>http://$IP&lt;/code> 即可进入 KubeClipper 控制台。
-&lt;img src="https://www.kubeclipper.io//v1.1/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;img src="https://kubeclipper.io/v1.1/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
 &lt;p>您可以使用默认帐号密码 &lt;code>admin / Thinkbig1&lt;/code> 进行登录。&lt;/p>
 &lt;blockquote>
 &lt;p>您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。&lt;/p>

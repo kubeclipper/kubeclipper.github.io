@@ -1,0 +1,57 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Overview</title><link>https://kubeclipper.io/v1.7/en/docs/overview/</link><description>Recent content in Overview on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.7/en/docs/overview/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 1.7 release notes</title><link>https://kubeclipper.io/v1.7/en/docs/overview/release-1.7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.7/en/docs/overview/release-1.7/</guid><description>
+&lt;p>This documentation targets &lt;strong>KubeClipper v1.7.0&lt;/strong>, released on September 8, 2026. See the official &lt;a href="https://github.com/kubeclipper/kubeclipper/releases/tag/v1.7.0">v1.7.0 release&lt;/a>.&lt;/p>
+&lt;h2 id="main-changes">Main changes&lt;/h2>
+&lt;ul>
+&lt;li>API-driven Operation v2 manages operations, tasks, and execution state. Agents communicate with Servers over mTLS.&lt;/li>
+&lt;li>&lt;code>kcctl operation&lt;/code> provides lists, details, logs, retries, and cancellation.&lt;/li>
+&lt;li>&lt;code>kcctl status&lt;/code> and &lt;code>kcctl doctor&lt;/code> report platform health and diagnostic evidence.&lt;/li>
+&lt;li>Registry resources select Kubernetes image repositories and configure containerd image pulls.&lt;/li>
+&lt;li>Deployment prechecks identify the node, role, and underlying error. Server installation waits for platform etcd health.&lt;/li>
+&lt;/ul>
+&lt;h2 id="component-versions">Component versions&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kubernetes&lt;/th>
+&lt;th>containerd&lt;/th>
+&lt;th>Calico&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>v1.37.0&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>v3.31.5&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>v1.36.4&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>v3.31.5&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>v1.35.8&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>v3.31.5&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Kubernetes v1.37.0 is the default. Available selections depend on platform resources; offline installations also need packages for the target CPU architecture. Source: &lt;a href="https://github.com/kubeclipper/kubeclipper/blob/v1.7.0/README.md">v1.7.0 support matrix&lt;/a>.&lt;/p>
+&lt;h2 id="release-scope">Release scope&lt;/h2>
+&lt;p>This documentation describes v1.7.0. Review release notes, security advisories, and binary versions before production use. See the &lt;a href="https://kubeclipper.io/v1.7/en/docs/deployment-docs/upgrade/">upgrade checklist&lt;/a>.&lt;/p>
+&lt;p>The version menu preserves documentation for 1.6 through 1.1. The &lt;a href="https://kubeclipper.io/v1.6/en/docs/">1.6 documentation&lt;/a> follows the v1.6.0 release tag.&lt;/p></description></item><item><title>Docs: Features</title><link>https://kubeclipper.io/v1.7/en/docs/overview/feature/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.7/en/docs/overview/feature/</guid><description>
+&lt;h2 id="cluster-lifecycle">Cluster lifecycle&lt;/h2>
+&lt;p>Create, delete, upgrade, back up, and restore Kubernetes clusters. Manage cluster nodes and import existing clusters. Online and offline installation support amd64 and arm64 resources; use the &lt;a href="https://kubeclipper.io/v1.7/en/docs/overview/release-1.7/">1.7 component matrix&lt;/a> when selecting versions.&lt;/p>
+&lt;h2 id="operations-and-troubleshooting">Operations and troubleshooting&lt;/h2>
+&lt;p>Operation v2 records asynchronous cluster changes. Inspect execution state and logs, then retry or cancel when appropriate. &lt;a href="https://kubeclipper.io/v1.7/en/docs/tutorials/operations/">Operation commands&lt;/a> and &lt;a href="https://kubeclipper.io/v1.7/en/docs/tutorials/diagnostics/">platform diagnostics&lt;/a> help locate failures.&lt;/p>
+&lt;h2 id="image-and-resource-management">Image and resource management&lt;/h2>
+&lt;p>&lt;a href="https://kubeclipper.io/v1.7/en/docs/tutorials/registries/">Registry resources&lt;/a> configure image sources and containerd pull settings. &lt;a href="https://kubeclipper.io/v1.7/en/docs/getting-started/make-offline-package/">Offline packages&lt;/a> provide component resources separately.&lt;/p>
+&lt;h2 id="platform-and-access">Platform and access&lt;/h2>
+&lt;p>Deploy a single-node lab or a &lt;a href="https://kubeclipper.io/v1.7/en/docs/deployment-docs/ha-deploy/">high-availability platform&lt;/a>. Agents use mTLS to access the Server API. RBAC provides user permissions; see &lt;a href="https://kubeclipper.io/v1.7/en/docs/tutorials/access-control/">access control&lt;/a>.&lt;/p></description></item><item><title>Docs: Roadmap</title><link>https://kubeclipper.io/v1.7/en/docs/overview/roadmap/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.7/en/docs/overview/roadmap/</guid><description>
+&lt;p>This page records development directions, not capabilities guaranteed by v1.7.0. Consult the &lt;a href="https://kubeclipper.io/v1.7/en/docs/overview/release-1.7/">release notes&lt;/a> for shipped functionality and &lt;a href="https://github.com/kubeclipper/kubeclipper/issues">GitHub issues&lt;/a> for current discussions.&lt;/p>
+&lt;ul>
+&lt;li>OCI-based distribution of installation resources&lt;/li>
+&lt;li>Kubernetes workload and monitoring views&lt;/li>
+&lt;li>Application and add-on lifecycle management&lt;/li>
+&lt;li>Additional managed-cluster deployment modes&lt;/li>
+&lt;/ul>
+&lt;p>No delivery dates are promised here. Validate experimental features separately before production use.&lt;/p></description></item></channel></rss>

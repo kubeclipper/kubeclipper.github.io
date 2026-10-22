@@ -1,0 +1,73 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Getting started</title><link>https://kubeclipper.io/v1.7/en/docs/getting-started/</link><description>Recent content in Getting started on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://kubeclipper.io/v1.7/en/docs/getting-started/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: All-in-One deployment</title><link>https://kubeclipper.io/v1.7/en/docs/getting-started/aio-env/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.7/en/docs/getting-started/aio-env/</guid><description>
+&lt;p>All-in-One runs the Server and Agent on the same Linux host for evaluation and testing.&lt;/p>
+&lt;p>Follow &lt;a href="https://kubeclipper.io/v1.7/en/docs/getting-started/">Getting started&lt;/a> to prepare the host, install v1.7.0 kcctl, download the complete package, deploy the platform, and create a test cluster.&lt;/p>
+&lt;p>For production, plan separate Server and workload nodes and see &lt;a href="https://kubeclipper.io/v1.7/en/docs/deployment-docs/ha-deploy/">high availability&lt;/a>.&lt;/p></description></item><item><title>Docs: Offline clusters</title><link>https://kubeclipper.io/v1.7/en/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.7/en/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
+&lt;p>Offline installation needs a platform deployment package and component resources for Kubernetes, the CRI, and the CNI. Registry resources describe image repositories; they do not replace offline packages.&lt;/p>
+&lt;h2 id="check-resources">Check resources&lt;/h2>
+&lt;p>After &lt;a href="https://kubeclipper.io/v1.7/en/docs/getting-started/">deploying the platform&lt;/a>, log in and inspect resources and nodes:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Match package architecture to the target nodes. The 1.7 matrix uses Kubernetes v1.37.0 / v1.36.4 / v1.35.8, containerd 2.2.4, and Calico v3.31.5. See &lt;a href="https://kubeclipper.io/v1.7/en/docs/getting-started/make-offline-package/">offline component packages&lt;/a> when more resources are needed.&lt;/p>
+&lt;h2 id="create-the-cluster">Create the cluster&lt;/h2>
+&lt;p>&lt;code>kcctl create cluster&lt;/code> defaults to offline installation. This example uses one test node:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl create cluster --name offline-demo --master 192.168.10.21 --untaint-master &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --k8s-version v1.37.0 --cri containerd --cri-version 2.2.4 &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --cni calico --cni-version v3.31.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl operation list -c offline-demo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl get cluster offline-demo -o yaml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>In the Console wizard, select prepared component versions, target nodes, and offline installation. Populate any image repository and configure its &lt;a href="https://kubeclipper.io/v1.7/en/docs/tutorials/registries/">Registry resource&lt;/a> first. Select storage plugins according to actual requirements; a particular NFS plugin is not a mandatory cluster-creation step.&lt;/p>
+&lt;h2 id="confirm-installation">Confirm installation&lt;/h2>
+&lt;p>Use Operations and node logs to locate failures. After obtaining kubeconfig, check Ready nodes, system Pods, and API readiness. Resolve missing resources, architecture mismatches, and unreachable image paths before retrying. See &lt;a href="https://kubeclipper.io/v1.7/en/docs/tutorials/operations/">operations and logs&lt;/a>.&lt;/p></description></item><item><title>Docs: Offline component packages</title><link>https://kubeclipper.io/v1.7/en/docs/getting-started/make-offline-package/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.7/en/docs/getting-started/make-offline-package/</guid><description>
+&lt;p>The full 1.7.0 deployment package installs the platform. Additional Kubernetes, CRI, and CNI packages provide cluster resources. Deploy the platform using &lt;a href="https://kubeclipper.io/v1.7/en/docs/getting-started/">Getting started&lt;/a> first.&lt;/p>
+&lt;h2 id="choose-versions-and-architecture">Choose versions and architecture&lt;/h2>
+&lt;p>Use the &lt;a href="https://kubeclipper.io/v1.7/en/docs/overview/release-1.7/">1.7 matrix&lt;/a>. This Bash example prepares Kubernetes v1.37.0 for amd64. Prepare arm64 packages for arm64 nodes.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">set&lt;/span> -e
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>v1.37.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>mktemp -d&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;k8s/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -p &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">for&lt;/span> FILE in manifest.json configs.tar.gz images.tar.gz&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> curl -fL -o &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">FILE&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> &lt;span style="color:#4e9a06">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://kubeclipper.oss-ap-southeast-1.aliyuncs.com/packages/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">COMPONENT_DIR&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">/&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">FILE&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -czf &lt;span style="color:#4e9a06">&amp;#34;k8s-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">.tar.gz&amp;#34;&lt;/span> -C &lt;span style="color:#4e9a06">&amp;#34;&lt;/span>&lt;span style="color:#000">$PKG_DIR&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;&lt;/span> k8s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -tzf &lt;span style="color:#4e9a06">&amp;#34;k8s-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">VERSION&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">-&lt;/span>&lt;span style="color:#4e9a06">${&lt;/span>&lt;span style="color:#000">ARCH&lt;/span>&lt;span style="color:#4e9a06">}&lt;/span>&lt;span style="color:#4e9a06">.tar.gz&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Preserve the &lt;code>k8s/version/architecture/&lt;/code> hierarchy. Keep certificate and HTTP verification enabled. The download directory remains at &lt;code>$PKG_DIR&lt;/code> for inspection and subsequent cleanup.&lt;/p>
+&lt;p>Other components use the same hierarchy. Archive the component directory with the following files:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Directory&lt;/th>
+&lt;th>Version&lt;/th>
+&lt;th>Required files&lt;/th>
+&lt;th>Upload type&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>k8s&lt;/td>
+&lt;td>v1.37.0&lt;/td>
+&lt;td>manifest.json, configs.tar.gz, images.tar.gz&lt;/td>
+&lt;td>k8s&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>containerd&lt;/td>
+&lt;td>2.2.4&lt;/td>
+&lt;td>manifest.json, configs.tar.gz&lt;/td>
+&lt;td>cri&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>calico&lt;/td>
+&lt;td>v3.31.5&lt;/td>
+&lt;td>manifest.json, images.tar.gz, charts.tgz&lt;/td>
+&lt;td>cni&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>For example, Calico uses &lt;code>packages/calico/v3.31.5/amd64/manifest.json&lt;/code>. Packaging existing resources does not imply support for arbitrary custom versions.&lt;/p>
+&lt;h2 id="upload-in-the-offline-environment">Upload in the offline environment&lt;/h2>
+&lt;p>Transfer the archive to a deployment machine that can reach the platform and has the deployment configuration and Server SSH credentials.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>kcctl resource push --pkg k8s-v1.37.0-amd64.tar.gz --type k8s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kcctl resource list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Use &lt;code>--type cri&lt;/code> for containerd and &lt;code>--type cni&lt;/code> for Calico. Confirm the versions and architecture in the resource list before &lt;a href="https://kubeclipper.io/v1.7/en/docs/getting-started/carete-k8s-cluster-offline/">creating an offline cluster&lt;/a>. See &lt;a href="https://kubeclipper.io/v1.7/en/docs/tutorials/registries/">Registry configuration&lt;/a> for image registry settings.&lt;/p></description></item></channel></rss>

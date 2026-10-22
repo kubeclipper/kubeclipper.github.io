@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Getting Started</title><link>https://www.kubeclipper.io//v1.5/en/docs/getting-started/</link><description>Recent content in Getting Started on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kubeclipper.io//v1.5/en/docs/getting-started/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploying AIO</title><link>https://www.kubeclipper.io//v1.5/en/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.5/en/docs/getting-started/aio-env/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeclipper – Getting Started</title><link>https://kubeclipper.io/v1.5/en/docs/getting-started/</link><description>Recent content in Getting Started on Kubeclipper</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kubeclipper.io/v1.5/en/docs/getting-started/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Deploying AIO</title><link>https://kubeclipper.io/v1.5/en/docs/getting-started/aio-env/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.5/en/docs/getting-started/aio-env/</guid><description>
 &lt;p>For users who are new to KubeClipper and want to get started quickly, it is recommended to use the All-in-One installation mode, which can help you quickly deploy KubeClipper with zero configuration.&lt;/p>
 &lt;h2 id="deploy-kubeclipper">Deploy KubeClipper&lt;/h2>
 &lt;h3 id="download-kcctl">Download kcctl&lt;/h3>
@@ -48,7 +48,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
 &lt;h3 id="login-to-console">Login to console&lt;/h3>
 &lt;p>After the installation is complete, open a browser and visit &amp;lsquo;http:&lt;kc-server ip address>&amp;rsquo; to enter the KubeClipper console. (Usually kc-server IP is the IP of the node where you deploy kubeClipper)&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.5/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.5/images/docs-quickstart/console-login.png" alt="console">&lt;/p>
 &lt;p>You can use the default account password &amp;quot; admin/Thinkbig1 &amp;quot; to log in.&lt;/p>
 &lt;blockquote>
 &lt;p>You may need to configure port forwarding rules and open ports in security groups for external users to access the console.&lt;/p>
@@ -66,23 +66,23 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>You can also go to the console to view the real-time log.&lt;/p>
 &lt;/blockquote>
-&lt;p>The cluster installation is complete when the cluster is in the Running state, and you can use the &amp;lsquo;kubectl get cs&amp;rsquo; command to view the cluster health.&lt;/p></description></item><item><title>Docs: Create kubernetes clusters offline using the kubeclipper platform</title><link>https://www.kubeclipper.io//v1.5/en/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.kubeclipper.io//v1.5/en/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
+&lt;p>The cluster installation is complete when the cluster is in the Running state, and you can use the &amp;lsquo;kubectl get cs&amp;rsquo; command to view the cluster health.&lt;/p></description></item><item><title>Docs: Create kubernetes clusters offline using the kubeclipper platform</title><link>https://kubeclipper.io/v1.5/en/docs/getting-started/carete-k8s-cluster-offline/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kubeclipper.io/v1.5/en/docs/getting-started/carete-k8s-cluster-offline/</guid><description>
 &lt;h2 id="1-go-to-the-creation-screen">1. Go to the creation screen&lt;/h2>
 &lt;p>Log in to the &lt;code>Kubeclipper&lt;/code> platform and click the button as shown in the figure to enter the cluster creation interface&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.5/images/docs-quickstart/cluster-begin.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.5/images/docs-quickstart/cluster-begin.png" alt="">&lt;/p>
 &lt;h2 id="2-configure-cluster-nodes">2. Configure cluster nodes&lt;/h2>
 &lt;p>Follow the text prompts to complete the steps of entering the cluster name and selecting nodes&lt;/p>
 &lt;p>Note: The number of master nodes cannot be an even number.&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.5/images/docs-quickstart/cluster-node-config.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.5/images/docs-quickstart/cluster-node-config.png" alt="">&lt;/p>
 &lt;h2 id="3-configure-cluster">3. Configure cluster&lt;/h2>
 &lt;p>This step is used to configure the cluster network and components such as the database and container runtime&lt;/p>
 &lt;p>Select offline installation and fill in the address of the image repository you have built first&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.5/images/docs-quickstart/cluster-config.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.5/images/docs-quickstart/cluster-config.png" alt="">&lt;/p>
 &lt;h2 id="4-configure-cluster-storage">4. Configure cluster storage&lt;/h2>
 &lt;p>Select nfs storage and follow the text prompts to fill in the appropriate fields&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.5/images/docs-quickstart/cluster-storage-config.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.5/images/docs-quickstart/cluster-storage-config.png" alt="">&lt;/p>
 &lt;h2 id="5-installation-completed">5. Installation completed&lt;/h2>
 &lt;p>Complete all configurations to confirm installation&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.5/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.5/images/docs-quickstart/cluster-finish.png" alt="">&lt;/p>
 &lt;p>Installation is successful and the cluster is up and running&lt;/p>
-&lt;p>&lt;img src="https://www.kubeclipper.io//v1.5/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item></channel></rss>
+&lt;p>&lt;img src="https://kubeclipper.io/v1.5/images/docs-quickstart/cluster-successful.png" alt="">&lt;/p></description></item></channel></rss>
