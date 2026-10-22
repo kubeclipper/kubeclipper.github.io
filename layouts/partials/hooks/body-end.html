@@ -22,7 +22,7 @@
     button.textContent = chinese ? '复制' : 'Copy';
     button.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(code.innerText);
+        await navigator.clipboard.writeText(code.textContent);
         button.textContent = chinese ? '已复制' : 'Copied';
       } catch (_) {
         button.textContent = chinese ? '复制失败' : 'Copy failed';

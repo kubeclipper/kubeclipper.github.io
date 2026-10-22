@@ -1,0 +1,10 @@
+{{ if .Site.Params.archived_version }}
+  {{ $latest := .Site.Params.url_latest_version }}
+  <div class="pageinfo pageinfo-primary">
+    {{ if eq .Site.Language.Lang "zh-cn" }}
+      <p>这是 v{{ .Site.Params.version }} 的历史文档快照，已不再持续维护。新部署请查看<a href="{{ $latest }}docs/">当前版本文档</a>。</p>
+    {{ else }}
+      <p>This is an archived snapshot of the v{{ .Site.Params.version }} documentation and is no longer actively maintained. For new deployments, see the <a href="{{ $latest }}en/docs/">current documentation</a>.</p>
+    {{ end }}
+  </div>
+{{ end }}
