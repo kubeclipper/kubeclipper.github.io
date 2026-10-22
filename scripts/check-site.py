@@ -28,6 +28,13 @@ def check(root):
     errors = set()
     count = 0
     parsed = {}
+    placeholders = (
+        'Comming soon...',
+        'The second blog post',
+        'Easy documentation with Docsy',
+        'Another Great Release',
+        'UA-00000000-0',
+    )
 
     def parse(page):
         if page not in parsed:
@@ -45,6 +52,11 @@ def check(root):
         if '_print/' in relative:
             continue
         count += 1
+        if not archive:
+            source = page.read_text(encoding='utf-8')
+            for placeholder in placeholders:
+                if placeholder in source:
+                    errors.add(f'{relative}: template placeholder {placeholder!r}')
         parser = parse(page)
         page_url = 'https://kubeclipper.io/' + relative
         for url in parser.urls:

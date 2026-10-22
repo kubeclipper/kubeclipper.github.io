@@ -8,6 +8,13 @@ description: >
 
 Locate the failing layer first: the platform, Agent, resource downloads, or the Kubernetes cluster.
 
+| Symptom | Start with |
+| --- | --- |
+| Console does not open or API connection fails | [Platform health](#platform-health); check the console and API addresses and ports |
+| Agent or node is not ready | [Node services](#node-services); inspect service logs and connectivity |
+| Deployment precheck or resource download fails | [Deployment failures](#deployment-failures); follow the reported node and check |
+| Cluster creation task fails | [Cluster task failures](#cluster-task-failures); locate the Operation and failing step |
+
 ## Platform health
 
 ```bash

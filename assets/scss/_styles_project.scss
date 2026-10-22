@@ -39,3 +39,32 @@ pre {
 .td-outer > footer {
   flex-shrink: 0;
 }
+
+.recent-updates {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  li {
+    margin-bottom: .5rem;
+  }
+
+  time {
+    margin-right: .75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .td-navbar .nav-item {
+    margin-right: .7rem !important;
+  }
+}
+
+.offline-search-result {
+  max-width: 90vw;
+  width: 28rem;
+
+  .offline-search-list {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+}

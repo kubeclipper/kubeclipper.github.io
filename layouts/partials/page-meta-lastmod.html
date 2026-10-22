@@ -1,0 +1,15 @@
+{{ if eq .Section "docs" -}}
+  {{ $body := printf "Page: %s\nLanguage: %s\nVersion: v%s\n\nProblem or suggestion:\n" .Permalink .Site.Language.LanguageName .Site.Params.version -}}
+  {{ $url := printf "https://github.com/kubeclipper/kubeclipper.github.io/issues/new?title=%s&body=%s" (urlquery (printf "Docs: %s" .Title)) (urlquery $body) -}}
+  <p class="d-print-none mt-4"><a href="{{ $url | safeURL }}">{{ if eq .Site.Language.Lang "zh-cn" }}报告本页问题{{ else }}Report an issue with this page{{ end }}</a></p>
+{{ end -}}
+{{ if and (.GitInfo) (.Site.Params.github_repo) -}}
+<div class="text-muted mt-5 pt-3 border-top">
+  {{ T "post_last_mod" }} {{ .Lastmod.Format .Site.Params.time_format_default -}}
+  {{ with .GitInfo }}:
+    <a href="{{ $.Site.Params.github_repo }}/commit/{{ .Hash }}">
+      {{- .Subject }} ({{ .AbbreviatedHash }})
+    </a>
+  {{- end }}
+</div>
+{{ end -}}
