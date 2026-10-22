@@ -3,7 +3,7 @@ title: "Cluster hosting"
 date: 2022-11-29
 weight: 3
 description: >
-  For kubernetes clusters running outside the kubeclipper platform, you can host them within the kubeclipper platform for management. The current version supports host kubeadmin clusters.
+  For kubernetes clusters running outside the kubeclipper platform, you can host them within the kubeclipper platform for management. The current version supports host kubeadm clusters.
 ---
 
 ## Kubeadm cluster hosting
@@ -25,13 +25,13 @@ Click the "OK" button to import the cluster and node into the platform. Click th
 
 - Synchronization: Kubeclipper synchronizes cluster information every four hours. You can also click "Synchronize" to manually perform the operation.
 - Edit: Edit the provider's name, description, access information, and node connection method.
-- Remove: Remove the cluster information from kubeclipper, but the cluster will not be uninstalled.
+- Remove: Detach platform management while preserving Kubernetes itself. Cleanup also removes imported kc-agent installations and platform-created ServiceAccount, ClusterRoleBinding, and kubectl terminal resources. Previously managed nodes follow separate preservation rules. Check node ownership and retain kubeconfig before removal.
 
 ## Managed cluster management
 
 You can choose "Cluster Management" > "Cluster" to go to the cluster list page and view the list of all clusters, including hosted clusters and local clusters. The following table lists the operations supported by different clusters:
 
-Note that "docker.io" will be used as image resource by default when you install external storage and other plug-ins for host clusters. If you are in an offline environment, you need to fill in the address of the accessible private registry during plug-in installation. The private registry must be added to the CRI registry of the cluster. For details, refer to [CRI Registry](/en/docs/tutorials/cluster-management/#cri-registry).
+Image sources for plug-ins and external storage depend on the selected component package and configuration. Prepare images before offline installation and confirm that every node can pull them. Configure the [CRI registry](/en/docs/tutorials/registries/) first when authentication or a private CA is required.
 
 | Function                    | Clusters created by Kubeclipper | Hosted kubeadm cluster |
 | --------------------------- | ------------------------------- | ---------------------- |

@@ -16,9 +16,9 @@ KubeClipper supports multi-region management. That is, all nodes and clusters ma
 
 The platform supports multi-region management, that is, the owning region of all nodes managed by the platform. On the Region Management page, you can view all regions managed by the platform. Click a region name to go to the region details page, where you can view the list of all clusters and nodes in the region.
 
-On the \"Node Info\" page, you can view the list of all nodes managed in the platform, node specifications, status and other information. Click the node name to enter the node detail page, you can view detailed node basic information and system information.
+On the "Node Info" page, you can view the list of all nodes managed in the platform, node specifications, status and other information. Click the node name to enter the node detail page, you can view detailed node basic information and system information.
 
-The node status in KubeClipper represents the management status of the node by kc-gent. Under normal circumstances, the node status is displayed as \"Ready\". When the node is out of contact for 4 minutes (within 10s of the error time), the status will be updated to \"Unknown\". Nodes with unknown status cannot perform any operations, nor can they create clusters or add/remove nodes to clusters.
+The node status in KubeClipper represents the management status of the node by kc-agent. Under normal circumstances, the node status is displayed as "Ready". The default monitoring grace period is 4 minutes, checked every 10 seconds. After the grace period, the status changes to "Unknown"; scheduling or communication delays can affect when the change becomes visible. Investigate the Agent, network, and Server connectivity before scheduling new cluster installation or expansion on an unknown node.
 
 ### **Add node**
 
@@ -44,7 +44,7 @@ kcctl drain --agent 192.168.10.19
 
 ### **Connect Terminal**
 
-On the node list page, you can click the \"Connect Terminal\" button on the right side of the target node, enter the node port and username password information in the pop-up window, access the node SSH console and execute command tasks.
+On the node list page, you can click the "Connect Terminal" button on the right side of the target node, enter the node port and username password information in the pop-up window, access the node SSH console and execute command tasks.
 
 ### Enable/disable a node
 

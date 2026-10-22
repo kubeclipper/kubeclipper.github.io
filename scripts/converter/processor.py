@@ -58,6 +58,7 @@ class DirProcess(object):
 
     def _new_file_processor(self, dirpath, filename):
         fp = FileProcessor(dirpath, filename, self._dest_dir)
+        fp.source_dir = self._src_dir
         return fp.set_include_funcs(self._include_funcs)
 
     def start(self):
@@ -95,6 +96,7 @@ class FileProcessor(object):
         self.dirpath = dirpath
         self.fullpath = os.path.join(dirpath, filename)
         self.output_dir = output_dir
+        self.source_dir = 'content'
         self._include_funcs = []
 
     def _is_image(self):
@@ -104,8 +106,7 @@ class FileProcessor(object):
         return helper.is_markdown(self.fullpath)
 
     def _copy_to_dest(self):
-        subpath_segs = os.path.normpath(self.fullpath).split(os.sep)[1:]
-        subpath = os.path.join(*subpath_segs)
+        subpath = os.path.relpath(self.fullpath, self.source_dir)
         topath = os.path.join(self.output_dir, subpath)
         helper.copy_file(self.fullpath, topath)
 

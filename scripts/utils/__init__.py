@@ -14,7 +14,7 @@ def run_process(cmd, env=None):
     print("Execute cmd: %s" % (cmd_str, ))
     if isinstance(cmd, str):
         cmd = cmd.split()
-    cur_env = os.environ
+    cur_env = os.environ.copy()
     if env:
         for k in env:
             cur_env[k] = env[k]

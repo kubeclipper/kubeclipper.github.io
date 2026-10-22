@@ -1,59 +1,60 @@
-name: Release github pages
+name: Build documentation
 
 on:
+  pull_request:
   push:
     branches:
-      - master  # Set a branch to deploy
+      - master
       - release/*
+  workflow_dispatch:
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7.0.1
         with:
-          ref: ${{ github.ref }}
-          submodules: recursive  # Fetch the Docsy theme
-          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+          fetch-depth: 0
+      - uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.101.0'
           extended: true
-
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v7.1.0
         with:
-          node-version: '14'
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - uses: actions/setup-python@v7.1.0
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - run: npm install
-
-      - name: Setup python
-        uses: actions/setup-python@v2
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Build and check all documentation versions
+        run: make check
+      - run: cp CNAME public/CNAME
+      - uses: actions/upload-artifact@v7.0.2
         with:
-          python-version: '3.10.12'
+          name: documentation-site
+          path: public
 
-      - name: Install python requirements
-        run: |
-          pip3 install pyyaml
-
-      - name: Build public site
-        run: |
-          ./scripts/build.py --host=https://www.kubeclipper.io --edition=ce --multi-versions --no-out-fetch
-          cp CNAME ./public
-          ls -alh ./public
-
-      - name: Publish site
-        uses: peaceiris/actions-gh-pages@v3
+  publish:
+    needs: build
+    if: github.event_name != 'pull_request' && github.repository == 'kubeclipper/kubeclipper.github.io' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8.0.2
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
+          name: documentation-site
+          path: public
+      - uses: peaceiris/actions-gh-pages@v4.1.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public

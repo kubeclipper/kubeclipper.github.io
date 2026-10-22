@@ -1,7 +1,9 @@
 import os
+import subprocess
+import tempfile
 
 from .consts import MODE_ONLINE, MODE_OFFLINE
-from .consts import VERSION_ARRAY
+from .consts import BUNDLED_VERSIONS, CURRENT_VERSION, HISTORY_REPOSITORY, VERSION_ARRAY
 from .hugo import Hugo
 from utils import run_process
 from converter import processor
@@ -66,6 +68,7 @@ class BaseDriver(object):
         out_dirs = self.pre_process(content_dir, args)
         for out_dir in out_dirs:
             hugo = self.new_hugo(out_dir, args)
+            hugo.set_current_version(CURRENT_VERSION)
             hugo.execute()
 
     def new_hugo(self, out_dir_pair, args):
@@ -81,36 +84,55 @@ class BaseDriver(object):
             hugo.set_base_config('config-ee.toml')
         return hugo
 
-    def update_branch(self, branch):
-        run_process('git checkout -q %s' % branch)
-        upstream_cmd = 'git rev-parse @{u}'
-        local_cmd = 'git rev-parse @'
-        upstream_out = run_process(upstream_cmd)
-        local_out = run_process(local_cmd)
-        if upstream_out != local_out:
-            run_process('git merge -q upstream/%s' % branch)
-
-    def check_and_update(self, version):
-        branch = 'master'
-        if version != 'master':
-            branch = 'release/%s' % version
-        self.update_branch(branch)
-
     def multi_versions_build(self, content_dir, args):
-        versions = VERSION_ARRAY
-        cur_branch = run_process('git rev-parse --abbrev-ref HEAD')
-        print("args.out_fetch: %s" % args.out_fetch)
-        if not args.out_fetch:
-            run_process('git remote update')
-        for version in versions:
-            self.check_and_update(version)
-            out_dirs = self.pre_process(content_dir, args, version=version)
-            for out_dir in out_dirs:
-                hugo = self.new_hugo(out_dir, args)
-                hugo.set_current_version(version)
-                hugo.set_versions(versions)
-                hugo.execute()
-        run_process('git checkout %s' % cur_branch)
+        if args.out_fetch:
+            run_process([
+                'git', 'fetch', '--no-tags', HISTORY_REPOSITORY,
+                '+refs/heads/release/*:refs/remotes/docs-history/release/*',
+            ])
+
+        # Validate every archived ref before replacing the generated site.
+        for version in VERSION_ARRAY[1:]:
+            if version in BUNDLED_VERSIONS:
+                source = os.path.join(BUNDLED_VERSIONS[version], 'content')
+                if not os.path.isdir(source):
+                    raise FileNotFoundError('Missing bundled documentation: ' + source)
+                continue
+            run_process(['git', 'rev-parse', '--verify',
+                         'refs/remotes/docs-history/release/' + version])
+
+        out_dirs = self.pre_process(content_dir, args, version=CURRENT_VERSION)
+        for out_dir in out_dirs:
+            hugo = self.new_hugo(out_dir, args)
+            hugo.set_current_version(CURRENT_VERSION)
+            hugo.set_versions(VERSION_ARRAY)
+            hugo.execute()
+            hugo.set_version_path('v' + CURRENT_VERSION)
+            hugo.execute()
+
+        for version in VERSION_ARRAY[1:]:
+            ref = 'refs/remotes/docs-history/release/' + version
+            with tempfile.TemporaryDirectory(prefix='kubeclipper-docs-') as source:
+                subdir = BUNDLED_VERSIONS.get(version, '')
+                static_dir = 'static'
+                if subdir:
+                    source = subdir
+                else:
+                    archive = subprocess.check_output(
+                        ['git', 'archive', ref, 'content', 'static'])
+                    subprocess.run(['tar', '-xf', '-', '-C', source],
+                                   input=archive, check=True)
+                    static_dir = os.path.join(source, 'static')
+                out_dirs = self.pre_process(
+                    os.path.join(source, 'content'), args, version=version)
+                for out_dir in out_dirs:
+                    hugo = self.new_hugo(out_dir, args)
+                    hugo.set_current_version(version)
+                    hugo.set_versions(VERSION_ARRAY)
+                    hugo.set_version_path('v' + version)
+                    hugo.set_static_dir(static_dir)
+                    hugo.set_github_subdir(subdir)
+                    hugo.execute()
 
 
 class OnlineDriver(BaseDriver):
@@ -126,7 +148,6 @@ class OfflineDriver(BaseDriver):
 
     def __init__(self):
         super(OfflineDriver, self).__init__(MODE_OFFLINE)
-        run_process('rm -rf ./public')
 
     def get_scopes(self):
         return [
