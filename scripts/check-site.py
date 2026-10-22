@@ -78,6 +78,12 @@ def check(root):
             path = root / language / section / 'index.html'
             if not path.is_file():
                 errors.add(f'Missing current entry: {path.relative_to(root)}')
+        for section in ('blog/', 'community/', 'docs/getting-started/',
+                        'docs/deployment-docs/upgrade/', 'docs/tutorials/diagnostics/',
+                        'docs/tutorials/operations/', 'docs/overview/release-1.7/'):
+            path = root / language / section / 'index.html'
+            if not path.is_file():
+                errors.add(f'Missing current {language or "zh-cn/"} page: {section}')
     for version in VERSION_ARRAY:
         for language in ('', 'en/'):
             for section in ('', 'docs/'):

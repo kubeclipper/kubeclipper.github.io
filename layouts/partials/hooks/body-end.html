@@ -1,0 +1,33 @@
+<script>
+  document.querySelectorAll('[data-version-page]').forEach((link) => {
+    link.addEventListener('click', async (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      try {
+        const response = await fetch(link.dataset.versionPage, { method: 'HEAD' });
+        window.location.assign(response.ok ? link.dataset.versionPage : link.href);
+      } catch (_) {
+        window.location.assign(link.href);
+      }
+    });
+  });
+
+  document.querySelectorAll('.td-content pre').forEach((block) => {
+    const code = block.querySelector('code');
+    if (!code) return;
+    const chinese = document.documentElement.lang === 'zh-cn';
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'btn btn-sm btn-outline-light copy-code-button';
+    button.textContent = chinese ? '复制' : 'Copy';
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(code.innerText);
+        button.textContent = chinese ? '已复制' : 'Copied';
+      } catch (_) {
+        button.textContent = chinese ? '复制失败' : 'Copy failed';
+      }
+    });
+    block.appendChild(button);
+  });
+</script>

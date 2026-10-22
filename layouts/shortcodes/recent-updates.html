@@ -4,7 +4,7 @@
   <h2>{{ if eq $.Page.Lang "zh-cn" }}最近更新{{ else }}Recent updates{{ end }}</h2>
   <ul>
     {{ range first 3 .ByDate.Reverse }}
-    <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Description }}<p>{{ . }}</p>{{ end }}</li>
     {{ end }}
   </ul>
   <p><a href="{{ $.Page.Site.Home.RelPermalink }}blog/">{{ if eq $.Page.Lang "zh-cn" }}查看全部动态{{ else }}All updates{{ end }}</a></p>
