@@ -31,8 +31,8 @@ def parse_args():
                             default=processor.EDITION_CE)
     parser.add_argument('--multi-versions', help="Enable multi versions",
                         action=bool_action)
-    parser.add_argument('--out-fetch', help="Not fetch upstream",
-                        action=bool_action)
+    parser.add_argument('--out-fetch', help="Fetch archived documentation branches",
+                        action=bool_action, default=True)
 
     args = parser.parse_args()
 

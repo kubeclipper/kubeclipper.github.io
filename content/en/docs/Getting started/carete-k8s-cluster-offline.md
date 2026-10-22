@@ -1,46 +1,38 @@
 ---
-title: "Create kubernetes clusters offline using the kubeclipper platform"
-linkTitle: "create kubernetes cluster offline"
-weight: 2
+title: "Offline clusters"
+linkTitle: "Offline clusters"
+weight: 3
 description: >
-  How to create a kubernetes cluster offline using the KC platform
+  Offline clusters
 ---
 
-## 1. Go to the creation screen
+Offline installation needs a platform deployment package and component resources for Kubernetes, the CRI, and the CNI. Registry resources describe image repositories; they do not replace offline packages.
 
-Log in to the `Kubeclipper` platform and click the button as shown in the figure to enter the cluster creation interface
+## Check resources
 
-![](/images/docs-quickstart/cluster-begin.png)
+After [deploying the platform](/en/docs/getting-started/), log in and inspect resources and nodes:
 
-## 2. Configure cluster nodes
+```bash
+kcctl resource list
+kcctl get node
+```
 
-Follow the text prompts to complete the steps of entering the cluster name and selecting nodes
+Match package architecture to the target nodes. The 1.7 matrix uses Kubernetes v1.37.0 / v1.36.4 / v1.35.8, containerd 2.2.4, and Calico v3.31.5. See [offline component packages](/en/docs/getting-started/make-offline-package/) when more resources are needed.
 
-Note: The number of master nodes cannot be an even number.
+## Create the cluster
 
-![](/images/docs-quickstart/cluster-node-config.png)
+`kcctl create cluster` defaults to offline installation. This example uses one test node:
 
-## 3. Configure cluster
+```bash
+kcctl create cluster --name offline-demo --master 192.168.10.21 --untaint-master \
+  --k8s-version v1.37.0 --cri containerd --cri-version 2.2.4 \
+  --cni calico --cni-version v3.31.5
+kcctl operation list -c offline-demo
+kcctl get cluster offline-demo -o yaml
+```
 
-This step is used to configure the cluster network and components such as the database and container runtime
+In the Console wizard, select prepared component versions, target nodes, and offline installation. Populate any image repository and configure its [Registry resource](/en/docs/tutorials/registries/) first. Select storage plugins according to actual requirements; a particular NFS plugin is not a mandatory cluster-creation step.
 
-Select offline installation and fill in the address of the image repository you have built first
+## Confirm installation
 
-![](/images/docs-quickstart/cluster-config.png)
-
-## 4. Configure cluster storage
-
-Select nfs storage and follow the text prompts to fill in the appropriate fields
-
-![](/images/docs-quickstart/cluster-storage-config.png)
-
-## 5. Installation completed
-
-Complete all configurations to confirm installation
-
-![](/images/docs-quickstart/cluster-finish.png)
-
-Installation is successful and the cluster is up and running
-
-![](/images/docs-quickstart/cluster-successful.png)
-
+Use Operations and node logs to locate failures. After obtaining kubeconfig, check Ready nodes, system Pods, and API readiness. Resolve missing resources, architecture mismatches, and unreachable image paths before retrying. See [operations and logs](/en/docs/tutorials/operations/).

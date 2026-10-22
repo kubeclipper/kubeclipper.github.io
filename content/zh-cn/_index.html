@@ -9,7 +9,7 @@ linkTitle = "Kubeclipper"
 	<a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/docs" >}}">
 		了解更多 <i class="fas fa-arrow-alt-circle-right ml-2"></i>
 	</a>
-	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/kubeclipper/kubeclipper">
+	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/kubeclipper/kubeclipper/releases/tag/v1.7.0">
 		免费下载 <i class="fab fa-github ml-2 "></i>
 	</a>
 	<p class="lead mt-5">用最简单的方式管理 Kubernetes !</p>
@@ -31,7 +31,7 @@ KubeClipper 是一个轻量级、易用的图形界面 Kubernetes 集群生命�
 
 
 {{% blocks/feature icon="fa-solid fa-paper-plane" title="极轻量" %}}
-架构简单，少依赖，平台部署仅需两个命令行。
+架构简单，少依赖，支持使用 kcctl 安装、检查和诊断平台。
 {{% /blocks/feature %}}
 
 
@@ -51,16 +51,11 @@ KubeClipper 是一个轻量级、易用的图形界面 Kubernetes 集群生命�
 				1. 下载 kcctl <br>
 				2. 部署 KubeClipper
 			</h5>
-<pre>
-<code>
-curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | sh -
-
-# In China, you can add cn env, we use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
-curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_REGION=cn sh -
-
-kcctl deploy  [--user root] (--passwd SSH_PASSWD | --pk-file SSH_PRIVATE_KEY)
-</code>
-</pre>
+<pre><code>curl -fL -o get-kubeclipper.sh \
+  https://raw.githubusercontent.com/kubeclipper/kubeclipper/v1.7.0/scripts/get-kubeclipper.sh
+KC_VERSION=v1.7.0 bash get-kubeclipper.sh
+kcctl version</code></pre>
+<p>当前稳定版：v1.7.0。继续查看<a href="{{< relref "/docs/Getting started" >}}">完整部署步骤</a>，准备部署包、SSH 和初始密码。</p>
 		</div>
 	</div>
 {{< /blocks/section >}}

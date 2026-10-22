@@ -1,26 +1,23 @@
 ---
-title: "Feature"
-linkTitle: "Feature"
+title: "Features"
+linkTitle: "Features"
 weight: 2
-date: 2023-05-26
 description: >
-  KubeClipper feature
+  KubeClipper 1.7 capabilities.
 ---
 
-## Cluster LifeCycle Management
+## Cluster lifecycle
 
-* Lifecycle Management: cluster creation, deletion, backup, restoration, upgrade, and node manipulation
-* Multiple Deployment Modes: online/offline deployment support
-* Multi-Architecture: x86/64 & arm64 support
-* Cluster Import: registration and management of external clusters (non-Kubeclipper created)
+Create, delete, upgrade, back up, and restore Kubernetes clusters. Manage cluster nodes and import existing clusters. Online and offline installation support amd64 and arm64 resources; use the [1.7 component matrix](/en/docs/overview/release-1.7/) when selecting versions.
 
-## Node Management
+## Operations and troubleshooting
 
-* Automatic node registration
-* Node information collection
-* Node terminal
+Operation v2 records asynchronous cluster changes. Inspect execution state and logs, then retry or cancel when appropriate. [Operation commands](/en/docs/tutorials/operations/) and [platform diagnostics](/en/docs/tutorials/diagnostics/) help locate failures.
 
-## Identity and Access Management (IAM)
+## Image and resource management
 
-* RBAC-based user permission system
-* OIDC integration
+[Registry resources](/en/docs/tutorials/registries/) configure image sources and containerd pull settings. [Offline packages](/en/docs/getting-started/make-offline-package/) provide component resources separately.
+
+## Platform and access
+
+Deploy a single-node lab or a [high-availability platform](/en/docs/deployment-docs/ha-deploy/). Agents use mTLS to access the Server API. RBAC provides user permissions; see [access control](/en/docs/tutorials/access-control/).

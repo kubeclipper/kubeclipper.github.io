@@ -9,7 +9,7 @@ setup:
 setup-upstream:
 	bash -x ./scripts/setup-upstream.sh
 
-server: setup
+server:
 	./scripts/build.py --host=http://localhost:1313
 	cd public && python3 -m http.server 1313
 
@@ -18,3 +18,6 @@ build:
 		--host=https://kubeclipper.io \
 		--edition=ce \
 		--multi-versions
+
+check: build
+	python3 scripts/check-site.py public

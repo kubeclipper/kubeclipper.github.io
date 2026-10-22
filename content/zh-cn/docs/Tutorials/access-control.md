@@ -30,7 +30,7 @@ description: >
 
 在用户详情页面，您还可以查看当前用户的登录日志列表。
 
-您可以编辑平台 /etc/kubeclipper-server/kubeclipper-server.yaml 文件，根据需要设置用户登录日志的最大保留条数和保留期限，每个用户的登录日志超过最大条数后，超过最大条数和期限的日志会被自动删除，仅超过保留期限但未超过最大条数的日志数据将不会被删除。
+您可以编辑平台 /etc/kubeclipper-server/kubeclipper-server.yaml 文件，根据需要设置用户登录日志的最大保留条数和保留期限，清理逻辑仅在该用户的日志总数超过最大条数时触发：先删除超额的旧记录，再清理剩余的过期记录；未超过最大条数时，不会仅因过期而删除。
 
 ## 自定义角色
 
@@ -42,7 +42,7 @@ description: >
 
 创建自定义角色完成后，您可以在角色详情页面查看角色基本信息、角色权限列表、授权用户列表，并对自定义角色执行以下操作：
 
-- 编辑：编辑自定义角色别名。
+- 编辑：编辑自定义角色描述。
 
 - 编辑权限：编辑自定义角色下的权限。
 
@@ -52,9 +52,9 @@ description: >
 
 KubeClipper 可以通过 OIDC 协议使用外部用户登录。
 
-首先，平台管理员需要登录平台 server 节点，在 kubeclipepr-server.yaml 文件中的 authentication 下插入以下信息：
+首先，平台管理员需要登录平台 server 节点，在 kubeclipper-server.yaml 文件中的 authentication 下插入以下信息：
 
-```undefined
+```yaml
 oauthOptions:
     identityProviders:
     - name: keycloak
@@ -62,21 +62,23 @@ oauthOptions:
       mappingMethod: auto
       provider:
         clientID: kc
-        clientSecret: EErn729BB1bKawdRtnZgrqj9Bx0]mzUs
-        issuer: http://172.20.163.233:7777/auth/realms/kubeclipper
+        clientSecret: REPLACE_WITH_CLIENT_SECRET
+        issuer: https://idp.example.com/realms/kubeclipper
         scopes:
         - openid
         - email
-        redirectURL: http://{kc-console-address}/oatuh2/redirect/{IDP-Name}
+        redirectURL: https://console.example.com/oauth2/redirect/keycloak
 ```
 
-其中，“provider” 下需要您填写自己的 OAuth2 服务的`clientID`、`clientSecret`、`issuer`信息，以 keycloack 为例，如下图所示。
+这是 `authentication` 下的配置片段，需合并到现有配置。将示例域名和 `REPLACE_WITH_CLIENT_SECRET` 替换为实际值；IdP 注册的回调地址必须与 `redirectURL` 完全一致，路径末尾的 `keycloak` 与提供商 `name` 一致。各 Server 更新配置后，按节点滚动重启 `kc-server`。
+
+其中，“provider” 下需要您填写自己的 OAuth2 服务的`clientID`、`clientSecret`、`issuer`信息，以 keycloak 为例，如下图所示。
 
 ![](/images/docs-tutorials/keycloak-clients.png)
 
 ![](/images/docs-tutorials/keycloak-secret.png)
 
- `redirectURL`示例：http://172.0.0.90/oauth2/redirect/keycloack
+ `redirectURL`示例：https://console.example.com/oauth2/redirect/keycloak
 
 OAuth2 用户可以通过以下步骤访问和使用 KubeClipper 平台：
 

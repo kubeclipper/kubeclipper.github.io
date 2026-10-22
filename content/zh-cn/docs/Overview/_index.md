@@ -3,52 +3,40 @@ title: "概述"
 linkTitle: "概述"
 weight: 1
 description: >
-  Manage kubernetes in the most light and convenient way ☸️
+  KubeClipper 1.7 的组成、通信方式和网络。
 ---
 
-## KubeClipper 是什么？
-KubeClipper 旨在提供易使用、易运维、极轻量、生产级的 Kubernetes 多集群全生命周期管理服务，让运维工程师从繁复的配置和晦涩的命令行中解放出来，实现一站式管理跨区域、跨基础设施的多 kubernetes 集群。
+KubeClipper 为 Kubernetes 集群提供创建、扩缩容、升级、备份、恢复和删除等生命周期管理能力，提供 Web 控制台、API 和 kcctl 命令行。
 
-## 为什么需要 KubeClipper？
+## 1.7 架构
 
-云原生时代，Kubernetes 已毋庸置疑地成为容器编排的事实标准。虽然有诸多辅助 kubernetes 集群安装和管理的工具，但搭建和运维一套生产级别的 kubernetes 集群仍然十分复杂。九州云在大量的服务和实践过程中，沉淀出一个极轻量、易使用的图形化界面 Kubernetes 多集群管理工具—— KubeClipper。
+![KubeClipper Operation v2 架构](/images/docs-overview/operation-v2.svg)
 
-KubeClipper 在完全兼容原生 Kubernetes 的前提下，基于社区广泛使用的 kubeadm 工具进行二次封装，提供在企业自有基础设施中快速部署 kubernetes 集群和持续化全生命周期管理（安装、卸载、升级、扩缩容、远程访问等）能力，支持在线、代理、离线等多种部署方式，还提供了丰富可扩展的 CRI、CNI、CSI、以及各类 CRD 组件的管理服务。
+- **kc-server** 提供 API，保存集群和 Operation、Task 等资源，由控制器推进任务状态。
+- **kc-agent** 安装在受管节点，通过 mTLS 访问 Server API，观察分配给本节点的任务，执行安装等操作并回报结果。
+- **kcctl / Console** 提交管理请求，查看平台状态、操作进度和日志。
+- **etcd** 保存平台资源和状态。平台 etcd 与所管理 Kubernetes 集群的 etcd 分别规划。
 
-与现有的 Sealos、KubeKey、Kubeasz、KubeOperator、K0S 等 kubernetes 生命周期管理工具相比，KubeClipper 更贴近开放原生、轻量便捷、稳定易用。
+1.7 使用 API 驱动的 Operation v2，不再通过内置 NATS 分发任务。操作提交后异步执行，需结合 Operation、集群状态和节点实际状态确认结果。参见[操作与日志](/docs/tutorials/operations/)。
 
-* [快速开始](/docs/getting-started/): Learn how to get started with Kubeclipper
-* [用户手册](/docs/tutorials): Check out some example code!
+## 网络与端口
 
-## KubeClipper 架构设计
+| 用途 | 默认端口 | 使用方 |
+|---|---|---|
+| 控制台 | TCP 80 | 浏览器；生产入口配置 HTTPS |
+| Server API | TCP 8080，HTTPS | kcctl、Console、Agent |
+| 资源文件服务 | TCP 8081 | 下载平台资源的节点 |
+| Agent 任务日志 | TCP 10260 | Server 访问 Agent；按实际配置限制访问 |
+| 平台 etcd | TCP 12379 / 12380 / 12381 | client / peer / metrics，限制在管理网络 |
+| SSH | TCP 22 | 部署、节点维护 |
 
-### 核心架构
+端口可通过部署配置修改。Agent 任务日志监听配置也应与防火墙策略一起核对；不要直接套用旧版 NATS 端口表。
 
-![](/images/docs-overview/kc-arch2.png)
+`--ip-detect` 选择平台管理地址；`--node-ip-detect` 选择 Kubernetes 节点地址。多网卡环境需要确认所选地址与管理网络可达。Pod 网络的地址发现规则由所选 CNI 配置决定。
 
-KubeClipper 分为三个部分：
-* kc-server：原则上部署在独立节点，负责收集节点上报信息，分发前端操作任务至指定 kc-agent 并汇总执行结果等，是 KubeClipper 控制核心。
-* kc-agent: 部署在纳管节点，通过消息队列（内置 nats）与 kc-server 通信，负责上报节点信息以及处理下发任务并执行，是 KubeClipper 节点代理工具。
-* kcctl: KubeClipper 的终端命令行工具，可快捷高效的部署、管理 KubeClipper 集群，能够替代大多数页面操作。
+## 版本与入门
 
-### 节点纳管
-
-![](/images/docs-overview/kc-arch.png)
-
-### 部署网络模型
-
-![](/images/docs-overview/kc-network.png)
-
-KubeClipper 支持可以通过参数配置来部署分层网络模型，以下是不同网络的概要：  
-
-运维管理网络(Management Network):   
-在 `kcctl deploy` 部署 KubeClipper 集群时，可通过 `--ip-detect` 参数指定网卡接口，默认为 `first-found`。
-该网卡接口对应的 IP 地址即是 `kc-server` 与 `kc-agent` 的路由地址。
-
-K8S 主机网络(K8S Host Network):   
-在 `kcctl deploy` 部署 KubeClipper 集群时，可通过 `--node-ip-detct` 参数指定网卡接口，默认继承 `--ip-detect` 参数值，亦可独立设置。
-该网卡接口对应的 IP 地址即是 K8S 的节点路由地址。
-
-K8S Pod 网络(SDN Pod Network):   
-在安装 K8S 集群时，可通过填入 CNI 的 `POD 网路底层` 指定网卡接口，默认为 `first-found`。
-该网卡接口对应的 IP 地址即是 K8S POD 网路底层的路由地址。
+- [1.7 发布说明与组件矩阵](/docs/overview/release-1.7/)
+- [快速开始](/docs/getting-started/)
+- [高可用部署](/docs/deployment-docs/ha-deploy/)
+- [平台诊断](/docs/tutorials/diagnostics/)

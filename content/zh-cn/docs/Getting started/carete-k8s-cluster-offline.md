@@ -1,46 +1,38 @@
 ---
-title: "使用 Kubeclipper 离线创建 kubernetes 集群"
+title: "离线创建集群"
 linkTitle: "离线创建集群"
 weight: 3
 description: >
-  如何使用 KC 平台离线创建 kubernetes 集群
+  离线创建集群
 ---
 
-## 1. 进入创建界面
+离线安装需要先准备平台部署包，以及 Kubernetes、CRI、CNI 等组件资源。Registry 资源只描述镜像仓库，不能替代离线包。
 
-登录 Kubeclipper 平台后点击如图所示按钮，进入集群创建界面
+## 检查资源
 
-![](/images/docs-quickstart/cluster-begin.png)
+完成[平台部署](/docs/getting-started/)后登录并检查：
 
-## 2. 配置集群节点
+```bash
+kcctl resource list
+kcctl get node
+```
 
-按照文字提示完成输入集群名称、选择节点等步骤
+确认目标节点架构与资源包一致。1.7 推荐矩阵为 Kubernetes v1.37.0 / v1.36.4 / v1.35.8、containerd 2.2.4、Calico v3.31.5。需要补充组件包时参考[准备离线组件包](/docs/getting-started/make-offline-package/)。
 
-注意: master 节点数量不能为偶数
+## 创建集群
 
-![](/images/docs-quickstart/cluster-node-config.png)
+`kcctl create cluster` 默认离线安装。示例使用一个实验节点：
 
-## 3. 配置集群
+```bash
+kcctl create cluster --name offline-demo --master 192.168.10.21 --untaint-master \
+  --k8s-version v1.37.0 --cri containerd --cri-version 2.2.4 \
+  --cni calico --cni-version v3.31.5
+kcctl operation list -c offline-demo
+kcctl get cluster offline-demo -o yaml
+```
 
-此步骤用于配置集群网络以及数据库、容器运行时等组件
+在 Console 创建时同样选择已准备好的组件版本、目标节点和离线方式。需要镜像仓库时先准备镜像并配置[Registry 资源](/docs/tutorials/registries/)。存储插件按实际需求单独选择，不把某一种 NFS 插件当作创建集群的必选步骤。
 
-选择离线安装并填写首先搭建好的镜像仓库地址
+## 确认安装结果
 
-![](/images/docs-quickstart/cluster-config.png)
-
-## 4. 配置存储
-
-选择 nfs 存储，按照文字提示填写相应内容
-
-![](/images/docs-quickstart/cluster-storage-config.png)
-
-## 5. 安装完成
-
-完成所有配置确认安装
-
-![](/images/docs-quickstart/cluster-finish.png)
-
-安装成功，集群正常运行
-
-![](/images/docs-quickstart/cluster-successful.png)
-
+结合 Operation 和节点日志定位失败原因。取得 kubeconfig 后检查节点 Ready、系统 Pod 和 API readiness。离线资源缺失、架构不一致或镜像地址不可达时，先修正资源再重试，参见[操作与日志](/docs/tutorials/operations/)。

@@ -1,123 +1,112 @@
 ---
-categories: ["QuickStart"]
-tags: ["docs"]
 title: "快速开始"
 linkTitle: "快速开始"
 weight: 2
 description: >
-  快速搭建体验平台功能
+  使用 KubeClipper 1.7.0 部署平台并创建第一个 Kubernetes 集群。
 ---
 
+本文使用 KubeClipper **v1.7.0**。准备一台通过 SSH 可访问、使用 systemd 的 Linux 主机，部署 KubeClipper，再在该主机创建单节点实验集群。生产环境请参考[高可用部署](/docs/deployment-docs/ha-deploy/)。
 
-对于初次接触 KubeClipper 并想快速上手的用户，建议使用 All-in-One 安装模式，它能够帮助您零配置快速部署 KubeClipper。
+## 准备主机
 
-### 准备工作
+- 安装 `curl`、`tar`、`sudo`，确保 SSH 服务可用，部署用户有 sudo 权限。
+- 启用 chrony、ntp 或 systemd-timesyncd 中的一种时间同步服务。
+- 准备可登录目标节点的 SSH 私钥，并确认节点之间的地址可达。
+- 核对目标 Kubernetes 版本对内核、cgroup 和容器运行时的要求。历史文档中的操作系统列表不代表新版本 Kubernetes 的兼容性范围。
+- 为部署包下载、解压和容器镜像预留磁盘空间。1.7.0 的完整部署包约 1.2 GiB，GitHub Release 中约 60 MB 的二进制包不能替代完整部署包。
 
-KubeClipper 本身并不会占用太多资源，但是为了后续更好的运行 Kubernetes 建议硬件配置不低于最低要求。
+## 安装 kcctl
 
-您仅需参考以下对机器硬件和操作系统的要求准备一台主机。
-
-#### 硬件推荐配置
-
-- 确保您的机器满足最低硬件要求：CPU >= 2 核，内存 >= 2GB。
-- 操作系统：CentOS 7.x / Ubuntu 18.04 / Ubuntu 20.04。
-
-#### 节点要求
-
-- 节点必须能够通过 `SSH` 连接。
-- 节点上可以使用 `sudo` / `curl` / `wget` / `tar` 命令。
-
-> 建议您的操作系统处于干净状态（不安装任何其他软件），否则可能会发生冲突。
-
-### 部署 KubeClipper
-
-#### 下载 kcctl
-
-KubeClipper 提供了命令行工具🔧 kcctl 以简化运维工作，您可以直接使用以下命令下载最新版 kcctl：
+下载与 1.7.0 发布标签一致的安装脚本，再执行安装。脚本通过项目的阿里云 OSS 原生域名下载二进制，不依赖旧的 `oss.kubeclipper.io` 域名。
 
 ```bash
-# curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | bash -
-# 如果你在中国， 你可以在安装时使用 cn  环境变量, 此时我们会使用 registry.aliyuncs.com/google_containers 代替 k8s.gcr.io
-curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_REGION=cn bash -
-```
-
-> 您也可以在 [GitHub Release Page](https://github.com/kubeclipper/kubeclipper/releases) 下载指定版本。
-
-通过以下命令检测是否安装成功:
-
-```bash
+curl -fL -o get-kubeclipper.sh \
+  https://raw.githubusercontent.com/kubeclipper/kubeclipper/v1.7.0/scripts/get-kubeclipper.sh
+KC_VERSION=v1.7.0 bash get-kubeclipper.sh
 kcctl version
 ```
 
-#### 开始安装
+脚本支持 Linux、macOS 的 amd64 和 arm64 客户端。平台服务部署在 Linux 上；以下命令在 Linux 部署机运行。也可以从 [v1.7.0 Release](https://github.com/kubeclipper/kubeclipper/releases/tag/v1.7.0) 下载对应客户端。
 
-在本快速入门教程中，您只需执行一个命令即可安装 KubeClipper，其模板如下所示：
+## 下载完整部署包
 
-```bash
-kcctl deploy
-```
-
-若使用 ssh passwd 方式则命令如下所示:
+按目标平台架构设置 `ARCH`。下例为 amd64；arm64 主机将其改为 `arm64`。
 
 ```bash
-kcctl deploy --user root --passwd $SSH_PASSWD
+ARCH=amd64
+curl -fL -o "kc-${ARCH}.tar.gz" \
+  "https://kubeclipper.oss-ap-southeast-1.aliyuncs.com/release/v1.7.0/kc-${ARCH}.tar.gz"
+tar -tzf "kc-${ARCH}.tar.gz" | head
 ```
 
-私钥方式如下：
+完整部署包包含平台服务、控制台及离线资源。离线环境需要提前在联网机器下载，再传入部署机。创建 Kubernetes 集群时还应核对平台中已有的组件包和架构，见[离线创建集群](/docs/getting-started/carete-k8s-cluster-offline/)。
+
+## 部署 All-in-One 平台
+
+以下示例使用 SSH 私钥。替换为自己的私钥路径；部署机必须能够通过 SSH 登录目标节点，即使目标节点就是本机。
 
 ```bash
-kcctl deploy --user root --pk-file $SSH_PRIVATE_KEY
+read -r -s -p '设置 admin 密码: ' KC_ADMIN_PASSWORD
+printf '\n'
+kcctl deploy --user root --pk-file "$HOME/.ssh/id_rsa" \
+  --pkg "$PWD/kc-${ARCH}.tar.gz" \
+  --initial-password "$KC_ADMIN_PASSWORD"
+unset KC_ADMIN_PASSWORD
 ```
 
-> 您只需要提供 ssh user 以及 ssh passwd 或者 ssh 私钥即可在本机部署 KubeClipper。
+初始密码需满足平台校验要求：8–16 位，包含大写字母、小写字母和数字。部署前检查失败时，先处理输出中对应的节点和检查项，不要反复重装。
 
-执行该命令后，Kcctl 将检查您的安装环境，若满足条件将会进入安装流程。在打印出如下的 KubeClipper banner 后即表示安装完成。
+1.7 的 Agent 通过 mTLS 访问 Server API，部署时保持 TLS 开启。默认控制台为 `http://SERVER_IP:80`，Server API 为 `https://SERVER_IP:8080`，这两个入口用途不同。
 
-```console
- _   __      _          _____ _ _
-| | / /     | |        /  __ \ (_)
-| |/ / _   _| |__   ___| /  \/ |_ _ __  _ __   ___ _ __
-|    \| | | | '_ \ / _ \ |   | | | '_ \| '_ \ / _ \ '__|
-| |\  \ |_| | |_) |  __/ \__/\ | | |_) | |_) |  __/ |
-\_| \_/\__,_|_.__/ \___|\____/_|_| .__/| .__/ \___|_|
-                                 | |   | |
-                                 |_|   |_|
-```
+## 登录并检查平台
 
-### 登录控制台
-
-安装完成后，打开浏览器，访问 `http://$IP` 即可进入 KubeClipper 控制台。
-
-![console](/images/docs-quickstart/console-login.png)
-
-您可以使用默认帐号密码 `admin / Thinkbig1` 进行登录。
-
-> 您可能需要配置端口转发规则并在安全组中开放端口，以便外部用户访问控制台。
-
-### 创建 kubernetes 集群
-
-部署成功后您可以使用 **kcctl 工具**或者通过**控制台**创建 kubernetes 集群。在本快速入门教程中使用 kcctl 工具进行创建。
-
-首先使用默认帐号密码进行登录获取 token，便于后续 kcctl 和 kc-server 进行交互。
+将 `SERVER_IP` 替换为实际 Server 地址。命令会提示输入刚才设置的 admin 密码。
 
 ```bash
-kcctl login -H http://localhost -u admin -p Thinkbig1
+SERVER_IP=192.168.10.10
+kcctl login --host "https://${SERVER_IP}:8080" --username admin
+kcctl status
+kcctl doctor
+kcctl get node
+kcctl resource list
 ```
 
-然后使用以下命令创建 kubernetes 集群:
+通过浏览器访问 `http://SERVER_IP` 可打开控制台。生产环境应在控制台入口配置 HTTPS。`status` 检查平台状态，`doctor` 给出诊断证据；它们不会自动修复环境。
+
+## 创建第一个集群
+
+从 `kcctl get node` 的结果选择就绪节点，将节点 ID 或 IP 填入 `NODE`。离线方式是默认值；先确认已有对应架构和版本的资源包。
 
 ```bash
-NODE=$(kcctl get node -o yaml|grep ipv4DefaultIP:|sed 's/ipv4DefaultIP: //')
-
-kcctl create cluster --master $NODE --name demo --untaint-master
+NODE=192.168.10.10
+kcctl create cluster --name demo --master "$NODE" --untaint-master \
+  --k8s-version v1.37.0 --cri containerd --cri-version 2.2.4 \
+  --cni calico --cni-version v3.31.5
+kcctl operation list -c demo
+kcctl get cluster demo -o yaml
 ```
 
-大概 3 分钟左右即可完成集群创建,也可以使用以下命令查看集群状态
+`--untaint-master` 允许实验集群在控制节点调度普通工作负载。安装耗时取决于机器、网络和镜像准备情况。命令提交成功后，继续查看 Operation 和集群状态，不能把提交成功当作安装完成。
+
+从集群详情页获取 kubeconfig，设置 `KUBECONFIG` 后检查 Kubernetes：
 
 ```bash
-kcctl get cluster -o yaml|grep status -A5
+kubectl get nodes -o wide
+kubectl get pods -A
+kubectl get --raw='/readyz?verbose'
 ```
 
-> 您也可以进入控制台查看实时日志。
+确认集群处于 Running、节点 Ready，并检查系统 Pod 和 API 健康状况。任务失败时参考[操作与日志](/docs/tutorials/operations/)和[平台诊断](/docs/tutorials/diagnostics/)。
 
-进入 Running 状态即表示集群安装完成,您可以使用 `kubectl get cs` 命令来查看集群健康状况。
+## 清理实验集群
+
+以下操作会删除 demo 集群，先确认其中没有需要保留的工作负载和数据：
+
+```bash
+kcctl delete cluster demo
+kcctl operation list -c demo
+kcctl get cluster
+```
+
+等待删除操作结束并确认集群已移除。不要使用重置状态或强制删除来代替失败原因排查。

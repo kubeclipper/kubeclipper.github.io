@@ -9,7 +9,7 @@ linkTitle = "Kubeclipper"
 	<a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/docs" >}}">
 		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
 	</a>
-	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/kubeclipper/kubeclipper">
+	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/kubeclipper/kubeclipper/releases/tag/v1.7.0">
 		Download <i class="fab fa-github ml-2 "></i>
 	</a>
 	<p class="lead mt-5">Manage Kubernetes in the most light and simple way !</p>
@@ -21,7 +21,7 @@ linkTitle = "Kubeclipper"
 {{% blocks/lead color="primary" %}}
 KubeClipper is a lightweight web service that provides a friendly web console GUI, APIs, and a CLI tool for Kubernetes cluster lifecycle management.
 
-KubeClipper provides flexible Kubernetes as a Service (KaaS), which allows users to rapidly deploy K8S clusters anywhere(cloud, hypervisor, bare metal) and provides continuous lifecycle management capabilities (installation, deleting, upgrading, backup and restoration, cluster scaling, remote access, plug-in management, application store).see Feature List for details.
+KubeClipper provides flexible Kubernetes as a Service (KaaS), which allows users to rapidly deploy K8S clusters anywhere(cloud, hypervisor, bare metal) and provides continuous lifecycle management capabilities (installation, deleting, upgrading, backup and restoration, cluster scaling, remote access, and plug-in management). See the feature list for details.
 {{% /blocks/lead %}}
 
 {{< blocks/section color="dark" >}}
@@ -32,7 +32,7 @@ Provides friendly wizard graphical interface, allows beginners to quickly deploy
 
 
 {{% blocks/feature icon="fab fa-github" title="Lightweight"  %}}
-Simple architecture, few dependencies, only two command lines for platform deployment.
+Simple architecture, few dependencies, use kcctl to install, check, and diagnose the platform.
 {{% /blocks/feature %}}
 
 
@@ -52,16 +52,11 @@ Simple and professional, it supports rich cluster parameter configuration and pl
 				1. Download kcctl <br>
 				2. Deploy KubeClipper
 			</h5>
-<pre>
-<code>
-curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | sh -
-
-# In China, you can add cn env, we use registry.aliyuncs.com/google_containers instead of k8s.gcr.io
-curl -sfL https://oss.kubeclipper.io/get-kubeclipper.sh | KC_REGION=cn sh -
-
-kcctl deploy  [--user root] (--passwd SSH_PASSWD | --pk-file SSH_PRIVATE_KEY)
-</code>
-</pre>
+<pre><code>curl -fL -o get-kubeclipper.sh \
+  https://raw.githubusercontent.com/kubeclipper/kubeclipper/v1.7.0/scripts/get-kubeclipper.sh
+KC_VERSION=v1.7.0 bash get-kubeclipper.sh
+kcctl version</code></pre>
+<p>Current stable release: v1.7.0. Continue with the <a href="{{< relref "/docs/Getting started" >}}">deployment guide</a> to prepare the deployment package, SSH access, and initial password.</p>
 		</div>
 	</div>
 {{< /blocks/section >}}

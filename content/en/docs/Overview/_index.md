@@ -3,44 +3,40 @@ title: "Overview"
 linkTitle: "Overview"
 weight: 1
 description: >
-  Manage kubernetes in the most light and convenient way ☸️
+  Components and networking in KubeClipper 1.7.
 ---
 
-## What is KubeClipper?
+KubeClipper manages the Kubernetes cluster lifecycle, including creation, scaling, upgrades, backup, recovery, and deletion, through a web console, API, and the kcctl CLI.
 
-KubeClipper is a lightweight web service that provides a friendly web console GUI, APIs, and a CLI tool for Kubernetes cluster lifecycle management.
+## Architecture in 1.7
 
-KubeClipper provides flexible Kubernetes as a Service (KaaS), which allows users to rapidly deploy K8S clusters anywhere(cloud, hypervisor, bare metal) and provides continuous lifecycle management capabilities (installation, deleting, upgrading, backup and restoration, cluster scaling, remote access, plug-in management, application store).
+![KubeClipper Operation v2 architecture](/images/docs-overview/operation-v2.svg)
 
-## Project Goal
+- **kc-server** serves the API and persists clusters, Operations, and Tasks. Controllers advance their state.
+- **kc-agent** runs on managed nodes. It accesses the Server API over mTLS, watches assigned tasks, executes them, and reports results.
+- **kcctl / Console** submit management requests and display platform health, progress, and logs.
+- **etcd** stores platform resources and state. Plan platform etcd separately from the etcd clusters used by managed Kubernetes clusters.
 
-Manage Kubernetes in the most light and convenient way.
+1.7 uses API-driven Operation v2 rather than built-in NATS task delivery. Operations run asynchronously. Confirm results using Operations, cluster state, and the actual nodes. See [operations and logs](/en/docs/tutorials/operations/).
 
-## Why do I want KubeClipper?
+## Networking
 
-In the cloud-native era, Kubernetes has undoubtedly become the de facto standard for container orchestration. Although there are many tools to assist in the installation and management of kubernetes clusters, it is still very complicated to build and operate a production-level kubernetes cluster. In the process of a large number of services and practices, 99cloud has precipitated an extremely lightweight and easy-to-use graphical interface Kubernetes multi-cluster management tool - KubeClipper.
+| Purpose | Default port | Clients |
+|---|---|---|
+| Console | TCP 80 | Browsers; configure HTTPS at the production entry point |
+| Server API | TCP 8080, HTTPS | kcctl, Console, Agents |
+| Resource file service | TCP 8081 | Nodes downloading resources |
+| Platform etcd | TCP 12379 / 12380 / 12381 | client / peer / metrics; restrict to the management network |
+| Agent task logs | TCP 10260 | Server to Agent; restrict access for the actual configuration |
+| SSH | TCP 22 | Deployment and node maintenance |
 
-Under the premise of being fully compatible with native Kubernetes, KubeClipper is repackaged based on the kubeadm tool widely used by the community, providing rapid deployment of kubernetes clusters and continuous full life cycle management (installation, uninstallation, upgrade, scaling) in the enterprise's own infrastructure. It supports multiple deployment methods such as online, proxy, and offline, and also provides rich and scalable management services for CRI, CNI, CSI, and various CRD components.
+Deployment configuration can change these ports. Check Agent task-log listener configuration against firewall rules as well; older NATS port lists do not apply.
 
-Compared with the existing kubernetes lifecycle management tools such as KubeKey, Kubeasz, KubeOperator, and K0S, KubeClipper is more open and native, lightweight, convenient, stable and easy to use.
+`--ip-detect` selects the platform management address. `--node-ip-detect` selects the Kubernetes node address. Check connectivity explicitly on hosts with multiple interfaces. Pod network address detection belongs to the selected CNI configuration.
 
-## Architecture
+## Start here
 
-![](/images/docs-overview/kc-arch2.png)
-
-KubeClipper 分为三个部分：
-* kc-server：collecting information reported by kc-agent, distributing front-end operations to the designated kc-agent and summarizing execution results, etc., which is the core of each control of KubeClipper.
-* kc-agent: Deployed on the management node, it communicates with kc-server through the message queue (built-in nats), and is responsible for reporting node information and processing and executing tasks. It is a KubeClipper node proxy tool.
-* kcctl: KubeClipper's terminal command line tool can quickly and efficiently deploy and manage KubeClipper clusters, and can replace most page operations.
-
-## Topology
-
-![](/images/docs-overview/kc-arch.png)
-
-## Network
-
-![](/images/docs-overview/kc-network.png)
-
-## Quick Start
-
-* [Getting Started](/en/docs/getting-started/): Get started with $project
+- [1.7 release notes and component matrix](/en/docs/overview/release-1.7/)
+- [Getting started](/en/docs/getting-started/)
+- [High availability](/en/docs/deployment-docs/ha-deploy/)
+- [Platform diagnostics](/en/docs/tutorials/diagnostics/)
