@@ -1,13 +1,11 @@
 ---
-title: "Docsy Blog"
-linkTitle: "Blog"
+title: "Project updates"
+linkTitle: "Updates"
 menu:
   main:
     weight: 30
 ---
 
 
-This is the **blog** section. It has two categories: News and Releases.
-
-Files in these directories will be listed in reverse chronological order.
+Documentation changes and project news are published here. See the [release notes](/en/docs/overview/release-1.7/) for the capabilities shipped in each software release.
 

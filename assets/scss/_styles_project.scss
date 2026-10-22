@@ -35,7 +35,56 @@ pre {
   white-space: pre-wrap;
 }
 
+.td-content pre {
+  position: relative;
+  padding-top: 2.8em;
+
+  .copy-code-button {
+    position: absolute;
+    right: .6em;
+    top: .5em;
+  }
+}
+
 // Keep the full footer visible inside Docsy's viewport-height flex layout.
 .td-outer > footer {
   flex-shrink: 0;
+}
+
+.recent-updates {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  li {
+    margin-bottom: .5rem;
+  }
+
+  time {
+    margin-right: .75rem;
+  }
+
+  li p {
+    margin: .25rem 0 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .td-navbar .nav-item {
+    margin-right: .7rem !important;
+  }
+
+  pre {
+    white-space: pre;
+    word-wrap: normal;
+  }
+}
+
+.offline-search-result {
+  max-width: 90vw;
+  width: 28rem;
+
+  .offline-search-list {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
 }

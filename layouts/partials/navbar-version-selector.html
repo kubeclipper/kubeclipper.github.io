@@ -4,8 +4,11 @@
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
     {{ $languagePath := cond (eq .Site.Language.Lang "en") "en/" "" }}
+    {{ $sectionPath := cond (eq .Section "docs") "docs/" "" }}
+    {{ $pagePath := replace .Permalink .Site.BaseURL "" }}
+    <span class="dropdown-item-text text-muted">{{ if eq .Site.Language.Lang "en" }}{{ if $sectionPath }}Opens the same page when available, otherwise the docs home{{ else }}Opens the selected version's home page{{ end }}{{ else }}{{ if $sectionPath }}优先打开对应页面，否则打开文档首页{{ else }}切换后打开所选版本的网站首页{{ end }}{{ end }}</span>
     {{ range .Site.Params.versions }}
-        <a class="dropdown-item" href="{{ .url }}{{ $languagePath }}">{{ .version }}</a>
+        <a class="dropdown-item" href="{{ .url }}{{ $languagePath }}{{ $sectionPath }}"{{ if $sectionPath }} data-version-page="{{ .url }}{{ $pagePath }}"{{ end }}>{{ .version }}</a>
     {{ end }}
 </div>
 {{ else }}

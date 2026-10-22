@@ -1,0 +1,5 @@
+{{ $canonical := .Permalink -}}
+{{ if and (eq .Site.Params.version "1.7") (in .Site.BaseURL "/v1.7/") -}}
+  {{ $canonical = replace $canonical "/v1.7/" "/" -}}
+{{ end -}}
+<link rel="canonical" href="{{ $canonical }}">

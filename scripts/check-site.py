@@ -6,6 +6,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import re
 from urllib.parse import unquote, urljoin, urlsplit
+from xml.etree import ElementTree
 
 from builder.consts import BUNDLED_VERSIONS, CURRENT_VERSION, VERSION_ARRAY
 
@@ -15,8 +16,11 @@ class Links(HTMLParser):
         super().__init__()
         self.urls = []
         self.ids = set()
+        self.canonical = []
 
     def handle_starttag(self, tag, attrs):
+        if tag == 'link' and ('rel', 'canonical') in attrs:
+            self.canonical.extend(value for key, value in attrs if key == 'href')
         for key, value in attrs:
             if value and (key == 'id' or (tag == 'a' and key == 'name')):
                 self.ids.add(value)
@@ -28,6 +32,13 @@ def check(root):
     errors = set()
     count = 0
     parsed = {}
+    placeholders = (
+        'Comming soon...',
+        'The second blog post',
+        'Easy documentation with Docsy',
+        'Another Great Release',
+        'UA-00000000-0',
+    )
 
     def parse(page):
         if page not in parsed:
@@ -45,6 +56,11 @@ def check(root):
         if '_print/' in relative:
             continue
         count += 1
+        if not archive:
+            source = page.read_text(encoding='utf-8')
+            for placeholder in placeholders:
+                if placeholder in source:
+                    errors.add(f'{relative}: template placeholder {placeholder!r}')
         parser = parse(page)
         page_url = 'https://kubeclipper.io/' + relative
         for url in parser.urls:
@@ -66,12 +82,39 @@ def check(root):
             path = root / language / section / 'index.html'
             if not path.is_file():
                 errors.add(f'Missing current entry: {path.relative_to(root)}')
+        for section in ('blog/', 'community/', 'docs/getting-started/',
+                        'docs/deployment-docs/upgrade/', 'docs/tutorials/diagnostics/',
+                        'docs/tutorials/operations/', 'docs/overview/release-1.7/'):
+            path = root / language / section / 'index.html'
+            if not path.is_file():
+                errors.add(f'Missing current {language or "zh-cn/"} page: {section}')
     for version in VERSION_ARRAY:
         for language in ('', 'en/'):
             for section in ('', 'docs/'):
                 path = root / ('v' + version) / language / section / 'index.html'
                 if not path.is_file():
                     errors.add(f'Missing version entry: {path.relative_to(root)}')
+    for language in ('', 'en/'):
+        for prefix in ('', 'v' + CURRENT_VERSION + '/'):
+            path = root / prefix / language / 'docs/index.html'
+            expected = 'https://kubeclipper.io/' + language + 'docs/'
+            if path.is_file() and parse(path).canonical != [expected]:
+                errors.add(f'{path.relative_to(root)}: expected canonical {expected}')
+        archived = root / 'v1.6' / language / 'docs/index.html'
+        if archived.is_file():
+            expected = '历史文档快照' if not language else 'archived snapshot'
+            if expected not in archived.read_text(encoding='utf-8'):
+                errors.add(f'{archived.relative_to(root)}: missing archive notice')
+    sitemap = root / 'sitemap.xml'
+    if not sitemap.is_file():
+        errors.add('Missing sitemap.xml')
+    else:
+        namespace = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+        entries = {entry.text for entry in ElementTree.parse(sitemap).findall('.//s:loc', namespace)}
+        expected = {'https://kubeclipper.io/zh-cn/sitemap.xml',
+                    'https://kubeclipper.io/en/sitemap.xml'}
+        if entries != expected:
+            errors.add('sitemap.xml: expected only current-language sitemaps')
     if errors:
         raise SystemExit('Broken local links or missing version entries:\n' + '\n'.join(sorted(errors)))
     print(f'Checked {count} current/bundled HTML pages and {len(VERSION_ARRAY)} bilingual version entries.')
